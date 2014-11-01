@@ -1,2 +1,6 @@
 <?php
-require 'bootstrap.php';
+
+/**
+ * Bootstrap
+ */
+require '../app/bootstrap.php';

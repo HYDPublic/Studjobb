@@ -1,6 +1,6 @@
 <?php
-require '../vendor/autoload.php';
-require '../app/configuration.php';
+require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/configuration.php';
 
 /**
  * Slim
@@ -10,13 +10,13 @@ $app = new \Slim\Slim();
 /**
  * Controllers
  */
-foreach (glob('../app/controllers/*.php') as $controller)
+foreach (glob(__DIR__.'/controllers/*.php') as $controller)
     require_once $controller;
 
 /**
  * Routing
  */
-require '../app/routes.php';
+require __DIR__.'/routes.php';
 
 /**
  * Eloquent
