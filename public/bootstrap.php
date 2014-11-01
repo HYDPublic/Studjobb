@@ -8,6 +8,12 @@ require '../app/configuration.php';
 $app = new \Slim\Slim();
 
 /**
+ * Controllers
+ */
+foreach (glob('../app/controllers/*.php') as $controller)
+    require_once $controller;
+
+/**
  * Routing
  */
 require '../app/routes.php';
@@ -15,13 +21,17 @@ require '../app/routes.php';
 /**
  * Eloquent
  */
-$connectionFactory = new \Illuminate\Database\Connectors\ConnectionFactory();
-$connection        = $connFactory->make($configuration['database']);
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
 
-$resolver          = new \Illuminate\Database\ConnectionResolver();
-$resolver->addConnection('default', $connection);
-$resolver->setDefaultConnection('default');
-\Illuminate\Database\Eloquent\Model::setConnectionResolver($resolver);
+$capsule = new Capsule;
+$capsule->addConnection([
+    $configuration['database']
+]);
+
+$capsule->setEventDispatcher(new Dispatcher(new Container));
+$capsule->bootEloquent();
 
 /**
  * Take-off

@@ -1,5 +1,3 @@
 <?php
 
-$app->get('/', function () {
-    echo 'hello world';
-});
+$app->get('/', '\Home:index');
