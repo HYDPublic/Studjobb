@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+#header {
+    overflow:hidden;
+    width:100%;
+    height:200px;
+    background-color:red;
+}
+
+#header > video {
+    width:100%;
+}
+
+#board {
+    padding-top: 3em;
+}
+
+.intro > p:nth-child(1) {
+    margin-bottom:10px;
+}
+
+.intro {
+    font-size: 16px;
+    line-height: 24px;
+}
