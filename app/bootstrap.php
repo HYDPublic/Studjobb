@@ -6,12 +6,19 @@ require __DIR__.'/configuration.php';
  * Slim
  */
 $app = new \Slim\Slim();
+$app->config($configuration['slim']);
 
 /**
  * Controllers
  */
 foreach (glob(__DIR__.'/controllers/*.php') as $controller)
     require_once $controller;
+
+/**
+ * Models
+ */
+foreach (glob(__DIR__.'/models/*.php') as $model)
+   require_once $model;
 
 /**
  * Routing
@@ -26,11 +33,10 @@ use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
 $capsule = new Capsule;
-$capsule->addConnection([
-    $configuration['database']
-]);
+$capsule->addConnection($configuration['database']);
 
 $capsule->setEventDispatcher(new Dispatcher(new Container));
+$capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 /**
