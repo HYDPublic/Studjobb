@@ -5,4 +5,12 @@ class Home {
         echo 'hi!';
     }
 
+    public function about () {
+
+    }
+
+    public function contact () {
+
+    }
+
 }

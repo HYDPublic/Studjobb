@@ -1,1 +1,1 @@
-echo 'Running test suite.';
+../vendor/bin/phpunit 
