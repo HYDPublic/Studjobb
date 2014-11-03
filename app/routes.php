@@ -3,7 +3,7 @@
 /**
  * General pages
  */
-$app->get('/om-oss',  '\Home:about');
+$app->get('/om',      '\Home:about');
 
 $app->get('/kontakt', '\Home:contact');
 
