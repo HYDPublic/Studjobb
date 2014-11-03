@@ -10,8 +10,13 @@
     </head>
     <body>
         <div id="header">
+            <img src="/img/header.jpg">
+            <!--
             <video autoplay loop poster="video/video.jpg">
-			    <source src="video/ntnu3.mp4" type="video/mp4" />
-			   
+			    <source src="video/yt.mp4" type="video/mp4" />
+			    <source src="video/exponent.ogv" type="video/ogg" />
+			    <img src="video/video.jpg" alt="">
 		    </video>
+            -->
+
         </div>
