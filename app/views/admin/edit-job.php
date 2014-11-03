@@ -6,13 +6,34 @@
                 </p>
 
                 <form id="update-job" method="post">
-                    <input type="text" name="title" class="form-control" value="<?php print $job->title; ?>">
 
-                    <div class="checkbox">
-                        <label>
-                            <input name="published" type="checkbox" <?php if ($job->published == 1) print 'checked'; ?>>
-                            Publisert
-                        </label>
+                    <div class="form-group">
+                        <label>Tittel</label>
+                        <input type="text" name="title" class="form-control"
+                            value="<?php print $job->title; ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Publisert</label>
+                        <input name="published" type="checkbox" <?php if ($job->published == 1) print 'checked'; ?>>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Selskap</label>
+                        <select name="company">
+                            <?php foreach ($companies as $company): ?>
+                            <option value="<?php print $company->id; ?>"
+                                <?php if ($job->company == $company) print 'selected'; ?>>
+                                <?php print $company->name; ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type jobb</label>
+                        <input name="type" type="text" value="<?php print $job->type; ?>"
+                        placeholder="deltid, heltid, sommerjobb" class="form-control">
                     </div>
 
                     <div id="formatting-container">
