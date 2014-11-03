@@ -1,10 +1,6 @@
 <?php
 class Home {
 
-    public function index () {
-        echo 'hi!';
-    }
-
     public function about () {
         $app = \Slim\Slim::getInstance();
         $app->render('header.php');
