@@ -22,6 +22,15 @@ body {
     padding-top: 3em;
 }
 
+/* Board */
+.listing > table > tbody > tr {
+    cursor:pointer;
+}
+
+span.job-title {
+    color:#f2321e;
+}
+
 /* Intro paragraphs*/
 .intro > p:nth-child(1) {
     margin-bottom:10px;
@@ -62,15 +71,20 @@ input#search {
 }
 
 /* Color tweaks */
-a {
+a, a:hover {
     color: #f4311d;
+}
+
+.badge-orange {
+    color:#fff;
+    background-color: #f54330;
 }
 
 .orange {
     color: #f2321e;
 }
 
-.btn-custom-lighten {
+.btn-custom-lighten, .btn:hover {
     color:#fff;
     background-color: #f54330;
 }
