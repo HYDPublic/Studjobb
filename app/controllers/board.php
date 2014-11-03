@@ -9,11 +9,15 @@ class Board {
     }
 
     public function job ($id) {
+        $app = \Slim\Slim::getInstance();
 
-        $x = Job::find(1);
+        $job = Job::find((int) $id);
+        if (!$job)
+            throw new Exception ('Fant ingen stilling.');
 
-        print_r($x);
-
+        $app->render('header.php');
+        $app->render('board.php');
+        $app->render('footer.php');
 
     }
 }
