@@ -11,5 +11,7 @@
     </head>
     <body>
         <div id="header">
-            <img src="/img/header.jpg">
+            <a href="/">
+                <img src="/img/header.jpg">
+            </a>
         </div>
