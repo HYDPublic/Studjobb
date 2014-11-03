@@ -18,7 +18,7 @@ body {
     width:100%;
 }
 
-#board, #about, #notfound, #error, #job {
+#board, #about, #notfound, #error, #job, #login {
     padding-top: 3em;
 }
 
