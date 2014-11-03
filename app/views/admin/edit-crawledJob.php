@@ -3,7 +3,9 @@
             <div class="intro col-md-12">
 
                 <p>
-                    <a class="back" href="/admin/dashbord">← Tilbake til Dashbordet</a>
+                    <a class="back" href="/admin/dashbord" target="_blank">
+                        ← Tilbake til Dashbordet
+                    </a>
                 </p>
 
                 <p>
