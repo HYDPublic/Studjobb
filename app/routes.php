@@ -25,6 +25,8 @@ $app->get('/admin', '\Admin:login');
 
 $app->post('/admin', '\Admin:authenticate');
 
+$app->get('/admin/dashbord', '\Admin::mustBeAuthenticated', '\Admin:dashboard');
+
 /**
  * Errors
  */
