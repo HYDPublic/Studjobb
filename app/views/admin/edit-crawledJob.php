@@ -22,8 +22,13 @@
                         <option value="volvo">Betalt</option>
                     </select>
                     <br/>
+
                     <label>Skrapt den: </label>
                     <span><?php print $crawledJob->createdAt(); ?></span>
+                    <br/>
+
+                    <label>Selskap: </label>
+                    <span><?php print $crawledJob->company; ?></span>
                 </p>
 
                 <hr>
