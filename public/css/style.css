@@ -89,6 +89,16 @@ a, a:hover {
     background-color: #f54330;
 }
 
+/* Job */
+.company > img {
+    display:block;
+    margin: 0 auto;
+}
+
+.company > .about {
+    margin-top:15px;
+}
+
 /* Footer */
 #footer {
     margin-top:50px;

@@ -8,6 +8,9 @@
             </div>
 
             <div class="company col-md-4 well">
-                <h4><?php print $job->company->name; ?></h4>
+                <img src="<?php print $job->company->logo; ?>" class="logo">
+                <div class="about">
+                    <p><?php print $job->company->about; ?></p>
+                </div>
             </div>
         </div>
