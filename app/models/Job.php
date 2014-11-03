@@ -10,6 +10,10 @@ class Job extends Eloquent {
         return $this->belongsTo('Company');
     }
 
+    public function category () {
+        return $this->belongsTo('Category');
+    }
+
     public function due () {
         return date('Y-m-d', strtotime($this->due));
     }
