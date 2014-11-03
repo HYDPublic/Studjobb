@@ -19,6 +19,13 @@ $app->get('/',             '\Board:index');
 $app->get('/stilling/:id', '\Board:job');
 
 /**
+ * Admin
+ */
+$app->get('/admin', '\Admin:login');
+
+$app->post('/admin', '\Admin:authenticate');
+
+/**
  * Errors
  */
 $app->error(function(\Exception $e) use ($app) {
