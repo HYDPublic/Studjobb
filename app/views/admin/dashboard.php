@@ -18,6 +18,18 @@
                     </tbody>
                 </table>
 
+                <h3>Selskaper</h3>
+                <p>Dette er alle selskapene.</p>
+                <table class="table table-hover table-jobs">
+                    <tbody>
+                        <?php foreach ($companies as $company): ?>
+                        <tr data-href="/admin/selskap/<?php print $company->id; ?>">
+                            <td><strong><?php print $company->name; ?></strong></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+
                 <h3>Skrapt</h3>
                 <p>Dette er de skrapte jobbene.</p>
                 <table class="table table-hover table-jobs">
