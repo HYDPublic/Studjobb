@@ -3,13 +3,13 @@
             <div class="intro col-md-12">
 
                 <p>
-                    <a class="back" href="/admin/dashbord" target="_blank">
+                    <a class="back" href="/admin/dashbord">
                         ← Tilbake til Dashbordet
                     </a>
                 </p>
 
                 <p>
-                    <a href="<?php print $crawledJob->url; ?>">
+                    <a href="<?php print $crawledJob->url; ?>" target="_blank">
                         <strong>Besøk kilden</strong>
                         <span class="glyphicon glyphicon-share-alt"></span>
                     </a>
