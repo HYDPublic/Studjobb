@@ -17,7 +17,10 @@ class Home {
     }
 
     public static function notFound () {
-        echo '404';
+        $app = \Slim\Slim::getInstance();
+        $app->render('header.php');
+        $app->render('notFound.php');
+        $app->render('footer.php');
     }
 
 }
