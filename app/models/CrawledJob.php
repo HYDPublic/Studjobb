@@ -7,7 +7,7 @@ class CrawledJob extends Eloquent {
     protected $table = 'crawled';
 
     public function createdAt () {
-        return date('m-d', strtotime($this->created_at));
+        return date('m-d-y h:m', strtotime($this->created_at));
     }
 
     public function source () {
