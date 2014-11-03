@@ -3,7 +3,7 @@
             <div class="intro">
                 <p>
                     <strong>Studjobb.no</strong> er nettsiden for studenter som
-                    ønsker å finne jobb, prosjekter og oppdrag. Kom i kontakt med
+                    ønsker å finne jobb, startups og oppdrag. Kom i kontakt med
                     bedrifter som ønsker å ansette studenter!
                 </p>
                 <p>
@@ -15,19 +15,45 @@
             </div>
 
             <div class="search well col-md-12">
-                <div class="col-md-5">
-                    <input type="text" class="form-control"
-                        placeholder="Søk 'trondheim', 'web-utvikling' ...">
+                <div class="col-md-5 col-xs-12">
+                    <div class="left-inner-addon ">
+                            <span class="glyphicon glyphicon-search orange"></span>
+                            <input type="text" id="search" class="form-control"
+                                placeholder="'sommerjobb', 'javascript', 'design' ...">
+                        </div>
                 </div>
                 <div class="col-md-2 col-md-offset-4">
                     <button type="button" class="btn btn-custom-lighten">
-                        Utlys stilling!
+                        Legg ut en stilling!
                     </button>
                 </div>
             </div>
 
             <div class="listing">
 
+                <h3>Webutvikling</h3>
+
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
