@@ -1,8 +1,7 @@
         <div id="login" class="col-md-8 col-md-offset-2">
 
             <div class="intro">
-                <h3>Admin</h3>
-                <div class="login col-md-6">
+                <div class="login col-md-6 col-md-offset-3">
                     <form role="form" method="post" action="admin">
                         <div class="form-group">
                             <label>E-post</label>
