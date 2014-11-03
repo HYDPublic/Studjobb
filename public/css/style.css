@@ -18,7 +18,7 @@ body {
     width:100%;
 }
 
-#board, #about {
+#board, #about, #notfound, #error {
     padding-top: 3em;
 }
 
