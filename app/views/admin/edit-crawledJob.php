@@ -6,7 +6,6 @@
                     <a class="back" href="/admin/dashbord">← Tilbake til Dashbordet</a>
                 </p>
 
-                <h3><?php print $crawledJob->title; ?></h3>
                 <p>
                     <a href="<?php print $crawledJob->url; ?>">
                         <strong>Besøk kilden</strong>
@@ -27,24 +26,35 @@
                     <span><?php print $crawledJob->createdAt(); ?></span>
                 </p>
 
-
                 <hr>
 
-                <div class="col-md-6">
-                    <h4>Ta kontakt</h4>
+                <div class="col-md-10">
+                    <form id="update-job" method="post" action="/admin/stilling">
+                        <input type="text" name="title" class="form-control" value="<?php print $crawledJob->title; ?>">
 
-                        <form>
-                            <input type="text" class="form-control">
-                        </form>
+                        <div id="formatting-container">
+                            <select title="Size" class="ql-size">
+                                <option value="10px">Small</option>
+                                <option value="13px" selected>Normal</option>
+                                <option value="18px">Large</option>
+                                <option value="32px">Huge</option>
+                            </select>
 
-                </div>
+                            <button type="button" class="btn ql-bold">Bold</button>
+                            <button type="button" class="btn ql-italic">Italic</button>
+                            <button type="button" class="btn ql-underline">Under</button>
+                            <button type="button" class="btn ql-strike">Strike</button>
+                            <button type="button" class="btn ql-link">Link</button>
+                            <button type="button" class="btn ql-image">Image</button>
+                            <button type="button" class="btn ql-bullet">Bullet</button>
+                            <button type="button" class="btn ql-list">List</button>
+                        </div>
 
-                <div class="col-md-6">
-                    <h4>Lag annonse</h4>
+                        <div id="editor-container"></div>
 
-                    <form>
-                        <input type="text" class="form-control">
-                        <textarea class="form-control"></textarea>
+                        <textarea id="buffer" name="content"></textarea>
+
+                        <input type="submit" class="btn btn-custom-lighten" value="Publiser">
                     </form>
 
                 </div>
