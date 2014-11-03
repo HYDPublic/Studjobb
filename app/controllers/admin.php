@@ -16,7 +16,7 @@ class Admin {
         $app = \Slim\Slim::getInstance();
 
         $job = Job::find((int) $id);
-        if (!$job || !$job->published)
+        if (!$job)
             throw new Exception ('Fant ingen stilling.');
 
         $app->render('static/header.php');
@@ -33,6 +33,17 @@ class Admin {
         $job->save();
 
         $app->redirect('/admin/stilling/' . $id);
+    }
+
+    public function createJob () {
+        $app = \Slim\Slim::getInstance();
+
+        $job = new Job();
+        $job->title = $app->request->post('title');
+        $job->content = $app->request->post('content');
+        $job->save();
+
+        $app->redirect('/admin/stilling/' . $job->id);
     }
 
     public function crawledJob ($id) {
