@@ -13,4 +13,8 @@ class Home {
 
     }
 
+    public static function notFound () {
+        echo '404';
+    }
+
 }

@@ -9,6 +9,10 @@ $app->get('/kontakt', '\Home:contact');
 
 $app->get('/priser',  '\Home:pricing');
 
+$app->notFound(function () use ($app) {
+    \Home::notFound();
+});
+
 /**
  * Job board
  */
