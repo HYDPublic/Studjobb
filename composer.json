@@ -3,7 +3,8 @@
         "slim/slim": "*",
         "illuminate/database": "*",
         "mockery/mockery": "*",
-        "drewm/mailchimp-api": "dev-master"
+        "drewm/mailchimp-api": "dev-master",
+        "cartalyst/sentry": "2.1.*"
     },
 	"require-dev": {
         "phpunit/phpunit": "4.3.*",
