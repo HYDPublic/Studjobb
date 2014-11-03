@@ -63,6 +63,10 @@ input#search {
 }
 
 /* Color tweaks */
+a {
+    color: #f4311d;
+}
+
 .orange {
     color: #f2321e;
 }
@@ -70,4 +74,10 @@ input#search {
 .btn-custom-lighten {
     color:#fff;
     background-color: #f54330;
+}
+
+/* Footer */
+#footer {
+    margin-top:50px;
+    color: #777;
 }
