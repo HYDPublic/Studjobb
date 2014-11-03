@@ -16,7 +16,7 @@ class Board {
             throw new Exception ('Fant ingen stilling.');
 
         $app->render('header.php');
-        $app->render('board.php');
+        $app->render('job.php', array ('job' => $job));
         $app->render('footer.php');
 
     }
