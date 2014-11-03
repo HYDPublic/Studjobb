@@ -1,6 +1,10 @@
         <div id="job" class="col-md-8 col-md-offset-2">
 
             <div class="intro col-md-8">
+                <p>
+                    <a class="back" href="/">← Tilbake til forsiden</a>
+                </p>
+
                 <h3><?php print $job->title; ?></h3>
                 <div class="content">
                     <?php print $job->content; ?>
