@@ -36,6 +36,7 @@ class Admin {
         $job->content    = $app->request->post('content');
         $job->type       = $app->request->post('type');
         $job->company_id = $app->request->post('company');
+        $job->place      = $app->request->post('place');
 
         if ($app->request->post('published') == 'on')
             $job->published = true;

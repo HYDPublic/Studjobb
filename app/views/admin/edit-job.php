@@ -19,6 +19,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Sted</label>
+                        <input name="place" type="text" value="<?php print $job->place; ?>"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
                         <label>Selskap</label>
                         <select name="company">
                             <?php foreach ($companies as $company): ?>
