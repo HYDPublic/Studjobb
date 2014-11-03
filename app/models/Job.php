@@ -10,4 +10,8 @@ class Job extends Eloquent {
         return $this->belongsTo('Company');
     }
 
+    public function due () {
+        return date('Y-m-d', strtotime($this->due));
+    }
+
 }
