@@ -29,9 +29,12 @@ $app->get('/admin/dashbord',      '\Admin::mustBeAuthenticated', '\Admin:dashboa
 
 $app->get('/admin/stilling/:id',  '\Admin::mustBeAuthenticated', '\Admin:job');
 
+$app->get('/admin/skrapt/:id',    '\Admin::mustBeAuthenticated', '\Admin:crawledJob');
+
 $app->post('/admin/stilling/:id', '\Admin::mustBeAuthenticated', '\Admin:updateJob');
 
-$app->get('/admin/skrapt/:id',    '\Admin::mustBeAuthenticated', '\Admin:crawledJob');
+$app->post('/admin/stilling',     '\Admin::mustBeAuthenticated', '\Admin:createJob');
+
 
 
 /**
