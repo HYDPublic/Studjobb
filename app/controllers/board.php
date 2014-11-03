@@ -16,7 +16,7 @@ class Board {
     public function job ($id) {
         $app = \Slim\Slim::getInstance();
 
-        $job = Job::find((int) $id);
+        $job = Job::find($id);
         if (!$job || !$job->published)
             throw new Exception ('Fant ingen stilling.');
 
