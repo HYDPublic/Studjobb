@@ -12,14 +12,13 @@ body {
 #header {
     overflow:hidden;
     width:100%;
-
 }
 
-#header > video, #header > img {
+#header > a > img {
     width:100%;
 }
 
-#board {
+#board, #about {
     padding-top: 3em;
 }
 
