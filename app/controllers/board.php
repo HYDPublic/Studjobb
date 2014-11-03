@@ -4,10 +4,12 @@ class Board {
     public function index () {
         $app = \Slim\Slim::getInstance();
 
-        $jobs = Job::where('published', '=', 1)->take(10)->get();
+        $categories = Category::whereHas('jobs', function ($q) {
+            $q->where('published', '=', '1');
+        })->get();
 
         $app->render('static/header.php');
-        $app->render('board.php', array ('jobs' => $jobs));
+        $app->render('board.php', array ('categories' => $categories));
         $app->render('static/footer.php');
     }
 
