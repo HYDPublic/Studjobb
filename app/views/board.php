@@ -2,15 +2,15 @@
 
             <div class="intro">
                 <p>
-                    <strong>Studjobb.no</strong> er nettsiden for studenter som
-                    ønsker å finne jobb, startups og oppdrag. Kom i kontakt med
-                    bedrifter som ønsker å ansette studenter!
+                    <strong>Studjobb.no</strong> er for studenter som ønsker
+                    å finne jobb, startups og oppdrag. Kom i kontakt med bedrifter
+                    som ønsker å ansette studenter!
                 </p>
                 <p>
                     <strong>Ikke gå glipp av drømmejobben!</strong> Hver mandag
                     sender vi deg aktuelle stillinger på e-post. Klikk her for å
-                    få med deg jobber som passer for deg! Du kan også følge @Studjobb
-                    på.
+                    melde deg på! Du kan også følge <a href="//twitter.com/studjobb">@Studjobb</a>
+                    på <i class="fa fa-twitter"></i>
                 </p>
             </div>
 
@@ -55,5 +55,4 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
