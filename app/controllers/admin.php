@@ -28,6 +28,32 @@ class Admin {
         $app->render('static/footer.php');
     }
 
+    public function company ($id) {
+        $app = \Slim\Slim::getInstance();
+
+        $company = Company::find($id);
+        if (!$company)
+            throw new Exception ('Fant ingen selskap.');
+
+        $app->render('static/header.php');
+        $app->render('admin/edit-company.php', array (
+            'company' => $company
+        ));
+        $app->render('static/footer.php');
+    }
+
+    public function updateCompany ($id) {
+        $app = \Slim\Slim::getInstance();
+
+        $company = Company::find($id);
+        $company->name     = $app->request->post('name');
+        $company->about    = $app->request->post('about');
+        $company->logo     = $app->request->post('logo');
+        $company->save();
+
+        $app->redirect('/admin/selskap/' . $id);
+    }
+
     public function updateJob ($id) {
         $app = \Slim\Slim::getInstance();
 
@@ -91,10 +117,12 @@ class Admin {
 
         $jobs        = Job::take(10)->get();
         $crawledJobs = CrawledJob::all();
+        $companies   = Company::all();
 
         $app->render('static/header.php');
         $app->render('admin/dashboard.php', array (
             'jobs'        => $jobs,
+            'companies'   => $companies,
             'crawledJobs' => $crawledJobs
         ));
         $app->render('static/footer.php');

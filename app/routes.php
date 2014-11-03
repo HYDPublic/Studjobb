@@ -27,14 +27,20 @@ $app->post('/admin',                                             '\Admin:authent
 
 $app->get('/admin/dashbord',      '\Admin::mustBeAuthenticated', '\Admin:dashboard');
 
-$app->get('/admin/stilling/:id',  '\Admin::mustBeAuthenticated', '\Admin:job');
-
+// CrawledJob
 $app->get('/admin/skrapt/:id',    '\Admin::mustBeAuthenticated', '\Admin:crawledJob');
+
+// Job
+$app->get('/admin/stilling/:id',  '\Admin::mustBeAuthenticated', '\Admin:job');
 
 $app->post('/admin/stilling/:id', '\Admin::mustBeAuthenticated', '\Admin:updateJob');
 
 $app->post('/admin/stilling',     '\Admin::mustBeAuthenticated', '\Admin:createJob');
 
+// Company
+$app->get('/admin/selskap/:id',   '\Admin::mustBeAuthenticated', '\Admin:company');
+
+$app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateCompany');
 
 
 /**
