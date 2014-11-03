@@ -15,12 +15,16 @@ class Admin {
     public function job ($id) {
         $app = \Slim\Slim::getInstance();
 
-        $job = Job::find((int) $id);
+        $companies = Company::all();
+        $job       = Job::find((int) $id);
         if (!$job)
             throw new Exception ('Fant ingen stilling.');
 
         $app->render('static/header.php');
-        $app->render('admin/edit-job.php', array ('job' => $job));
+        $app->render('admin/edit-job.php', array (
+            'job'       => $job,
+            'companies' => $companies
+        ));
         $app->render('static/footer.php');
     }
 
@@ -28,8 +32,11 @@ class Admin {
         $app = \Slim\Slim::getInstance();
 
         $job = Job::find($id);
-        $job->title     = $app->request->post('title');
-        $job->content   = $app->request->post('content');
+        $job->title      = $app->request->post('title');
+        $job->content    = $app->request->post('content');
+        $job->type       = $app->request->post('type');
+        $job->company_id = $app->request->post('company');
+
         if ($app->request->post('published') == 'on')
             $job->published = true;
         else
