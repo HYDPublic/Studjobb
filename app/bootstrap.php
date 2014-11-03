@@ -31,6 +31,11 @@ foreach (glob(__DIR__.'/models/*.php') as $model)
 require __DIR__.'/routes.php';
 
 /**
+ * Sentry
+ */
+class_alias('Cartalyst\Sentry\Facades\Native\Sentry', 'Sentry');
+
+/**
  * Eloquent
  */
 use Illuminate\Database\Capsule\Manager as Capsule;

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/css/style.css">
         <script src="/js/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/quill.min.js"></script>
         <script src="/js/app.js"></script>
     </head>
     <body>

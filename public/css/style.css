@@ -18,12 +18,12 @@ body {
     width:100%;
 }
 
-#board, #about, #notfound, #error, #job {
+#board, #about, #notfound, #error, #job, #login, #dashboard {
     padding-top: 3em;
 }
 
 /* Board */
-.listing > table > tbody > tr {
+tr[data-href] {
     cursor:pointer;
 }
 
@@ -103,4 +103,17 @@ a, a:hover {
 #footer {
     margin-top:50px;
     color: #777;
+}
+
+/* Admin */
+textarea#buffer {
+    display:none;
+}
+
+#formatting-container {
+    margin-top:20px;
+}
+
+.back {
+    font-size:14px;
 }

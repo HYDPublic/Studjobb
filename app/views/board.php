@@ -36,7 +36,7 @@
                 <table class="table table-hover">
                     <tbody>
                         <?php foreach ($jobs as $job): ?>
-                        <tr data-href="/stilling/1">
+                        <tr data-href="/stilling/<?php print $job->id; ?>">
                             <td><strong><?php print $job->company->name; ?></strong></td>
                             <td><span class="badge badge-orange"><?php print $job->type; ?></span></td>
                             <td><span class="job-title"><?php print $job->title; ?></span></td>
