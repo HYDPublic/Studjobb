@@ -17,3 +17,10 @@ $app->notFound(       '\Home::notFound');
 $app->get('/',             '\Board:index');
 
 $app->get('/stilling/:id', '\Board:job');
+
+/**
+ * Errors
+ */
+$app->error(function(\Exception $e) use ($app) {
+    print_r($e->getMessage());
+});
