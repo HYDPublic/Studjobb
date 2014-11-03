@@ -28,8 +28,12 @@ class Admin {
         $app = \Slim\Slim::getInstance();
 
         $job = Job::find($id);
-        $job->title   = $app->request->post('title');
-        $job->content = $app->request->post('content');
+        $job->title     = $app->request->post('title');
+        $job->content   = $app->request->post('content');
+        if ($app->request->post('published') == 'on')
+            $job->published = true;
+        else
+            $job->published = false;
         $job->save();
 
         $app->redirect('/admin/stilling/' . $id);

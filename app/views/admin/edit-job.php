@@ -8,6 +8,13 @@
                 <form id="update-job" method="post">
                     <input type="text" name="title" class="form-control" value="<?php print $job->title; ?>">
 
+                    <div class="checkbox">
+                        <label>
+                            <input name="published" type="checkbox" <?php if ($job->published == 1) print 'checked'; ?>>
+                            Publisert
+                        </label>
+                    </div>
+
                     <div id="formatting-container">
                         <select title="Size" class="ql-size">
                             <option value="10px">Small</option>
