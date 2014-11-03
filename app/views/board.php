@@ -35,23 +35,15 @@
 
                 <table class="table table-hover">
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                        <?php foreach ($jobs as $job): ?>
+                        <tr data-href="/stilling/1">
+                            <td><strong><?php print $job->company->name; ?></strong></td>
+                            <td><span class="badge badge-orange"><?php print $job->type; ?></span></td>
+                            <td><span class="job-title"><?php print $job->title; ?></span></td>
+                            <td><?php print $job->place; ?></td>
+                            <td>Frist: <?php print $job->due(); ?></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
