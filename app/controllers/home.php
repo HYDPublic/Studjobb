@@ -3,9 +3,9 @@ class Home {
 
     public function about () {
         $app = \Slim\Slim::getInstance();
-        $app->render('header.php');
-        $app->render('about.php');
-        $app->render('footer.php');
+        $app->render('static/header.php');
+        $app->render('static/about.php');
+        $app->render('static/footer.php');
     }
 
     public function contact () {
@@ -14,9 +14,9 @@ class Home {
 
     public static function notFound () {
         $app = \Slim\Slim::getInstance();
-        $app->render('header.php');
-        $app->render('notFound.php');
-        $app->render('footer.php');
+        $app->render('static/header.php');
+        $app->render('static/notFound.php');
+        $app->render('static/footer.php');
     }
 
 }
