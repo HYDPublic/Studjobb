@@ -57,7 +57,7 @@
                             <button type="button" class="btn ql-list">List</button>
                         </div>
 
-                        <div id="editor-container"></div>
+                        <div id="editor-container"><?php print $crawledJob->content; ?></div>
 
                         <textarea id="buffer" name="content"></textarea>
 
