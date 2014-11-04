@@ -18,10 +18,9 @@ class Mail {
         $mail->setFrom      ($app->mailconfig['from'], $app->mailconfig['fromName']);
         $mail->addReplyTo   ($app->mailconfig['from'], $app->mailconfig['fromName']);
 
-        $mail->addAddress('michaedm@stud.ntnu.no', 'Michael McMillan');
-
-        $mail->Subject = 'Utlysning på Studjobb.no';
-        $mail->Body    = 'Liten test :)';
+        $mail->addAddress($app->request->post('to'), $app->request->post('name'));
+        $mail->Subject = $app->request->post('subject');
+        $mail->Body    = $app->request->post('body');
 
         if (!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
