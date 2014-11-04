@@ -4,6 +4,10 @@ class Newsletter {
     public function signup () {
         $app = \Slim\Slim::getInstance();
 
+        $school = School::find($app->request->post('school'));
+        if ($school->get()->isEmpty())
+            throw new Exception ('Ugyldig skole.');
+
         $query = $app->mailchimp->call('lists/subscribe', array(
             'id'                => '9e391988e0',
             'email'             => array (
@@ -11,7 +15,7 @@ class Newsletter {
             ),
 
             'merge_vars'        => array (
-                'EDUCATION' => 'NTNU'
+                'EDUCATION' => $school->name
             ),
 
             'double_optin'      => false,

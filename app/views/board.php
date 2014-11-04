@@ -73,12 +73,13 @@
                                 <input name="email" type="email" class="form-control">
 
                                 <label>Skole</label>
-                                <select>
+                                <select name="school">
                                 <?php foreach ($schools as $school): ?>
-                                    <option value="<?php $school->id; ?>">
+                                    <option value="<?php print $school->id; ?>">
                                         <?php print $school->name; ?>
                                     </option>
                                 <?php endforeach; ?>
+                                </select>
                             </div>
                         </form>
 
