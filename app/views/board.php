@@ -51,7 +51,7 @@
             <?php endforeach; ?>
         </div>
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="newsletter" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
