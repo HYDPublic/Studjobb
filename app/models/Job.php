@@ -11,7 +11,7 @@ class Job extends Eloquent {
     }
 
     public function category () {
-        return $this->belongsTo('Category');
+        return $this->hasOne('Category');
     }
 
     public function due () {
