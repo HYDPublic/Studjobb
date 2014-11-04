@@ -5,7 +5,7 @@ class Board {
         $app = \Slim\Slim::getInstance();
 
         $categories = Category::whereHas('jobs', function ($q) {
-            $q->where('published', '=', '1');
+            $q->where('published', 1);
         })->get();
 
         $app->render('static/header.php');
@@ -17,6 +17,7 @@ class Board {
         $app = \Slim\Slim::getInstance();
 
         $job = Job::find($id);
+
         if (!$job || !$job->published)
             throw new Exception ('Fant ingen stilling.');
 
