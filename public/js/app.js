@@ -18,9 +18,9 @@ $(document).ready(function () {
         });
     }
 
-    $('button#signup').click(function () {
+    /*$('button#signup').click(function () {
         $('form#newsletter-form').submit();
-    });
+    });*/
 
     $('form#update-job').submit(function (event) {
         $('textarea#buffer').val(editor.getHTML());
