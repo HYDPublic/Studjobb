@@ -59,6 +59,7 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title">Uten jobb?</h4>
                     </div>
+                    <form class="form-horizontal" role="form" id="newsletter-form" method="post" action="/nyhetsbrev">
                     <div class="modal-body">
                         <p>
                             Hver mandag sender vi deg en e-post over de nyeste jobbene.
@@ -67,27 +68,31 @@
                             i uka.
                         </p>
 
-                        <form id="newsletter-form" method="post" action="/nyhetsbrev">
                             <div class="form-group">
-                                <label>Din e-post</label>
-                                <input name="email" type="email" class="form-control">
-
-                                <label>Skole</label>
-                                <select name="school">
-                                <?php foreach ($schools as $school): ?>
-                                    <option value="<?php print $school->id; ?>">
-                                        <?php print $school->name; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                                </select>
+                                <label for="email" class="col-sm-2 control-label">E-post</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="email" class="form-control" placeholder="ola.nordmann@ntnu.no" required>
+                                </div>
                             </div>
-                        </form>
-
+                            <div class="form-group">
+                                <label for="school" class="col-sm-2 control-label">Skole</label>
+                                <div class="col-sm-10">
+                                    <select name="school">
+                                    <?php foreach ($schools as $school): ?>
+                                        <option value="<?php print $school->id; ?>">
+                                            <?php print $school->name; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                </div>
+                            </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" id="signup" class="btn btn-custom-lighten">Meld meg på</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        <button type="submit" id="signup" class="btn btn-custom-lighten">Meld meg på</button>
+
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
