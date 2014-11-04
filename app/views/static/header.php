@@ -18,6 +18,10 @@
     <body>
         <div id="header">
             <a href="/">
+                <?php if (!strstr($_SERVER['REQUEST_URI'], 'stilling')): ?>
                 <img src="/img/header.jpg">
+                <?php else: ?>
+                <img src="/img/header-small.jpg">
+                <?php endif; ?>
             </a>
         </div>
