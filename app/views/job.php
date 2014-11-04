@@ -1,6 +1,6 @@
         <div id="job" class="col-md-8 col-md-offset-2">
 
-            <div class="intro col-md-10">
+            <div class="intro col-md-12">
                 <p>
                     <a class="back" href="/">← Tilbake til forsiden</a>
                 <?php if (Sentry::check()): ?>
