@@ -104,7 +104,7 @@ a, a:hover {
     color: #f2321e;
 }
 
-.btn-custom-lighten, .btn:hover {
+.btn-custom-lighten, .btn-custom-lighten:hover {
     color:#fff;
     background-color: #f54330;
 }
