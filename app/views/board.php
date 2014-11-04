@@ -36,11 +36,11 @@
                         <tbody>
                             <?php foreach ($category->jobs as $job): ?>
                             <tr data-href="/stilling/<?php print $job->id; ?>">
-                                <td><strong><?php print $job->company->name; ?></strong></td>
-                                <td><span class="badge badge-orange"><?php print $job->type; ?></span></td>
-                                <td><span class="job-title"><?php print $job->title; ?></span></td>
-                                <td><?php print $job->place; ?></td>
-                                <td>Frist: <?php print $job->due(); ?></td>
+                                <td class="company"><strong><?php print $job->company->name; ?></strong></td>
+                                <td class="type"><span class="badge badge-orange"><?php print $job->type; ?></span></td>
+                                <td class="title"><span class="job-title"><?php print $job->title; ?></span></td>
+                                <td class="place"><?php print $job->place; ?></td>
+                                <td class="due timeago" title="<?php print $job->due(); ?>"></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
