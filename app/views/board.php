@@ -54,18 +54,29 @@
         <div class="modal fade" id="newsletter" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Uten jobb?</h4>
+                    </div>
                     <div class="modal-body">
-                        <legend>Student uten jobb?</legend>
                         <p>
                             Hver mandag sender vi deg en e-post over de nyeste jobbene.
                             Du kan når som helst melde deg av. E-posten din blir aldri
                             delt med noen tredjeparter og vi sender deg maks èn e-post
                             i uka.
                         </p>
+
+                        <form id="newsletter-form" method="post" action="/nyhetsbrev">
+                            <div class="form-group">
+                                <label>Din e-post</label>
+                                <input type="email" class="form-control" placeholder="stud@ntnu.no">
+                            </div>
+                        </form>
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
-                        <button type="submit" class="btn btn-custom-lighten">Meld meg på</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-custom-lighten">Meld meg på</button>
                     </div>
                 </div>
             </div>
