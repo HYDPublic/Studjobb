@@ -3,3 +3,4 @@ vendor/
 composer.phar
 app/configuration.php
 crawler/
+*.sql
