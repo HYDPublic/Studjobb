@@ -50,3 +50,23 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <legend>Student uten jobb?</legend>
+                        <p>
+                            Hver mandag sender vi deg en e-post over de nyeste jobbene.
+                            Du kan når som helst melde deg av. E-posten din blir aldri
+                            delt med noen tredjeparter og vi sender deg maks èn e-post
+                            i uka.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Lukk</button>
+                        <button type="submit" class="btn btn-custom-lighten">Meld meg på</button>
+                    </div>
+                </div>
+            </div>
+        </div>
