@@ -19,6 +19,11 @@ $app->get('/',             '\Board:index');
 $app->get('/stilling/:id', '\Board:job');
 
 /**
+ * Newsletter
+ */
+$app->get('/takk', '\Newsletter:thanks');
+
+/**
  * Admin
  */
 $app->get('/admin',                                              '\Admin:login');
