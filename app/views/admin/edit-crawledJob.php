@@ -16,17 +16,21 @@
                             </a>
                         </p>
                         <p>
-                            <label>Status: </label>
                             <form method="post" action="/admin/skrapt/<?php print $crawledJob->id; ?>/status">
-                            <?php $statuses = array ('Kontaktet', 'Bestilt'); ?>
-                            <select>
-                                <?php foreach ($statuses as $status): ?>
-                                <option value="<?php print $status; ?>"
-                                    <?php if ($crawledJob->status == $status) print 'selected'; ?>>
-                                    <?php print $status; ?>
-                                </option>
-                                <?php endforeach; ?>
-                            </select>
+                                <label>Status: </label>
+                                <?php $statuses = array ('Kontaktet', 'Bestilt'); ?>
+                                <select name="status">
+                                    <?php foreach ($statuses as $status): ?>
+                                    <option value="<?php print $status; ?>"
+                                        <?php if ($crawledJob->status == $status) print 'selected'; ?>>
+                                        <?php print $status; ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <br/>
+                                <input type="submit" class="btn btn-custom-lighten" value="Oppdater status">
+                            </form>
+
                             <br/>
 
                             <label>Skrapt den: </label>
