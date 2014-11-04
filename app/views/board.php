@@ -71,6 +71,14 @@
                             <div class="form-group">
                                 <label>Din e-post</label>
                                 <input name="email" type="email" class="form-control">
+
+                                <label>Skole</label>
+                                <select>
+                                <?php foreach ($schools as $school): ?>
+                                    <option value="<?php $school->id; ?>">
+                                        <?php print $school->name; ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </div>
                         </form>
 
