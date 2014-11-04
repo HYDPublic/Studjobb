@@ -3,6 +3,11 @@
             <div class="intro col-md-8">
                 <p>
                     <a class="back" href="/">← Tilbake til forsiden</a>
+                <?php if (Sentry::check()): ?>
+                    | <a class="back" href="/admin/stilling/<?php print $job->id; ?>">
+                        Rediger
+                      </a>
+                <?php endif; ?>
                 </p>
 
                 <h3><?php print $job->title; ?></h3>
