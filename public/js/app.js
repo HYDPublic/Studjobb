@@ -3,6 +3,8 @@ $(document).ready(function () {
         document.location = $(this).data('href');
     });
 
+    $('td.timeago').timeago();
+
     if ($('#editor-container').length > 0) {
         var editor = new Quill('#editor-container', {
             modules: {
