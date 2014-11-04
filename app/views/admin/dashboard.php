@@ -35,7 +35,8 @@
                 <table class="table table-hover table-jobs">
                     <tbody>
                         <?php foreach ($crawledJobs as $crawledJob): ?>
-                        <tr data-href="/admin/skrapt/<?php print $crawledJob->id; ?>">
+                        <tr data-href="/admin/skrapt/<?php print $crawledJob->id; ?>"
+                            class="<?php print strtolower($crawledJob->status); ?>">
                             <td><strong><?php print $crawledJob->company; ?></strong></td>
                             <td><?php print $crawledJob->source(); ?></td>
                             <td><?php print $crawledJob->title; ?></td>
