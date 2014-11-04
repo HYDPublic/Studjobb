@@ -35,7 +35,10 @@ $app->post('/admin',                                             '\Admin:authent
 $app->get('/admin/dashbord',      '\Admin::mustBeAuthenticated', '\Admin:dashboard');
 
 // CrawledJob
-$app->get('/admin/skrapt/:id',    '\Admin::mustBeAuthenticated', '\Admin:crawledJob');
+$app->get('/admin/skrapt/:id',         '\Admin::mustBeAuthenticated', '\Admin:crawledJob');
+
+$app->post('/admin/skrapt/:id/status', '\Admin::mustBeAuthenticated', '\Admin:updateCrawledJob');
+
 
 // Job
 $app->get('/admin/stilling/:id',  '\Admin::mustBeAuthenticated', '\Admin:job');

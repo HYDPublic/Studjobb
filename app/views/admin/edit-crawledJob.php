@@ -17,12 +17,15 @@
                         </p>
                         <p>
                             <label>Status: </label>
+                            <form method="post" action="/admin/skrapt/<?php print $crawledJob->id; ?>/status">
+                            <?php $statuses = array ('Kontaktet', 'Bestilt'); ?>
                             <select>
-                                <option value="volvo">Ingenting</option>
-                                <option value="volvo">Sendt mail</option>
-                                <option value="volvo">Bestilt</option>
-                                <option value="volvo">Sendt faktura</option>
-                                <option value="volvo">Betalt</option>
+                                <?php foreach ($statuses as $status): ?>
+                                <option value="<?php print $status; ?>"
+                                    <?php if ($crawledJob->status == $status) print 'selected'; ?>>
+                                    <?php print $status; ?>
+                                </option>
+                                <?php endforeach; ?>
                             </select>
                             <br/>
 

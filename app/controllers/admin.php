@@ -54,6 +54,17 @@ class Admin {
         $app->redirect('/admin/selskap/' . $id);
     }
 
+    public function updateCrawledJob ($id) {
+        $app = \Slim\Slim::getInstance();
+
+        $company = CrawledJob::find($id);
+        $company->status     = $app->request->post('status');
+        $company->save();
+
+        $app->redirect('/admin/skrapt/' . $id);
+    }
+
+
     public function updateJob ($id) {
         $app = \Slim\Slim::getInstance();
 
