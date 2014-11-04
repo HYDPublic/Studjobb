@@ -70,14 +70,14 @@
                         <form id="newsletter-form" method="post" action="/nyhetsbrev">
                             <div class="form-group">
                                 <label>Din e-post</label>
-                                <input type="email" class="form-control" placeholder="stud@ntnu.no">
+                                <input name="email" type="email" class="form-control">
                             </div>
                         </form>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-custom-lighten">Meld meg på</button>
+                        <button type="button" id="signup" class="btn btn-custom-lighten">Meld meg på</button>
                     </div>
                 </div>
             </div>

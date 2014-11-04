@@ -4,23 +4,26 @@ class Newsletter {
     public function signup () {
         $app = \Slim\Slim::getInstance();
 
-        $result = $app->mailchimp->call('lists/subscribe', array(
+        $query = $app->mailchimp->call('lists/subscribe', array(
             'id'                => '9e391988e0',
             'email'             => array (
-                'email'=>'michael@studjobb.no'
+                'email' =>  $app->request->post('email')
             ),
+
             'merge_vars'        => array (
-                'FNAME'     => 'Davy',
-                'LNAME'     => 'Jones',
                 'EDUCATION' => 'NTNU'
             ),
+
             'double_optin'      => false,
             'update_existing'   => true,
             'replace_interests' => false,
             'send_welcome'      => false,
         ));
 
-        print_r($result);
+        if (isset($query['status']) && $query['status'] == 'error')
+            throw new Exception ($query['error']);
+
+        $app->redirect('/takk');
     }
 
     public function thanks () {
