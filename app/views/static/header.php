@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Studjobb</title>
+        <link rel="icon" type="image/png" href="/favicon.ico">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css" >
