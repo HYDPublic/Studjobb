@@ -15,14 +15,14 @@
             </div>
 
             <div class="search well col-md-12">
-                <div class="col-md-5 col-xs-12">
+                <div class="col-md-5 col-sm-10 col-xs-12">
                     <div class="left-inner-addon ">
                             <span class="glyphicon glyphicon-search orange"></span>
                             <input type="text" id="search" class="form-control"
                                 placeholder="'sommerjobb', 'javascript', 'design' ...">
-                        </div>
+                    </div>
                 </div>
-                <div class="col-md-2 col-md-offset-4">
+                <div class="col-md-2 col-md-offset-4 hide-sm">
                     <button type="button" class="btn btn-custom-lighten">
                         Legg ut en stilling!
                     </button>

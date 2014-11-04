@@ -46,6 +46,4 @@ $app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateC
 /**
  * Errors
  */
-$app->error(function(\Exception $e) use ($app) {
-    print_r($e->getMessage());
-});
+$app->error('\Home::error');
