@@ -21,7 +21,7 @@ $app->get('/stilling/:id', '\Board:job');
 /**
  * Newsletter
  */
-$app->post('/nyhetsbrev', '\Newsletter:signup'); 
+$app->post('/nyhetsbrev', '\Newsletter:signup');
 
 $app->get('/takk', '\Newsletter:thanks');
 
@@ -49,6 +49,10 @@ $app->get('/admin/selskap/:id',   '\Admin::mustBeAuthenticated', '\Admin:company
 
 $app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateCompany');
 
+/**
+ * Mail
+ */
+$app->get('/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
 
 /**
  * Errors
