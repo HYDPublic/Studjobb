@@ -21,7 +21,7 @@ $app->get('/stilling/:id', '\Board:job');
 /**
  * Newsletter
  */
-$app->get('/nyhetsbrev', '\Newsletter:signup'); 
+$app->post('/nyhetsbrev', '\Newsletter:signup'); 
 
 $app->get('/takk', '\Newsletter:thanks');
 
