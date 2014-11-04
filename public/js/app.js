@@ -3,6 +3,7 @@ $(document).ready(function () {
         document.location = $(this).data('href');
     });
 
+    jQuery.timeago.settings.allowFuture = true;
     $('td.timeago').timeago();
 
     if ($('#editor-container').length > 0) {
