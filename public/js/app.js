@@ -18,9 +18,16 @@ $(document).ready(function () {
         });
     }
 
-    /*$('button#signup').click(function () {
-        $('form#newsletter-form').submit();
-    });*/
+    if ($.cookie('newsletter') !== 'seen') {
+        setTimeout(function () {
+            $('#newsletter').modal('show');
+            $.cookie('newsletter', 'seen', {
+                expires: 60,
+                path: '/'
+            });
+        }, 5000);
+    }
+
 
     $('form#update-job').submit(function (event) {
         $('textarea#buffer').val(editor.getHTML());
