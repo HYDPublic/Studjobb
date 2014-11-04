@@ -58,6 +58,11 @@ $app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateC
 $app->post('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
 
 /**
+ * Feed
+ */
+$app->get('/rss', '\Feed:latestJobs');
+
+/**
  * Errors
  */
 $app->error('\Home::error');
