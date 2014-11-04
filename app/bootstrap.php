@@ -11,7 +11,7 @@ $app->config($configuration['slim']);
 /**
  * Mailchimp
  */
-$mailchimp = new \Drewm\MailChimp($configuration['mailchimp']['key']);
+$app->mailchimp = new \Drewm\MailChimp($configuration['mailchimp']['key']);
 
 /**
  * Controllers
