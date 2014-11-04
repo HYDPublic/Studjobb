@@ -70,6 +70,26 @@ input#search {
     margin-bottom:20px;
 }
 
+td.company {
+    width:10%;
+}
+
+td.type {
+    width:10%;
+}
+
+td.title {
+    width:40%;
+}
+
+td.place {
+    width:10%;
+}
+
+td.due {
+    width:15%;
+}
+
 /* Color tweaks */
 a, a:hover {
     color: #f4311d;
