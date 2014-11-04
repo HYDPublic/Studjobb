@@ -52,7 +52,7 @@ $app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateC
 /**
  * Mail
  */
-$app->get('/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
+$app->post('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
 
 /**
  * Errors
