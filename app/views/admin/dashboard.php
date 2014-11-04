@@ -40,6 +40,7 @@
                             <td><?php print $crawledJob->source(); ?></td>
                             <td><?php print $crawledJob->title; ?></td>
                             <td><?php print $crawledJob->createdAt(); ?></td>
+                            <td><?php print $crawledJob->status; ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
