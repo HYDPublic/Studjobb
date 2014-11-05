@@ -37,7 +37,7 @@
                         <tbody>
                             <?php foreach ($category->jobs as $job): ?>
                             <?php if ($job->published == true): ?>
-                            <tr data-href="/stilling/<?php print $job->id; ?>">
+                            <tr data-href="/stilling/<?php print $job->id; ?>" <?php if ($job->marked) print 'class="marked"'; ?>>
                                 <td class="company"><strong><?php print $job->company->name; ?></strong></td>
                                 <td class="type"><span class="badge badge-orange"><?php print $job->type; ?></span></td>
                                 <td class="title"><span class="job-title"><?php print $job->title; ?></span></td>
