@@ -3,6 +3,11 @@ require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/configuration.php';
 
 /**
+ * Timezone
+ */
+date_default_timezone_set('Europe/Oslo');
+
+/**
  * Slim
  */
 $app = new \Slim\Slim();
