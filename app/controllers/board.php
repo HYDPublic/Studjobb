@@ -6,9 +6,7 @@ class Board {
 
         $schools    = School::all();
         $categories = Category::whereHas('jobs', function ($q) {
-            $q->where('published', true)
-              ->whereRaw('due        >= now()')
-              ->whereRaw('created_at >= now() - interval 30 day');
+            $q->where('published', true);
         })->get();
 
         $app->render('static/header.php');
