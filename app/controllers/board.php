@@ -7,8 +7,8 @@ class Board {
         $schools    = School::all();
         $categories = Category::whereHas('jobs', function ($q) {
             $q->where('published', true)
-              ->where('due',        '>=', 'now()')
-              ->where('created_at', '<=', 'now() + internal 30 day');
+              ->where('due',        '>=', time())
+              ->where('created_at', '>=', time() - 2592000);
         })->get();
 
         $app->render('static/header.php');
