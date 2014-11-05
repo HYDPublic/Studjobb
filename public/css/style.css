@@ -27,6 +27,11 @@ tr[data-href] {
     cursor:pointer;
 }
 
+tr.marked { 
+	background-color:#FFFCCC;
+}
+
+
 span.job-title {
     color:#f2321e;
 }
