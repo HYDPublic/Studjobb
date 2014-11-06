@@ -50,7 +50,7 @@
                     <div class="col-md-10">
                         <form id="mail" method="post" action="/admin/mail">
                             <input type="text" name="to" class="form-control" placeholder="E-post"
-                                value="<?php print $crawledJob->contact; ?>">
+                                value="<?php print trim($crawledJob->getPotentialEmail()); ?>">
                             <input type="text" name="name" class="form-control" placeholder="Navn">
                             <input type="text" name="subject" class="form-control" value="Utlysning på Studjobb.no">
                             <textarea class="form-control" name="body"><?php print $mailtext; ?></textarea>
