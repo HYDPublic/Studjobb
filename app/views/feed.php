@@ -7,7 +7,7 @@
     <link rel="self" type="application/atom+xml" href="http://studjobb.no/rss"/>
     <link rel="alternate" type="text/html" href="http://studjobb.no/"/>
 
-    <updated><?php echo (new DateTime($jobs[0]->created_at))->format('c'); ?></updated>
+    <updated><?php echo (new DateTime($jobs[5]->created_at))->format('c'); ?></updated>
 
     <author>
         <name>Studjobb</name>
