@@ -25,9 +25,9 @@
         <content type="html"><![CDATA[
             <?php echo trim(str_replace('&nbsp;', ' ', strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75)), '<br>'))) . '...'; ?>
             <br><br>
-            Frist: <?php echo $job->due(); ?>
+            <em>Frist: <?php echo $job->due(); ?></em>
             <br>
-            <a href="http://studjobb.no/stilling/<?php print $job->id; ?>"><strong>Les mer</strong></a>
+            <a href="http://studjobb.no/stilling/<?php print $job->id; ?>"><strong>Les mer om stillingen</strong></a>
         ]]></content>
      </entry>
     <?php endforeach; ?>
