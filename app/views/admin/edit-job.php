@@ -37,6 +37,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Søknadsfrist</label>
+                        <input type="text" name="due" class="form-control" value="<?php print $job->due; ?>">
+                    </div>
+
+                    <div class="form-group">
                         <label>Type jobb</label>
                         <input name="type" type="text" value="<?php print $job->type; ?>"
                         placeholder="deltid, heltid, sommerjobb" class="form-control">
