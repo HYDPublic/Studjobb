@@ -23,7 +23,7 @@
         <updated>2012-05-25T18:19:20Z</updated>
         <published>2012-05-25T18:19:20Z</published>
         <content type="html"><![CDATA[
-
+            <?php echo strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75))) . '...'; ?>
         ]]></content>
      </entry>
     <?php endforeach; ?>
