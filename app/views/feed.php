@@ -25,6 +25,7 @@
         <content type="html"><![CDATA[
             <?php echo trim(str_replace('&nbsp;', ' ', strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75)), '<br>'))) . '...'; ?>
         ]]></content>
+        <due><?php print $job->due; ?></due>
      </entry>
     <?php endforeach; ?>
 
