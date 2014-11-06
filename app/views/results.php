@@ -3,6 +3,7 @@
         <div id="board" class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
             <div class="listing row">
                 <h3>Søkeresultater</h3>
+                <?php if (count($jobs) > 0): ?>
                 <table class="table table-hover">
                     <tbody>
                     <?php foreach ($jobs as $job): ?>
@@ -18,5 +19,8 @@
                     <?php endforeach; ?>
                     </tbody>
                 </table>
+                <?php else: ?>
+                <p>Fant ingen resultater.</p>
+                <?php endif; ?>
             </div>
         </div>
