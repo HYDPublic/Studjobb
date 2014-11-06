@@ -26,6 +26,10 @@ class Mail {
             echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
             echo "Message sent!";
+
+            $crawledJob = find::($app->request->post('crawledJobId'));
+            $crawledJob->status = 'Kontaktet';
+            $crawledJob->save();
         }
     }
 }

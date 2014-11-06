@@ -55,6 +55,7 @@
                             <input type="text" name="subject" class="form-control" value="Utlysning på Studjobb.no">
                             <textarea class="form-control" name="body"></textarea>
                             <br/>
+                            <input type="hidden" name="crawledJobId" value="<?php print $crawledJob->id; ?>">
                             <input type="submit" class="btn btn-custom-lighten" value="Send mail">
                         </form>
                     </div>
