@@ -93,7 +93,7 @@ class Admin {
         $job->due     = $app->request->post('due');
         $job->save();
 
-        if (isset($app->request->post('crawledJobId'))) {
+        if ($app->request->post('crawledJobId')) {
             $parent = CrawledJob::find($app->request->post('crawledJobId'));
             $parent->status = 'Laget';
             $parent->save();
