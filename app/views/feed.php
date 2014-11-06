@@ -7,7 +7,7 @@
     <link rel="self" type="application/atom+xml" href="http://studjobb.no/rss"/>
     <link rel="alternate" type="text/html" href="http://studjobb.no/"/>
 
-    <updated>2014-11-04T14:43:54-08:00</updated>
+    <updated><?php echo (new DateTime($jobs[0]->created_at))->format('c'); ?></updated>
 
     <author>
         <name>Studjobb</name>
@@ -20,8 +20,7 @@
         <title><?php print $job->title; ?></title>
         <id>tag:studjobb.no,2012-05-25:1337969960</id>
         <link href="http://studjobb.no/stilling/<?php print $job->id; ?>"/>
-        <updated>2012-05-25T18:19:20Z</updated>
-        <published>2012-05-25T18:19:20Z</published>
+        <published><?php echo (new DateTime($job->created_at))->format('c'); ?></published>
         <content type="html"><![CDATA[
             <?php echo strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75))) . '...'; ?>
         ]]></content>
