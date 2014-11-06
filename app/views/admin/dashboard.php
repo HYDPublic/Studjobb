@@ -2,6 +2,7 @@
 
             <div class="intro">
                 <h3>Dashbord</h3>
+                <h4>Medlemmer på nyhetsbrevet: <?php print $count; ?></h4>
                 <p>Dette er alle jobbene i systemet. Klikk for å redigere.</p>
                 <table class="table table-hover table-jobs">
                     <tbody>

@@ -129,9 +129,15 @@ class Admin {
         $jobs        = Job::take(10)->get();
         $crawledJobs = CrawledJob::all();
         $companies   = Company::all();
+        $membercount = array_reverse(
+            $app->mailchimp->call('/lists/growth-history', array(
+                'id' => '9e391988e0'
+        )))[0];
+        unset($membercount['month']);
 
         $app->render('static/header.php');
         $app->render('admin/dashboard.php', array (
+            'count'       => array_sum($membercount),
             'jobs'        => $jobs,
             'companies'   => $companies,
             'crawledJobs' => $crawledJobs
