@@ -21,6 +21,7 @@
         <id>tag:studjobb.no,<?php print md5($job->id); ?></id>
         <link href="http://studjobb.no/stilling/<?php print $job->id; ?>"/>
         <published><?php echo (new DateTime($job->created_at))->format('c'); ?></published>
+        <updated><?php echo (new DateTime($job->created_at))->format('c'); ?></updated>
         <content type="html"><![CDATA[
             <?php echo strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75))) . '...'; ?>
         ]]></content>
