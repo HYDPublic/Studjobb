@@ -25,11 +25,11 @@ class Mail {
         if (!$mail->send()) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
-            echo "Message sent!";
-
             $crawledJob = CrawledJob::find($app->request->post('crawledJobId'));
             $crawledJob->status = 'Kontaktet';
             $crawledJob->save();
+
+            $app->redirect('/admin/skrapt/' . $app->request->post('crawledJobId'));
         }
     }
 }
