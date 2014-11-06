@@ -24,8 +24,9 @@
         <updated><?php echo (new DateTime($job->created_at))->format('c'); ?></updated>
         <content type="html"><![CDATA[
             <?php echo trim(str_replace('&nbsp;', ' ', strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75)), '<br>'))) . '...'; ?>
+            <br><br>
+            <a href="http://studjobb.no/stilling<?php print $job->id; ?>"><em>Les mer</em></a>
         ]]></content>
-        <due><?php print $job->due; ?></due>
      </entry>
     <?php endforeach; ?>
 
