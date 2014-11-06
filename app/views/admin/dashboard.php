@@ -30,7 +30,7 @@
                         </table>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4 col-md-offset-2">
                         <h3>Selskaper</h3>
                         <p>Dette er alle selskapene.</p>
                         <table class="table table-hover table-jobs">
