@@ -1,6 +1,6 @@
-    <div class="container">
 
-        <div id="board" class="col-md-8 col-md-offset-2">
+
+        <div id="board" class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="intro">
                     <p>
@@ -54,7 +54,7 @@
                             </tbody>
                         </table>
                     </div>
-            
+
             <?php endforeach; ?>
         </div>
 
@@ -101,4 +101,4 @@
                 </div>
             </div>
         </div>
-    </div>
+    
