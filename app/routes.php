@@ -18,6 +18,8 @@ $app->get('/',             '\Board:index');
 
 $app->get('/stilling/:id', '\Board:job');
 
+$app->post('/finn',         '\Board:search');
+
 /**
  * Newsletter
  */

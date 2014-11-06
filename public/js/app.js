@@ -27,8 +27,7 @@ $(document).ready(function () {
             });
         }, 5000);
     }
-
-
+    
     $('form#update-job').submit(function (event) {
         $('textarea#buffer').val(editor.getHTML());
         return true;

@@ -30,4 +30,19 @@ class Board {
         $app->render('static/footer.php');
 
     }
+
+    public function search () {
+        $app = \Slim\Slim::getInstance();
+
+        $schools  = School::all();
+        $query    = $app->request->post('q');
+        $jobs     = Job::where('content', 'like', '%'.$query.'%')->get();
+
+        $app->render('static/header.php');
+        $app->render('results.php', array (
+            'jobs' => $jobs,
+            'schools' => $schools
+        ));
+        $app->render('static/footer.php');
+    }
 }

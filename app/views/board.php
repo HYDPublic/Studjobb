@@ -18,12 +18,12 @@
                 </div>
             </div>
 
-
+            <form method="post" action="/finn">
                 <div class="search well row">
                     <div class="col-md-6 col-sm-12">
                         <div class="left-inner-addon ">
                                 <span class="glyphicon glyphicon-search orange"></span>
-                                <input type="text" id="search" class="form-control"
+                                <input type="text" name="q" id="search" class="form-control"
                                     placeholder="'sommerjobb', 'javascript', 'design' ...">
                         </div>
                     </div>
@@ -33,6 +33,7 @@
                         </button>
                     </div>
                 </div>
+            </form>
 
 
             <?php foreach ($categories as $category): ?>
@@ -101,4 +102,3 @@
                 </div>
             </div>
         </div>
-    
