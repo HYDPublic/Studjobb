@@ -2,8 +2,11 @@
 
             <div class="intro">
 
+                <div class="row">
                 <h3>Dashbord</h3>
                 <h4>Medlemmer på nyhetsbrevet: <?php print $count; ?></h4>
+
+                </div>
 
                 <hr>
 
@@ -41,7 +44,6 @@
                         </table>
                     </div>
                 </div>
-
 
 
                 <h3>Skrapt</h3>
