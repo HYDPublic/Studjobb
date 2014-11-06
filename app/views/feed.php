@@ -23,7 +23,7 @@
         <published><?php echo (new DateTime($job->created_at))->format('c'); ?></published>
         <updated><?php echo (new DateTime($job->created_at))->format('c'); ?></updated>
         <content type="html"><![CDATA[
-            <?php echo trim(str_replace(strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75)), '<br>'), '&nbsp;', ' ')) . '...'; ?>
+            <?php echo trim(str_replace('&nbsp;', ' ', strip_tags(implode(' ', array_slice(explode(' ', $job->content), 0, 75)), '<br>'))) . '...'; ?>
         ]]></content>
      </entry>
     <?php endforeach; ?>
