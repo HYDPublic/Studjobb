@@ -111,7 +111,8 @@ class Admin {
 
         $app->render('static/header.php');
         $app->render('admin/edit-crawledJob.php', array (
-            'crawledJob' => $crawledJob
+            'crawledJob' => $crawledJob,
+            'mailtext'   => Mailtext::find(1)->text
         ));
         $app->render('static/footer.php');
     }

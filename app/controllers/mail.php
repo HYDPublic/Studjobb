@@ -27,7 +27,7 @@ class Mail {
         } else {
             echo "Message sent!";
 
-            $crawledJob = find::($app->request->post('crawledJobId'));
+            $crawledJob = CrawledJob::find($app->request->post('crawledJobId'));
             $crawledJob->status = 'Kontaktet';
             $crawledJob->save();
         }
