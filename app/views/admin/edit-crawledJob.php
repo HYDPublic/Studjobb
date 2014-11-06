@@ -66,7 +66,11 @@
                     <h3>Utlysning</h3>
                     <div class="col-md-10">
                         <form id="update-job" method="post" action="/admin/stilling">
+                            <label>Tittel</label>
                             <input type="text" name="title" class="form-control" value="<?php print $crawledJob->title; ?>">
+
+                            <label>Søknadsfrist</label>
+                            <input type="text" name="due" class="form-control" value="2014-11-05">
 
                             <div id="formatting-container">
                                 <select title="Size" class="ql-size">

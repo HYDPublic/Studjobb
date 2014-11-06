@@ -88,8 +88,9 @@ class Admin {
         $app = \Slim\Slim::getInstance();
 
         $job = new Job();
-        $job->title = $app->request->post('title');
+        $job->title   = $app->request->post('title');
         $job->content = $app->request->post('content');
+        $job->due     = $app->request->post('due');
         $job->save();
 
         $app->redirect('/admin/stilling/' . $job->id);
@@ -130,7 +131,7 @@ class Admin {
         $crawledJobs = CrawledJob::all();
         $companies   = Company::all();
         $membercount = array_reverse(
-            $app->mailchimp->call('/lists/growth-history', array(
+            $app->mailchimp->call('/lists/growth-history', array (
                 'id' => '9e391988e0'
         )))[0];
         unset($membercount['month']);
