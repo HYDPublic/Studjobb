@@ -27,7 +27,7 @@ tr[data-href] {
     cursor:pointer;
 }
 
-tr.marked { 
+tr.marked {
 	background-color:#FFFCCC;
 }
 
@@ -125,8 +125,8 @@ a, a:hover {
 }
 
 /* Footer */
-#footer {
-    margin-top:50px;
+#footer > div {
+    margin-top:75px;
     color: #777;
 }
 
