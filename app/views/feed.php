@@ -18,7 +18,7 @@
     <?php foreach ($jobs as $job): ?>
     <entry>
         <title><?php print $job->title; ?></title>
-        <id><?php print md5($job->id); ?></id>
+        <id>http://studjobb.no/stilling/<?php print $job->id; ?></id>
         <link href="http://studjobb.no/stilling/<?php print $job->id; ?>"/>
         <published><?php echo (new DateTime($job->created_at))->format('c'); ?></published>
         <updated><?php echo (new DateTime($job->created_at))->format('c'); ?></updated>
