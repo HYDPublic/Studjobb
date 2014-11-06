@@ -86,7 +86,8 @@
                                 <button type="button" class="btn ql-list">List</button>
                             </div>
 
-                            <div id="editor-container"><?php print $crawledJob->content; ?></div>
+                            <div id="editor-container"><?php print strip_tags($crawledJob->content,
+                                '<a><p><br><b><i><ul><li><img><ol><em><h1><h2><h3><h4><strong>'); ?></div>
 
                             <textarea id="buffer" name="content"></textarea>
 
