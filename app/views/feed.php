@@ -19,7 +19,7 @@
     <entry>
         <title><?php print $job->title; ?></title>
         <id>tag:studjobb.no,2012-05-25:1337969960</id>
-        <link href="http://studjobb/stilling/<?php print $job->id; ?>"/>
+        <link href="http://studjobb.no/stilling/<?php print $job->id; ?>"/>
         <updated>2012-05-25T18:19:20Z</updated>
         <published>2012-05-25T18:19:20Z</published>
         <content type="html"><![CDATA[
