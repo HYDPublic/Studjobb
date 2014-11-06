@@ -148,6 +148,10 @@ tr.kontaktet {
 }
 
 tr.bestilt {
+    background-color:#FFCF12;
+}
+
+tr.laget {
     background-color:#DFF0D8;
 }
 
