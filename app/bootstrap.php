@@ -24,6 +24,11 @@ $app->mailchimp = new \Drewm\MailChimp($configuration['mailchimp']['key']);
 $app->mailconfig = $configuration['mail'];
 
 /**
+ * Piwik
+ */
+$app->piwik = $configuration['piwik'];
+
+/**
  * Controllers
  */
 foreach (glob(__DIR__.'/controllers/*.php') as $controller)

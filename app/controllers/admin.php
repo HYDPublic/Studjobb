@@ -148,7 +148,9 @@ class Admin {
             'count'       => array_sum($membercount),
             'jobs'        => $jobs,
             'companies'   => $companies,
-            'crawledJobs' => $crawledJobs
+            'crawledJobs' => $crawledJobs,
+            'piwikToken'  => $app->piwik['token'],
+            'piwikSiteid' => $app->piwik['siteid']
         ));
         $app->render('static/footer.php');
     }
