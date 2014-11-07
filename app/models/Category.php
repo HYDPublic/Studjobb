@@ -7,7 +7,7 @@ class Category extends Eloquent {
     protected $table = 'categories';
 
     public function jobs () {
-		return $this->hasMany('Job')->orderBy('jobs.created_at', 'asc');
+		return $this->hasMany('Job')->orderBy('jobs.created_at', 'desc');
 	}
 
 }
