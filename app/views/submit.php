@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="intro">
                     <p>
-                        Annonsen din vil være synlig på forsiden i 30 dager. Etter
-                        det vil den bli arkivert.
+                        Annonsen din vil være synlig på forsiden i 30 dager. I tillegg
+                        vil den sendes med nyhetsbrevet den førstkommende mandagen.
                     </p><br/>
                 </div>
             </div>
@@ -70,6 +70,20 @@
                         <p class="help-block">Kvitteringen sendes til denne adressen.</p>
                     </div>
                 </div>
+
+                <legend>Gjør annonsen synligere</legend>
+                <div class="form-group">
+
+                    <label class="col-sm-2 control-label">Uthev</label>
+                    <div class="col-sm-4">
+                        <input type="checkbox"> Ja, takk
+                        <p class="help-block">Uthevede annonser får flere klikk. Det koster bare <strong>100,-</strong> ekstra.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="/img/marked.jpg">
+                    </div>
+                </div>
+
 
             </form>
         </div>

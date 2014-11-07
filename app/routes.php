@@ -18,6 +18,8 @@ $app->get('/',             '\Board:index');
 
 $app->get('/stilling/:id', '\Board:job');
 
+$app->get('/utlys',        '\Board:submit');
+
 $app->post('/finn',         '\Board:search');
 
 /**
