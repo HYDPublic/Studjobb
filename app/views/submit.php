@@ -5,7 +5,8 @@
                 <div class="intro">
                     <p>
                         Annonsen din vil være synlig på forsiden i 30 dager. I tillegg
-                        vil den sendes med nyhetsbrevet den førstkommende mandagen.
+                        vil den sendes med nyhetsbrevet den førstkommende mandagen. Prisen
+                        for en annonse er 250,-. Annonsering er derimot gratis for start-ups.
                     </p><br/>
                 </div>
             </div>
@@ -67,7 +68,7 @@
                     <label class="col-sm-2 control-label">E-post</label>
                     <div class="col-sm-8">
                         <input type="email" class="form-control">
-                        <p class="help-block">Kvitteringen sendes til denne adressen.</p>
+                        <p class="help-block">Faktura og kvittering sendes til denne adressen.</p>
                     </div>
                 </div>
 
