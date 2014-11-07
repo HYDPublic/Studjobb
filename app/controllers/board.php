@@ -8,7 +8,7 @@ class Board {
         $categories = Category::whereHas('jobs', function ($q) {
             $q->where('published', '=', true);
         })->get();
-        
+
         $app->render('static/header.php');
         $app->render('board.php', array (
             'categories' => $categories,
