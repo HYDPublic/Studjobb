@@ -85,15 +85,10 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-2">
                         <button type="button" class="btn btn-custom-lighten hidden-xs" style="width:100%">
                             Kjøp
-                        </button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-custom-lighten hidden-xs" style="width:100%">
-                            Forhåndsvis
                         </button>
                     </div>
                 </div>
