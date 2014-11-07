@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <a href="mailto:michael@studjobb.no?subject=Stillingsannonse på Studjobb.no">
+                        <a href="/stilling/ny">
                             <button type="button" class="btn btn-custom-lighten hidden-xs" style="width:100%">
                                 Legg ut en stilling!
                             </button>
