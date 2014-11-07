@@ -31,6 +31,14 @@ class Board {
 
     }
 
+    public function submit () {
+        $app = \Slim\Slim::getInstance();
+
+        $app->render('static/header.php');
+        $app->render('submit.php');
+        $app->render('static/footer.php');
+    }
+
     public function search () {
         $app = \Slim\Slim::getInstance();
 

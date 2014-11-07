@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <a href="/stilling/ny">
+                        <a href="/utlys">
                             <button type="button" class="btn btn-custom-lighten hidden-xs" style="width:100%">
                                 Legg ut en stilling!
                             </button>
