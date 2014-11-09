@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Navn</label>
                     <div class="col-sm-8">
-                        <input type="text" name="company" class="form-control" value="<?php if (isset($fields['company'])) print $fields['company']; ?>">
+                        <input type="text" required name="company" class="form-control" value="<?php if (isset($fields['company'])) print $fields['company']; ?>">
                         <?php if(isset($errors['company'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['company']; ?></div>
                         <?php endif; ?>
@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Logo</label>
                     <div class="col-sm-8">
-                        <input type="file" name="logo">
+                        <input type="file" required name="logo">
                         <?php if(isset($errors['logo'])): ?>
                             <div class="alert alert-danger" role="alert"><?php if (isset($fields['logo'])) print $errors['logo']; ?></div>
                         <?php endif; ?>
@@ -83,20 +83,20 @@
                     </div>
                 </div>
                 <?php else: ?>
-                    <input type="hidden" name="uploaded" value="<?php print $filename; ?>">
+                    <input type="hidden" required name="uploaded" value="<?php print $filename; ?>">
                 <?php endif; ?>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Om selskapet</label>
                     <div class="col-sm-8">
-                        <textarea type="text" name="about" class="form-control"></textarea>
+                        <textarea type="text" required name="about" class="form-control"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">E-post</label>
                     <div class="col-sm-8">
-                        <input type="text" name="email" class="form-control" value="<?php if (isset($fields['email'])) print $fields['email']; ?>">
+                        <input type="text" required name="email" class="form-control" value="<?php if (isset($fields['email'])) print $fields['email']; ?>">
                         <?php if(isset($errors['email'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['email']; ?></div>
                         <?php endif; ?>
