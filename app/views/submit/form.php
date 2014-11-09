@@ -18,7 +18,7 @@
                     <label class="col-sm-2 control-label">Stillingstittel</label>
                     <div class="col-sm-8">
 
-                        <input type="text" name="title" class="form-control" value="<?php if (isset($fields['title'])) print $fields['title']; ?>">
+                        <input type="text" required name="title" class="form-control" value="<?php if (isset($fields['title'])) print $fields['title']; ?>">
                         <?php if(isset($errors['title'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['title']; ?></div>
                         <?php endif; ?>
@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Sted</label>
                     <div class="col-sm-8">
-                        <input type="text" name="place" class="form-control" <?php if (isset($fields['place'])) print $fields['place']; ?>>
+                        <input type="text" required name="place" class="form-control" <?php if (isset($fields['place'])) print $fields['place']; ?>>
                         <?php if(isset($errors['place'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['place']; ?></div>
                         <?php endif; ?>
@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">E-post</label>
                     <div class="col-sm-8">
-                        <input type="text" required name="email" class="form-control" value="<?php if (isset($fields['email'])) print $fields['email']; ?>">
+                        <input type="email" required name="email" class="form-control" value="<?php if (isset($fields['email'])) print $fields['email']; ?>">
                         <?php if(isset($errors['email'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['email']; ?></div>
                         <?php endif; ?>
