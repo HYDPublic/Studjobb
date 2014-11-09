@@ -13,7 +13,7 @@
                 <h3><?php print $job->title; ?></h3>
 
                 <div class="company well">
-                    <img src="<?php print $job->company->logo; ?>" class="logo">
+                    <img src="<?php print $job->company->logo; ?>" class="logo img-responsive">
                     <div class="about">
                         <p><?php print $job->company->about; ?></p>
                     </div>
