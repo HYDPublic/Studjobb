@@ -18,31 +18,10 @@ $(document).ready(function () {
         });
     }
 
-
     $('form#submit').submit(function (event) {
         $('textarea#buffer').val(editor.getHTML());
         return true;
     });
-
-    //$('button#buy').click(function (event) {
-        event.preventDefault();
-
-        /*var fields = {
-            content: editor.getHTML()
-        };
-
-        $.each($('form#submit').serializeArray(), function (i, field) {
-            fields[field.name] = field.value;
-        });
-
-        $.post('/utlys', fields, function() {
-            alert("success");
-        })
-        .fail(function() {
-            alert("error");
-        })*/
-
-    //});
 
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
