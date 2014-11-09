@@ -47,8 +47,8 @@ class Board {
         if (!strstr($app->request->post('email'), '@'))
             $errors['email'] = 'Du må ha en gyldig e-post.';
 
-        if (strlen($app->request->post('title') < 5)
-        ||  strlen($app->request->post('title') > 140))
+        if (strlen($app->request->post('title')) < 5
+        || strlen($app->request->post('title')) > 140)
             $errors['title'] = 'Tittelen er for lang eller for kort.';
 
         if (!$app->request->post('company'))
