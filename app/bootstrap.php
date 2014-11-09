@@ -29,6 +29,11 @@ $app->mailconfig = $configuration['mail'];
 $app->piwik = $configuration['piwik'];
 
 /**
+ * Logo
+ */
+$app->logo = $configuration['logo']; 
+
+/**
  * Controllers
  */
 foreach (glob(__DIR__.'/controllers/*.php') as $controller)
