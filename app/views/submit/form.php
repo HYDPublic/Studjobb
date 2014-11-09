@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Sted</label>
                     <div class="col-sm-8">
-                        <input type="text" name="place" class="form-control" <?php print $fields['place']; ?>>
+                        <input type="text" name="place" class="form-control" <?php if (isset($fields['place'])) print $fields['place']; ?>>
                         <?php if(isset($errors['place'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['place']; ?></div>
                         <?php endif; ?>
@@ -47,7 +47,7 @@
                             <button type="button" class="btn ql-link">Lenke</button>
                             <button type="button" class="btn ql-bullet">Liste</button>
                         </div>
-                        <div id="editor-container"><?php print $fields['content']; ?></div>
+                        <div id="editor-container"><?php if (isset($fields['content'])) print $fields['content']; ?></div>
                         <textarea name="content" id="buffer" style="hidden"></textarea>
                         <?php if(isset($errors['content'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['content']; ?></div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Navn</label>
                     <div class="col-sm-8">
-                        <input type="text" name="company" class="form-control" value="<?php print $fields['company']; ?>">
+                        <input type="text" name="company" class="form-control" value="<?php if (isset($fields['company'])) print $fields['company']; ?>">
                         <?php if(isset($errors['company'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['company']; ?></div>
                         <?php endif; ?>
@@ -77,7 +77,7 @@
                     <div class="col-sm-8">
                         <input type="file" name="logo">
                         <?php if(isset($errors['logo'])): ?>
-                            <div class="alert alert-danger" role="alert"><?php print $errors['logo']; ?></div>
+                            <div class="alert alert-danger" role="alert"><?php if (isset($fields['logo'])) print $errors['logo']; ?></div>
                         <?php endif; ?>
                         <p class="help-block">Last opp et bilde av logoen.</p>
                     </div>
@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">E-post</label>
                     <div class="col-sm-8">
-                        <input type="text" name="email" class="form-control" value="<?php print $fields['email']; ?>">
+                        <input type="text" name="email" class="form-control" value="<?php if (isset($fields['email'])) print $fields['email']; ?>">
                         <?php if(isset($errors['email'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['email']; ?></div>
                         <?php endif; ?>
