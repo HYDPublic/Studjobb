@@ -20,7 +20,9 @@ $app->get('/stilling/:id', '\Board:job');
 
 $app->get('/utlys',        '\Board:submit');
 
-$app->post('/finn',         '\Board:search');
+$app->post('/utlys',       '\Board:submitJob');
+
+$app->post('/finn',        '\Board:search');
 
 /**
  * Newsletter
