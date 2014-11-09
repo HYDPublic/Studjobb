@@ -11,12 +11,17 @@
                 </div>
             </div>
 
-            <form id="submit" class="form-horizontal" role="form" method="post">
+            <form id="submit" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
                 <legend>Steg 1: Stillingen</legend>
                 <div class="form-group">
+
                     <label class="col-sm-2 control-label">Stillingstittel</label>
                     <div class="col-sm-8">
-                        <input type="text" name="title" class="form-control">
+
+                        <input type="text" name="title" class="form-control" value="<?php print $fields['title']; ?>">
+                        <?php if(isset($errors['title'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['title']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">For eksempel 'systemutvikler', 'trainee' eller 'sommerjobb'.</p>
                     </div>
                 </div>
@@ -24,7 +29,10 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Sted</label>
                     <div class="col-sm-8">
-                        <input type="text" name="text" class="form-control">
+                        <input type="text" name="place" class="form-control" <?php print $fields['place']; ?>>
+                        <?php if(isset($errors['place'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['place']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">Hvor i landet gjelder stillingen?</p>
                     </div>
                 </div>
@@ -39,7 +47,11 @@
                             <button type="button" class="btn ql-link">Lenke</button>
                             <button type="button" class="btn ql-bullet">Liste</button>
                         </div>
-                        <div id="editor-container"></div>
+                        <div id="editor-container"><?php print $fields['content']; ?></div>
+                        <textarea name="content" id="buffer" style="hidden"></textarea>
+                        <?php if(isset($errors['content'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['content']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">
                             Selve stillingsbeskrivelsen. Husk å skrive hvordan
                             man skal søke og hvem man skal ta kontakt med.
@@ -51,18 +63,28 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Navn</label>
                     <div class="col-sm-8">
-                        <input type="text" name="company" class="form-control">
+                        <input type="text" name="company" class="form-control" value="<?php print $fields['company']; ?>">
+                        <?php if(isset($errors['company'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['company']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">Navn på selskapet.</p>
                     </div>
                 </div>
 
+                <?php if ($uploaded == false): ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Logo</label>
                     <div class="col-sm-8">
                         <input type="file" name="logo">
+                        <?php if(isset($errors['logo'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['logo']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">Last opp et bilde av logoen.</p>
                     </div>
                 </div>
+                <?php else: ?>
+                    <input type="hidden" name="uploaded" value="<?php print $filename; ?>">
+                <?php endif; ?>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Om selskapet</label>
@@ -74,7 +96,10 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">E-post</label>
                     <div class="col-sm-8">
-                        <input type="text" name="email" class="form-control">
+                        <input type="text" name="email" class="form-control" value="<?php print $fields['email']; ?>">
+                        <?php if(isset($errors['email'])): ?>
+                            <div class="alert alert-danger" role="alert"><?php print $errors['email']; ?></div>
+                        <?php endif; ?>
                         <p class="help-block">Faktura og kvittering sendes til denne adressen.</p>
                     </div>
                 </div>
