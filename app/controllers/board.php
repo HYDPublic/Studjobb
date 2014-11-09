@@ -35,7 +35,15 @@ class Board {
         $app = \Slim\Slim::getInstance();
 
         $app->render('static/header.php');
-        $app->render('submit.php');
+        $app->render('submit/form.php');
+        $app->render('static/footer.php');
+    }
+
+    public function submitJob () {
+        $app = \Slim\Slim::getInstance();
+
+        $app->render('static/header.php');
+        $app->render('submit/thanks.php');
         $app->render('static/footer.php');
     }
 
