@@ -18,7 +18,7 @@
                     <label class="col-sm-2 control-label">Stillingstittel</label>
                     <div class="col-sm-8">
 
-                        <input type="text" name="title" class="form-control" value="<?php if (isset($fields)) print $fields['title']; ?>">
+                        <input type="text" name="title" class="form-control" value="<?php if (isset($fields['title'])) print $fields['title']; ?>">
                         <?php if(isset($errors['title'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['title']; ?></div>
                         <?php endif; ?>

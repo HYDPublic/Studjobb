@@ -33,7 +33,7 @@ class Board {
 
     public function submit () {
         $app = \Slim\Slim::getInstance();
-
+        print $fields;
         $app->render('static/header.php');
         $app->render('submit/form.php');
         $app->render('static/footer.php');
