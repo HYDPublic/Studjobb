@@ -89,7 +89,7 @@ class Board {
             $job->email   = $app->request->post('email');
             $job->content = $app->request->post('content');
             $job->company = $app->request->post('company');
-            $job->logo    = $app->request->post('logo');
+            $job->logo    = $filename;
             $job->place   = $app->request->post('place');
             $job->mark    = $app->request->post('mark');
             $job->save();
