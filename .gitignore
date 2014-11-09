@@ -4,3 +4,4 @@ composer.phar
 app/configuration.php
 crawler/
 *.sql
+public/logo
