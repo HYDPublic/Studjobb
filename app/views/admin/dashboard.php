@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-md-6">
                         <img src="http://kilde.michaelmcmillan.net/piwik/index.php?module=API&method=ImageGraph.get&idSite=<?php print $piwikSiteid; ?>&apiModule=VisitsSummary&apiAction=get&token_auth=<?php print $piwikToken; ?>&graphType=evolution&period=day&date=previous30&width=500&height=250'"
-                
+
                     </div>
                 </div>
 
@@ -51,22 +51,31 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Skrapt</h3>
+                        <p>Dette er de skrapte jobbene.</p>
+                        <table class="table table-hover table-jobs">
+                            <tbody>
+                                <?php foreach ($crawledJobs as $crawledJob): ?>
+                                    <tr data-href="/admin/skrapt/<?php print $crawledJob->id; ?>"
+                                        class="<?php print strtolower($crawledJob->status); ?>">
+                                        <td><strong><?php print $crawledJob->company; ?></strong></td>
+                                        <td><?php print $crawledJob->source(); ?></td>
+                                        <td><?php print $crawledJob->title; ?></td>
+                                        <td><?php print $crawledJob->createdAt(); ?></td>
+                                        <td><?php print $crawledJob->status; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <h3>Skrapt</h3>
-                <p>Dette er de skrapte jobbene.</p>
-                <table class="table table-hover table-jobs">
-                    <tbody>
-                        <?php foreach ($crawledJobs as $crawledJob): ?>
-                        <tr data-href="/admin/skrapt/<?php print $crawledJob->id; ?>"
-                            class="<?php print strtolower($crawledJob->status); ?>">
-                            <td><strong><?php print $crawledJob->company; ?></strong></td>
-                            <td><?php print $crawledJob->source(); ?></td>
-                            <td><?php print $crawledJob->title; ?></td>
-                            <td><?php print $crawledJob->createdAt(); ?></td>
-                            <td><?php print $crawledJob->status; ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                    <div class="col-md-4 col-md-offset-2">
+                        <h3>Innsendt</h3>
+                        <p>Dette er de innsendte jobbene.</p>
+                    </div>
+
+                </div>
             </div>
         </div>
