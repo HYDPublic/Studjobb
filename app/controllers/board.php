@@ -72,7 +72,7 @@ class Board {
                 $logo->upload();
                 $uploaded = true;
             } catch (\Exception $e) {
-                $errors['logo'] = $logo->getErrors();
+                $errors['logo'] = $logo->getErrors()[0];
                 $uploaded = false;
             }
         } else {
