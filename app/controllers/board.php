@@ -35,9 +35,7 @@ class Board {
         $app = \Slim\Slim::getInstance();
 
         $app->render('static/header.php');
-        $app->render('submit/form.php', array (
-            'fields' => array()
-        ));
+        $app->render('submit/form.php');
         $app->render('static/footer.php');
     }
 
