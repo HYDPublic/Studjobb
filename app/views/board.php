@@ -9,7 +9,7 @@
                         som ønsker å ansette studenter!
                     </p>
                     <p>
-                        <strong>Ikke gå glipp av drømmejobben!</strong> Hver mandag
+                        <strong>Ikke gå glipp av drømmejobben!</strong> Hver torsdag 
                         sender vi deg aktuelle stillinger på e-post. Klikk
                         <a href="#" data-toggle="modal" data-target="#newsletter">her</a> for å
                         melde deg på! Du kan også følge <a href="//twitter.com/studjobb">@Studjobb</a>
