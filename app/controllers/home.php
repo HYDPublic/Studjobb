@@ -23,7 +23,7 @@ class Home {
 
     public static function error (\Exception $e) {
         $app = \Slim\Slim::getInstance();
-		print_r($e);
+
         $app->render('static/header.php');
         $app->render('static/error.php', array ('message' => $e->getMessage()));
         $app->render('static/footer.php');
