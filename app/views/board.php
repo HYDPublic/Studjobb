@@ -9,9 +9,9 @@
                         som ønsker å ansette studenter!
                     </p>
                     <p>
-                        <strong>Ikke gå glipp av drømmejobben!</strong> Hver torsdag 
-                        sender vi deg aktuelle stillinger på e-post. Klikk
-                        <a href="#" data-toggle="modal" data-target="#newsletter">her</a> for å
+                        <strong>Ikke gå glipp av drømmejobben!</strong> Hver torsdag
+                        sender vi deg aktuelle stillinger på e-post. Gjør som 200 andre studenter og
+                        <a href="#" data-toggle="modal" data-target="#newsletter"><strong>klikk her</strong></a> for å
                         melde deg på! Du kan også følge <a href="//twitter.com/studjobb">@Studjobb</a>
                         på <i class="fa fa-twitter"></i>
                     </p>
@@ -66,10 +66,11 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">På utkikk etter jobb?</h4>
+                        <h4 class="modal-title">På utkikk etter jobb? Gjør som 200 andre studenter!</h4>
                     </div>
                     <form class="form-horizontal" role="form" id="newsletter-form" method="post" action="/nyhetsbrev">
                     <div class="modal-body">
+
                         <p>
                             Hver mandag sender vi deg en e-post over de nyeste jobbene.
                             Du kan når som helst melde deg av. E-posten din blir aldri
