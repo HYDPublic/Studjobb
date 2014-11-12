@@ -72,7 +72,7 @@
                     <div class="modal-body">
 
                         <p>
-                            Hver mandag sender vi deg en e-post over de nyeste jobbene.
+                            Hver onsdag sender vi deg en e-post over de nyeste jobbene.
                             Du kan når som helst melde deg av. E-posten din blir aldri
                             delt med noen tredjeparter og vi sender deg maks èn e-post
                             i uka.
