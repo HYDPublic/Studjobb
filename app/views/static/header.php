@@ -8,6 +8,8 @@
         <meta property="og:url" content="http://studjobb.no">
         <meta property="og:type" content="website">
         <meta property="og:image" content="http://studjobb.no/img/og.jpg">
+        <meta name="title" content="Studjobb">
+        <meta name="description" content="Nettstedet for studenter som ønsker å finne jobb, startups og oppdrag.">
         <link rel="icon" type="image/png" href="/favicon.ico">
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
