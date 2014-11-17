@@ -10,8 +10,8 @@
                     </blockquote>
                 </div>
             </div>
-
-            <form id="submit" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
+            <h3>Vennligst send utlysninger til <a href="mailto:michael@studjobb.no">michael@studjobb.no</a></h3>
+            <form id="submit" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" style="display:none;">
                 <legend>Steg 1: Stillingen</legend>
                 <div class="form-group">
 
