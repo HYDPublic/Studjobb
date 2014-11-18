@@ -42,6 +42,14 @@
                     <div class="listing row">
                         <h3><?php print $category->name; ?></h3>
                         <table class="table table-hover">
+                            <thead>
+								<th>Selskap</th>
+								<th>Type</th>
+								<th>Stilling</th>
+								<th>Sted</th>
+								<th>Søknadsfrist</th>
+							</thead>
+   
                             <tbody>
                                 <?php foreach ($category->jobs as $job): ?>
                                 <?php if ($job->published == true): ?>
