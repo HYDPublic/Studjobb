@@ -19,6 +19,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Uthevet</label>
+                        <input name="marked" type="checkbox" <?php if ($job->marked == 1) print 'checked'; ?>>
+                    </div>
+
+                    <div class="form-group">
                         <label>Sted</label>
                         <input name="place" type="text" value="<?php print $job->place; ?>"
                             class="form-control">
