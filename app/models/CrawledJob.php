@@ -16,7 +16,7 @@ class CrawledJob extends Eloquent {
     }
 
     public function emails () {
-        return $this->hasMany('CrawledJob');
+        return $this->hasMany('email');
     }
 
     public function getPotentialEmail () {
