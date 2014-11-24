@@ -34,7 +34,7 @@ tr[data-href] {
 }
 
 tr.marked {
-	background-color:#FFFCCC;
+	background-color:rgba(254, 252, 143, 0.43);
 }
 
 span.job-title {
