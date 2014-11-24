@@ -15,11 +15,15 @@ class CrawledJob extends Eloquent {
         return $parsed['host'];
     }
 
+    public function emails () {
+        return $this->hasMany('CrawledJob');
+    }
+
     public function getPotentialEmail () {
 
         $pattern="/[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/";
         preg_match_all($pattern, $this->content, $matches);
-        
+
         if ($matches) {
             return implode (', ', $matches[0]);
         }
