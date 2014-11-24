@@ -7,7 +7,9 @@ class Deploy {
         $sign = $app->request->headers->get('X-Hub-Signature');
 		$hmac = hash_hmac('sha1', $app->request->getBody(), $app->github['deployKey']);
 		if ($sign == $hmac)
-            echo 'Signed!';
+            echo 'Signed!!';
+        else
+            echo "not signed";
 
         $payload = json_decode ($app->request->getBody(), true);
         echo shell_exec ('cd /var/www/studjobb/scripts && ./deploy.sh');
