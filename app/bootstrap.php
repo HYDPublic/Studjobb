@@ -29,9 +29,14 @@ $app->mailconfig = $configuration['mail'];
 $app->piwik = $configuration['piwik'];
 
 /**
+ * GitHub
+ */
+$app->github = $configuration['github']; 
+
+/**
  * Logo
  */
-$app->logo = $configuration['logo']; 
+$app->logo = $configuration['logo'];
 
 /**
  * Controllers
