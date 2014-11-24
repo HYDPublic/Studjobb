@@ -45,13 +45,17 @@ class Admin {
     public function updateCompany ($id) {
         $app = \Slim\Slim::getInstance();
 
-        $company = Company::find($id);
+        if ($id !== 'ny')
+            $company = Company::find($id);
+        else
+            $company = new Company();
+
         $company->name     = $app->request->post('name');
         $company->about    = $app->request->post('about');
         $company->logo     = $app->request->post('logo');
         $company->save();
 
-        $app->redirect('/admin/selskap/' . $id);
+        $app->redirect('/admin/selskap/' . $company->id);
     }
 
     public function updateCrawledJob ($id) {
@@ -74,12 +78,12 @@ class Admin {
         $job->type       = $app->request->post('type');
         $job->company_id = $app->request->post('company');
         $job->place      = $app->request->post('place');
-        
+
         if ($app->request->post('published') == 'on')
             $job->published = true;
         else
             $job->published = false;
-    
+
         if ($app->request->post('marked') == 'on')
             $job->marked = true;
         else
@@ -93,6 +97,7 @@ class Admin {
     public function createJob () {
         $app = \Slim\Slim::getInstance();
 
+        /* Job */
         $job = new Job();
         $job->title   = $app->request->post('title');
         $job->content = $app->request->post('content');
@@ -103,6 +108,11 @@ class Admin {
             $parent = CrawledJob::find($app->request->post('crawledJobId'));
             $parent->status = 'Laget';
             $parent->save();
+        }
+
+        /* Company */
+        if ($app->request->post('hello')) {
+
         }
 
         $app->redirect('/admin/stilling/' . $job->id);

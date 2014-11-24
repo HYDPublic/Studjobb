@@ -64,6 +64,51 @@
                 <hr>
 
                 <div class="row">
+                    <h3>Selskap</h3>
+                    <div class="col-md-10">
+
+                        <form id="update-job" action="/admin/selskap/ny" method="post">
+
+                            <div class="form-group">
+                                <label>Tittel</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Logo</label>
+                                <input type="text" name="logo" class="form-control">
+                            </div>
+
+                            <div id="formatting-container">
+                                <select title="Size" class="ql-size">
+                                    <option value="10px">Small</option>
+                                    <option value="13px" selected>Normal</option>
+                                    <option value="18px">Large</option>
+                                    <option value="32px">Huge</option>
+                                </select>
+
+                                <button type="button" class="btn ql-bold">Bold</button>
+                                <button type="button" class="btn ql-italic">Italic</button>
+                                <button type="button" class="btn ql-underline">Under</button>
+                                <button type="button" class="btn ql-strike">Strike</button>
+                                <button type="button" class="btn ql-link">Link</button>
+                                <button type="button" class="btn ql-image">Image</button>
+                                <button type="button" class="btn ql-bullet">Bullet</button>
+                                <button type="button" class="btn ql-list">List</button>
+                            </div>
+
+                            <div id="editor-container"></div>
+
+                            <textarea id="buffer" name="about"></textarea>
+
+                            <input type="submit" class="btn btn-custom-lighten" value="Lagre">
+                        </form>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
                     <h3>Utlysning</h3>
                     <div class="col-md-10">
                         <form id="update-job" method="post" action="/admin/stilling">
