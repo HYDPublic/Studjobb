@@ -23,7 +23,7 @@ class Mail {
             'ANSWERED '.
             'FROM "'.$emailaddress.'"'
         );
-        print_r($emails);
+        
         /* Loop through each one */
         if ($emails) {
             foreach ($emails as $email) {
@@ -73,7 +73,7 @@ class Mail {
 
                     /* Store the email */
                     $emailToStore->save();
-                } else echo "ok";
+                }
             }
         }
 
@@ -81,7 +81,7 @@ class Mail {
         imap_close ($inbox);
 
         /* Redirect back */
-        //$app->redirect('/admin/skrapt/' . $crawledJobId);
+        $app->redirect('/admin/skrapt/' . $crawledJobId);
 
     }
 
