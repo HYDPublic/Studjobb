@@ -69,6 +69,11 @@ $app->post('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
 $app->get('/rss', '\Feed:latestJobs');
 
 /**
+ * Deploy
+ */ 
+$app->post('/deploy', '\Deploy:pull');
+
+/**
  * Errors
  */
 $app->error('\Home::error');
