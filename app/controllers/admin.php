@@ -124,9 +124,16 @@ class Admin {
         $app->render('static/header.php');
         $app->render('admin/edit-crawledJob.php', array (
             'crawledJob' => $crawledJob,
-            'mailtext'   => Mailtext::find(2)->text,
-            'emails'     => Email::where('crawled_id', '=', $id)->get()
-
+            'emails'     => Email::where('crawled_id', '=', $id)->get(),
+            'mailtext'   => str_replace (
+                array (
+                    '*SELSKAP*',
+                ),
+                array (
+                    $crawledJob->company
+                ),
+                Mailtext::find(2)->text
+            )
         ));
         $app->render('static/footer.php');
     }
