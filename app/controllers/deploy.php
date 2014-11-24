@@ -4,10 +4,10 @@ class Deploy {
     public function pull () {
         $app = \Slim\Slim::getInstance();
 
-        $sign = $app->request->headers->get('X-Hub-Signature');
+        $sign = substr($app->request->headers->get('X-Hub-Signature'), 5);
 		$hmac = hash_hmac('sha1', $app->request->getBody(), $app->github['deployKey']);
 		if ($sign == $hmac)
-            echo 'Signed!!';
+            echo 'Signed!!' . $app->request->headers->get('X-Hub-Signature');
         else
             echo "not signed";
 
