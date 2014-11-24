@@ -103,14 +103,14 @@ class Admin {
         $job->content = $app->request->post('content');
         $job->due     = $app->request->post('due');
         $job->save();
-        
+
         /* Update the crawledJob id */
         if ($app->request->post('crawledJobId')) {
             $parent = CrawledJob::find($app->request->post('crawledJobId'));
             $parent->status = 'Laget';
             $parent->save();
         }
-        
+
         $app->redirect('/admin/stilling/' . $job->id);
     }
 
@@ -124,7 +124,9 @@ class Admin {
         $app->render('static/header.php');
         $app->render('admin/edit-crawledJob.php', array (
             'crawledJob' => $crawledJob,
-            'mailtext'   => Mailtext::find(1)->text
+            'mailtext'   => Mailtext::find(1)->text,
+            'emails'     => Email::where('crawled_id', '=', $id)->get()
+
         ));
         $app->render('static/footer.php');
     }
