@@ -132,7 +132,7 @@ class Admin {
                 ),
                 array (
                     $crawledJob->company,
-                    parse_url($crawledJob->url)['host']
+                    ucfirst(parse_url($crawledJob->url)['host'])
                 ),
                 Mailtext::find(2)->text
             )
