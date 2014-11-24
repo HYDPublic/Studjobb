@@ -124,7 +124,7 @@ class Admin {
         $app->render('static/header.php');
         $app->render('admin/edit-crawledJob.php', array (
             'crawledJob' => $crawledJob,
-            'mailtext'   => Mailtext::find(1)->text,
+            'mailtext'   => Mailtext::find(2)->text,
             'emails'     => Email::where('crawled_id', '=', $id)->get()
 
         ));
