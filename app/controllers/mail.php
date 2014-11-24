@@ -23,7 +23,7 @@ class Mail {
             'ANSWERED '.
             'FROM "'.$emailaddress.'"'
         );
-
+        print_r($emails);
         /* Loop through each one */
         if ($emails) {
             foreach ($emails as $email) {
@@ -37,14 +37,18 @@ class Mail {
                     $message = imap_fetchbody ($inbox, $email, 1);
 
                     /* Decode the body correctly */
-                    if ($structure->encoding == 3
-                    || (isset($structure->parts[0])
-                    &&  $structure->parts[0]->encoding == 3))
-                        $message = imap_base64 ($message);
-                    else if ($structure->encoding == 1)
-                        $message = imap_8bit   ($message);
-                    else
-                        $message = imap_qprint ($message);
+                    try {
+                        if ($structure->encoding == 3
+                        || (isset($structure->parts[0])
+                        &&  $structure->parts[0]->encoding == 3))
+                            $message = imap_base64 ($message);
+                        else if ($structure->encoding == 1)
+                            $message = imap_8bit   ($message);
+                        else
+                            $message = imap_qprint ($message);
+                    } catch (Exception $e) {
+                        $message = imap_fetchbody ($inbox, $email, 1);
+                    }
 
                 /* Use the raw body */
                 } else {
@@ -52,7 +56,7 @@ class Mail {
                 }
 
                 /* Check if unique message_id */
-                if (!Email::where('message_id', $overview[0]->message_id)->get()) {
+                if (Email::where('message_id', $overview[0]->message_id)->get() !== null) {
 
                     $emailToStore = new Email();
 
@@ -69,7 +73,7 @@ class Mail {
 
                     /* Store the email */
                     $emailToStore->save();
-                }
+                } else echo "ok";
             }
         }
 
@@ -77,7 +81,7 @@ class Mail {
         imap_close ($inbox);
 
         /* Redirect back */
-        $app->redirect('/admin/skrapt/' . $crawledJobId);
+        //$app->redirect('/admin/skrapt/' . $crawledJobId);
 
     }
 
