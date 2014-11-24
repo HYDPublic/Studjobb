@@ -128,9 +128,11 @@ class Admin {
             'mailtext'   => str_replace (
                 array (
                     '*SELSKAP*',
+                    '*KILDE*'
                 ),
                 array (
-                    $crawledJob->company
+                    $crawledJob->company,
+                    parse_url($crawledJob->url)['host']
                 ),
                 Mailtext::find(2)->text
             )
