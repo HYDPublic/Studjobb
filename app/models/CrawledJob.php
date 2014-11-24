@@ -21,6 +21,11 @@ class CrawledJob extends Eloquent {
 
     public function getEmail () {
 
+        /* See if stored */
+        if (isset($this->email))
+            return $this->email;
+
+        /* Try to guess */
         $pattern="/[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/";
         preg_match_all($pattern, $this->content, $matches);
 

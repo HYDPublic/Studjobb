@@ -23,7 +23,7 @@ class Mail {
             'ANSWERED '.
             'FROM "'.$emailaddress.'"'
         );
-        
+
         /* Loop through each one */
         if ($emails) {
             foreach ($emails as $email) {
@@ -111,6 +111,7 @@ class Mail {
         } else {
             $crawledJob = CrawledJob::find($app->request->post('crawledJobId'));
             $crawledJob->status = 'Kontaktet';
+            $crawledJob->email  = $app->request->post('to');
             $crawledJob->save();
 
             $app->redirect('/admin/skrapt/' . $app->request->post('crawledJobId'));
