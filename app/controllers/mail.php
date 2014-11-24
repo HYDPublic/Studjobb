@@ -89,18 +89,18 @@ class Mail {
         $app = \Slim\Slim::getInstance();
 
         $mail = new PHPMailer;
-        $mail->CharSet     = $app->mailconfig['charset'];
+        $mail->CharSet     = $app->mailconfig['smptp']['charset'];
         $mail->isSMTP();
-        $mail->SMTPDebug   = $app->mailconfig['smtpdebug'];
-        $mail->Debugoutput = $app->mailconfig['debugoutput'];
-        $mail->Host        = $app->mailconfig['host'];
-        $mail->Port        = $app->mailconfig['port'];
-        $mail->SMTPSecure  = $app->mailconfig['smtpsecure'];
-        $mail->SMTPAuth    = $app->mailconfig['smtpauth'];
-        $mail->Username    = $app->mailconfig['username'];
-        $mail->Password    = $app->mailconfig['password'];
-        $mail->setFrom      ($app->mailconfig['from'], $app->mailconfig['fromName']);
-        $mail->addReplyTo   ($app->mailconfig['from'], $app->mailconfig['fromName']);
+        $mail->SMTPDebug   = $app->mailconfig['smptp']['smtpdebug'];
+        $mail->Debugoutput = $app->mailconfig['smptp']['debugoutput'];
+        $mail->Host        = $app->mailconfig['smptp']['host'];
+        $mail->Port        = $app->mailconfig['smptp']['port'];
+        $mail->SMTPSecure  = $app->mailconfig['smptp']['smtpsecure'];
+        $mail->SMTPAuth    = $app->mailconfig['smptp']['smtpauth'];
+        $mail->Username    = $app->mailconfig['smptp']['username'];
+        $mail->Password    = $app->mailconfig['smptp']['password'];
+        $mail->setFrom      ($app->mailconfig['smptp']['from'], $app->mailconfig['smptp']['fromName']);
+        $mail->addReplyTo   ($app->mailconfig['smptp']['from'], $app->mailconfig['smptp']['fromName']);
 
         $mail->addAddress($app->request->post('to'), $app->request->post('name'));
         $mail->Subject = $app->request->post('subject');
