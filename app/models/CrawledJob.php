@@ -19,7 +19,7 @@ class CrawledJob extends Eloquent {
         return $this->hasMany('email');
     }
 
-    public function getPotentialEmail () {
+    public function getEmail () {
 
         $pattern="/[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/";
         preg_match_all($pattern, $this->content, $matches);
