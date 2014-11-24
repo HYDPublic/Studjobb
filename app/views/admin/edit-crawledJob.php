@@ -80,7 +80,7 @@
 
                         <form method="get" action="/admin/mail">
                             <input type="hidden" name="crawledJobId" value="<?php echo $crawledJob->id; ?>">
-                            <input type="text"   name="emailaddress" value="email@michaelmcmillan.net" class="form-control">
+                            <input type="text"   name="emailaddress" value="<?php print trim($crawledJob->getEmail()); ?>" class="form-control">
                             <br />
                             <input type="submit" class="btn btn-custom-lighten" value="Hent mail">
                         </form>
