@@ -15,6 +15,5 @@ class Deploy {
         echo shell_exec ('cd /var/www/studjobb/scripts && ./deploy.sh');
         echo shell_exec('whoami');
 
-
     }
 }
