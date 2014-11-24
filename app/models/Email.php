@@ -6,8 +6,8 @@ class Email extends Eloquent {
 
     protected $table = 'emails';
 
-    public function job () {
-        return $this->hasOne('Job');
+    public function crawledjob () {
+        return $this->hasOne('CrawledJob');
     }
 
 }
