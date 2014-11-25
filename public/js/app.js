@@ -26,7 +26,7 @@ $(document).ready(function () {
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
             $('#newsletter').modal('show');
-            _paq.push(['trackEvent', 'Modal']);
+            _paq.push(['trackEvent', 'ModalTimer']);
             $.cookie('newsletter', 'seen', {
                 expires: 60,
                 path: '/'
