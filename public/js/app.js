@@ -26,11 +26,12 @@ $(document).ready(function () {
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
             $('#newsletter').modal('show');
+            _paq.push(['trackEvent', 'Modal']);
             $.cookie('newsletter', 'seen', {
                 expires: 60,
                 path: '/'
             });
-        }, 5000);
+        }, 4000);
     }
 
     $('form#update-job').submit(function (event) {
