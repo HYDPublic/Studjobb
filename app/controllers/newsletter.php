@@ -7,22 +7,29 @@ class Newsletter {
         $school = School::find($app->request->post('school'));
         if ($school->get()->isEmpty())
             throw new Exception ('Ugyldig skole.');
+        
+        try {
+            $query = $app->mailchimp->call('lists/subscribe', array(
+                'id'                => '9e391988e0',
+                'email'             => array (
+                    'email' =>  $app->request->post('email')
+                ),
 
-        $query = $app->mailchimp->call('lists/subscribe', array(
-            'id'                => '9e391988e0',
-            'email'             => array (
-                'email' =>  $app->request->post('email')
-            ),
+                'merge_vars'        => array (
+                    'EDUCATION' => $school->name
+                ),
 
-            'merge_vars'        => array (
-                'EDUCATION' => $school->name
-            ),
-
-            'double_optin'      => false,
-            'update_existing'   => true,
-            'replace_interests' => false,
-            'send_welcome'      => true,
-        ));
+                'double_optin'      => false,
+                'update_existing'   => true,
+                'replace_interests' => false,
+                'send_welcome'      => true,
+            ));
+        } catch (Exception $e) {
+            throw new Exception (
+                'Noe gikk galt. Vennligst oppgi '.
+                'en gyldig e-postadresse.'
+            );
+        }
 
         if (isset($query['status']) && $query['status'] == 'error')
             throw new Exception ($query['error']);
