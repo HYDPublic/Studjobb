@@ -6,3 +6,4 @@ app/configuration.php
 crawler/
 *.sql
 public/logo
+*.swp
