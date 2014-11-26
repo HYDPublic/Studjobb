@@ -26,13 +26,16 @@ $(document).ready(function () {
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
             $('#newsletter').modal('show');
-            _paq.push(['trackEvent', 'Modal', 'Open']);
             $.cookie('newsletter', 'seen', {
                 expires: 60,
                 path: '/'
             });
         }, 4000);
     }
+
+    $('#newsletter').on('show.bs.modal', function () {
+        _paq.push(['trackEvent', 'Modal', 'Open']);
+    });
 
     $('#newsletter').on('hidden.bs.modal', function () {
         _paq.push(['trackEvent', 'Modal', 'Closed']);
