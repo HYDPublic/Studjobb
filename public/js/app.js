@@ -42,7 +42,7 @@ $(document).ready(function () {
     });
 
     $('#newsletter').on('hidden.bs.modal', function () {
-        _paq.push(['trackEvent', 'Modal', 'Closed', seconds]);
+        _paq.push(['trackEvent', 'Modal', 'Closed', 'Time', seconds]);
     });
 
     $('form#update-job').submit(function (event) {
