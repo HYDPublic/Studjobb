@@ -112,7 +112,7 @@ class Board {
         $app = \Slim\Slim::getInstance();
 
         $schools  = School::all();
-        $query    = $app->request->post('q');
+        $query    = $app->request->get('q');
         $jobs     = Job::where('content', 'like', '%'.$query.'%')->get();
 
         $app->render('static/header.php');

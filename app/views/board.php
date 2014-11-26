@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <form method="post" action="/finn">
+            <form method="get" action="/finn">
                 <div class="search well row">
                     <div class="col-md-6 col-sm-12">
                         <div class="left-inner-addon ">

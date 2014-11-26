@@ -22,7 +22,7 @@ $app->get('/utlys',        '\Board:submit');
 
 $app->post('/utlys',       '\Board:submitJob');
 
-$app->post('/finn',        '\Board:search');
+$app->get('/finn',        '\Board:search');
 
 /**
  * Newsletter
