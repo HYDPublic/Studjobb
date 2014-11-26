@@ -26,13 +26,17 @@ $(document).ready(function () {
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
             $('#newsletter').modal('show');
-            _paq.push(['trackEvent', 'ModalTimer']);
+            _paq.push(['trackEvent', 'Modal', 'Open']);
             $.cookie('newsletter', 'seen', {
                 expires: 60,
                 path: '/'
             });
         }, 4000);
     }
+
+    $('#newsletter').on('hidden.bs.modal', function () {
+        _paq.push(['trackEvent', 'Modal', 'Closed']);
+    });
 
     $('form#update-job').submit(function (event) {
         $('textarea#buffer').val(editor.getHTML());
