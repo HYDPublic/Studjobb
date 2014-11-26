@@ -33,12 +33,16 @@ $(document).ready(function () {
         }, 4000);
     }
 
+    var seconds = 0;
     $('#newsletter').on('show.bs.modal', function () {
+        setInterval(function () {
+            seconds++;
+        }, 1000);
         _paq.push(['trackEvent', 'Modal', 'Open']);
     });
 
     $('#newsletter').on('hidden.bs.modal', function () {
-        _paq.push(['trackEvent', 'Modal', 'Closed']);
+        _paq.push(['trackEvent', 'Modal', 'Closed', seconds]);
     });
 
     $('form#update-job').submit(function (event) {
