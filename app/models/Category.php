@@ -11,7 +11,8 @@ class Category extends Eloquent {
             ->hasMany('Job')
             ->where('published', true)
             //->where('due', '>', date('Y-m-d G:i:s'))
-            ->whereRaw('created_at >= now() - interval 30 day')
+            //->whereRaw('created_at >= now() - interval 30 day')
+            ->whereRaw('due >= now()')
             ->orderBy('jobs.created_at', 'desc');
 	}
 
