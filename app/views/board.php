@@ -12,8 +12,8 @@
                         <strong>Ikke gå glipp av drømmejobben!</strong> Hver torsdag
                         sender vi deg aktuelle stillinger på e-post. Gjør som 200 andre studenter og
                         <a href="#" data-toggle="modal" data-target="#newsletter"><strong>klikk her</strong></a> for å
-                        melde deg på! Du kan også følge <a href="//twitter.com/studjobb">@Studjobb</a>
-                        på <i class="fa fa-twitter"></i>
+                        melde deg på! <!--Du kan også følge <a href="//twitter.com/studjobb">@Studjobb</a>
+                        på <i class="fa fa-twitter"></i>-->
                     </p>
                 </div>
             </div>
