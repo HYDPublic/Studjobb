@@ -30,7 +30,7 @@
                     <div class="col-md-6 col-sm-12">
                         <a href="/utlys">
                             <button type="button" class="btn btn-custom-lighten hidden-xs" style="width:100%">
-                                Legg ut stilling for 500,- i 30 dager!
+                                Legg ut stilling for 1000,- i 30 dager!
                             </button>
                         </a>
                     </div>
