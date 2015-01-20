@@ -5,7 +5,7 @@ class Deploy {
         $app = \Slim\Slim::getInstance();
 
         $sign = substr($app->request->headers->get('X-Hub-Signature'), 5);
-		$hmac = hash_hmac('sha1', $app->request->getBody(), $app->github['deployKey']);
+        $hmac = hash_hmac('sha1', $app->request->getBody(), $app->github['deployKey']);
 
         if ($sign == $hmac) {
             echo shell_exec ('cd /var/www/studjobb/scripts && ./deploy.sh');
