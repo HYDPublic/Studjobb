@@ -74,6 +74,7 @@ class Admin {
 
         $job = Job::find($id);
         $job->title      = $app->request->post('title');
+        $job->due        = $app->request->post('due');
         $job->content    = $app->request->post('content');
         $job->type       = $app->request->post('type');
         $job->company_id = $app->request->post('company');
