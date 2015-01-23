@@ -6,7 +6,7 @@
                     <blockquote>
                         Annonsen din vil være synlig på forsiden i 30 dager. I tillegg
                         vil den sendes med nyhetsbrevet den førstkommende torsdagen. Prisen
-                        for en annonse er 1000,-. Annonsering er derimot gratis for start-ups.
+                        for en annonse er 1500,-. Annonsering er derimot gratis for start-ups.
                     </blockquote>
                 </div>
             </div>
