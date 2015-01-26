@@ -128,7 +128,7 @@
                             <input type="text" name="title" class="form-control" value="<?php print $crawledJob->title; ?>">
 
                             <label>Søknadsfrist</label>
-                            <input type="text" name="due" class="form-control" value="2014-11-05">
+                            <input type="text" name="due" class="form-control" value="2015-11-05">
 
                             <div id="formatting-container">
                                 <select title="Size" class="ql-size">
