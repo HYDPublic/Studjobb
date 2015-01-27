@@ -11,7 +11,7 @@ class Mail {
 
             $today         = date('N');
             $dayToSend     = $today; 
-            $hourToSend    = 8; 
+            $hourToSend    = 13; 
             $minutesToSend = 10;
             $days          = array (
                 'Sunday', 'Monday', 'Tuesday',
@@ -19,15 +19,12 @@ class Mail {
             );
             
             // Is today a weekday? (Mon-Thu)
-            if ($today > 0 /*Sun*/ && 5 /*Fri*/ > $today) {
- 
-                // Are we past preferred hour let's send next day 
-                if (date('H') > $hourToSend) 
-                    $dayToSend = $days[++$dayToSend]; 
+            if ($today > 0 /*Sun*/ && 5 /*Fri*/ > $today)
+                $dayToSend = $days[++$dayToSend]; 
 
-            // Then it must be sent on monday
-            } else
-                $dayToSend = $days[1];
+            // Then it must be sent on wednesday 
+             else
+                $dayToSend = $days[3];
             
             // Generate the timestamp
             return strtotime($dayToSend . ' ' . $hourToSend . ':' . $minutesToSend); 
