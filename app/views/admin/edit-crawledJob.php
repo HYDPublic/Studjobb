@@ -63,33 +63,6 @@
                 <hr>
 
                 <div class="row">
-                    <h3>Innboks</h3>
-                    <div class="col-md-10">
-
-                        <?php foreach ($emails as $email): ?>
-                             <strong onclick="jQuery(this).nextAll('blockquote').first().slideToggle();">
-                                 <?php print $email->subject; ?>
-                             </strong>
-
-                             <em>Sendt <?php print $email->sent_at; ?></em>
-
-                             <blockquote style="display:none"><?php print $email->body; ?></blockquote>
-
-                             <br/>
-                        <?php endforeach; ?>
-
-                        <form method="get" action="/admin/mail">
-                            <input type="hidden" name="crawledJobId" value="<?php echo $crawledJob->id; ?>">
-                            <input type="text"   name="emailaddress" value="<?php print trim($crawledJob->getEmail()); ?>" class="form-control">
-                            <br />
-                            <input type="submit" class="btn btn-custom-lighten" value="Hent mail">
-                        </form>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row">
                     <h3>Selskap</h3>
                     <div class="col-md-10">
 
