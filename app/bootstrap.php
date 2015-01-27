@@ -39,6 +39,11 @@ $app->github = $configuration['github'];
 $app->logo = $configuration['logo'];
 
 /**
+ * Logo
+ */
+$app->mailcron = $configuration['mailcron'];
+
+/**
  * Controllers
  */
 foreach (glob(__DIR__.'/controllers/*.php') as $controller)

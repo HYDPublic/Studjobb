@@ -1,1 +1,1 @@
-cd ../public/ && php -S localhost:1337
+cd public && php -S localhost:1337
