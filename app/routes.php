@@ -61,8 +61,6 @@ $app->post('/admin/selskap/:id',  '\Admin::mustBeAuthenticated', '\Admin:updateC
 /**
  * Mail
  */
-$app->get('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:receive');
-
 $app->post('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:send');
 
 /**

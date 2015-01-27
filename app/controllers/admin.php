@@ -125,7 +125,6 @@ class Admin {
         $app->render('static/header.php');
         $app->render('admin/edit-crawledJob.php', array (
             'crawledJob' => $crawledJob,
-            'emails'     => Email::where('crawled_id', '=', $id)->get(),
             'mailtext'   => str_replace (
                 array (
                     '*SELSKAP*',
