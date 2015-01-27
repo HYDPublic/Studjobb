@@ -11,8 +11,8 @@ class Mail {
 
             $today         = date('N');
             $dayToSend     = $today; 
-            $hourToSend    = 13; 
-            $minutesToSend = 10;
+            $hourToSend    = 12; 
+            $minutesToSend = 50;
             $days          = array (
                 'Sunday', 'Monday', 'Tuesday',
                 'Wednesday', 'Thursday', 'Friday'
