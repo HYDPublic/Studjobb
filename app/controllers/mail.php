@@ -97,6 +97,9 @@ class Mail {
                     $crawledJob->save();
                 }
             }   
+
+            // Sleep to avoid spam
+            sleep(5);
         }
     }
 }
