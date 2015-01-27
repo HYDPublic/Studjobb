@@ -30,7 +30,7 @@
                         <?php if(isset($errors['place'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['place']; ?></div>
                         <?php endif; ?>
-                        <p class="help-block">Hvor i landet gjelder stillingen?</p>
+                        <p class="help-block">I hvilken by er stillingen?</p>
                     </div>
                 </div>
 
