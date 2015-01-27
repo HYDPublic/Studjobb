@@ -1,5 +1,3 @@
-
-
         <div id="board" class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="intro">
@@ -10,26 +8,25 @@
                     </blockquote>
                 </div>
             </div>
-            <h3>Vennligst send utlysninger til <a href="mailto:michael@studjobb.no">michael@studjobb.no</a></h3>
-            <form id="submit" class="form-horizontal" role="form" method="post" enctype="multipart/form-data" style="display:none;">
+            <form id="submit" class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
                 <legend>Steg 1: Stillingen</legend>
                 <div class="form-group">
 
-                    <label class="col-sm-2 control-label">Stillingstittel</label>
+                    <label class="col-sm-2 control-label">Stillingstype</label>
                     <div class="col-sm-8">
 
-                        <input type="text" required name="title" class="form-control" value="<?php if (isset($fields['title'])) print $fields['title']; ?>">
+                        <input type="text" required name="title" class="form-control" value="<?php if (isset($fields['title'])) print $fields['title']; ?>" required>
                         <?php if(isset($errors['title'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['title']; ?></div>
                         <?php endif; ?>
-                        <p class="help-block">For eksempel 'systemutvikler', 'trainee' eller 'sommerjobb'.</p>
+                        <p class="help-block">For eksempel 'heltid', 'trainee' eller 'sommerjobb'.</p>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Sted</label>
                     <div class="col-sm-8">
-                        <input type="text" required name="place" class="form-control" <?php if (isset($fields['place'])) print $fields['place']; ?>>
+                        <input type="text" required name="place" class="form-control" value="<?php if (isset($fields['place'])) print $fields['place']; ?>" required>
                         <?php if(isset($errors['place'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['place']; ?></div>
                         <?php endif; ?>
@@ -63,7 +60,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Navn</label>
                     <div class="col-sm-8">
-                        <input type="text" required name="company" class="form-control" value="<?php if (isset($fields['company'])) print $fields['company']; ?>">
+                        <input type="text" required name="company" class="form-control" value="<?php if (isset($fields['company'])) print $fields['company']; ?>" required>
                         <?php if(isset($errors['company'])): ?>
                             <div class="alert alert-danger" role="alert"><?php print $errors['company']; ?></div>
                         <?php endif; ?>
@@ -71,25 +68,21 @@
                     </div>
                 </div>
 
-                <?php if ($uploaded == false): ?>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Logo</label>
                     <div class="col-sm-8">
-                        <input type="file" required name="logo">
+                        <input type="file" required name="logo" required>
                         <?php if(isset($errors['logo'])): ?>
                             <div class="alert alert-danger" role="alert"><?php if (isset($fields['logo'])) print $errors['logo']; ?></div>
                         <?php endif; ?>
                         <p class="help-block">Last opp et bilde av logoen.</p>
                     </div>
                 </div>
-                <?php else: ?>
-                    <input type="hidden" required name="uploaded" value="<?php print $filename; ?>">
-                <?php endif; ?>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Om selskapet</label>
                     <div class="col-sm-8">
-                        <textarea type="text" required name="about" class="form-control"></textarea>
+                        <textarea type="text" name="about" class="form-control" required></textarea>
                     </div>
                 </div>
 
@@ -110,7 +103,7 @@
                     <label for="mark" class="col-sm-2 control-label">Uthev</label>
                     <div class="col-sm-4">
                         <input id="mark" type="checkbox" name="mark"> Ja, takk
-                        <p class="help-block">Uthevede annonser får flere klikk. Det koster bare <strong>100,-</strong> ekstra.</p>
+                        <p class="help-block">Uthevede annonser får flere klikk. Det koster <strong>250,-</strong> ekstra.</p>
                     </div>
                     <div class="col-sm-6">
                         <img src="/img/marked.jpg">
@@ -124,6 +117,5 @@
                         </button>
                     </div>
                 </div>
-
             </form>
         </div>

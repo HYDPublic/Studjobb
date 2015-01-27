@@ -49,35 +49,29 @@ class Board {
         if (!strstr($app->request->post('email'), '@'))
             $errors['email'] = 'Du må ha en gyldig e-post.';
 
-        if (strlen($app->request->post('title')) < 5
-        || strlen($app->request->post('title')) > 140)
-            $errors['title'] = 'Tittelen er for lang eller for kort.';
+        if (strlen($app->request->post('title') > 140))
+            $errors['title'] = 'Tittelen er for lang.';
 
         if (!$app->request->post('company'))
             $errors['company'] = 'Selskapet må ha et navn.';
 
-        if (!$app->request->post('uploaded')) {
-            $logo     = new \Upload\File('logo', $storage);
-            $filename = uniqid ();
-            $logo->setName($filename);
-            $logo->addValidations(array(
-                new \Upload\Validation\Mimetype(array(
-                    'image/png',
-                    'image/gif',
-                    'image/jpg'
-                ))
-            ));
+        $logo     = new \Upload\File('logo', $storage);
+        $filename = uniqid ();
+        $logo->setName($filename);
+        $logo->addValidations(array(
+            new \Upload\Validation\Mimetype(array(
+                'image/png',
+                'image/gif',
+                'image/jpg'
+            ))
+        ));
 
-            try {
-                $logo->upload();
-                $uploaded = true;
-            } catch (\Exception $e) {
-                $errors['logo'] = $logo->getErrors()[0];
-                $uploaded = false;
-            }
-        } else {
+        try {
+            $logo->upload();
             $uploaded = true;
-            $filename = $app->request->post('uploaded');
+        } catch (\Exception $e) {
+            $errors['logo'] = $logo->getErrors()[0];
+            $uploaded = false;
         }
 
         $app->render('static/header.php');
@@ -100,7 +94,6 @@ class Board {
             $app->render('submit/form.php', array (
                 'fields'   => $app->request->post(),
                 'errors'   => $errors,
-                'uploaded' => $uploaded,
                 'filename' => $filename
             ));
         }
