@@ -26,24 +26,22 @@ $(document).ready(function () {
 
     if ($.cookie('newsletter') !== 'seen') {
         setTimeout(function () {
+            /*
             $('#newsletter').modal('show');
             $.cookie('newsletter', 'seen', {
                 expires: 60,
                 path: '/'
             });
+            */
         }, 4000);
     }
 
-    var seconds = 0;
     $('#newsletter').on('show.bs.modal', function () {
-        setInterval(function () {
-            seconds++;
-        }, 1000);
         _paq.push(['trackEvent', 'Modal', 'Open']);
     });
 
     $('#newsletter').on('hidden.bs.modal', function () {
-        _paq.push(['trackEvent', 'Modal', 'Closed', 'Time', seconds]);
+        _paq.push(['trackEvent', 'Modal', 'Closed', 'Time']);
     });
 
     $('form#update-job').submit(function (event) {
