@@ -171,7 +171,7 @@ class Admin {
             'count'       => array_sum($membercount),
             'jobs'        => $jobs,
             'companies'   => $companies,
-            'crawledJobs' => $crawledJobs,
+            'crawledJobs' => $crawledJobs->reverse()->slice(0, 50),
             'piwikToken'  => $app->piwik['token'],
             'piwikSiteid' => $app->piwik['siteid']
         ));
