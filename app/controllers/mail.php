@@ -20,7 +20,14 @@ class Mail {
             
             // Is today a weekday? (Mon-Thu)
             if ($today > 0 /*Sun*/ && 5 /*Fri*/ > $today)
-                $dayToSend = $days[++$dayToSend]; 
+                
+                // Are we past the preffered hour?
+                if (date('H') > $hourToSend)
+                    $dayToSend = $days[++$dayToSend]; 
+            
+                // Send it today then
+                else
+                    $dayToSend = $days[$dayToSend];    
 
             // Then it must be sent on wednesday 
              else
@@ -56,39 +63,43 @@ class Mail {
         // Set execution limit to 0 and timezone.
         date_default_timezone_set('Europe/Oslo');
         set_time_limit(0);
-
-        $mail = new PHPMailer;
-        $mail->CharSet     = $app->mailconfig['smtp']['charset'];
-        $mail->isSMTP();
-        $mail->SMTPDebug   = $app->mailconfig['smtp']['smtpdebug'];
-        $mail->Debugoutput = $app->mailconfig['smtp']['debugoutput'];
-        $mail->Host        = $app->mailconfig['smtp']['host'];
-        $mail->Port        = $app->mailconfig['smtp']['port'];
-        $mail->SMTPSecure  = $app->mailconfig['smtp']['smtpsecure'];
-        $mail->SMTPAuth    = $app->mailconfig['smtp']['smtpauth'];
-        $mail->Username    = $app->mailconfig['smtp']['username'];
-        $mail->Password    = $app->mailconfig['smtp']['password'];
-        $mail->setFrom      ($app->mailconfig['smtp']['from'], $app->mailconfig['smtp']['fromName']);
-        $mail->addReplyTo   ($app->mailconfig['smtp']['from'], $app->mailconfig['smtp']['fromName']);
         
         /* Send all emails which has not been marked as sent */
         $queuedEmails = Email::where('sent', '=', 0)->get();
 
         foreach ($queuedEmails as $queuedEmail) {
-
+    
             // Marked the crawledjob as queued
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
             $crawledJob->status = 'Mailkø';
 
             if (strtotime($queuedEmail->send_at) <= time()) {
-        
+                $mail = new PHPMailer;
+                $mail->CharSet     = $app->mailconfig['smtp']['charset'];
+                $mail->isSMTP();
+                $mail->SMTPDebug   = $app->mailconfig['smtp']['smtpdebug'];
+                $mail->Debugoutput = $app->mailconfig['smtp']['debugoutput'];
+                $mail->Host        = $app->mailconfig['smtp']['host'];
+                $mail->Port        = $app->mailconfig['smtp']['port'];
+                $mail->SMTPSecure  = $app->mailconfig['smtp']['smtpsecure'];
+                $mail->SMTPAuth    = $app->mailconfig['smtp']['smtpauth'];
+                $mail->Username    = $app->mailconfig['smtp']['username'];
+                $mail->Password    = $app->mailconfig['smtp']['password'];
+                $mail->setFrom      ($app->mailconfig['smtp']['from'], $app->mailconfig['smtp']['fromName']);
+                $mail->addReplyTo   ($app->mailconfig['smtp']['from'], $app->mailconfig['smtp']['fromName']);
+
                 $mail->addAddress($queuedEmail->to, $queuedEmail->name);
                 $mail->Subject = $queuedEmail->subject;
                 $mail->Body    = $queuedEmail->body;
-
+                
+                /* Mail-error */
                 if (!$mail->send()) {
+                
                     echo "Mailer Error: " . $mail->ErrorInfo . "\n<br>";
+
+                /* Success: Email sent */
                 } else {
+                    
                     // Mark email as sent 
                     $queuedEmail->sent = true;
                     $queuedEmail->save();
@@ -101,6 +112,9 @@ class Mail {
             
             // Save the crawledjob
             $crawledJob->save(); 
+            
+            // Delete the object
+            $mail = null;
 
             // Sleep to avoid spam
             sleep(5);
