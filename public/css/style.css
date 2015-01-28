@@ -148,6 +148,10 @@ textarea#buffer {
     font-size:14px;
 }
 
+tr.mailkø {
+    background-color:#7EBECE;
+}
+
 tr.kontaktet {
     background-color:#FCF8E3;
 }
