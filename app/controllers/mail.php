@@ -75,6 +75,11 @@ class Mail {
         $queuedEmails = Email::where('sent', '=', 0)->get();
 
         foreach ($queuedEmails as $queuedEmail) {
+
+            // Marked the crawledjob as queued
+            $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
+            $crawledJob->status = 'Mailkø';
+
             if (strtotime($queuedEmail->send_at) <= time()) {
         
                 $mail->addAddress($queuedEmail->to, $queuedEmail->name);
@@ -84,16 +89,18 @@ class Mail {
                 if (!$mail->send()) {
                     echo "Mailer Error: " . $mail->ErrorInfo . "\n<br>";
                 } else {
-                    
+                    // Mark email as sent 
                     $queuedEmail->sent = true;
                     $queuedEmail->save();
-
-                    $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
+                    
+                    // Mark crawledjob as contacted
                     $crawledJob->status = 'Kontaktet';
                     $crawledJob->email  = $queuedEmail->to;
-                    $crawledJob->save();
                 }
             }   
+            
+            // Save the crawledjob
+            $crawledJob->save(); 
 
             // Sleep to avoid spam
             sleep(5);
