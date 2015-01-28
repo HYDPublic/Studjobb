@@ -17,7 +17,7 @@
                         <p>
                             <form method="post" action="/admin/skrapt/<?php print $crawledJob->id; ?>/status">
                                 <label>Status: </label>
-                                <?php $statuses = array ('Ingen', 'Kontaktet', 'Bestilt', 'Laget'); ?>
+                                <?php $statuses = array ('Ingen', 'Kontaktet', 'Bestilt', 'Laget', 'Mailkø'); ?>
                                 <select name="status">
                                     <?php foreach ($statuses as $status): ?>
                                     <option value="<?php print $status; ?>"
