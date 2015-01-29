@@ -72,7 +72,7 @@ class Mail {
         /* Send all emails which has not been marked as sent */
         $queuedEmails = Email::where('sent', '=', 0)->get();
 
-        foreach ($queuedEmails as $queuedEmail) {
+        foreach ($queuedEmails as $key => $queuedEmail) {
     
             // Marked the crawledjob as queued
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
@@ -122,7 +122,7 @@ class Mail {
             $mail = null;
 
             // Sleep to avoid spam
-            sleep(5);
+            sleep(2 * $key);
         }
     }
 }
