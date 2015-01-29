@@ -36,8 +36,13 @@ class Mail {
             // Generate the timestamp
             return strtotime($dayToSend . ' ' . $hourToSend . ':' . $minutesToSend); 
         };
+ 
+        /* Mark status as 'Mailkø' */
+        $crawledJob = CrawledJob::find($app->request->post('crawledJobId'));
+        $crawledJob->status = 'Mailkø';
+        $crawledJob->save();
 
-        /* Store */
+        /* Store in mailqueue */
         $email = new Email();
         $email->crawled_job_id = $app->request->post('crawledJobId'); 
         $email->to           = $app->request->post('to'); 
