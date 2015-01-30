@@ -73,7 +73,7 @@ class Mail {
         $queuedEmails = Email::where('sent', '=', 0)->get();
         
         /* Debugging output */
-        echo "Found " . count($queuedEmails) . " mails in queue \n\n";
+        echo "Found " . count($queuedEmails) . " mails in queue. Time is ". time() ." \n\n";
         
         foreach ($queuedEmails as $key => $queuedEmail) {
 
@@ -81,7 +81,7 @@ class Mail {
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
 
             // Logging
-            echo "$key: schedueled for send in " . time() - strtotime($queuedEmail->send_at)  . " seconds"; 
+            echo $key .": schedueled for send in " . time() - strtotime($queuedEmail->send_at)  . " seconds \n"; 
 
             if (strtotime($queuedEmail->send_at) <= time()) {
                 
