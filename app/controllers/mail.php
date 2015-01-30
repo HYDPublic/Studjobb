@@ -80,6 +80,9 @@ class Mail {
             // Marked the crawledjob as queued
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
 
+            // Logging
+            echo "$key: schedueled for send in " . time() - strtotime($queuedEmail->send_at)  . " seconds"; 
+
             if (strtotime($queuedEmail->send_at) <= time()) {
                 
                 // Logging
