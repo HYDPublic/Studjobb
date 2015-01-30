@@ -73,7 +73,7 @@ class Mail {
         $queuedEmails = Email::where('sent', '=', 0)->get();
         
         /* Debugging output */
-        echo "Found " . count($queuedEmails) . " mails in queue. Time is ". time() ." \n\n";
+        echo "Found " . count($queuedEmails) . " mails in queue. Time is ". date('m/d/Y h:i:s a') ." \n\n";
         
         foreach ($queuedEmails as $key => $queuedEmail) {
 
