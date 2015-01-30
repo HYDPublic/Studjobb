@@ -76,11 +76,15 @@ class Mail {
         echo "Found " . count($queuedEmails) . " mails in queue \n\n";
         
         foreach ($queuedEmails as $key => $queuedEmail) {
-    
+
             // Marked the crawledjob as queued
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
 
             if (strtotime($queuedEmail->send_at) <= time()) {
+                
+                // Logging
+                echo "Constructing object for the $key mail.\n";
+
                 $mail = new PHPMailer;
                 $mail->CharSet     = $app->mailconfig['smtp']['charset'];
                 $mail->isSMTP();
