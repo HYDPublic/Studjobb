@@ -71,12 +71,14 @@ class Mail {
         
         /* Send all emails which has not been marked as sent */
         $queuedEmails = Email::where('sent', '=', 0)->get();
-
+        
+        /* Debugging output */
+        echo "Found " . count($queuedEmails) . " mails in queue \n\n";
+        
         foreach ($queuedEmails as $key => $queuedEmail) {
     
             // Marked the crawledjob as queued
             $crawledJob = CrawledJob::find($queuedEmail->crawled_job_id);
-            $crawledJob->status = 'Mailkø';
 
             if (strtotime($queuedEmail->send_at) <= time()) {
                 $mail = new PHPMailer;
@@ -99,12 +101,14 @@ class Mail {
                 
                 /* Mail-error */
                 if (!$mail->send()) {
-                
                     echo "Mailer Error: " . $mail->ErrorInfo . "\n<br>";
 
                 /* Success: Email sent */
                 } else {
-                    
+                     
+                    // Success
+                    echo "Successfully delivered, apparently. \n";
+
                     // Mark email as sent 
                     $queuedEmail->sent = true;
                     $queuedEmail->save();
