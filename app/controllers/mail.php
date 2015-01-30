@@ -33,6 +33,10 @@ class Mail {
              else
                 $dayToSend = $days[3];
             
+            // If the email is schedueled for friday, send it in the morning
+            if ($dayToSend == 5)
+                $hourToSend = 10;
+
             // Generate the timestamp
             return strtotime($dayToSend . ' ' . $hourToSend . ':' . $minutesToSend); 
         };
