@@ -9,7 +9,7 @@
                     <h4>Medlemmer på nyhetsbrevet: <?php print $count; ?></h4>
                     </div>
                     <div class="col-md-6">
-                        <img src="http://kilde.michaelmcmillan.net/piwik/index.php?module=API&method=ImageGraph.get&idSite=<?php print $piwikSiteid; ?>&apiModule=VisitsSummary&apiAction=get&token_auth=<?php print $piwikToken; ?>&graphType=evolution&period=day&date=previous30&width=500&height=250'"
+                        <img src="http://piwik.littlist.no/index.php?module=API&method=ImageGraph.get&idSite=<?php print $piwikSiteid; ?>&apiModule=VisitsSummary&apiAction=get&token_auth=<?php print $piwikToken; ?>&graphType=evolution&period=day&date=previous30&width=500&height=250'"
 
                     </div>
                 </div>
