@@ -11,19 +11,20 @@
 
         <!-- Piwik -->
         <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(["trackPageView"]);
-        _paq.push(["enableLinkTracking"]);
-
-        (function() {
-          var u=(("https:" == document.location.protocol) ? "https" : "http") + "://kilde.michaelmcmillan.net/piwik/";
-          _paq.push(["setTrackerUrl", u+"piwik.php"]);
-          _paq.push(["setSiteId", "4"]);
-          var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-          g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-        })();
-      </script>
-      <!-- End Piwik Code -->
-
+          var _paq = _paq || [];
+          _paq.push(["setCookieDomain", "*.studjobb.no"]);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//piwik.littlist.no/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 4]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript><p><img src="//piwik.littlist.no/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+        <!-- End Piwik Code -->
+        
     </body>
 </html>
