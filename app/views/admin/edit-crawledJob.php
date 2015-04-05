@@ -45,6 +45,19 @@
                 <hr>
 
                 <div class="row">
+                    <h3>Send SMS</h3>
+                    <div class="col-md-10">
+                        <form id="sms" method="post" action="/admin/sms">
+                            <input type="text" name="telno" class="form-control" placeholder="Mobilnummer">
+                            <textarea class="form-control" name="smsbody"></textarea>
+                            <br/>
+                            <input type="hidden" name="crawledJobId" value="<?php print $crawledJob->id; ?>">
+                            <input type="submit" class="btn btn-custom-lighten" value="Send SMS">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
                     <h3>Send e-post</h3>
                     <div class="col-md-10">
                         <form id="mail" method="post" action="/admin/mail">

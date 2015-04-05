@@ -66,6 +66,11 @@ $app->post('/admin/mail', '\Admin::mustBeAuthenticated', '\Mail:enqueue');
 $app->get('/admin/mail/send', '\Mail:send');
 
 /**
+ * SMS 
+ */
+$app->post('/admin/sms', '\Admin::mustBeAuthenticated', '\SMS:send');
+
+/**
  * Feed
  */
 $app->get('/rss', '\Feed:latestJobs');
