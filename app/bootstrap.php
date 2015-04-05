@@ -14,6 +14,11 @@ $app = new \Slim\Slim();
 $app->config($configuration['slim']);
 
 /**
+ * Pushbullet 
+ */
+$app->pushbullet = new Pushbullet\Pushbullet($configuration['pushbullet']['key']);
+
+/**
  * Mailchimp
  */
 $app->mailchimp = new \Drewm\MailChimp($configuration['mailchimp']['key']);
