@@ -80,7 +80,7 @@ use Illuminate\Container\Container;
 $capsule = new Capsule;
 $capsule->addConnection($configuration['database']);
 
-$capsule->setEventDispatcher(new Dispatcher(new Container));
+//$capsule->setEventDispatcher(new Dispatcher(new Container));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
