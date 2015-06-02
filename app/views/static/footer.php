@@ -1,7 +1,7 @@
 
             <div id="footer" class="row">
                 <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-6">
-                    <p>&copy; Studjobb 2014 Org.nummer: 997452364</p>
+                    <p>&copy; Studjobb 2015 Org.nummer: 997452364</p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-6 text-right">
                     <b><a href="/om">Om Studjobb</a></b>
