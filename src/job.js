@@ -1,9 +1,9 @@
 'use strict';
 
-class wtf {
+class job {
     constructor () {
 
     }
 }
 
-//module.exports = hello;
+module.exports = job;
