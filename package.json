@@ -1,0 +1,29 @@
+{
+  "name": "studjobb",
+  "version": "0.0.1",
+  "description": "A job board for students.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelmcmillan/Studjobb.git"
+  },
+  "keywords": [
+    "job",
+    "job",
+    "board",
+    "university",
+    "work"
+  ],
+  "author": "Michael McMillan <email@michaelmcmillan.net> (http://michaelmcmillan.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaelmcmillan/Studjobb/issues"
+  },
+  "homepage": "https://github.com/michaelmcmillan/Studjobb#readme",
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}
