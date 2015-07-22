@@ -4,7 +4,7 @@
   "description": "A job board for students.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
