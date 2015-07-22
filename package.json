@@ -1,6 +1,6 @@
 {
   "name": "studjobb",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A job board for students.",
   "main": "index.js",
   "scripts": {
