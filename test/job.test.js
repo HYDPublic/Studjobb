@@ -1,5 +1,5 @@
 var assert = require('assert');
-var job    = require('../job.js');
+var job    = require('../src/job.js');
 
 describe('Job', function () {
     it('', function () {});
