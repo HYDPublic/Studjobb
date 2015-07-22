@@ -1,5 +1,5 @@
-BIN    = node_modules/.bin
-RUNNER = $(BIN)/_mocha
+BIN    = node_modules
+RUNNER = $(BIN)/mocha/bin/mocha
 TESTS  = $(shell find test -name "*.js")
 
 install: node_modules
@@ -8,6 +8,6 @@ node_modules: package.json
 	@npm install
 
 test: 
-	@$(RUNNER) $(TESTS) 
+	@node $(RUNNER) $(TESTS) --harmony 
 
 .PHONY: install test
