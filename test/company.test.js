@@ -21,4 +21,19 @@ describe('Company', function () {
             });
         });
     });
+
+    describe('Jobs', function () {
+
+        it('should by default have none', function () {
+            assert.equal(new Company().jobs.length, 0);
+        });
+
+        it('should be possible to add', function () {
+            var company = new Company();
+            var job     = new Job();
+            company.jobs = job;
+            assert.equal(company.jobs.length, 1);
+        });
+
+    });
 });
