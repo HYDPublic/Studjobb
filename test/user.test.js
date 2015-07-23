@@ -28,8 +28,16 @@ describe('User', function () {
             var user = new User();
             user.changePassword(undefined, 'fishyfishy');
             assert.throws(function () {
-                user.changePassword(undefined, 'fishyfishy');
+                user.changePassword('fishyfishy', 'fishyfishy');
             }, /same/);
+        });
+
+        it('can only be changed if old password is provided', function () {
+            var user = new User();
+            user.changePassword(undefined, 'fishyfishy');
+            assert.throws(function () {
+                user.changePassword(undefined, 'doggydoggy'); 
+            }, /provide the old/);
         });
 
         it('should be encrypted', function () {
