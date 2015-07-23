@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/michaelmcmillan/Studjobb#readme",
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "rewire": "^2.3.4"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.3"
   }
 }

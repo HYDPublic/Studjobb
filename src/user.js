@@ -1,5 +1,6 @@
 'use strict';
 var Person = require('./person.js');
+var bcrypt = require('bcrypt');
 
 class User extends Person {
     constructor () {

@@ -1,5 +1,6 @@
 var assert = require('assert');
-var User = require('../src/user.js');
+var rewire = require('rewire');
+var User   = rewire('../src/user.js');
 
 describe('User', function () {
     describe('Password', function () {
