@@ -4,6 +4,7 @@ class Job {
 
     constructor () {
         this._title = 'Mangler tittel.';
+        this._published = false;
         this._description = 'Mangler beskrivelse.';
         this._applicationDueDate = this.generateDateTwoWeeksFromNow();
     }
@@ -17,8 +18,20 @@ class Job {
         this._title = title;
     }
 
+    get published () {
+        return this._published;
+    }
+
+    set published (status) {
+        this._published = !!status; 
+    }
+
     get description () {
         return this._description;
+    }
+
+    set description (description) {
+        this._description = description;
     }
 
     get applicationDueDate () {

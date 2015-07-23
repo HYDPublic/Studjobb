@@ -61,9 +61,22 @@ describe('Job', function () {
         it('must have a default description', function () {
             assert.equal(typeof new Job().description, 'string');
         });
+        
+        it('should be possible to set it', function () {
+            var job = new Job();
+            job.description = 'Fantastisk bra jobb.';
+            assert.equal(job.description, 'Fantastisk bra jobb.');
+        });
 
-        xit('should be markdown compatible', function () {
+    });
 
+    describe('Publication date', function () {
+        
+        it('should be possible to set it', function () {
+            var job = new Job(); 
+            var now = new Date();
+            job.publicationDate = now;
+            assert.equal(job.publicationDate, now);
         });
     });
 });
