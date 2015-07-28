@@ -28,6 +28,7 @@
     "rewire": "^2.3.4"
   },
   "dependencies": {
+    "async": "^1.4.0",
     "bcrypt": "^0.8.3"
   }
 }
