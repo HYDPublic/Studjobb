@@ -1,3 +1,5 @@
+import re
+
 class TitleException(Exception):
     pass
 
@@ -13,13 +15,23 @@ class Job(object):
     @title.setter
     def title(self, title):
         formattedTitle = Job.formatTitle(title)
+        if Job.isValidTitle(formattedTitle):
+            self._title = formattedTitle
 
-        if len(formattedTitle) <= 5:
+    @staticmethod
+    def isValidTitle(title):
+
+        # Title length
+        lengthOfTitle = len(title)
+        if lengthOfTitle <= 5:
             raise TitleException('Title must be longer than 5 characters.')
-        elif len(formattedTitle) > 50:
+        elif lengthOfTitle > 50:
             raise TitleException('Title must be shorter than 50 characters.')
-
-        self._title = formattedTitle
+        # HTML tags 
+        elif re.match('<.*?>', title):
+            raise TitleException('Title seems to contain HTML-tags.')
+        else:
+            return True
 
     @staticmethod
     def formatTitle(title):

@@ -27,3 +27,12 @@ class TestJob(unittest.TestCase):
     def test_title_raises_error_when_title_is_too_long(self):
         tooLongTitle = "Javascript-programmer" * 10
         self.assertRaises(TitleException, Job, tooLongTitle)
+
+    def test_title_raises_error_when_title_contains_html(self):
+        titleWithHTML = "<b>Javascript-programmer</b>"
+        self.assertRaises(TitleException, Job, titleWithHTML)
+
+    def test_title_raises_error_when_title_contains_nested_html(self):
+        titleWithHTML = "<script<script>>Javascript-programmer"
+        self.assertRaises(TitleException, Job, titleWithHTML)
+
