@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest 
-
-from src.job.job import Job 
+from src.job.job   import Job 
 from src.job.title import TitleException 
 
 class TestJobTitle(unittest.TestCase):
