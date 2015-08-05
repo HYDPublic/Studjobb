@@ -23,7 +23,10 @@ class Job(object):
 
     @staticmethod
     def formatTitle(title):
-        title = title[0].title() + title[1:] 
-        return title \
-            .strip() \
+        firstLetterOfTitle = title[0]
+        restOfTitle        = title[1:]
+        titleCapitalized   = firstLetterOfTitle.title() + restOfTitle 
+
+        return titleCapitalized \
+            .strip()            \
             .replace('\n', ' ')
