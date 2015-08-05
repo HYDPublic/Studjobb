@@ -5,6 +5,14 @@ from src.job.title import TitleException
 
 class TestJobTitle(unittest.TestCase):
 
+    def test_title_in_constructor(self):
+        job = Job(title = "Javascript-programmer")
+        self.assertEqual(job.title, "Javascript-programmer")
+
+    def test_title_has_a_default_string(self):
+        job = Job()
+        self.assertEqual(job.title, "Mangler tittel")
+
     def test_title_capitalized(self):
         job = Job("javascript-programmer")
         self.assertEqual(job.title, "Javascript-programmer")
