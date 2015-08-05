@@ -2,7 +2,7 @@
 import unittest 
 
 from src.job.job import Job 
-from src.job.job import TitleException 
+from src.job.title import TitleException 
 
 class TestJobTitle(unittest.TestCase):
 

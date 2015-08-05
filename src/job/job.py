@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-import re
-import string
-
-class TitleException(Exception):
-    pass
+from title import Title 
 
 class Job(object):
 
@@ -16,44 +12,5 @@ class Job(object):
 
     @title.setter
     def title(self, title):
-        if Job.isValidTitle(title):
-            self._title = Job.formatTitle(title)
-
-    @staticmethod
-    def isValidTitle(title):
-        # Type must be string
-        if isinstance(title, str) == False:
-            raise TitleException('Title must be a string.')
-        
-        # Weird characters
-        validCharacters = "æøåÆØÅ" + string.printable
-        if all(validCharacter in validCharacters for validCharacter in title) == False:
-            raise TitleException('Title must only contain letters, digits and symbols.')
-
-        formattedTitle = Job.formatTitle(title)
-        # Title length
-        if len(title) <= 5:
-            raise TitleException('Title must be longer than 5 characters.')
-        elif len(title) > 50:
-            raise TitleException('Title must be shorter than 50 characters.')
-
-        # HTML tags 
-        if re.match('<.*?>', title):
-            raise TitleException('Title seems to contain HTML-tags.')
-        
-        return True 
-
-    @staticmethod
-    def formatTitle(title):
-        # Capitalize first letter only
-        firstLetterOfTitle = title[0]
-        restOfTitle        = title[1:]
-        title              = firstLetterOfTitle.title() + restOfTitle 
-
-        # Strip whitespace
-        title = title.strip()
-        
-        # Remove linebreaks
-        title = title.replace('\n', ' ')
-
-        return title
+        if Title.isValid(title):
+            self._title = Title.format(title)
