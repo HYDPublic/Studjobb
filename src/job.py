@@ -14,30 +14,39 @@ class Job(object):
 
     @title.setter
     def title(self, title):
-        formattedTitle = Job.formatTitle(title)
-        if Job.isValidTitle(formattedTitle):
-            self._title = formattedTitle
+        if Job.isValidTitle(title):
+            self._title = Job.formatTitle(title)
 
     @staticmethod
     def isValidTitle(title):
+        # Type must be string
+        if isinstance(title, str) == False:
+            raise TitleException('Title must be a string.')
+
         # Title length
-        lengthOfTitle = len(title)
-        if lengthOfTitle <= 5:
+        formattedTitle = Job.formatTitle(title)
+        if len(title) <= 5:
             raise TitleException('Title must be longer than 5 characters.')
-        elif lengthOfTitle > 50:
+        elif len(title) > 50:
             raise TitleException('Title must be shorter than 50 characters.')
+
         # HTML tags 
-        elif re.match('<.*?>', title):
+        if re.match('<.*?>', title):
             raise TitleException('Title seems to contain HTML-tags.')
-        else:
-            return True
+        
+        return True 
 
     @staticmethod
     def formatTitle(title):
+        # Capitalize first letter only
         firstLetterOfTitle = title[0]
         restOfTitle        = title[1:]
-        titleCapitalized   = firstLetterOfTitle.title() + restOfTitle 
+        title              = firstLetterOfTitle.title() + restOfTitle 
 
-        return titleCapitalized \
-            .strip()            \
-            .replace('\n', ' ')
+        # Strip whitespace
+        title = title.strip()
+        
+        # Remove linebreaks
+        title = title.replace('\n', ' ')
+
+        return title
