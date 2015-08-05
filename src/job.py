@@ -20,7 +20,6 @@ class Job(object):
 
     @staticmethod
     def isValidTitle(title):
-
         # Title length
         lengthOfTitle = len(title)
         if lengthOfTitle <= 5:

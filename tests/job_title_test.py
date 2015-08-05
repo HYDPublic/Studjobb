@@ -2,7 +2,7 @@ import unittest
 from src.job import Job 
 from src.job import TitleException 
 
-class TestJob(unittest.TestCase):
+class TestJobTitle(unittest.TestCase):
 
     def test_title_capitalized(self):
         job = Job("javascript-programmer")
