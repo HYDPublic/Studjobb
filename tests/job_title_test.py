@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest 
 
 from src.job import Job 
@@ -38,5 +39,15 @@ class TestJobTitle(unittest.TestCase):
         self.assertRaises(TitleException, Job, titleWithHTML)
 
     def test_title_raises_error_when_title_is_not_a_string(self):
-        notAString = object() 
-        self.assertRaises(TitleException, Job, notAString)
+        titleThatsNotAString = object() 
+        self.assertRaises(TitleException, Job, titleThatsNotAString)
+
+    def test_title_raises_error_when_title_contains_non_printable_characters(self):
+        titleWithWeirdCharacters = "ǝlʇᴉʇ pɹᴉǝʍ ɐ sᴉ sᴉɥʇ"
+        self.assertRaises(TitleException, Job, titleWithWeirdCharacters)
+
+    def test_title_with_scandinavian_characters(self):
+        titleWithScandinavianCharacters = "Javascript-programmer på ÆØÅ"
+        job = Job(titleWithScandinavianCharacters)
+        self.assertEqual(job.title, titleWithScandinavianCharacters)
+

@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 import re
+import string
 
 class TitleException(Exception):
     pass
@@ -22,9 +24,14 @@ class Job(object):
         # Type must be string
         if isinstance(title, str) == False:
             raise TitleException('Title must be a string.')
+        
+        # Weird characters
+        validCharacters = "æøåÆØÅ" + string.printable
+        if all(validCharacter in validCharacters for validCharacter in title) == False:
+            raise TitleException('Title must only contain letters, digits and symbols.')
 
-        # Title length
         formattedTitle = Job.formatTitle(title)
+        # Title length
         if len(title) <= 5:
             raise TitleException('Title must be longer than 5 characters.')
         elif len(title) > 50:
