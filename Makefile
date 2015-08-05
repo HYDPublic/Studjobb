@@ -1,13 +1,6 @@
-BIN    = node_modules
-RUNNER = $(BIN)/mocha/bin/mocha
-TESTS  = $(shell find test -name "*.js")
-
-install: node_modules
-
-node_modules: package.json
-	@npm install
+TESTS="*_test.py"
 
 test: 
-	@node $(RUNNER) $(TESTS) --harmony 
+	@python -B -m unittest discover -s tests -p $(TESTS)
 
-.PHONY: install test
+.PHONY: test
