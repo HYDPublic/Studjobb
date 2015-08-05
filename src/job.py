@@ -13,8 +13,12 @@ class Job(object):
     @title.setter
     def title(self, title):
         formattedTitle = Job.formatTitle(title)
-        if (len(formattedTitle) <= 5):
+
+        if len(formattedTitle) <= 5:
             raise TitleException('Title must be longer than 5 characters.')
+        elif len(formattedTitle) > 50:
+            raise TitleException('Title must be shorter than 50 characters.')
+
         self._title = formattedTitle
 
     @staticmethod

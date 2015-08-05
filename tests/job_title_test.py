@@ -16,11 +16,14 @@ class TestJob(unittest.TestCase):
         job = Job("Javascript-programmer at DNB")
         self.assertEqual(job.title, "Javascript-programmer at DNB")
         
-
     def test_title_removes_linebreaks(self):
         job = Job("Javascript-programmer\nWith angular experience!")
         self.assertEqual(job.title, "Javascript-programmer With angular experience!")
 
-    def test_title_must_be_longer_than_5_characters(self):
-        self.assertRaises(TitleException, Job, 'title')
+    def test_title_raises_error_when_title_is_too_short(self):
+        tooShortTitle = 'short'
+        self.assertRaises(TitleException, Job, tooShortTitle)
 
+    def test_title_raises_error_when_title_is_too_long(self):
+        tooLongTitle = "Javascript-programmer" * 10
+        self.assertRaises(TitleException, Job, tooLongTitle)
