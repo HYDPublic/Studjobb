@@ -1,4 +1,5 @@
 import unittest 
+
 from src.job import Job 
 from src.job import TitleException 
 
@@ -36,3 +37,6 @@ class TestJobTitle(unittest.TestCase):
         titleWithHTML = "<script<script>>Javascript-programmer"
         self.assertRaises(TitleException, Job, titleWithHTML)
 
+    def test_title_raises_error_when_title_is_not_a_string(self):
+        notAString = object() 
+        self.assertRaises(TitleException, Job, notAString)
