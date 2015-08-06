@@ -54,14 +54,14 @@ class Logo(object):
         imagedata = Logo.requestExternalImageOverHTTP(url)
         extension = Logo.getExtensionFromURL(url)
         pathToStoreLogoIn = Logo.generatePathForImage(extension) 
-        Logo.writeTo(pathToStoreLogoIn, imagedata)
-        return True
+        pathToWhereLogoIsStored = Logo.writeTo(pathToStoreLogoIn, imagedata)
+        return pathToWhereLogoIsStored
 
     @staticmethod
     def writeTo(path, imageData):
         with open(path, 'wb') as handle:
             handle.write(imageData)
-        return True
+        return path 
 
     @staticmethod
     def getExtensionFromURL(url):

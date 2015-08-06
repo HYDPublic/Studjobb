@@ -13,5 +13,9 @@ class Company(object):
 
     @logo.setter
     def logo(self, logoPath):
+
+        if Logo.isURL(logoPath):
+            logoPath = Logo.downloadFromURL(logoPath)
+
         if Logo.isValid(logoPath):
             self._logo = logoPath
