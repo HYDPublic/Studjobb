@@ -1,7 +1,8 @@
 TESTS="*_test.py"
+REQUIREMENTS="src/requirements.txt"
 
 install:
-	pip install -r ./requirements.txt
+	pip install -r $(REQUIREMENTS) 
 
 test: 
 	@python -B -m unittest discover -s tests -p $(TESTS)
