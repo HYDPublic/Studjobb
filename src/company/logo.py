@@ -1,12 +1,24 @@
 # -*- coding: utf-8 -*-
+import time
 import os
+import requests
+from urlparse import urlparse
 from dimensions import dimensions
 
 class LogoException(Exception):
     pass
 
 class Logo(object):
-    
+        
+    @staticmethod
+    def downloadFromURL(url):
+        requests.get(url)
+
+    @staticmethod
+    def isURL(logoPath):
+        url = urlparse(logoPath) 
+        return 'http' in url.scheme
+
     @staticmethod
     def doesNotExist(logoPath):
         return os.path.isfile(logoPath) == False
