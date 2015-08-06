@@ -2,7 +2,7 @@
 import unittest 
 import os
 from src.company.company import Company 
-from src.company.company import LogoException 
+from src.company.logo    import LogoException 
 
 class TestCompanyLogo(unittest.TestCase):
 
