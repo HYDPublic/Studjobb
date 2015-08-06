@@ -2,9 +2,6 @@
 import os 
 from logo import Logo
 
-class LogoException(Exception):
-    pass
-
 class Company(object):
 
     def __init__(self, one = None, logoPath = None):
