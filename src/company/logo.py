@@ -36,6 +36,7 @@ class Logo(object):
             return uniqueHash + '.' + extension
         else:
             return uniqueHash
+
     @staticmethod
     def requestExternalImageOverHTTP(url):
         response = requests.get(url, stream = True)

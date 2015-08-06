@@ -79,4 +79,3 @@ class TestCompanyLogo(unittest.TestCase):
         self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.png'), 'png')
         self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.gif'), 'gif')
         self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.jpg'), 'jpg')
-
