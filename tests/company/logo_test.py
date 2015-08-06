@@ -45,7 +45,7 @@ class TestCompanyLogo(unittest.TestCase):
     @mock.patch('src.company.logo.requests')
     def test_logo_calls_request_library_to_download_logo_from_url(self, mock_requests):
         urlToLogo = "http://localhost:1337/logo-over-http.png"
-        Logo.downloadFromURL(urlToLogo)
+        Logo.requestExternalImageOverHTTP(urlToLogo)
         mock_requests.get.assert_called_with(urlToLogo, stream=True)
 
     @mock.patch('src.company.logo.requests')
