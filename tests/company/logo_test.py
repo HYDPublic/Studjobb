@@ -46,4 +46,37 @@ class TestCompanyLogo(unittest.TestCase):
     def test_logo_calls_request_library_to_download_logo_from_url(self, mock_requests):
         urlToLogo = "http://localhost:1337/logo-over-http.png"
         Logo.downloadFromURL(urlToLogo)
-        mock_requests.get.assert_called_with(urlToLogo)
+        mock_requests.get.assert_called_with(urlToLogo, stream=True)
+
+    @mock.patch('src.company.logo.requests')
+    def test_logo_raises_error_if_requests_could_not_complete(self, mock_request):
+        class failedResponse:
+            def __init__(self):
+                self.ok = False 
+        mock_request.get.return_value = failedResponse()
+        self.assertRaisesRegexp(LogoException, 'download', Logo.downloadFromURL, "http://illegal-url.com")
+
+    @mock.patch('src.company.logo.SafeConfigParser')
+    def test_logo_generates_an_absolute_path_for_logo_based_on_config(self, mock_configParser):
+        mock_configParser().get.return_value = "/Users/user/store/logos/here/"
+        self.assertEqual("/Users/user/store/logos/here/" in Logo.generatePathForImage(), True)
+
+    def test_logo_generates_a_unique_filename(self):
+        firstFilename  = Logo.generateUniqueFilename()
+        secondFilename = Logo.generateUniqueFilename()
+        self.assertNotEqual(firstFilename, secondFilename)
+
+    def test_logo_generates_a_unique_filename_with_extension_if_provided(self):
+        filename = Logo.generateUniqueFilename('png')
+        self.assertEqual(filename.endswith('.png'), True)
+
+    @mock.patch('__builtin__.open')
+    def test_logo_gets_written_to_path(self, mock_open):
+        Logo.writeTo("/Users/user/store/logos/here/logo.png", "imagedata")
+        mock_open.assert_called_with("/Users/user/store/logos/here/logo.png", "wb")
+
+    def test_logo_can_determine_extension_from_url(self):
+        self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.png'), 'png')
+        self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.gif'), 'gif')
+        self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.jpg'), 'jpg')
+
