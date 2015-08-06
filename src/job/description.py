@@ -29,7 +29,7 @@ class Description(object):
     @staticmethod
     def isValid(description):
         if Description.hasIllegalHTMLTags(description):
-            raise DescriptionException("Beskrivelsen inneholder ulovlige HTML-elementer.")
+            raise DescriptionException("Description contains illegal html tags.")
         elif Description.hasTooManyWords(description):
-            raise DescriptionException("Beskrivelsen er for lang. Maks 1000 ord.")
+            raise DescriptionException("Description is too long.")
         return True
