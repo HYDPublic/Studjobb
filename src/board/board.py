@@ -2,24 +2,28 @@
 
 class Board(object):
 
-    sorters = {
+    def __init__(self, jobs = [], sortByAttribute = None, filterExpiredJobs = None):
+        self._jobs              = jobs
+        self._sortByAttribute   = sortByAttribute
+        self._filterExpiredJobs = filterExpiredJobs
+
+    supportedAttributesToSortOn = {
         'title':    lambda job: job.title,
         'due_date': lambda job: job.due_date,
     }
 
-    def __init__(self, jobs = [], sortBy = None):
-        self._sortBy = sortBy
-        self._jobs = jobs
-        pass
+    def sort(self, attributeToSortOn):
+        self._jobs.sort(key=Board.supportedAttributesToSortOn[attributeToSortOn])
+
+    def filterExpiredJobs(self):
+        self._jobs = filter(lambda job: job.expired == False, self._jobs)
 
     @property
     def jobs(self):
-
-        # Sort by criteria
-        if self._sortBy is not None and self._sortBy in Board.sorters:
-            self._jobs.sort(key=Board.sorters[self._sortBy])
-
-        # Filter out expired jobs
+        if self._sortByAttribute in Board.supportedAttributesToSortOn:
+            self.sort(self._sortByAttribute)
+        
+        if self._filterExpiredJobs is True:
+            self.filterExpiredJobs()
 
         return self._jobs 
-
