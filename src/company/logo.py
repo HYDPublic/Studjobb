@@ -13,7 +13,8 @@ class LogoException(Exception):
 class Logo(object):
 
     def __init__(self, path):
-        self.path = path
+        if path is not None:
+            self.path = path
 
     @property
     def url(self):

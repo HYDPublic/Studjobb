@@ -8,6 +8,10 @@ from src.company.logo    import Logo
 
 class TestCompanyLogo(unittest.TestCase):
 
+
+    def test_logo_needs_not_to_be_provided_at_all(self):
+        Company(logoPath = None)
+
     def test_logo_raises_error_if_file_does_not_exist(self):
         pathToLogo = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures', 'non-existent-logo.png'))
         self.assertRaisesRegexp(LogoException, 'not exist', Company, logoPath = pathToLogo)
