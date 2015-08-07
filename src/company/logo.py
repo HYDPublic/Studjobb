@@ -12,9 +12,39 @@ class LogoException(Exception):
 
 class Logo(object):
 
+    def __init__(self, path):
+        self.path = path
+
+    @property
+    def url(self):
+        return Logo.urlToLogosFromConfig() + self.filename 
+
+    @property
+    def filename(self):
+        head, tail = os.path.split(self._path) 
+        return tail
+
+    @property
+    def path(self):
+        return self._path
+
+    @path.setter
+    def path(self, path):
+        if Logo.isURL(path):
+            path = Logo.downloadFromURL(path)
+
+        if Logo.isValid(path):
+            self._path = path
+
     @staticmethod
     def configLocation():
          return os.path.abspath(os.path.join(__file__, '..', '..', '..', 'config'))
+
+    @staticmethod
+    def urlToLogosFromConfig():
+        config = SafeConfigParser()
+        config.read(Logo.configLocation())
+        return config.get("company_logo", "url")
 
     @staticmethod
     def pathToStoreFromConfig():

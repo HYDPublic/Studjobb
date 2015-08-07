@@ -4,7 +4,7 @@ from logo import Logo
 
 class Company(object):
 
-    def __init__(self, one = None, logoPath = None):
+    def __init__(self, logoPath = None):
         self.logo = logoPath
 
     @property
@@ -13,9 +13,4 @@ class Company(object):
 
     @logo.setter
     def logo(self, logoPath):
-
-        if Logo.isURL(logoPath):
-            logoPath = Logo.downloadFromURL(logoPath)
-
-        if Logo.isValid(logoPath):
-            self._logo = logoPath
+        self._logo = Logo(logoPath) 
