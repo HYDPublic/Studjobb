@@ -5,6 +5,10 @@ from src.person.email import EmailException
 
 class TestPersonEmail(unittest.TestCase):
 
+    def test_person_email_is_None_by_default(self):
+        person = Person()
+        self.assertEqual(person.email, None)
+
     def test_person_email_can_be_set(self):
         person = Person(email = "email@email.com")
         self.assertEqual(person.email, "email@email.com")

@@ -13,9 +13,11 @@ class Person(object):
 
     @property
     def email(self):
-        return self._email 
-
+        return self._email
+    
     @email.setter
     def email(self, email):
         if Email.isValid(email):
             self._email = email
+        else:
+            self._email = None
