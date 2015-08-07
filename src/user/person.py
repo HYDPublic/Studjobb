@@ -1,5 +1,4 @@
-class EmailException(Exception):
-    pass
+from src.user.email import Email
 
 class Person(object):
 
@@ -18,6 +17,5 @@ class Person(object):
 
     @email.setter
     def email(self, email):
-        if (email is not None) and ('@' not in email):
-            raise EmailException("Invalid email address.")
-        self._email = email
+        if Email.isValid(email):
+            self._email = email
