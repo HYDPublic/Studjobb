@@ -22,4 +22,3 @@ class TestBoard(unittest.TestCase):
         jobs = [Job(title="cccccc"), Job(title="bbbbbb"), Job(title="aaaaaa")]
         board = Board(jobs = jobs, sortBy = "non_existent_attribute")
         self.assertEqual(board.jobs[0].title, "Cccccc")
-

@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
+import datetime
 from title import Title 
 from description import Description 
 
 class Job(object):
 
-    def __init__(self, title = None, description = None):
+    def __init__(self, title = None, description = None, due_date = None):
         self.title       = title       or "Mangler tittel"
         self.description = description or "Mangler beskrivelse"
+        self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
+
+    @property
+    def due_date(self):
+        return self._due_date
 
     @property
     def title(self):
@@ -25,3 +31,15 @@ class Job(object):
     def description(self, description):
         if Description.isValid(description):
             self._description = description
+
+    @due_date.setter
+    def due_date(self, due_date):
+        self._due_date = due_date 
+
+    @staticmethod
+    def dateToday():
+        return datetime.date.today()
+
+    @staticmethod
+    def dateThirtyDaysFromToday():
+        return Job.dateToday() + datetime.timedelta(days=30)
