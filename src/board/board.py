@@ -14,8 +14,12 @@ class Board(object):
 
     @property
     def jobs(self):
+
+        # Sort by criteria
         if self._sortBy is not None and self._sortBy in Board.sorters:
             self._jobs.sort(key=Board.sorters[self._sortBy])
+
+        # Filter out expired jobs
 
         return self._jobs 
 
