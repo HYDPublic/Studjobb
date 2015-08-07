@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest 
-from src.user.person import Person 
-from src.user.email import EmailException 
+from src.person.person import Person 
+from src.person.email import EmailException 
 
 class TestPersonEmail(unittest.TestCase):
 

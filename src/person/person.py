@@ -1,4 +1,4 @@
-from src.user.email import Email
+from src.person.email import Email
 
 class Person(object):
 

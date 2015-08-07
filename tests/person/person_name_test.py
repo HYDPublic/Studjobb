@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest 
-from src.user.person import Person 
+from src.person.person import Person 
 
 class TestPersonName(unittest.TestCase):
 
