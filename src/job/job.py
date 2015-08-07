@@ -11,6 +11,10 @@ class Job(object):
         self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
 
     @property
+    def expired(self):
+        return Job.dateToday() > self.due_date 
+
+    @property
     def due_date(self):
         return self._due_date
 
