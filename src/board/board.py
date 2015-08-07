@@ -2,7 +2,7 @@
 
 class Board(object):
 
-    def __init__(self, jobs = [], sortByAttribute = None, filterExpiredJobs = None):
+    def __init__(self, jobs = [], sortByAttribute = None, filterExpiredJobs = True):
         self._jobs              = jobs
         self._sortByAttribute   = sortByAttribute
         self._filterExpiredJobs = filterExpiredJobs
