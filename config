@@ -1,5 +1,5 @@
 [company_logo]
-location = assets/logos/
+location = web/assets/logos/
 
 [webserver]
 domain = studjobb.no
