@@ -7,4 +7,7 @@ install:
 test: 
 	@python -B -m unittest discover -s tests -p $(TESTS)
 
-.PHONY: test install
+serve:
+	@python src/webserver/main.py
+
+.PHONY: test install serve
