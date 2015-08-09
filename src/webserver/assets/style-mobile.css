@@ -1,0 +1,36 @@
+
+/* Header */ 
+#header {
+    height: 125px;
+}
+
+/* Container */
+#container {
+    width: 85%;
+}
+
+/* Weclome */
+#welcome > p:last-child {
+    display: none;
+}
+
+/* Search */
+#search > input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+}
+
+#search > .button {
+    display: none; 
+}
+
+/* Entry */
+.entry .company {
+    min-width: 50px;
+}
+
+.entry .due_date {
+    display: none;
+}
