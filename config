@@ -1,5 +1,12 @@
 [company_logo]
-location = web/assets/logos/
+location = src/webserver/assets/logos/
 
 [webserver]
-domain = studjobb.no
+domain   = studjobb.no
+port     = 5000
+
+[database]
+host     = 127.0.0.1
+user     = root
+password =  
+name     = studjobb_rewrite
