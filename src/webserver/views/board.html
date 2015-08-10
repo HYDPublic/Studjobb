@@ -27,7 +27,7 @@
                 <ul>
                     {% for job in jobs %}
                     <li class="entry">
-                        <a href="#">
+                        <a href="/stilling/{{ job.id }}">
                             <span class="company">{{ job.company.name }}</span>
                             <span class="job">{{ job.title }}</span>
                             <span class="due_date">{{ job.human_readable_due_date }}</span>

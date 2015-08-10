@@ -12,6 +12,10 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    font-size: 18px;
+}
+
 #header {
     margin-bottom: 25px;
     width: 100%;
@@ -50,9 +54,12 @@ h1 {
     width: 33.333%; 
 }
 
-.button {
+#search > a.button {
     float: right;
     width: 33.333%;
+}
+
+.button {
     padding: 10px 12px;
     text-decoration: none;
     text-align: center;
@@ -98,4 +105,62 @@ h1 {
 
 .entry .due_date {
     float: right;
+}
+
+/* Job */
+p.back {
+    margin-bottom: 25px;
+}
+
+p.back > a {
+    color: #000;
+    text-decoration: none;
+}
+
+p.back > a:hover {
+    text-decoration: underline;
+}
+
+#job > #about {
+    display: inline-block;
+    width: 66.666%;
+}
+
+#job > #about > h1.title {
+    margin-bottom: 25px;
+}
+
+#job > #about > p {
+    margin-bottom: 25px;
+}
+
+#job > #meta {
+    display: inline-block;
+    width: 33.333%;
+    float: right;
+    background-color:#efefef;
+}
+
+#meta > div {
+    padding: 10px;
+}
+
+#company > img.logo {
+    width: 100%;
+    margin-bottom:10px;
+}
+
+#apply > a.button {
+    width: 75%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 25px;
+}
+
+#apply > ul {
+    list-style-type: none;
+}
+
+#apply > ul > li > strong {
 }

@@ -20,6 +20,11 @@ def board():
     board.filterExpiredJobs()
     return render_template('board.html', jobs = board.jobs) 
 
+@app.route('/stilling/<int:id>')
+def job(id):
+    job = job_repository.find(id)
+    return render_template('job.html', job = job) 
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
