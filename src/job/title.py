@@ -30,16 +30,16 @@ class Title(object):
 
     @staticmethod
     def isValid(title):
-        if Title.hasInvalidType(title):
-            raise TitleException('Title must be a string.')
-        elif Title.hasTooFewCharacters(Title.format(title)):
+#        if Title.hasInvalidType(title):
+#            raise TitleException('Title must be a string.')
+        if Title.hasTooFewCharacters(Title.format(title)):
             raise TitleException('Title must be longer than 5 characters.')
         elif Title.hasTooManyCharacters(Title.format(title)):
             raise TitleException('Title must be shorther than 50 characters.')
         elif Title.hasHTMLTags(title):
             raise TitleException('Title seems to contain HTML-tags.')
-        elif Title.hasInvalidCharacters(title):
-            raise TitleException('Title must only contain letters, digits and symbols.')
+#        elif Title.hasInvalidCharacters(title):
+#            raise TitleException('Title must only contain letters, digits and symbols.')
         else:
             return True
 
