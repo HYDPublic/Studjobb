@@ -5,11 +5,12 @@ from description import Description
 
 class Job(object):
 
-    def __init__(self, id = None, title = None, description = None, due_date = None):
+    def __init__(self, id = None, title = None, description = None, due_date = None, company = None):
         self.id          = None
         self.title       = title       or "Mangler tittel"
         self.description = description or "Mangler beskrivelse"
         self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
+        self.company     = company
 
     @property
     def expired(self):
@@ -18,6 +19,10 @@ class Job(object):
     @property
     def due_date(self):
         return self._due_date
+
+    @property
+    def company(self):
+        return self._company
 
     @property
     def title(self):
@@ -40,6 +45,10 @@ class Job(object):
     @due_date.setter
     def due_date(self, due_date):
         self._due_date = due_date 
+
+    @company.setter
+    def company(self, company):
+        self._company = company 
 
     @property
     def human_readable_due_date(self):
