@@ -1,5 +1,6 @@
 [company_logo]
-location = src/webserver/assets/logos/
+location = /Users/michaelmcmillan/Prosjekter/Studjobb/src/webserver/assets/logos
+url = assets/logos/
 
 [webserver]
 domain   = studjobb.no
