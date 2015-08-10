@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 import sys
-sys.path.append('/Users/michaelmcmillan/Prosjekter/Studjobb')
+import os
+# Needs fixing:
+sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), os.pardir))
+
 from flask import Flask
 from flask import render_template
+from flask import request
+
 from src.database.engine import database
 from src.database.job_repository import JobRepository
 from src.database.board_repository import BoardRepository
@@ -25,6 +30,11 @@ def board():
 def job(id):
     job = job_repository.find(id)
     return render_template('job.html', job = job) 
+
+@app.route('/search')
+def search():
+    query = request.args.get('q', '')
+    return query
 
 @app.errorhandler(404)
 def page_not_found(e):
