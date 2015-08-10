@@ -17,6 +17,7 @@ board_repository = BoardRepository(database)
 @app.route('/')
 def board():
     board = board_repository.find()
+    board.filterExpiredJobs()
     return render_template('board.html', jobs = board.jobs) 
 
 @app.errorhandler(404)
