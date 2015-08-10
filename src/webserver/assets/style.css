@@ -25,7 +25,7 @@ h2 {
     background-size: cover;
 }
 
-#container {
+#container, #footer {
     margin-right: auto;
     margin-left: auto;
     width: 600px;
@@ -162,5 +162,10 @@ p.back > a:hover {
     list-style-type: none;
 }
 
-#apply > ul > li > strong {
+/* Footer */
+#footer {
+    font-size:14px;
+    color: #777;
+    margin-top: 75px;
 }
+
