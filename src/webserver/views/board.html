@@ -25,6 +25,16 @@
             <div id="board">
                 <h1>Data & IT</h1>
                 <ul>
+                    {% for job in jobs %}
+                    <li class="entry">
+                        <a href="#">
+                            <span class="company">DNB</span>
+                            <span class="job">{{ job.title }}</span>
+                            <span class="due_date">{{ job.due_date }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+
                     <li class="entry">
                         <a href="#">
                             <span class="company">DNB</span>
