@@ -41,6 +41,18 @@ class Job(object):
     def due_date(self, due_date):
         self._due_date = due_date 
 
+    @property
+    def human_readable_due_date(self):
+        human_readable_months = [
+            'Januar', 'Februar', 'Marsj', 'April',
+            'Mai', 'Juni', 'Juli', 'August',
+            'September', 'Oktober', 'November', 'Desember'
+        ]
+        month = human_readable_months[self._due_date.month - 1]
+        month_slug = month[:3]
+        month_and_day = '%s %d' % (month_slug, self._due_date.day)
+        return month_and_day
+
     @staticmethod
     def dateToday():
         return datetime.date.today()
