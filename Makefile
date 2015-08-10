@@ -1,5 +1,5 @@
 TESTS="*_test.py"
-REQUIREMENTS="src/requirements.txt"
+REQUIREMENTS="requirements.txt"
 
 install:
 	pip install -r $(REQUIREMENTS) 
