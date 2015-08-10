@@ -6,7 +6,7 @@ from description import Description
 class Job(object):
 
     def __init__(self, id = None, title = None, description = None, due_date = None, company = None):
-        self.id          = None
+        self.id          = id 
         self.title       = title       or "Mangler tittel"
         self.description = description or "Mangler beskrivelse"
         self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
