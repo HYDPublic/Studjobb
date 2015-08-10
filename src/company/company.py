@@ -4,9 +4,9 @@ from name import Name
 
 class Company(object):
 
-    def __init__(self, name = None, logoPath = None):
+    def __init__(self, name = None, logo = None):
         self.name = name or 'Mangler navn'
-        self.logo = logoPath
+        self.logo = logo
 
     @property
     def name(self):
@@ -17,8 +17,8 @@ class Company(object):
         return self._logo
 
     @logo.setter
-    def logo(self, logoPath):
-        self._logo = Logo(logoPath) 
+    def logo(self, logo):
+        self._logo = Logo(logo) 
 
     @name.setter
     def name(self, name):

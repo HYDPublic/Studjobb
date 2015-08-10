@@ -12,7 +12,13 @@ class JobRepository(object):
         result = self._database.execute('select * from %s where id = %d' % (self._table, id))
         row = result.fetchone()
         company = self._companyRepository.find(row.company_id)
-        job = Job(id = row.id, title = row.title, description = row.description, due_date = row.due_date, company = company)
+        job = Job(
+            id = row.id,
+            title = row.title,
+            description = row.description,
+            due_date = row.due_date,
+            company = company,
+        )
         return job
 
     def findAll(self):
@@ -20,7 +26,14 @@ class JobRepository(object):
         jobs = []
         for row in result:
             company = self._companyRepository.find(row.company_id)
-            jobs.append(Job(id = row.id, title = row.title, description = row.description, due_date = row.due_date, company = company))
+            job = Job(
+                id = row.id,
+                title = row.title,
+                description = row.description,
+                due_date = row.due_date,
+                company = company,
+            )
+            jobs.append(job)
         return jobs
 
     def save(self, job):
