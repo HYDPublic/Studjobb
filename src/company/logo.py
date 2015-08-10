@@ -34,6 +34,8 @@ class Logo(object):
         if Logo.isURL(path):
             path = Logo.downloadFromURL(path)
 
+        path = os.path.abspath(os.path.join(self.pathToStore(), path))
+
         if Logo.isValid(path):
             self._path = path
 
@@ -48,14 +50,14 @@ class Logo(object):
         return config.get("company_logo", "url")
 
     @staticmethod
-    def pathToStoreFromConfig():
+    def pathToStore():
         config = SafeConfigParser()
         config.read(Logo.configLocation())
         return config.get("company_logo", "location")
         
     @staticmethod
     def generatePathForImage(extension = None):
-        pathConfigSaysToStoreLogosIn = Logo.pathToStoreFromConfig()
+        pathConfigSaysToStoreLogosIn = Logo.pathToStore()
         uniqueFilenameForLogo = Logo.generateUniqueFilename(extension)
         pathToStoreLogoIn = os.path.abspath(os.path.join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
         return pathToStoreLogoIn
@@ -121,7 +123,7 @@ class Logo(object):
     @staticmethod
     def isValid(logoPath):
         if Logo.doesNotExist(logoPath):
-            raise LogoException('Logo does not exist.')
+            raise LogoException('Logo does not exist.', logoPath)
         
         try:
             # Try to parse image dimensions
