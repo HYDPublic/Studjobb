@@ -9,7 +9,7 @@ class Title(object):
     
     @staticmethod
     def hasInvalidType(title):
-        return isinstance(title, str) == False
+        return isinstance(title, basestring) == False
     
     @staticmethod
     def hasInvalidCharacters(title):
@@ -30,8 +30,8 @@ class Title(object):
 
     @staticmethod
     def isValid(title):
-#        if Title.hasInvalidType(title):
-#            raise TitleException('Title must be a string.')
+        if Title.hasInvalidType(title):
+            raise TitleException('Title must be a string.')
         if Title.hasTooFewCharacters(Title.format(title)):
             raise TitleException('Title must be longer than 5 characters.')
         elif Title.hasTooManyCharacters(Title.format(title)):

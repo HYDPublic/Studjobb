@@ -45,7 +45,6 @@ class TestJobTitle(unittest.TestCase):
         titleWithHTML = "<script<script>>Javascript-programmer"
         self.assertRaises(TitleException, Job, title = titleWithHTML)
 
-    @unittest.skip('Not compatible with MySQL')
     def test_title_raises_error_when_title_is_not_a_string(self):
         titleThatsNotAString = object() 
         self.assertRaises(TitleException, Job, title = titleThatsNotAString)
