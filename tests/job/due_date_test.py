@@ -37,3 +37,15 @@ class TestJobDueDate(unittest.TestCase):
     def test_due_date_works_on_leap_year(self, mock_date_today):
         mock_date_today.return_value = datetime.date(2016, 2, 29)
         self.assertEqual(Job().due_date, datetime.date(2016, 3, 30))
+
+    @mock.patch("src.job.job.Job.dateToday")
+    def test_days_till_due_date_is_one_when_one_day_till_due_date(self, mock_date_today):
+        mock_date_today.return_value = datetime.date(2016, 1, 1)
+        job = Job(due_date = datetime.date(2016, 1, 2))
+        self.assertEqual(job.remaining_days_till_due_date, 1)
+
+    @mock.patch("src.job.job.Job.dateToday")
+    def test_days_till_due_date_is_false_when_job_has_expired(self, mock_date_today):
+        mock_date_today.return_value = datetime.date(2016, 1, 2)
+        job = Job(due_date = datetime.date(2016, 1, 1))
+        self.assertEqual(job.remaining_days_till_due_date, False)

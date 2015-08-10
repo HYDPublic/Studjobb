@@ -51,6 +51,13 @@ class Job(object):
         self._company = company 
 
     @property
+    def remaining_days_till_due_date(self):
+        if self.expired:
+            return False
+        else:
+            return (self._due_date - self.dateToday()).days
+
+    @property
     def human_readable_due_date(self):
         human_readable_months = [
             'Januar', 'Februar', 'Marsj', 'April',
