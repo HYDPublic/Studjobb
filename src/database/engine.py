@@ -1,3 +1,3 @@
-import sqlalchemy
+from sqlalchemy import create_engine
 
-engine = create_engine('mysql://scott:tiger@localhost/foo', echo=True)
+database = create_engine('mysql://root@localhost/studjobb_rewrite')

@@ -4,3 +4,4 @@ mock           == 1.0.1
 requests       == 2.0.0
 flask          == 0.10.1
 sqlalchemy     == 1.0.8
+mysql-python   == 1.2.5
