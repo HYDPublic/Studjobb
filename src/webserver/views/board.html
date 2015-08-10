@@ -28,27 +28,12 @@
                     {% for job in jobs %}
                     <li class="entry">
                         <a href="#">
-                            <span class="company">DNB</span>
+                            <span class="company">{{ job.company.name }}</span>
                             <span class="job">{{ job.title }}</span>
                             <span class="due_date">{{ job.human_readable_due_date }}</span>
                         </a>
                     </li>
                     {% endfor %}
-
-                    <li class="entry">
-                        <a href="#">
-                            <span class="company">DNB</span>
-                            <span class="job">Codemonkey til frontend søkes!</span>
-                            <span class="due_date">Aug 8</span>
-                        </a>
-                    </li>
-                    <li class="entry">
-                        <a href="#">
-                            <span class="company">Visma</span>
-                            <span class="job">Javascript-utvikler med TDD-erfaring søkes!</span>
-                            <span class="due_date">Aug 9</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
