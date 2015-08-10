@@ -8,13 +8,7 @@
             <p class="back"><a href="/">← Tilbake til forsiden</a></p>
 
             <div id="job">
-                <div id="about">
-                    <h1 class="title">{{ job.title }}</h1>
-
-                    <h2>Om {{ job.company.name }}</h2>
-                    {{ job.description }}
-                </div><!--
-            !--><div id="meta">
+                <div id="meta">
                     <div id="company">
                         <img class="logo" src="/{{ job.company.logo.url }}">
                     </div>
@@ -28,6 +22,12 @@
                         </ul>
                     </div>
                 </div>
+            </div><!--
+         --><div id="about">
+                <h1 class="title">{{ job.title }}</h1>
+
+                <h2>Om {{ job.company.name }}</h2>
+                {{ job.description }}
             </div>
         </div>
 {% include "footer.html" %}
