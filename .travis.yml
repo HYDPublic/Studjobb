@@ -14,6 +14,6 @@ script:
 deploy:
     skip_cleanup: true
     provider: script
-    script: scripts/deploy.sh
+    script: scripts/deploy.sh 
     on:
         branch: python_rewrite
