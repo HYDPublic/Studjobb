@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 sys.path.append('/Users/michaelmcmillan/Prosjekter/Studjobb')
 from flask import Flask
