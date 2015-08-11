@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Rediger {{ job.title }}{% endblock %}
+{% block container %}
+            <p class="back"><a href="/admin">← Tilbake til administrasjon</a></p>
+
+            <div id="about">
+                <input type="text" value="{{ job.title }}" />
+                <textarea>
+                {{ job.description|safe }}
+                </textarea>
+            </div>
+
+{% endblock %}
