@@ -8,6 +8,15 @@ body {
     line-height: 1.5;
 }
 
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 h1 {
     font-size: 24px;
 }
@@ -29,6 +38,14 @@ h2 {
     margin-right: auto;
     margin-left: auto;
     width: 600px;
+}
+
+.notice {
+    float: left;
+}
+
+.about-us {
+    float: right;
 }
 
 /* Welcome */
@@ -68,8 +85,9 @@ h2 {
     color: black;
 }
 
-.button:hover {
-    text-decoration: underline;
+/* About */
+#about.us > * {
+    margin-bottom: 10px;
 }
 
 /* Board */

@@ -31,6 +31,10 @@ def job(id):
     job = job_repository.find(id)
     return render_template('job.html', job = job) 
 
+@app.route('/om-oss')
+def about():
+    return render_template('about.html') 
+
 @app.route('/search')
 def search():
     query = request.args.get('q', '')
