@@ -1,10 +1,6 @@
-{% include "header.html" %}
-        <a href="/">
-            <div id="header">
-
-            </div>
-        </a>
-        <div id="container">
+{% extends "base.html" %}
+{% block title %}{{ job.title }}{% endblock %}
+{% block container %}
             <p class="back"><a href="/">← Tilbake til forsiden</a></p>
 
             <div id="job">
@@ -29,5 +25,4 @@
                 <h2>Om {{ job.company.name }}</h2>
                 {{ job.description }}
             </div>
-        </div>
-{% include "footer.html" %}
+{% endblock %}

@@ -1,10 +1,6 @@
-{% include "header.html" %}
-        <a href="/">
-            <div id="header">
-
-            </div>
-        </a>
-        <div id="container">
+{% extends "base.html" %}
+{% block title %}Nyeste jobber{% endblock %}
+{% block container %}
             <div id="welcome">
                 <p>
                     <strong>Studjobb</strong> er for studenter ved NTNU
@@ -36,5 +32,4 @@
                     {% endfor %}
                 </ul>
             </div>
-        </div>
-{% include "footer.html" %}
+{% endblock %}
