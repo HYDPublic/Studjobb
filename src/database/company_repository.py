@@ -10,7 +10,6 @@ class CompanyRepository(object):
         result = self._database.execute('select * from %s where id = %d' % (self._table, id))
         row = result.fetchone()
         company = Company(name = row.name, logo = row.logo.encode('utf8'))
-        print company.logo.url
         return company 
 
     def findAll(self):
