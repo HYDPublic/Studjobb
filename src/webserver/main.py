@@ -51,7 +51,7 @@ def save_job(id):
     job = job_repository.find(id)
     job.title = request.form['title']
     job.description = request.form['description']
-    job_repository.save(job) 
+    job = job_repository.save(job) 
     return render_template('edit-job.html', job = job) 
 
 @app.route('/')

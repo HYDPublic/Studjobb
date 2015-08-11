@@ -1,3 +1,4 @@
+from sqlalchemy.sql     import text
 from src.job.job        import Job
 from company_repository import CompanyRepository 
 
@@ -41,7 +42,12 @@ class JobRepository(object):
         return jobs
 
     def save(self, job):
-        result = self._database.execute('update %s set title = "%s", description = "%s" where id = %d' % (self._table, job.title, job.description, job.id))
+        result = self._database.execute(text('update jobs set title = :title, description = :description where id = :id'),
+            table       = self._table,
+            title       = job.title,
+            description = job.description,
+            id          = job.id
+        )
         return self.find(job.id) 
 
     def remove(self, job):
