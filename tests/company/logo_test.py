@@ -88,9 +88,11 @@ class TestCompanyLogo(unittest.TestCase):
         self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.gif'), 'gif')
         self.assertEqual(Logo.getExtensionFromURL('http://domain.com/logo.jpg'), 'jpg')
 
+    @mock.patch('src.company.logo.Logo.pathToStore')
     @mock.patch('src.company.logo.Logo.urlToLogosFromConfig')
     @mock.patch('src.company.logo.Logo.isValid')
-    def test_logo_has_property_for_where_to_reach_stored_logo_over_http(self, mock_isValid, mock_urlToLogosFromConfig):
+    def test_logo_has_property_for_where_to_reach_stored_logo_over_http(self, mock_isValid, mock_urlToLogosFromConfig, mock_pathToStore):
+        mock_pathToStore.return_value = ""
         mock_isValid.return_value = True 
         mock_urlToLogosFromConfig.return_value = "http://website.no/logos/" 
         logoURL = Logo(path = "/Users/user/store/logos/here/wee.png").url
