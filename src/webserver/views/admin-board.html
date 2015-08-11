@@ -1,14 +1,11 @@
-            <p class="back"><a href="/">← Tilbake til forsiden</a></p>
 
             <div id="board">
                 <ul>
                     {% for job in jobs %}
                     <li class="entry">
-                        <a href="/admin/stilling/{{ job.id }}">
-                            <span class="company">{{ job.company.name }}</span>
-                            <span class="job">{{ job.title }}</span>
+                        <span class="company"><a href="/admin/selskap/{{ job.company.id }}">{{ job.company.name }}</a></span>
+                            <span class="job"><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></span>
                             <span class="due_date">{{ job.human_readable_due_date }}</span>
-                        </a>
                     </li>
                     {% endfor %}
                 </ul>
