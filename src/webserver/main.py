@@ -31,7 +31,7 @@ def job(id):
     job = job_repository.find(id)
     return render_template('job.html', job = job) 
 
-@app.route('/om-oss')
+@app.route('/om')
 def about():
     return render_template('about.html') 
 
