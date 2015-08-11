@@ -23,6 +23,6 @@
                 <h1 class="title">{{ job.title }}</h1>
 
                 <h2>Om {{ job.company.name }}</h2>
-                {{ job.description }}
+                {{ job.description|safe }}
             </div>
 {% endblock %}
