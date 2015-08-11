@@ -3,3 +3,4 @@ npm-debug.log
 assets/logos/*
 *.swp
 *.pyc
+config
