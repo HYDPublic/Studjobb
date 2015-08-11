@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask.ext.httpauth import HTTPBasicAuth
 
 from src.database.engine import database
 from src.database.job_repository import JobRepository
@@ -14,14 +15,28 @@ from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
     
 # Configuration
-app = Flask(__name__, template_folder = 'views', static_folder = 'assets')
+app  = Flask(__name__, template_folder = 'views', static_folder = 'assets')
+auth = HTTPBasicAuth()
 
 # Repositories
 job_repository = JobRepository(database)
 board_repository = BoardRepository(database)
 user_repository = UserRepository(database)
 
+# Authentication
+@auth.verify_password
+def verify_pw(email, password):
+    user = user_repository.find(email)
+    if user is None:
+        return False
+    return user.checkCredentials(password)
+
 # Routes
+@app.route('/admin')
+@auth.login_required
+def admin():
+    return render_template('admin.html') 
+
 @app.route('/')
 def board():
     board = board_repository.find()
@@ -33,17 +48,16 @@ def job(id):
     job = job_repository.find(id)
     return render_template('job.html', job = job) 
 
-@app.route('/innlogging', methods = ['GET'])
-def login():
-    return render_template('login.html') 
+#@app.route('/innlogging', methods = ['GET'])
+#jdef login():
+#    return render_template('login.html') 
+
 
 @app.route('/innlogging', methods = ['POST'])
 def authenticate():
     email = request.form['email']
     password = request.form['password']
 
-    if user_repository.find(email).checkCredentials(password):
-        print "authenticated"
 
     return render_template('login.html') 
 
