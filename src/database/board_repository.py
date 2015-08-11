@@ -9,7 +9,7 @@ class BoardRepository(object):
     def find(self):
         job_repository = JobRepository(self._database)
         jobs = job_repository.findAll()
-        return Board(jobs = jobs)
+        return Board(jobs = jobs, sortByAttribute = 'due_date')
 
     def save(self):
         pass
