@@ -10,4 +10,7 @@ test:
 serve:
 	@python src/webserver/main.py
 
+run:
+	@python src/webserver/webserver.py
+
 .PHONY: test install serve
