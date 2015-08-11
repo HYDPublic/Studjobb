@@ -7,6 +7,8 @@
             <form id="edit" method="post">
                 <input name="name" type="text" value="{{ company.name }}" />
 
+                <input name="logo" type="text" value="{{ company.logo.filename }}" />
+
                 <textarea name="description" id="description">
                 {{ company.name|safe }}
                 </textarea>

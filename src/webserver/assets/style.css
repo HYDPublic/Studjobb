@@ -198,3 +198,8 @@ p.back > a:hover {
     font-weight: bold;
     width: 100%;
 }
+
+#edit > input[type="text"] {
+    display: block;
+    width: 100%;
+}
