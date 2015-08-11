@@ -6,3 +6,4 @@ flask          == 0.10.1
 sqlalchemy     == 1.0.8
 mysql-python   == 1.2.5
 tornado        == 4.2.1
+python-bcrypt  == 0.3.1

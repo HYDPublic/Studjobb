@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from src.person.person import Person
+import bcrypt
 
 class UserException(Exception):
     pass
@@ -17,3 +18,10 @@ class User(Person):
 
         if self.email is None:
             raise UserException("Users must have email.")
+
+    def checkCredentials(self, plain_text_password):
+        return bcrypt.hashpw(plain_text_password, self.password) == self.password
+
+    @staticmethod
+    def hashPassword(clear_text_password):
+        return bcrypt.hashpw(clear_text_password, bcrypt.gensalt(10))
