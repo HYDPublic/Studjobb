@@ -39,9 +39,19 @@ def admin():
     board.filterExpiredJobs()
     return render_template('admin.html', jobs = board.jobs)
 
-@app.route('/admin/stilling/<int:id>')
+@auth.login_required
+@app.route('/admin/stilling/<int:id>', methods = ['GET'])
 def edit_job(id):
     job = job_repository.find(id)
+    return render_template('edit-job.html', job = job) 
+
+@auth.login_required
+@app.route('/admin/stilling/<int:id>', methods = ['POST'])
+def save_job(id):
+    job = job_repository.find(id)
+    job.title = request.form['title']
+    job.description = request.form['description']
+    job_repository.save(job) 
     return render_template('edit-job.html', job = job) 
 
 @app.route('/')

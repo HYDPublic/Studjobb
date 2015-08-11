@@ -41,7 +41,8 @@ class JobRepository(object):
         return jobs
 
     def save(self, job):
-        pass
+        result = self._database.execute('update %s set title = "%s", description = "%s" where id = %d' % (self._table, job.title, job.description, job.id))
+        return self.find(job.id) 
 
     def remove(self, job):
         pass
