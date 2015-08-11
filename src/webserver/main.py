@@ -7,6 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect 
 from flask.ext.httpauth import HTTPBasicAuth
 
 from src.database.engine import database
@@ -14,6 +15,8 @@ from src.database.job_repository import JobRepository
 from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
 from src.database.company_repository import CompanyRepository
+
+from src.company.company import Company
     
 # Configuration
 app  = Flask(__name__, template_folder = 'views', static_folder = 'assets')
@@ -70,6 +73,20 @@ def save_company(id):
     company.logo = request.form['logo'].encode('utf8')
     company = company_repository.save(company) 
     return render_template('edit-company.html', company = company) 
+
+@auth.login_required
+@app.route('/admin/selskap', methods = ['GET'])
+def new_company():
+    return render_template('new-company.html') 
+
+@auth.login_required
+@app.route('/admin/selskap', methods = ['POST'])
+def create_company():
+    company = Company() 
+    company.name = request.form['name']
+    company.logo = request.form['logo'].encode('utf8')
+    company = company_repository.save(company) 
+    return redirect('/admin/selskap/%d' % company.id)
 
 @app.route('/')
 def board():

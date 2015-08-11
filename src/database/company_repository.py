@@ -21,12 +21,26 @@ class CompanyRepository(object):
         return companies 
 
     def save(self, company):
+        if company.id is None:
+            return self.create(company)
+        else:
+            return self.update(company)
+
+    def update(self, company):
         result = self._database.execute(text('update companies set name = :name, logo = :logo where id = :id'),
             name = company.name,
             logo = company.logo.filename,
             id    = company.id 
         )
         return self.find(company.id) 
+
+    def create(self, company):
+        result = self._database.execute(text('insert into companies set name = :name, logo = :logo'),
+            name = company.name,
+            logo = company.logo.filename
+        )
+        company.id = result.lastrowid
+        return company
 
     def remove(self, company):
         pass

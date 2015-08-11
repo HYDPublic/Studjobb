@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Lag nytt selskap{% endblock %}
+{% block container %}
+            <p class="back"><a href="/admin">← Tilbake til administrasjon</a></p>
+
+            <form id="edit" method="post">
+                <input name="name" type="text" placeholder="Navn på selskapet" />
+
+                <input name="logo" type="text" placeholder="Filnavn/url til logo" />
+
+                <input class="button" type="submit" value="Lagre" />
+            </form>
+
+{% endblock %}
