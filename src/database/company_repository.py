@@ -21,8 +21,9 @@ class CompanyRepository(object):
         return companies 
 
     def save(self, company):
-        result = self._database.execute(text('update companies set name = :title where id = :id'),
-            title = company.name,
+        result = self._database.execute(text('update companies set name = :name, logo = :logo where id = :id'),
+            name = company.name,
+            logo = company.logo.filename,
             id    = company.id 
         )
         return self.find(company.id) 

@@ -67,6 +67,7 @@ def edit_company(id):
 def save_company(id):
     company = company_repository.find(id)
     company.name = request.form['name']
+    company.logo = request.form['logo'].encode('utf8')
     company = company_repository.save(company) 
     return render_template('edit-company.html', company = company) 
 
