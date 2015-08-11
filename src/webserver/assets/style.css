@@ -157,6 +157,8 @@ p.back > a:hover {
     width: 33.333%;
     float: right;
     background-color:#efefef;
+    margin-left: 45px;
+    margin-bottom: 45px;
 }
 
 #meta > div {
