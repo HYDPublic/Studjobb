@@ -191,3 +191,10 @@ p.back > a:hover {
     color: #777;
     margin-top: 75px;
 }
+
+/* Admin */
+#edit > input[name="title"] {
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+}

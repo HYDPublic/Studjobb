@@ -1,13 +1,24 @@
 {% extends "base.html" %}
+{% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
 {% block title %}Rediger {{ job.title }}{% endblock %}
 {% block container %}
             <p class="back"><a href="/admin">← Tilbake til administrasjon</a></p>
 
-            <div id="about">
-                <input type="text" value="{{ job.title }}" />
-                <textarea>
+            <form id="edit" method="post">
+                <input name="title" type="text" value="{{ job.title }}" />
+
+                <textarea name="description" id="description">
                 {{ job.description|safe }}
                 </textarea>
-            </div>
+
+                <input class="button" type="submit" value="Lagre" />
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    CKEDITOR.config.allowedContent = true;
+                    CKEDITOR.replace('description'); 
+                });
+                </script>
+            </form>
 
 {% endblock %}
