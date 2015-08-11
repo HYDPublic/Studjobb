@@ -48,3 +48,8 @@
     margin-right: auto;
     width: initial;
 }
+
+/* Footer */
+#footer > p.notice {
+    width: 50%;
+}
