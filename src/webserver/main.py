@@ -13,6 +13,7 @@ from src.database.engine import database
 from src.database.job_repository import JobRepository
 from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
+from src.database.company_repository import CompanyRepository
     
 # Configuration
 app  = Flask(__name__, template_folder = 'views', static_folder = 'assets')
@@ -20,8 +21,9 @@ auth = HTTPBasicAuth()
 
 # Repositories
 job_repository = JobRepository(database)
-board_repository = BoardRepository(database)
 user_repository = UserRepository(database)
+board_repository = BoardRepository(database)
+company_repository = CompanyRepository(database)
 
 # Authentication
 @auth.verify_password
@@ -53,6 +55,20 @@ def save_job(id):
     job.description = request.form['description']
     job = job_repository.save(job) 
     return render_template('edit-job.html', job = job) 
+
+@auth.login_required
+@app.route('/admin/selskap/<int:id>', methods = ['GET'])
+def edit_company(id):
+    company = company_repository.find(id)
+    return render_template('edit-company.html', company = company) 
+
+@auth.login_required
+@app.route('/admin/selskap/<int:id>', methods = ['POST'])
+def save_company(id):
+    company = company_repository.find(id)
+    company.name = request.form['name']
+    company = company_repository.save(company) 
+    return render_template('edit-company.html', company = company) 
 
 @app.route('/')
 def board():

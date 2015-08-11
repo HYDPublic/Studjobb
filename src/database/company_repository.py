@@ -1,3 +1,4 @@
+from sqlalchemy.sql      import text
 from src.company.company import Company
 
 class CompanyRepository(object):
@@ -20,7 +21,11 @@ class CompanyRepository(object):
         return companies 
 
     def save(self, company):
-        pass
+        result = self._database.execute(text('update companies set name = :title where id = :id'),
+            title = company.name,
+            id    = company.id 
+        )
+        return self.find(company.id) 
 
     def remove(self, company):
         pass
