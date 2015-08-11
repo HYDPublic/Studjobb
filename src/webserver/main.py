@@ -10,6 +10,7 @@ from flask import request
 
 from src.database.engine import database
 from src.database.job_repository import JobRepository
+from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
     
 # Configuration
@@ -18,6 +19,7 @@ app = Flask(__name__, template_folder = 'views', static_folder = 'assets')
 # Repositories
 job_repository = JobRepository(database)
 board_repository = BoardRepository(database)
+user_repository = UserRepository(database)
 
 # Routes
 @app.route('/')
@@ -39,7 +41,10 @@ def login():
 def authenticate():
     email = request.form['email']
     password = request.form['password']
-    print email, password
+
+    if user_repository.find(email).checkCredentials(password):
+        print "authenticated"
+
     return render_template('login.html') 
 
 @app.route('/om')
