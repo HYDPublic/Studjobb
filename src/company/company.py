@@ -4,7 +4,8 @@ from name import Name
 
 class Company(object):
 
-    def __init__(self, name = None, logo = None):
+    def __init__(self, id = None, name = None, logo = None):
+        self.id   = id
         self.name = name or 'Mangler navn'
         self.logo = logo
 
