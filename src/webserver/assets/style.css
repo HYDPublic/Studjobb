@@ -148,7 +148,7 @@ p.back > a:hover {
     margin-bottom: 25px;
 }
 
-#job > #about > p {
+#job > #about > p, #about > p {
     margin-bottom: 25px;
 }
 
