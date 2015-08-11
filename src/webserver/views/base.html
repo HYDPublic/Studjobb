@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Studjobb - Jobb for studenter</title>
+        <title>{% block title %}{% endblock %} - Studjobb</title>
         <meta name="title" content="Studjobb">
         <meta name="description" content="Jobb for studenter og nyutdannede">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,3 +15,20 @@
         <meta property="og:type" content="website">
     </head>
     <body>
+        <a href="/">
+            <div id="header">
+            </div>
+        </a>
+        
+        <div id="container">
+            {% block container %}
+            {% endblock %}
+        </div>
+
+        <div id="footer">
+            {% block footer %}
+            <p>&copy; Studjobb 2015 Org.nummer: 997452364</p>
+            {% endblock %}
+        </div>
+    </body>
+</html>
