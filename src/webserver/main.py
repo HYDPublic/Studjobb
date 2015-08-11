@@ -35,13 +35,20 @@ def verify_pw(email, password):
 @app.route('/admin')
 @auth.login_required
 def admin():
-    return render_template('admin.html') 
+    board = board_repository.find()
+    board.filterExpiredJobs()
+    return render_template('admin.html', jobs = board.jobs)
+
+@app.route('/admin/stilling/<int:id>')
+def edit_job(id):
+    job = job_repository.find(id)
+    return render_template('edit-job.html', job = job) 
 
 @app.route('/')
 def board():
     board = board_repository.find()
     board.filterExpiredJobs()
-    return render_template('board.html', jobs = board.jobs) 
+    return render_template('index.html', jobs = board.jobs) 
 
 @app.route('/stilling/<int:id>')
 def job(id):

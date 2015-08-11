@@ -1,12 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Admin{% endblock %}
+{% block title %}Administrasjon{% endblock %}
 {% block container %}
-            <p class="back"><a href="/">← Tilbake til forsiden</a></p>
-
-            <div id="admin">
-                <h1>Administrasjon</h1>
-                <p>
-                    hey admin
-                </p>
-            </div>
+            {% include "admin_board.html" %}
 {% endblock %}
