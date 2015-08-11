@@ -18,6 +18,8 @@ class JobRepository(object):
             description = row.description,
             due_date = row.due_date,
             company = company,
+            place = row.place,
+            position = row.position
         )
         return job
 
@@ -32,6 +34,8 @@ class JobRepository(object):
                 description = row.description,
                 due_date = row.due_date,
                 company = company,
+                place = row.place,
+                position = row.position
             )
             jobs.append(job)
         return jobs
