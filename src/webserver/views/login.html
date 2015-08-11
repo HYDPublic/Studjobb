@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Innlogging{% endblock %}
+{% block container %}
+            <p class="back"><a href="/">← Tilbake til forsiden</a></p>
+
+            <div id="login">
+                <form method="post">
+                    <input type="email" name="email" placeholder="E-post" required/> 
+                    <input type="password" name="password" placeholder="Passord" required />
+                    <input type="submit" value="Logg inn" required>
+                </form>
+            </div>
+{% endblock %}

@@ -31,6 +31,17 @@ def job(id):
     job = job_repository.find(id)
     return render_template('job.html', job = job) 
 
+@app.route('/innlogging', methods = ['GET'])
+def login():
+    return render_template('login.html') 
+
+@app.route('/innlogging', methods = ['POST'])
+def authenticate():
+    email = request.form['email']
+    password = request.form['password']
+    print email, password
+    return render_template('login.html') 
+
 @app.route('/om')
 def about():
     return render_template('about.html') 

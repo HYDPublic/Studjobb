@@ -25,6 +25,12 @@ h2 {
     font-size: 18px;
 }
 
+input {
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+}
+
 #header {
     margin-bottom: 25px;
     width: 100%;
@@ -65,9 +71,6 @@ h2 {
 }
 
 #search > input {
-    border: none;
-    padding: 12px;
-    font-size: 14px;
     width: 33.333%; 
 }
 
@@ -189,3 +192,11 @@ p.back > a:hover {
     margin-top: 75px;
 }
 
+
+/* Login */
+#login > form > input {
+    width: 200px;
+    border: 2px solid #efefef;
+    display: block;
+    margin-bottom: 10px;
+}
