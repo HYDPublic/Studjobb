@@ -6,6 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from flask import Flask
 from flask import render_template
+from flask import abort 
 from flask import request
 from flask import redirect 
 from flask.ext.httpauth import HTTPBasicAuth
@@ -141,9 +142,12 @@ def board():
 @app.route('/stilling/<int:id>')
 def job(id):
     job = job_repository.find(id)
-    return render_template('public/job.html',
-        job = job, logged_in = auth.username()
-    ) 
+    if job is None:
+        return abort(404)
+    else:
+        return render_template('public/job.html',
+            job = job, logged_in = auth.username()
+        ) 
 
 @app.route('/om')
 def about():

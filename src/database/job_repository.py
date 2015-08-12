@@ -12,6 +12,8 @@ class JobRepository(object):
     def find(self, id):
         result = self._database.execute('select * from %s where id = %d' % (self._table, id))
         row = result.fetchone()
+        if row is None: return None
+
         company = self._companyRepository.find(row.company_id)
         job = Job(
             id = row.id,
