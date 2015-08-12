@@ -77,5 +77,7 @@ class JobRepository(object):
         )
         return self.find(job.id)
 
-    def remove(self, job):
-        pass
+    def remove(self, id):
+        result = self._database.execute(text('delete from jobs where id = :id'), 
+            id = id 
+        )

@@ -212,7 +212,11 @@ input {
     display: block;
 }
 
-#edit > input[type="text"] {
+#edit > select {
+    margin-bottom: 10px;
+}
+
+#edit > input[type="text"], #edit > input[type="checkbox"] {
     display: block;
     width: 100%;
 }

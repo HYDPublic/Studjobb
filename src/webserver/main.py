@@ -58,6 +58,10 @@ def edit_job(id):
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
 def save_job(id):
 
+    if request.form['delete']:
+        job_repository.remove(id)
+        return redirect('/admin')
+
     job = job_repository.find(id)
     company = company_repository.find(request.form['company'])
     companies = company_repository.findAll()
