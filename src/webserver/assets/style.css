@@ -188,9 +188,17 @@ input {
 
 /* Footer */
 #footer {
+    margin-top: 75px;
+}
+
+.notice, .about-us > a  {
+    display:inline-block;
     font-size:14px;
     color: #777;
-    margin-top: 75px;
+}
+
+.about-us {
+    float: right;
 }
 
 /* Admin */
