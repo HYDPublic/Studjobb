@@ -2,7 +2,9 @@
 {% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
 {% block title %}Rediger {{ job.title }}{% endblock %}
 {% block container %}
-            <p class="back"><a href="/admin">← Tilbake til administrasjon</a></p>
+            <div id="navigation">
+                <a class="back" href="/admin">← Tilbake til administrasjon</a>
+            </div>
 
             <form id="edit" method="post">
                 <input name="title" type="text" value="{{ job.title }}" />

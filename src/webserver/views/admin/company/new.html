@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Lag nytt selskap{% endblock %}
 {% block container %}
-            <p class="back"><a href="/admin">← Tilbake til administrasjon</a></p>
+            <div id="navigation">
+                <a class="back" href="/admin">← Tilbake til administrasjon</a>
+            </div>
 
             <form id="edit" method="post">
                 <input name="name" type="text" placeholder="Navn på selskapet" />
