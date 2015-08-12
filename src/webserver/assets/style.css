@@ -200,13 +200,17 @@ input {
     width: 100%;
 }
 
-#edit > select {
+#edit > select, #edit > input[type="date"] {
     display: block;
 }
 
 #edit > input[type="text"] {
     display: block;
     width: 100%;
+}
+
+#edit > input[type="date"] {
+    color: #A9A9A9;
 }
 
 #edit > #cke_description {
