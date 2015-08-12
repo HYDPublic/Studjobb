@@ -8,11 +8,12 @@ class JobException(Exception):
 
 class Job(object):
 
-    def __init__(self, id = None, title = None, description = None, due_date = None, company = None, place = None, position = None):
+    def __init__(self, id = None, title = None, description = None, due_date = None,start_date = None, company = None, place = None, position = None):
         self.id          = id 
         self.title       = title       or "Mangler tittel"
         self.description = description or "Mangler beskrivelse"
         self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
+        self.start_date  = start_date
         self.company     = company
         self.place       = place       or "Ukjent"
         self.position    = position    or "Ukjent" 
@@ -24,6 +25,10 @@ class Job(object):
     @property
     def due_date(self):
         return self._due_date
+
+    @property
+    def start_date(self):
+        return self._start_date
 
     @property
     def company(self):
@@ -50,11 +55,15 @@ class Job(object):
     @due_date.setter
     def due_date(self, due_date):
         if isinstance(due_date, basestring):
-            try:
-                due_date = datetime.datetime.strptime(due_date, '%Y-%m-%d').date()
-            except ValueError:
-                raise JobException("Could not parse date.")
+            due_date = Job.convertStringToDate(due_date)
         self._due_date = due_date 
+
+    @start_date.setter
+    def start_date(self, start_date):
+        if isinstance(start_date, basestring):
+            start_date = Job.convertStringToDate(start_date)
+
+        self._start_date = start_date 
 
     @company.setter
     def company(self, company):
@@ -86,3 +95,10 @@ class Job(object):
     @staticmethod
     def dateThirtyDaysFromToday():
         return Job.dateToday() + datetime.timedelta(days=30)
+
+    @staticmethod
+    def convertStringToDate(date_as_string):
+        try:
+            return datetime.datetime.strptime(date_as_string, '%Y-%m-%d').date()
+        except ValueError:
+            raise JobException("Could not parse date.")
