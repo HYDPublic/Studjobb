@@ -12,7 +12,7 @@ class Job(object):
         self.id          = id 
         self.title       = title       or "Mangler tittel"
         self.description = description or "Mangler beskrivelse"
-        self.due_date    = due_date    or Job.dateThirtyDaysFromToday()
+        self.due_date    = due_date    or self.dateThirtyDaysFromToday()
         self.start_date  = start_date
         self.company     = company
         self.place       = place       or "Ukjent"
