@@ -14,6 +14,10 @@ class TestJobStartDate(unittest.TestCase):
         job = Job()
         job.start_date = None
 
+    def test_job_start_date_can_be_set_to_empty_string(self):
+        job = Job()
+        job.start_date = '' 
+
     def test_job_start_date_can_be_provided_as_a_ddmmyyy_string(self):
         job = Job(start_date = '2017-09-29')
         self.assertEqual(job.start_date, datetime.date(2017, 9, 29))
