@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-# Needs fixing:
-sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), os.pardir))
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from flask import Flask
 from flask import render_template
