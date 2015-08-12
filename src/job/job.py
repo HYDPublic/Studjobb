@@ -56,6 +56,11 @@ class Job(object):
     def due_date(self, due_date):
         if isinstance(due_date, basestring):
             due_date = Job.convertStringToDate(due_date)
+        
+        if hasattr(self, '_start_date') and self._start_date is not None:
+            if due_date > self._start_date:
+                raise JobException('Due date must be before start date.')
+
         self._due_date = due_date 
 
     @start_date.setter
