@@ -17,6 +17,8 @@ from src.database.board_repository import BoardRepository
 from src.database.company_repository import CompanyRepository
 
 from src.job.job import Job 
+from src.job.job import JobException
+from src.job.title import TitleException
 from src.company.company import Company
     
 # Configuration
@@ -55,17 +57,24 @@ def edit_job(id):
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
 def save_job(id):
+
     job = job_repository.find(id)
     company = company_repository.find(request.form['company'])
-    job.title = request.form['title']
-    job.description = request.form['description']
-    job.due_date = request.form['due_date']
-    job.start_date = request.form['start_date']
-    job.position = request.form['position']
-    job.place = request.form['place']
-    job.company = company 
-    job = job_repository.save(job) 
     companies = company_repository.findAll()
+
+    try:
+        job.title       = request.form['title']
+        job.description = request.form['description']
+        job.due_date    = request.form['due_date']
+        job.start_date  = request.form['start_date']
+        job.position    = request.form['position']
+        job.place       = request.form['place']
+        job.company     = company 
+    except (JobException, TitleException) as error:
+        return render_template('admin/job/edit.html', error= error, job = job, companies = companies) 
+
+    job = job_repository.save(job) 
+
     return render_template('admin/job/edit.html', job = job, companies = companies) 
 
 @auth.login_required

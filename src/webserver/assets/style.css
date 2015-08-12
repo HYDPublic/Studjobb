@@ -216,3 +216,16 @@ input {
 #edit > #cke_description {
     margin-top: 25px;
 }
+
+/* Alert */
+#alert {
+    border: 1px solid transparent;
+    border-color: #ebccd1;
+    background-color: rgb(242, 222, 222);
+    line-height: 20px;
+    background-color: rgb(169, 68, 66);
+    padding: 10px;
+    width: 50%;
+    color: white;
+    margin-bottom: 25px;
+}

@@ -6,6 +6,13 @@
                 <a class="back" href="/admin">← Tilbake til administrasjon</a>
             </div>
 
+            {% if error %}
+            <div id="alert">
+                <strong>Ohoh!</strong>
+                {{ error }}
+            </div>
+            {% endif %}
+
             <form id="edit" method="post">
 
                 <label for="title">Tittel</label>
