@@ -42,11 +42,12 @@ class JobRepository(object):
         return jobs
 
     def save(self, job):
-        result = self._database.execute(text('update jobs set title = :title, description = :description where id = :id'),
+        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id where id = :id'),
             table       = self._table,
             title       = job.title,
             description = job.description,
-            id          = job.id
+            id          = job.id,
+            company_id  = job.company.id
         )
         return self.find(job.id) 
 

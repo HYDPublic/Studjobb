@@ -48,16 +48,20 @@ def admin():
 @app.route('/admin/stilling/<int:id>', methods = ['GET'])
 def edit_job(id):
     job = job_repository.find(id)
-    return render_template('admin/job/edit.html', job = job) 
+    companies = company_repository.findAll()
+    return render_template('admin/job/edit.html', job = job, companies = companies) 
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
 def save_job(id):
     job = job_repository.find(id)
+    company = company_repository.find(request.form['company'])
     job.title = request.form['title']
     job.description = request.form['description']
+    job.company = company 
     job = job_repository.save(job) 
-    return render_template('admin/job/edit.html', job = job) 
+    companies = company_repository.findAll()
+    return render_template('admin/job/edit.html', job = job, companies = companies) 
 
 @auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['GET'])

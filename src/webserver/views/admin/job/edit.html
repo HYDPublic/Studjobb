@@ -9,6 +9,20 @@
             <form id="edit" method="post">
                 <input name="title" type="text" value="{{ job.title }}" />
 
+                <input name="position" type="text" value="{{ job.position }}" />
+
+                <input name="place" type="text" value="{{ job.place }}" />
+
+                <select name="company">
+                {% for company in companies %}
+                    {% if company.id == job.company.id %} 
+                    <option value="{{ company.id }}" selected>{{ company.name }}</option>
+                    {% else %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+
                 <textarea name="description" id="description">
                 {{ job.description|safe }}
                 </textarea>

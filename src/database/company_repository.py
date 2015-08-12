@@ -8,7 +8,7 @@ class CompanyRepository(object):
         self._table = 'companies'
 
     def find(self, id):
-        result = self._database.execute('select * from %s where id = %d' % (self._table, id))
+        result = self._database.execute('select * from %s where id = %d' % (self._table, int(id)))
         row = result.fetchone()
         company = Company(id = row.id, name = row.name, logo = row.logo.encode('utf8'))
         return company 
@@ -17,7 +17,7 @@ class CompanyRepository(object):
         result = self._database.execute('select * from %s' % (self._table))
         companies = []
         for row in result:
-            companies.append(Company(id = row.id, name = row.name, logo = row.logo))
+            companies.append(Company(id = row.id, name = row.name, logo = row.logo.encode('utf8')))
         return companies 
 
     def save(self, company):
