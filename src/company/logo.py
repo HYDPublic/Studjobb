@@ -1,69 +1,11 @@
 # -*- coding: utf-8 -*-
-import time
 import os
-import requests
-import uuid
-from ConfigParser import SafeConfigParser
-from urlparse     import urlparse
-from dimensions   import dimensions
 
-class LogoDownloader(object):
+from dimensions     import dimensions
+from logoexception  import LogoException
+from logodownloader import LogoDownloader
+from logoconfig     import LogoConfig
 
-    @staticmethod
-    def generateUniqueFilename(extension = None):
-        uniqueHash = uuid.uuid4().urn[9:]
-        if extension:
-            return uniqueHash + '.' + extension
-        else:
-            return uniqueHash
-
-    @staticmethod
-    def requestExternalImageOverHTTP(url):
-        response = requests.get(url, stream = True)
-        if not response.ok:
-            raise LogoException("Could not download image.")
-
-        # Gather chunks in memory
-        chunks = ""
-        for chunk in response.iter_content(1024):
-            chunks += chunk
-        return chunks
-
-    @staticmethod
-    def download(url):
-        imagedata = LogoDownloader.requestExternalImageOverHTTP(url)
-        extension = LogoDownloader.getExtensionFromURL(url)
-        pathToStoreLogoIn = LogoDownloader.generatePathForImage(extension) 
-        pathToWhereLogoIsStored = LogoDownloader.writeTo(pathToStoreLogoIn, imagedata)
-        return pathToWhereLogoIsStored
-
-    @staticmethod
-    def writeTo(path, imageData):
-        with open(path, 'wb') as handle:
-            handle.write(imageData)
-        return path 
-
-    @staticmethod
-    def getExtensionFromURL(url):
-        path = urlparse(url).path
-        if path.endswith('.png'): return 'png'
-        if path.endswith('.gif'): return 'gif'
-        if path.endswith('.jpg'): return 'jpg'
-
-    @staticmethod
-    def isDownloadable(logoPath):
-        url = urlparse(logoPath) 
-        return 'http' in url.scheme
-
-    @staticmethod
-    def generatePathForImage(extension = None):
-        pathConfigSaysToStoreLogosIn = Logo.pathToStore()
-        uniqueFilenameForLogo = LogoDownloader.generateUniqueFilename(extension)
-        pathToStoreLogoIn = os.path.abspath(os.path.join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
-        return pathToStoreLogoIn
-
-class LogoException(Exception):
-    pass
 
 class Logo(object):
 
@@ -73,7 +15,7 @@ class Logo(object):
 
     @property
     def url(self):
-        return Logo.urlToLogosFromConfig() + self.filename 
+        return LogoConfig.urlToLogosFromConfig() + self.filename 
 
     @property
     def filename(self):
@@ -89,25 +31,9 @@ class Logo(object):
         if LogoDownloader.isDownloadable(path):
             path = LogoDownloader.download(path)
 
-        path = os.path.abspath(os.path.join(self.pathToStore(), path))
+        path = os.path.abspath(os.path.join(LogoConfig.pathToStore(), path))
         if Logo.isValid(path):
             self._path = path
-
-    @staticmethod
-    def configLocation():
-         return os.path.abspath(os.path.join(__file__, '..', '..', '..', 'config'))
-
-    @staticmethod
-    def urlToLogosFromConfig():
-        config = SafeConfigParser()
-        config.read(Logo.configLocation())
-        return config.get("company_logo", "url")
-
-    @staticmethod
-    def pathToStore():
-        config = SafeConfigParser()
-        config.read(Logo.configLocation())
-        return config.get("company_logo", "location")
         
     @staticmethod
     def doesNotExist(logoPath):
