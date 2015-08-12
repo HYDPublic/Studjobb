@@ -22,4 +22,11 @@ class LogoRescaler(object):
             wsize = int((float(img.size[0]) * float(hpercent)))
             img = img.resize((wsize, baseheight), PIL.Image.ANTIALIAS)
         
-        img.save(newPath)
+        if newPath is not None:
+            path = newPath
+        
+        LogoRescaler.save(img, path)
+
+    @staticmethod
+    def save(img, path):
+        img.save(path)

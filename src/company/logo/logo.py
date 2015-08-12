@@ -4,8 +4,8 @@ import os
 from dimensions     import dimensions
 from logoexception  import LogoException
 from logodownloader import LogoDownloader
+from logorescaler   import LogoRescaler
 from logoconfig     import LogoConfig
-
 
 class Logo(object):
 
@@ -61,6 +61,7 @@ class Logo(object):
             raise LogoException("Could not parse logo format.")
 
         if Logo.isTooWide(width):
+#            LogoRescaler.rescale(path = logoPath, width = 500)
             raise LogoException("Logo is too wide.")
         elif Logo.isTooHigh(height):
             raise LogoException("Logo is too high.")

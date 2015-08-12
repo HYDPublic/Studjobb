@@ -2,6 +2,7 @@
 import unittest 
 import os
 import glob 
+import mock
 from PIL import Image
 
 from src.company.logo.logo         import LogoException 
@@ -38,3 +39,11 @@ class TestCompanyLogoRescale(unittest.TestCase):
         LogoRescaler.rescale(path = pathToLogoToBeRescaled, newPath = pathToWhereRescaledLogoIsSaved, height = 500)
         heightOfRescaledLogo = Image.open(pathToWhereRescaledLogoIsSaved).size[1]
         self.assertEqual(heightOfRescaledLogo, 500)
+    
+    @mock.patch('src.company.logo.logorescaler.LogoRescaler.save')
+    def test_logo_rescaler_overwrites_original_logo_if_new_path_is_not_provided(self, mock_save_method):
+        pathToDirWithLogo         = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures'))
+        pathToLogoToBeOverwritten = os.path.join(pathToDirWithLogo, '500x501-logo-to-be-overwritten.png')
+        LogoRescaler.rescale(path = pathToLogoToBeOverwritten, width = 500, height = 501)
+        args, kwargs = mock_save_method.call_args
+        self.assertEqual(args[1], pathToLogoToBeOverwritten)
