@@ -53,3 +53,7 @@
 #footer > p.notice {
     width: 50%;
 }
+
+.about-us, #notice {
+    font-size: 16px;
+}
