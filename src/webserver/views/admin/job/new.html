@@ -7,12 +7,17 @@
             </div>
 
             <form id="edit" method="post">
+
+                <label for="title">Tittel</label>
                 <input name="title" type="text" placeholder="Tittel" />
 
+                <label for="position">Stillingstype</label>
                 <input name="position" type="text" placeholder="Stillingstype" />
 
+                <label for="place">Sted</label>
                 <input name="place" type="text" placeholder="Sted" />
 
+                <label for="company">Selskap</label>
                 <select name="company">
                 {% for company in companies %}
                     <option value="{{ company.id }}">{{ company.name }}</option>

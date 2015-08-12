@@ -7,8 +7,11 @@
             </div>
 
             <form id="edit" method="post">
+
+                <label for="name">Selskapsnavn</label>
                 <input name="name" type="text" value="{{ company.name }}" />
 
+                <label for="logo">Logo</label>
                 <input name="logo" type="text" value="{{ company.logo.filename }}" />
 
                 <textarea name="description" id="description">

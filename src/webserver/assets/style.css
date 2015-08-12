@@ -200,7 +200,15 @@ input {
     width: 100%;
 }
 
+#edit > select {
+    display: block;
+}
+
 #edit > input[type="text"] {
     display: block;
     width: 100%;
+}
+
+#edit > #cke_description {
+    margin-top: 25px;
 }

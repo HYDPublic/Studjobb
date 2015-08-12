@@ -7,12 +7,17 @@
             </div>
 
             <form id="edit" method="post">
+
+                <label for="title">Tittel</label>
                 <input name="title" type="text" value="{{ job.title }}" />
 
+                <label for="position">Stillingstype</label>
                 <input name="position" type="text" value="{{ job.position }}" />
 
+                <label for="place">Sted</label>
                 <input name="place" type="text" value="{{ job.place }}" />
 
+                <label for="company">Selskap</label>
                 <select name="company">
                 {% for company in companies %}
                     {% if company.id == job.company.id %} 
