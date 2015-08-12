@@ -31,9 +31,9 @@ class LogoDownloader(object):
 
     @staticmethod
     def download(url):
-        imagedata = LogoDownloader.requestExternalImageOverHTTP(url)
-        extension = LogoDownloader.getExtensionFromURL(url)
-        pathToStoreLogoIn = LogoConfig.generatePathForImage(extension) 
+        imagedata               = LogoDownloader.requestExternalImageOverHTTP(url)
+        extension               = LogoDownloader.getExtensionFromURL(url)
+        pathToStoreLogoIn       = LogoDownloader.generatePathForImage(extension) 
         pathToWhereLogoIsStored = LogoDownloader.writeTo(pathToStoreLogoIn, imagedata)
         return pathToWhereLogoIsStored
 
@@ -58,6 +58,6 @@ class LogoDownloader(object):
     @staticmethod
     def generatePathForImage(extension = None):
         pathConfigSaysToStoreLogosIn = LogoConfig.pathToStore()
-        uniqueFilenameForLogo = LogoDownloader.generateUniqueFilename(extension)
-        pathToStoreLogoIn = os.path.abspath(os.path.join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
+        uniqueFilenameForLogo        = LogoDownloader.generateUniqueFilename(extension)
+        pathToStoreLogoIn            = os.path.abspath(os.path.join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
         return pathToStoreLogoIn
