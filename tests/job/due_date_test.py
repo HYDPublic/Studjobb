@@ -11,7 +11,7 @@ class TestJobDueDate(unittest.TestCase):
         self.assertEqual(Job().expired, False)
 
     def test_job_due_date_can_be_provided_as_a_ddmmyyy_string(self):
-        job = Job(due_date = '30.08.2016')
+        job = Job(due_date = '2016-08-30')
         self.assertEqual(job.due_date, datetime.date(2016, 8, 30))
 
     def test_job_due_date_raises_error_if_format_is_wrong(self):

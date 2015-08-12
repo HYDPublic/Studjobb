@@ -51,7 +51,7 @@ class Job(object):
     def due_date(self, due_date):
         if isinstance(due_date, basestring):
             try:
-                due_date = datetime.datetime.strptime(due_date, '%d.%m.%Y').date()
+                due_date = datetime.datetime.strptime(due_date, '%Y-%m-%d').date()
             except ValueError:
                 raise JobException("Could not parse date.")
         self._due_date = due_date 
