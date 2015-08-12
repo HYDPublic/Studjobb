@@ -3,11 +3,19 @@ import unittest
 import datetime
 import mock
 from src.job.job import Job 
+from src.job.job import JobException
 
 class TestJobDueDate(unittest.TestCase):
 
     def test_job_is_not_expired_by_default(self):
         self.assertEqual(Job().expired, False)
+
+    def test_job_due_date_can_be_provided_as_a_ddmmyyy_string(self):
+        job = Job(due_date = '30.08.2016')
+        self.assertEqual(job.due_date, datetime.date(2016, 8, 30))
+
+    def test_job_due_date_raises_error_if_format_is_wrong(self):
+        self.assertRaisesRegexp(JobException, 'date', Job, due_date = 'Tuesday 21th January 2016')
 
     def test_job_is_expired_if_date_is_in_past(self):
         job = Job(due_date=datetime.date(1993, 1, 1))

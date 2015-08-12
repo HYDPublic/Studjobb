@@ -3,6 +3,9 @@ import datetime
 from title import Title 
 from description import Description 
 
+class JobException(Exception):
+    pass
+
 class Job(object):
 
     def __init__(self, id = None, title = None, description = None, due_date = None, company = None, place = None, position = None):
@@ -46,6 +49,11 @@ class Job(object):
 
     @due_date.setter
     def due_date(self, due_date):
+        if isinstance(due_date, basestring):
+            try:
+                due_date = datetime.datetime.strptime(due_date, '%d.%m.%Y').date()
+            except ValueError:
+                raise JobException("Could not parse date.")
         self._due_date = due_date 
 
     @company.setter
