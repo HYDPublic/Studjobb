@@ -25,22 +25,10 @@ class TestCompanyLogo(unittest.TestCase):
         Logo(path = 'existent-logo.png')
 
     @mock.patch('src.company.logo.logo.LogoConfig.pathToStore')
-    def test_logo_raises_error_if_wider_than_500px(self, mock_path_to_store):
-        pathToDirWithLogo = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures'))
-        mock_path_to_store.return_value = pathToDirWithLogo
-        self.assertRaisesRegexp(LogoException, 'wide', Company, logo = '501x500-logo.png')
-
-    @mock.patch('src.company.logo.logo.LogoConfig.pathToStore')
     def test_logo_does_not_raise_error_if_width_is_smaller_than_500px(self, mock_path_to_store):
         pathToDirWithLogo = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures'))
         mock_path_to_store.return_value = pathToDirWithLogo
         Company(logo = '500x500-logo.png')
-
-    @mock.patch('src.company.logo.logo.LogoConfig.pathToStore')
-    def test_logo_raises_error_if_higher_than_500px(self, mock_path_to_store):
-        pathToDirWithLogo = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures'))
-        mock_path_to_store.return_value = pathToDirWithLogo
-        self.assertRaisesRegexp(LogoException, 'high', Company, logo = '500x501-logo.png')
 
     def test_logo_downloader_returns_true_if_url_is_provided(self):
         url = "http://localhost:1337/logo-over-http.png"

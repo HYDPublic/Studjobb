@@ -61,9 +61,8 @@ class Logo(object):
             raise LogoException("Could not parse logo format.")
 
         if Logo.isTooWide(width):
-#            LogoRescaler.rescale(path = logoPath, width = 500)
-            raise LogoException("Logo is too wide.")
+            LogoRescaler.rescale(path = logoPath, width = 500)
         elif Logo.isTooHigh(height):
-            raise LogoException("Logo is too high.")
+            LogoRescaler.rescale(path = logoPath, height = 500)
 
         return True
