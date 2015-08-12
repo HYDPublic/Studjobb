@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ job.title }}{% endblock %}
 {% block container %}
-            <p class="back"><a href="/">← Tilbake til forsiden</a></p>
+            <div id="navigation">
+                <a class="back" href="/">← Tilbake til forsiden</a>
+                {% if logged_in %}
+                |
+                <a class="edit" href="/admin/stilling/{{ job.id }}">Rediger stilling</a>
+                {% endif %}
+            </div>
 
             <div id="job">
                 <div id="meta">

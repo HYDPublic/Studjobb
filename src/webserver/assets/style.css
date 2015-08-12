@@ -129,19 +129,6 @@ input {
 }
 
 /* Job */
-p.back {
-    margin-bottom: 25px;
-}
-
-p.back > a {
-    color: #000;
-    text-decoration: none;
-}
-
-p.back > a:hover {
-    text-decoration: underline;
-}
-
 #job > #about {
     display: inline-block;
     width: 66.666%;
@@ -183,6 +170,20 @@ p.back > a:hover {
 
 #apply > ul {
     list-style-type: none;
+}
+
+/* Navigation */
+#navigation {
+    margin-bottom: 25px;
+}
+
+#navigation > a.back {
+    color: #000;
+    text-decoration: none;
+}
+
+#navigation > a.back:hover {
+    text-decoration: underline;
 }
 
 /* Footer */

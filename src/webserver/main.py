@@ -97,7 +97,9 @@ def board():
 @app.route('/stilling/<int:id>')
 def job(id):
     job = job_repository.find(id)
-    return render_template('public/job.html', job = job) 
+    return render_template('public/job.html',
+        job = job, logged_in = auth.username()
+    ) 
 
 @app.route('/om')
 def about():
