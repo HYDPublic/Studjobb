@@ -48,25 +48,27 @@ class JobRepository(object):
             return self.update(job)
 
     def create(self, job):
-        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place'),
-            table       = self._table,
-            title       = job.title,
-            description = job.description,
-            company_id  = int(job.company.id),
-            position    = job.position,
-            place       = job.place
-        )
-        job.id = result.lastrowid
-        return job 
-
-    def update(self, job):
-        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place where id = :id'),
+        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date'),
             table       = self._table,
             title       = job.title,
             description = job.description,
             company_id  = int(job.company.id),
             position    = job.position,
             place       = job.place,
+            due_date    = job.due_date
+        )
+        job.id = result.lastrowid
+        return job 
+
+    def update(self, job):
+        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date where id = :id'),
+            table       = self._table,
+            title       = job.title,
+            description = job.description,
+            company_id  = int(job.company.id),
+            position    = job.position,
+            place       = job.place,
+            due_date    = job.due_date,
             id          = job.id
         )
         return self.find(job.id)
