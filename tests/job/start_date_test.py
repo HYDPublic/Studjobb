@@ -20,9 +20,3 @@ class TestJobStartDate(unittest.TestCase):
 
     def test_job_due_date_raises_error_if_format_is_wrong(self):
         self.assertRaisesRegexp(JobException, 'date', Job, due_date = 'Saturday 10th January 2013')
-
-    def test_start_date_can_be_set_to_any_date(self):
-        five_days_from_now = datetime.timedelta(days=5)
-        delta = datetime.date.today() + five_days_from_now
-        job = Job(start_date = delta)
-        self.assertEqual(job.start_date, delta)

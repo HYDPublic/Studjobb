@@ -62,8 +62,16 @@ class Job(object):
     def start_date(self, start_date):
         if isinstance(start_date, basestring):
             start_date = Job.convertStringToDate(start_date)
+        
+        if self.date_is_after_due_date(start_date):
+            self._start_date = start_date 
+        else:
+            raise JobException('Start date must be after due date.')
 
-        self._start_date = start_date 
+    def date_is_after_due_date(self, date):
+        if date is None:
+            return True
+        return date >= self._due_date
 
     @company.setter
     def company(self, company):
