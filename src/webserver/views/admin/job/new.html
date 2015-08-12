@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
+{% block title %}Lag ny jobb{% endblock %}
+{% block container %}
+            <div id="navigation">
+                <a class="back" href="/admin">← Tilbake til administrasjon</a>
+            </div>
+
+            <form id="edit" method="post">
+                <input name="title" type="text" placeholder="Tittel" />
+
+                <input name="position" type="text" placeholder="Stillingstype" />
+
+                <input name="place" type="text" placeholder="Sted" />
+
+                <select name="company">
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+                </select>
+
+                <textarea name="description" id="description">
+                </textarea>
+
+                <input class="button" type="submit" value="Lagre" />
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    CKEDITOR.config.allowedContent = true;
+                    CKEDITOR.replace('description'); 
+                });
+                </script>
+            </form>
+
+{% endblock %}
