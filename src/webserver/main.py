@@ -9,6 +9,7 @@ from flask import render_template
 from flask import abort 
 from flask import request
 from flask import redirect 
+from flask import send_from_directory
 from flask.ext.httpauth import HTTPBasicAuth
 
 from src.database.engine import database
@@ -39,6 +40,10 @@ def verify_pw(email, password):
     if user is None:
         return False
     return user.checkCredentials(password)
+
+@app.route('/robots.txt')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 # Routes
 @app.route('/admin')
