@@ -20,7 +20,8 @@ class JobRepository(object):
             due_date = row.due_date,
             company = company,
             place = row.place,
-            position = row.position
+            position = row.position,
+            start_date = row.start_date
         )
         return job
 
@@ -36,7 +37,8 @@ class JobRepository(object):
                 due_date = row.due_date,
                 company = company,
                 place = row.place,
-                position = row.position
+                position = row.position,
+                start_date = row.start_date
             )
             jobs.append(job)
         return jobs
@@ -48,20 +50,7 @@ class JobRepository(object):
             return self.update(job)
 
     def create(self, job):
-        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date'),
-            table       = self._table,
-            title       = job.title,
-            description = job.description,
-            company_id  = int(job.company.id),
-            position    = job.position,
-            place       = job.place,
-            due_date    = job.due_date
-        )
-        job.id = result.lastrowid
-        return job 
-
-    def update(self, job):
-        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date where id = :id'),
+        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date'),
             table       = self._table,
             title       = job.title,
             description = job.description,
@@ -69,6 +58,21 @@ class JobRepository(object):
             position    = job.position,
             place       = job.place,
             due_date    = job.due_date,
+            start_date  = job.start_date
+        )
+        job.id = result.lastrowid
+        return job 
+
+    def update(self, job):
+        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date where id = :id'),
+            table       = self._table,
+            title       = job.title,
+            description = job.description,
+            company_id  = int(job.company.id),
+            position    = job.position,
+            place       = job.place,
+            due_date    = job.due_date,
+            start_date  = job.start_date,
             id          = job.id
         )
         return self.find(job.id)
