@@ -16,6 +16,7 @@ from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
 from src.database.company_repository import CompanyRepository
 
+from src.job.job import Job 
 from src.company.company import Company
     
 # Configuration
@@ -58,6 +59,8 @@ def save_job(id):
     company = company_repository.find(request.form['company'])
     job.title = request.form['title']
     job.description = request.form['description']
+    job.position = request.form['position']
+    job.place = request.form['place']
     job.company = company 
     job = job_repository.save(job) 
     companies = company_repository.findAll()
@@ -77,6 +80,26 @@ def save_company(id):
     company.logo = request.form['logo'].encode('utf8')
     company = company_repository.save(company) 
     return render_template('admin/company/edit.html', company = company) 
+
+@auth.login_required
+@app.route('/admin/stilling', methods = ['GET'])
+def new_job():
+    companies = company_repository.findAll()
+    return render_template('admin/job/new.html', companies = companies) 
+
+@auth.login_required
+@app.route('/admin/stilling', methods = ['POST'])
+def create_job():
+    company = Company()
+    company.id = request.form['company']
+    job = Job() 
+    job.title = request.form['title']
+    job.place = request.form['place']
+    job.company = company
+    job.position = request.form['position']
+    job.description = request.form['description']
+    job = job_repository.save(job)
+    return redirect('/admin/stilling/%d' % job.id)
 
 @auth.login_required
 @app.route('/admin/selskap', methods = ['GET'])
