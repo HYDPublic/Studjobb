@@ -1,4 +1,4 @@
-from src.person.user.user import User 
+from src.user.user import User 
 
 class UserRepository(object):
 

@@ -5,7 +5,7 @@ class LogoConfig(object):
 
     @staticmethod
     def configLocation():
-         return os.path.abspath(os.path.join(__file__, '..', '..', '..', 'config'))
+         return os.path.abspath(os.path.join(__file__, '..', '..', '..', '..', 'config'))
 
     @staticmethod
     def urlToLogosFromConfig():
