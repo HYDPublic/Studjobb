@@ -4,3 +4,4 @@ assets/logos/*
 *.swp
 *.pyc
 config
+crawler
