@@ -60,6 +60,7 @@ def save_job(id):
     job.title = request.form['title']
     job.description = request.form['description']
     job.due_date = request.form['due_date']
+    job.start_date = request.form['start_date']
     job.position = request.form['position']
     job.place = request.form['place']
     job.company = company 
@@ -96,8 +97,8 @@ def create_job():
     job = Job() 
     job.title = request.form['title']
     job.place = request.form['place']
-    print request.form['due_date']
     job.due_date = request.form['due_date']
+    job.start_date = request.form['start_date']
     job.company = company
     job.position = request.form['position']
     job.description = request.form['description']
