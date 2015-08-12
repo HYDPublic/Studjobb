@@ -42,13 +42,13 @@ def verify_pw(email, password):
 def admin():
     board = board_repository.find()
     board.filterExpiredJobs()
-    return render_template('admin.html', jobs = board.jobs)
+    return render_template('admin/admin.html', jobs = board.jobs)
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['GET'])
 def edit_job(id):
     job = job_repository.find(id)
-    return render_template('edit-job.html', job = job) 
+    return render_template('admin/job/edit.html', job = job) 
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
@@ -57,13 +57,13 @@ def save_job(id):
     job.title = request.form['title']
     job.description = request.form['description']
     job = job_repository.save(job) 
-    return render_template('edit-job.html', job = job) 
+    return render_template('admin/job/edit.html', job = job) 
 
 @auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['GET'])
 def edit_company(id):
     company = company_repository.find(id)
-    return render_template('edit-company.html', company = company) 
+    return render_template('admin/company/edit.html', company = company) 
 
 @auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['POST'])
@@ -72,12 +72,12 @@ def save_company(id):
     company.name = request.form['name']
     company.logo = request.form['logo'].encode('utf8')
     company = company_repository.save(company) 
-    return render_template('edit-company.html', company = company) 
+    return render_template('admin/company/edit.html', company = company) 
 
 @auth.login_required
 @app.route('/admin/selskap', methods = ['GET'])
 def new_company():
-    return render_template('new-company.html') 
+    return render_template('admin/company/new.html') 
 
 @auth.login_required
 @app.route('/admin/selskap', methods = ['POST'])
@@ -92,16 +92,16 @@ def create_company():
 def board():
     board = board_repository.find()
     board.filterExpiredJobs()
-    return render_template('index.html', jobs = board.jobs) 
+    return render_template('public/index.html', jobs = board.jobs) 
 
 @app.route('/stilling/<int:id>')
 def job(id):
     job = job_repository.find(id)
-    return render_template('job.html', job = job) 
+    return render_template('public/job.html', job = job) 
 
 @app.route('/om')
 def about():
-    return render_template('about.html') 
+    return render_template('public/about.html') 
 
 @app.route('/search')
 def search():
