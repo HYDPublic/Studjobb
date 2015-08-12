@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from logo import Logo
-from name import Name
+from logo.logo import Logo
+from name      import Name
 
 class Company(object):
 
