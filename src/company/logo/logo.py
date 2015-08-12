@@ -29,9 +29,11 @@ class Logo(object):
     @path.setter
     def path(self, path):
         if LogoDownloader.isDownloadable(path):
-            path = LogoDownloader.download(path)
+            url = path
+            path = LogoDownloader.download(url)
 
         path = os.path.abspath(os.path.join(LogoConfig.pathToStore(), path))
+
         if Logo.isValid(path):
             self._path = path
         
