@@ -82,7 +82,7 @@ class Job(object):
 
     @start_date.setter
     def start_date(self, start_date):
-        if start_date is '': start_date = None
+        if start_date == '': start_date = None
 
         if isinstance(start_date, basestring):
             start_date = Job.convertStringToDate(start_date)
