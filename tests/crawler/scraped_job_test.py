@@ -5,6 +5,9 @@ from src.crawler.scraped_job import ScrapedJob
 
 class TestScrapedJob(unittest.TestCase):
 
+    def test_can_have_a_guid(self):
+        self.assertEqual(ScrapedJob(guid = "4a7d3ce7620c3f9dd305303cf58f55e7").guid, "4a7d3ce7620c3f9dd305303cf58f55e7")
+
     def test_can_have_a_title_shorter_than_5_characters(self):
         self.assertEqual(ScrapedJob(title = "Short").title, "Short")
 
