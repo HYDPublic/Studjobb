@@ -21,6 +21,11 @@ class TestJobStatus(unittest.TestCase):
         job = Job(status = 'ACTIVE')
         self.assertEqual(job.status, 'active')
 
+    def test_can_be_changed_outside_constructor(self):
+        job = Job(status = 'active')
+        job.status = 'pending'
+        self.assertEqual(job.status, 'pending')
+
     def test_job_has_a_list_of_all_possible_statuses(self):
         self.assertEqual('active'  in Job().statuses, True)
         self.assertEqual('pending' in Job().statuses, True)
