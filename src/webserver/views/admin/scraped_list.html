@@ -1,0 +1,12 @@
+
+            <div id="board">
+                <ul>
+                    {% for scraped_job in scraped_jobs %}
+                    <li class="entry">
+                        <span class="company">{{ scraped_job.company }}</a></span>
+                            <span class="job">{{ scraped_job.title }}</a></span>
+                            <span class="due_date">{{ scraped_job.due_date }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>

@@ -17,6 +17,7 @@ from src.database.job_repository import JobRepository
 from src.database.user_repository import UserRepository
 from src.database.board_repository import BoardRepository
 from src.database.company_repository import CompanyRepository
+from src.database.scraped_job_repository import ScrapedJobRepository 
 
 from src.job.job import Job 
 from src.job.job import JobException
@@ -32,6 +33,7 @@ job_repository = JobRepository(database)
 user_repository = UserRepository(database)
 board_repository = BoardRepository(database)
 company_repository = CompanyRepository(database)
+scraped_job_repository = ScrapedJobRepository(database)
 
 # Authentication
 @auth.verify_password
@@ -52,7 +54,8 @@ def static_from_root():
 def admin():
     board = board_repository.find()
     board.filterExpiredJobs()
-    return render_template('admin/admin.html', jobs = board.jobs)
+    scraped_jobs = scraped_job_repository.findAll()
+    return render_template('admin/admin.html', jobs = board.jobs, scraped_jobs = scraped_jobs)
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['GET'])
