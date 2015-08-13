@@ -58,9 +58,10 @@ def admin():
     scraped_list = scraped_list_repository.find()
 
     return render_template('admin/admin.html', 
-        active_jobs  = board.jobs_by_status('active'),
         scraped_jobs = scraped_list.scraped_jobs,
-        pending_jobs = board.jobs_by_status('pending')
+        active_jobs  = board.jobs_by_status('active'),
+        pending_jobs = board.jobs_by_status('pending'),
+        dead_jobs    = board.jobs_by_status('dead')
     )
 
 @auth.login_required
