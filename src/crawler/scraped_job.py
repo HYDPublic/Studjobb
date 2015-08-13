@@ -1,11 +1,13 @@
 from bs4 import BeautifulSoup
+from urlparse import urlparse
 from src.job.job import Job
+
 
 class ScrapedJob(Job):
 
     def __init__(self, *args, **kwargs):
-        if 'guid' in kwargs:
-            self.guid = kwargs.pop('guid')
+        if 'guid' in kwargs: self.guid = kwargs.pop('guid')
+        if 'url'  in kwargs: self.url  = kwargs.pop('url')
         super(ScrapedJob, self).__init__(*args, **kwargs)
 
     @property

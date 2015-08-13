@@ -5,6 +5,9 @@ from src.crawler.scraped_job import ScrapedJob
 
 class TestScrapedJob(unittest.TestCase):
 
+    def test_can_have_a_url(self):
+        self.assertEqual(ScrapedJob(url = "http://vg.no").url, "http://vg.no")
+
     def test_can_have_a_guid(self):
         self.assertEqual(ScrapedJob(guid = "4a7d3ce7620c3f9dd305303cf58f55e7").guid, "4a7d3ce7620c3f9dd305303cf58f55e7")
 
@@ -26,4 +29,3 @@ class TestScrapedJob(unittest.TestCase):
 
     def test_due_date_is_only_a_string(self):
         self.assertEqual(ScrapedJob(due_date = "Om 2 uker").due_date, "Om 2 uker")
-
