@@ -14,6 +14,16 @@
             {% endif %}
 
             <form id="edit" method="post">
+                
+                <label for="status">Status</label>
+                <select name="status">
+                {% for status in statuses %}
+                    {% if job.status == status %} 
+                    <option value="{{ status }}" selected>{{ status|title() }}</option>
+                    {% else %}
+                    <option value="{{ status }}">{{ status|title() }}</option>
+                    {% endif %}
+                {% endfor %}
 
                 <label for="title">Tittel</label>
                 <input name="title" type="text" value="{{ job.title }}" />
