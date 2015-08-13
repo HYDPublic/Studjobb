@@ -78,28 +78,38 @@ def edit_job(id):
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
 def save_job(id):
 
-    if request.form['delete']:
+    if request.form.get('delete', False):
         job_repository.remove(id)
         return redirect('/admin')
 
-    job = job_repository.find(id)
-    company = company_repository.find(request.form['company'])
+    job       = job_repository.find(id)
+    company   = company_repository.find(request.form['company'])
     companies = company_repository.findAll()
 
     try:
         job.title       = request.form['title']
+        job.status      = request.form['status']
         job.description = request.form['description']
         job.due_date    = request.form['due_date']
         job.start_date  = request.form['start_date']
         job.position    = request.form['position']
         job.place       = request.form['place']
         job.company     = company 
+
     except (JobException, TitleException) as error:
-        return render_template('admin/job/edit.html', error= error, job = job, companies = companies) 
+        return render_template('admin/job/edit.html',
+            statuses  = job.statuses,
+            error     = error,
+            job       = job,
+            companies = companies
+        ) 
 
     job = job_repository.save(job) 
-
-    return render_template('admin/job/edit.html', job = job, companies = companies) 
+    return render_template('admin/job/edit.html',
+        job       = job,
+        companies = companies,
+        statuses  = job.statuses
+    ) 
 
 @auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['GET'])
