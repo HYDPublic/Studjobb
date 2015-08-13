@@ -18,7 +18,9 @@ class ScrapedJobRepository(object):
             title = row.title,
             description = row.description,
             due_date = row.due_date,
-            company = row.company
+            company = row.company,
+            source = row.source,
+            url = row.url
         )
         return scraped_job
 
@@ -31,7 +33,9 @@ class ScrapedJobRepository(object):
                 title = row.title,
                 description = row.description,
                 due_date = row.due_date,
-                company = row.company
+                company = row.company,
+                source = row.source,
+                url = row.url
             )
             scraped_jobs.append(scraped_job)
         return scraped_jobs 
