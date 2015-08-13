@@ -4,5 +4,5 @@ assets/logos/*
 *.swp
 *.pyc
 config
-src/crawler/crawler
+src/crawler/crawler/
 src/crawler/scrapy.cfg
