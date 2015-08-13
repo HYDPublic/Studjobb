@@ -54,10 +54,14 @@ def static_from_root():
 @app.route('/admin')
 @auth.login_required
 def admin():
-    board = board_repository.find()
-    board.filterExpiredJobs()
+    board        = board_repository.find()
     scraped_list = scraped_list_repository.find()
-    return render_template('admin/admin.html', jobs = board.jobs, scraped_list = scraped_list)
+
+    return render_template('admin/admin.html', 
+        active_jobs  = board.jobs_by_status('active'),
+        scraped_jobs = scraped_list.jobs,
+        pending_jobs = board.jobs_by_status('pending')
+    )
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['GET'])
@@ -147,7 +151,6 @@ def create_company():
 @app.route('/')
 def board():
     board = board_repository.find()
-    board.filterExpiredJobs()
     return render_template('public/index.html', jobs = board.jobs) 
 
 @app.route('/stilling/<int:id>')
