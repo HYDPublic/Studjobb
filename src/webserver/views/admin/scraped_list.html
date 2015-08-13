@@ -1,7 +1,7 @@
 
             <div id="board">
                 <ul>
-                    {% for scraped_job in scraped_jobs %}
+                    {% for scraped_job in scraped_list.scraped_jobs %}
                     <li class="entry">
                         <span class="company">{{ scraped_job.company }}</a></span>
                             <span class="job">{{ scraped_job.title }}</a></span>
