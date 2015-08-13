@@ -9,7 +9,8 @@
                 <a class="new" href="/admin/stilling">Lag en ny stilling</a>
             </div>
 
-            {% include "admin/board.html" %}
-            {% include "admin/pending.html" %}
+            {% include "admin/active_board.html" %}
+            {% include "admin/pending_board.html" %}
+            {% include "admin/dead_board.html" %}
             {% include "admin/scraped_list.html" %}
 {% endblock %}
