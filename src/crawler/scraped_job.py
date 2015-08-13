@@ -43,4 +43,4 @@ class ScrapedJob(Job):
 
     @staticmethod
     def sanitizeHTML(html):
-        return BeautifulSoup(html, 'html').getText()
+        return BeautifulSoup(html, 'html.parser').getText()
