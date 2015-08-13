@@ -9,7 +9,7 @@
                     <th class="status">Status</th>
             </thead>
             <tbody>
-            {% for scraped_job in scraped_list.scraped_jobs %}
+            {% for scraped_job in scraped_jobs %}
                 <tr class="scraped">
                     <th><span><input type="checkbox" /></span></th>
                     <th><span>{{ scraped_job.company|truncate(20) }}</span></th>

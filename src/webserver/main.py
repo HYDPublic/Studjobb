@@ -59,7 +59,7 @@ def admin():
 
     return render_template('admin/admin.html', 
         active_jobs  = board.jobs_by_status('active'),
-        scraped_jobs = scraped_list.jobs,
+        scraped_jobs = scraped_list.scraped_jobs,
         pending_jobs = board.jobs_by_status('pending')
     )
 
