@@ -215,38 +215,6 @@ input {
     margin-bottom: 50px;
 }
 
-.scraped_list > ul {
-    list-style-type: none;
-}
-
-.scraped_list > ul > li {
-    display: block;
-    border-bottom: 1px solid #ccc;
-}
-
-.scraped_list > .scraped_entry {
-    padding: 10px 0px 10px 0px;
-}
-
-.scraped_entry > a {
-    text-decoration: none;
-    color: #000;
-}
-
-.scraped_entry .company {
-    display: inline-block;
-    min-width: 100px;
-    font-weight: bold;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
 #edit > input[name="title"] {
     font-size: 24px;
     font-weight: bold;
@@ -285,4 +253,46 @@ input {
     width: 50%;
     color: white;
     margin-bottom: 25px;
+}
+
+/* Scraped list */
+#scraped {
+    word-wrap: break-word;
+    border-spacing: 10px;
+    border-collapse: collapse
+    table-layout:fixed;
+    width: 100%;
+}
+
+#scraped > tbody > tr {
+    border-top: thin solid; 
+        border-bottom: thin solid;
+}
+
+th.check {
+    width:5%;
+}
+
+th.company {
+    width: 25%;
+}
+
+th.title {
+    width: 60%;
+}
+
+th.status {
+    width: 20%;
+}
+
+tr.scraped > th > span {
+    font-weight: normal;
+}
+
+#scraped > tbody > tr {
+    margin: 10px;
+}
+
+#scraped > tbody > tr > th > span {
+    float: left;
 }
