@@ -6,3 +6,4 @@ assets/logos/*
 config
 src/crawler/crawler/
 src/crawler/scrapy.cfg
+idea
