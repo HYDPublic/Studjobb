@@ -8,6 +8,14 @@ class ScrapedList(object):
     def scraped_jobs(self):
         return self._scraped_jobs
 
+    @property
+    def sources(self):
+        sources = []
+        for scraped_job in self._scraped_jobs:
+            if scraped_job.source not in sources:
+                sources.append(scraped_job.source)
+        return sources 
+
     def scraped_jobs_from(self, source):
         scraped_jobs_matching_source = []
         for scraped_job in self._scraped_jobs:
