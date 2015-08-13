@@ -23,7 +23,8 @@ class JobRepository(object):
             company = company,
             place = row.place,
             position = row.position,
-            start_date = row.start_date
+            start_date = row.start_date,
+            status = row.status
         )
         return job
 
@@ -40,7 +41,8 @@ class JobRepository(object):
                 company = company,
                 place = row.place,
                 position = row.position,
-                start_date = row.start_date
+                start_date = row.start_date,
+                status = row.status
             )
             jobs.append(job)
         return jobs
@@ -60,7 +62,8 @@ class JobRepository(object):
             position    = job.position,
             place       = job.place,
             due_date    = job.due_date,
-            start_date  = job.start_date
+            start_date  = job.start_date,
+            status      = job.status
         )
         job.id = result.lastrowid
         return job 
@@ -75,7 +78,8 @@ class JobRepository(object):
             place       = job.place,
             due_date    = job.due_date,
             start_date  = job.start_date,
-            id          = job.id
+            id          = job.id,
+            status      = job.status
         )
         return self.find(job.id)
 
