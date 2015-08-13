@@ -103,6 +103,10 @@ input {
     border-bottom: 1px solid #ccc;
 }
 
+#board.admin {
+    margin-bottom: 50px;
+}
+
 /* Job entry */
 .entry {
     padding: 10px 0px 10px 0px;
@@ -202,6 +206,47 @@ input {
 }
 
 /* Admin */
+
+.right, .left {
+    width: 40%;
+}
+
+.scraped_list {
+    margin-bottom: 50px;
+}
+
+.scraped_list > ul {
+    list-style-type: none;
+}
+
+.scraped_list > ul > li {
+    display: block;
+    border-bottom: 1px solid #ccc;
+}
+
+.scraped_list > .scraped_entry {
+    padding: 10px 0px 10px 0px;
+}
+
+.scraped_entry > a {
+    text-decoration: none;
+    color: #000;
+}
+
+.scraped_entry .company {
+    display: inline-block;
+    min-width: 100px;
+    font-weight: bold;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
 #edit > input[name="title"] {
     font-size: 24px;
     font-weight: bold;

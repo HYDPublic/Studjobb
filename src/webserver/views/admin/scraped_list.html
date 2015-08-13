@@ -1,12 +1,15 @@
-
-            <div id="board">
+        
+        <h1>Skrapte jobber</h1>
+        {% for source in scraped_list.sources %}
+            <div class="scraped_list">
+                <h2>{{ source|title }}</h2>
                 <ul>
-                    {% for scraped_job in scraped_list.scraped_jobs %}
-                    <li class="entry">
+                    {% for scraped_job in scraped_list.scraped_jobs_from(source) %}
+                    <li class="scraped_entry">
                         <span class="company">{{ scraped_job.company }}</a></span>
-                            <span class="job">{{ scraped_job.title }}</a></span>
-                            <span class="due_date">{{ scraped_job.due_date }}</span>
+                        <span class="job">{{ scraped_job.title }}</a></span>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
+        {% endfor %}
