@@ -27,3 +27,10 @@ class Board(object):
             self.filterExpiredJobs()
 
         return self._jobs 
+
+    def jobs_by_status(self, status):
+        jobs_with_provided_status = []
+        for job in self._jobs:
+            if job.status == status:
+                jobs_with_provided_status.append(job)
+        return jobs_with_provided_status
