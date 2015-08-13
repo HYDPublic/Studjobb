@@ -2,35 +2,29 @@
 
 class Board(object):
 
-    def __init__(self, jobs = [], sortByAttribute = None, filterExpiredJobs = True):
-        self._jobs              = jobs
-        self._sortByAttribute   = sortByAttribute
-        self._filterExpiredJobs = filterExpiredJobs
+    def __init__(self, jobs = []):
+        self._jobs = jobs
 
-    supportedAttributesToSortOn = {
+    supportedAttributes = {
         'title':    lambda job: job.title,
         'due_date': lambda job: job.due_date,
     }
 
-    def sort(self, attributeToSortOn):
-        self._jobs.sort(key=Board.supportedAttributesToSortOn[attributeToSortOn])
-
-    def filterExpiredJobs(self):
-        self._jobs = filter(lambda job: job.expired == False, self._jobs)
-
     @property
     def jobs(self):
-        if self._sortByAttribute in Board.supportedAttributesToSortOn:
-            self.sort(self._sortByAttribute)
-        
-        if self._filterExpiredJobs is True:
-            self.filterExpiredJobs()
-
         return self._jobs 
-
-    def jobs_by_status(self, status):
-        jobs_with_provided_status = []
+    
+    def jobs_by_status(self, status = None):
+        jobs_that_meet_status_criteria = []
         for job in self._jobs:
             if job.status == status:
-                jobs_with_provided_status.append(job)
-        return jobs_with_provided_status
+                jobs_that_meet_status_criteria.append(job)
+        return jobs_that_meet_status_criteria
+
+    def jobs_sorted_by(self, attribute = None):
+        try:
+            sorting_key = Board.supportedAttributes[attribute]
+        except KeyError:
+            return self._jobs
+
+        return sorted(self._jobs, key = sorting_key)

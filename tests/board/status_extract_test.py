@@ -13,7 +13,7 @@ class TestBoardStatusExtract(unittest.TestCase):
 
     def test_board_ignores_expired_jobs_when_extracting_by_status(self):
         jobs = [Job(due_date=datetime.date(1991, 4, 20), status = 'dead')]
-        board = Board(jobs = jobs, filterExpiredJobs = True)
+        board = Board(jobs = jobs)
         self.assertEqual(len(board.jobs_by_status('dead')), 1)
 
     def test_board_returns_no_jobs_if_no_jobs_are_in_board(self):
