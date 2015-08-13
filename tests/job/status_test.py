@@ -20,3 +20,8 @@ class TestJobStatus(unittest.TestCase):
     def test_status_does_not_raise_error_if_valid_status_but_in_uppercase(self):
         job = Job(status = 'ACTIVE')
         self.assertEqual(job.status, 'active')
+
+    def test_job_has_a_list_of_all_possible_statuses(self):
+        self.assertEqual('active'  in Job().statuses, True)
+        self.assertEqual('pending' in Job().statuses, True)
+        self.assertEqual('dead'    in Job().statuses, True)

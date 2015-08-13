@@ -20,6 +20,10 @@ class Job(object):
         self.company     = company
 
     @property
+    def statuses(self):
+        return ['active', 'pending', 'dead']
+
+    @property
     def status(self):
         return self._status 
 
@@ -50,7 +54,7 @@ class Job(object):
     @status.setter
     def status(self, status):
         status = status.lower()
-        if status in ['active', 'pending', 'dead']:
+        if status in self.statuses:
             self._status = status
         else:
             raise JobException('Invalid status code.')
