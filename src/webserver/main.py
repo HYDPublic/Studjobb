@@ -68,7 +68,11 @@ def admin():
 def edit_job(id):
     job = job_repository.find(id)
     companies = company_repository.findAll()
-    return render_template('admin/job/edit.html', job = job, companies = companies) 
+    return render_template('admin/job/edit.html',
+        job       = job,
+        companies = companies,
+        statuses  = job.statuses
+    ) 
 
 @auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
