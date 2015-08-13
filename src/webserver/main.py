@@ -151,7 +151,9 @@ def create_company():
 @app.route('/')
 def board():
     board = board_repository.find()
-    return render_template('public/index.html', jobs = board.jobs) 
+    return render_template('public/index.html',
+        jobs = board.jobs_by_status('active')
+    ) 
 
 @app.route('/stilling/<int:id>')
 def job(id):
