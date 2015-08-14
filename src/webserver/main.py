@@ -124,8 +124,11 @@ def edit_scraped_job(guid):
     if scraped_job == None:
         return abort(404)
 
+    companies = company_repository.findAll()
+
     return render_template('admin/scraped_job/edit.html',
-        scraped_job = scraped_job
+        scraped_job = scraped_job,
+        companies   = companies 
     ) 
 
 @auth.login_required
@@ -146,16 +149,19 @@ def new_job():
 @auth.login_required
 @app.route('/admin/stilling', methods = ['POST'])
 def create_job():
-    company = Company()
-    company.id = request.form['company']
-    job = Job() 
-    job.title = request.form['title']
-    job.place = request.form['place']
-    job.due_date = request.form['due_date']
-    job.start_date = request.form['start_date']
-    job.company = company
-    job.position = request.form['position']
-    job.description = request.form['description']
+
+    company    = Company()
+    company.id = request.form.get('company')
+
+    job             = Job() 
+    job.company     = company
+    job.title       = request.form.get('title')
+    job.place       = request.form.get('place')
+    job.due_date    = request.form.get('due_date')
+    job.start_date  = request.form.get('start_date')
+    job.position    = request.form.get('position')
+    job.description = request.form.get('description')
+
     job = job_repository.save(job)
     return redirect('/admin/stilling/%d' % job.id)
 
