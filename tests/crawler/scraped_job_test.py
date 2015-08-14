@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 import unittest 
+import datetime
 
 from src.crawler.scraped_job import ScrapedJob
 
 class TestScrapedJob(unittest.TestCase):
+
+    def test_default_due_date_is_not_a_date(self):
+        self.assertEqual(isinstance(ScrapedJob().due_date, datetime.datetime), False) 
+
+    def test_default_start_date_is_not_a_date(self):
+        self.assertEqual(isinstance(ScrapedJob().start_date, datetime.datetime), False) 
 
     def test_can_have_a_url(self):
         self.assertEqual(ScrapedJob(url = "http://vg.no").url, "http://vg.no")
