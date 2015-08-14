@@ -21,6 +21,9 @@ class TestJobDescription(unittest.TestCase):
     def test_description_raises_exception_if_valid_and_invalid_html_tags_in_same_description(self):
         self.assertRaisesRegexp(DescriptionException, 'html', Job, description = "<b>Hey!</b><iframe src=''></iframe>")
 
+    def test_description_raises_exception_containing_a_list_of_the_invalid_html_tags(self):
+        self.assertRaisesRegexp(DescriptionException, 'script.*iframe|iframe.*script', Job, description = "<script></script><iframe></iframe>")
+
     def test_description_can_contain_non_intrusive_html_tags(self):
         job = Job(description = "<strong>Søk nå!</strong>")
         self.assertEqual(job.description, "<strong>Søk nå!</strong>")

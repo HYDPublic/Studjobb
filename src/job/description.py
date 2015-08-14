@@ -16,10 +16,15 @@ class Description(object):
         soup = BeautifulSoup(description, 'html.parser')
         allHTMLTags = soup.findAll(True)
 
+        illegalHTMLTags = []
         for HTMLTag in allHTMLTags:
             if HTMLTag.name not in Description.validHTMLTags:
-                return True
-        return False
+                illegalHTMLTags.append(HTMLTag.name) 
+
+        if not illegalHTMLTags:
+            return False 
+        else:
+            return illegalHTMLTags
 
     @staticmethod
     def hasTooManyWords(description):
@@ -28,8 +33,9 @@ class Description(object):
 
     @staticmethod
     def isValid(description):
-        if Description.hasIllegalHTMLTags(description):
-            raise DescriptionException("Description contains illegal html tags.")
+        illegalHTMLTags = Description.hasIllegalHTMLTags(description)
+        if illegalHTMLTags:
+            raise DescriptionException("Description contains illegal html tags: %s" % ', '.join(str(tag) for tag in illegalHTMLTags))
         elif Description.hasTooManyWords(description):
             raise DescriptionException("Description is too long.")
         return True
