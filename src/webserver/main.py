@@ -118,6 +118,17 @@ def edit_company(id):
     return render_template('admin/company/edit.html', company = company) 
 
 @auth.login_required
+@app.route('/admin/skrapt/<string:guid>', methods = ['GET'])
+def edit_scraped_job(guid):
+    scraped_job = scraped_job_repository.find(guid)
+    if scraped_job == None:
+        return abort(404)
+
+    return render_template('admin/scraped_job/edit.html',
+        scraped_job = scraped_job
+    ) 
+
+@auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['POST'])
 def save_company(id):
     company = company_repository.find(id)

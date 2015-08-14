@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
+{% block title %}Rediger {{ scraped_job.title }}{% endblock %}
+{% block container %}
+            <div id="navigation">
+                <a class="back" href="/admin">← Tilbake til administrasjon</a>
+            </div>
+
+            {% if error %}
+            <div id="alert">
+                <strong>Ohoh!</strong>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form id="edit" method="post">
+                
+                <label for="title">Tittel</label>
+                <input name="title" type="text" value="{{ scraped_job.title }}" />
+
+                <label for="position">Stillingstype</label>
+                <input name="position" type="text" value="{{ scraped_job.position }}" />
+
+                <label for="due_date">Søknadsfrist</label>
+                <input name="due_date" type="date" value="{{ scraped_job.due_date }}"/>
+
+                <label for="start_date">Tiltredelsesdato</label>
+                <input name="start_date" type="date" value="{{ scraped_job.start_date }}"/>
+
+                <label for="place">Sted</label>
+                <input name="place" type="text" value="{{ scraped_job.place }}" />
+
+                <textarea name="description" id="description">
+                {{ scraped_job.description|safe }}
+                </textarea>
+
+                <input class="button" type="submit" value="Lagre" />
+            </form>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                CKEDITOR.config.allowedContent = true;
+                CKEDITOR.replace('description'); 
+            });
+            </script>
+
+{% endblock %}
