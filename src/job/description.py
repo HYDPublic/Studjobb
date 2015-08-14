@@ -8,7 +8,7 @@ class Description(object):
     validHTMLTags = [
         'h1', 'h2', 'h3', 'h4', 'h5',
         'b', 'i', 'em', 'p', 'img',
-        'ul', 'li', 'a', 'strong'
+        'ul', 'li', 'a', 'strong', 'div'
     ]
 
     @staticmethod
