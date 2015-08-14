@@ -92,7 +92,7 @@ def save_job(id):
         job.status      = request.form.get('status')
         job.description = request.form.get('description')
         job.due_date    = request.form.get('due_date')
-        job.start_date  = request.form.get('start_date', '')
+        job.start_date  = request.form.get('start_date')
         job.position    = request.form.get('position')
         job.place       = request.form.get('place')
         job.company     = company 
