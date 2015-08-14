@@ -27,7 +27,6 @@ h2 {
 
 input {
     border: none;
-    padding: 12px;
     font-size: 14px;
 }
 
@@ -208,7 +207,21 @@ input {
 /* Admin */
 
 .right, .left {
-    width: 40%;
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 25px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+div.field { 
+    display: block;
 }
 
 .scraped_list {

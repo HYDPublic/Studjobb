@@ -15,49 +15,69 @@
 
             <form id="edit" method="post">
                 
-                <label for="status">Status</label>
-                <select name="status">
-                {% for status in statuses %}
-                    {% if job.status == status %} 
-                    <option value="{{ status }}" selected>{{ status|title() }}</option>
-                    {% else %}
-                    <option value="{{ status }}">{{ status|title() }}</option>
-                    {% endif %}
-                {% endfor %}
-                </select>
+                <div class="left">
 
-                <label for="title">Tittel</label>
+                    <div class="field">
+                        <label for="place">Sted</label>
+                        <input name="place" type="text" value="{{ job.place }}" />
+                    </div>
+
+                    <div class="field">
+                        <label for="status">Status</label>
+                        <select name="status">
+                        {% for status in statuses %}
+                            {% if job.status == status %} 
+                            <option value="{{ status }}" selected>{{ status|title() }}</option>
+                            {% else %}
+                            <option value="{{ status }}">{{ status|title() }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="company">Selskap</label>
+                        <select name="company">
+                        {% for company in companies %}
+                            {% if company.id == job.company.id %} 
+                            <option value="{{ company.id }}" selected>{{ company.name }}</option>
+                            {% else %}
+                            <option value="{{ company.id }}">{{ company.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="field">
+                        <label for="delete">Slett denne stillingen</label>
+                        <input type="checkbox" name="delete" />
+                    </div>
+                </div>
+
+                <div class="right">
+
+                    <div class="field">
+                        <label for="position">Stillingstype</label>
+                        <input name="position" type="text" value="{{ job.position }}" />
+                    </div>
+
+                    <div class="field">
+                        <label for="due_date">Søknadsfrist</label>
+                        <input name="due_date" type="date" value="{{ job.due_date }}"/>
+                    </div>
+
+                    <div class="field">
+                        <label for="start_date">Tiltredelsesdato</label>
+                        <input name="start_date" type="date" value="{{ job.start_date }}"/>
+                    </div>
+
+                </div>
+
                 <input name="title" type="text" value="{{ job.title }}" />
-
-                <label for="position">Stillingstype</label>
-                <input name="position" type="text" value="{{ job.position }}" />
-
-                <label for="due_date">Søknadsfrist</label>
-                <input name="due_date" type="date" value="{{ job.due_date }}"/>
-
-                <label for="start_date">Tiltredelsesdato</label>
-                <input name="start_date" type="date" value="{{ job.start_date }}"/>
-
-                <label for="place">Sted</label>
-                <input name="place" type="text" value="{{ job.place }}" />
-
-                <label for="company">Selskap</label>
-                <select name="company">
-                {% for company in companies %}
-                    {% if company.id == job.company.id %} 
-                    <option value="{{ company.id }}" selected>{{ company.name }}</option>
-                    {% else %}
-                    <option value="{{ company.id }}">{{ company.name }}</option>
-                    {% endif %}
-                {% endfor %}
-                </select>
 
                 <textarea name="description" id="description">
                 {{ job.description }}
                 </textarea>
-
-                <label for="delete">Slett denne stillingen</label>
-                <input type="checkbox" name="delete" />
 
                 <input class="button" type="submit" value="Lagre" />
             </form>
