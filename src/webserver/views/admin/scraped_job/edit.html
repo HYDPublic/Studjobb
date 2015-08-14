@@ -13,7 +13,7 @@
             </div>
             {% endif %}
 
-            <form id="edit" method="post">
+            <form id="edit" method="post" action="/admin/stilling">
                 
                 <label for="title">Tittel</label>
                 <input name="title" type="text" value="{{ scraped_job.title }}" />
@@ -30,8 +30,15 @@
                 <label for="place">Sted</label>
                 <input name="place" type="text" value="{{ scraped_job.place }}" />
 
+                <label for="company">Selskap ({{ scraped_job.company }})</label>
+                <select name="company">
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+                </select>
+
                 <textarea name="description" id="description">
-                {{ scraped_job.description|safe }}
+                {{ scraped_job.description }}
                 </textarea>
 
                 <input class="button" type="submit" value="Lagre" />
