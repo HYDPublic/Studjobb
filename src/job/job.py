@@ -71,6 +71,9 @@ class Job(object):
 
     @due_date.setter
     def due_date(self, due_date):
+        if not due_date:
+            due_date = self.dateThirtyDaysFromToday()
+
         if isinstance(due_date, basestring):
             due_date = Job.convertStringToDate(due_date)
         

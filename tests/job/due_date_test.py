@@ -14,6 +14,10 @@ class TestJobDueDate(unittest.TestCase):
         job = Job(due_date = '2016-08-30')
         self.assertEqual(job.due_date, datetime.date(2016, 8, 30))
 
+    def test_job_due_date_can_be_empty_string_after_init(self):
+        job = Job()
+        job.due_date = ''
+
     def test_job_due_date_raises_error_if_format_is_wrong(self):
         self.assertRaisesRegexp(JobException, 'date', Job, due_date = 'Tuesday 21th January 2016')
 
