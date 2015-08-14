@@ -285,6 +285,10 @@ th.status {
     width: 20%;
 }
 
+tr.scraped {
+    cursor: pointer;
+}
+
 tr.scraped > th > span {
     font-weight: normal;
 }

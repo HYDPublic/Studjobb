@@ -3,15 +3,13 @@
         <table id="scraped">
             <thead>
                 <tr>
-                    <th class="check"> </th>
                     <th class="company">Selskap</th>
                     <th class="title">Tittel</th>
                     <th class="status">Status</th>
             </thead>
             <tbody>
             {% for scraped_job in scraped_jobs %}
-                <tr class="scraped">
-                    <th><span><input type="checkbox" /></span></th>
+            <tr class="scraped" onclick="document.location = '/admin/skrapt/{{ scraped_job.guid }}'">
                     <th><span>{{ scraped_job.company|truncate(20) }}</span></th>
                     <th><span>{{ scraped_job.title|truncate(50)}}</span></th>
                     <th><span>Publisert</span></th>
