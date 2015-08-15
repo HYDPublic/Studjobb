@@ -71,6 +71,7 @@ input {
 
 #search > input {
     width: 33.333%; 
+    padding: 10px;
 }
 
 #search > a.button {
