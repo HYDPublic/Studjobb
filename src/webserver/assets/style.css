@@ -210,7 +210,6 @@ input {
 .right, .left {
     display: inline-block;
     width: 50%;
-    margin-bottom: 25px;
 }
 
 .right {
@@ -226,6 +225,10 @@ div.field {
 }
 
 .scraped_list {
+    margin-bottom: 50px;
+}
+
+.meta.company {
     margin-bottom: 50px;
 }
 
