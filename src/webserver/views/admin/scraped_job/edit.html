@@ -13,30 +13,6 @@
             </div>
             {% endif %}
 
-
-            <div class="meta company">
-                <form id="company" method="post" action="/admin/selskap">
-                
-                    <div class="left">
-                        <div class="field">
-                            <label for="name">Selskapsnavn</label>
-                            <input type="text" name="name">
-                        </div>
-                    </div>
-
-                    <div class="right">
-                        <div class="field">
-                            <div class="field">
-                                <label for="logo">Logo (Filnavn/URL)</label>
-                                <input type="text" name="logo">
-                            </div>
-                        </div>
-                    </div>
-
-                    <input class="button" type="submit" value="Lagre selskap" />
-                </form>
-            </div>
-
             <form id="edit" method="post" action="/admin/stilling">
                 
                 <div class="left">
@@ -65,7 +41,7 @@
                 <div class="right">
 
                     <div class="field">
-                        <label for="due_date">Søknadsfrist ({{ scraped_job.due_date }})</label>
+                        <label for="due_date">Søknadsfrist ({{ scraped_job.due_date|trim() }})</label>
                         <input name="due_date" type="date"/>
                     </div>
 
