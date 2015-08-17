@@ -8,6 +8,9 @@
                     <th>Tittel</th>
                     <th>Linje</th>
                     <th>Søknadsfrist</th>
+                    {% if name == 'Aktive jobber' %}
+                    <th>Levetid</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +20,9 @@
                     <td><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></td>
                     <td>Datateknikk/Informatikk</td>
                     <td>{{ job.human_readable_due_date }}</td>
+                    {% if name == 'Aktive jobber' %}
+                    <td><progress max="100" value="50"></progress></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
