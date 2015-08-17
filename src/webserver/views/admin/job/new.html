@@ -1,46 +1,67 @@
 {% extends "base.html" %}
 {% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
-{% block title %}Lag ny jobb{% endblock %}
+{% block title %}Ny jobb{% endblock %}
 {% block container %}
-            <div id="navigation">
-                <a class="back" href="/admin">← Tilbake til administrasjon</a>
+{% import 'macros/navigation.html' as navigation %}
+
+    {{ navigation.render_back_links(logged_in = True) }}
+
+    <form method="post">
+            <div class="row">         
+                <div class="two columns offset-by-two"> 
+
+                    <label for="place">Sted</label>
+                    <input name="place" type="text" placeholder="Oslo, Trondheim, Bergen" />
+
+                    <label for="status">Status</label>
+                    <select name="status">
+                    {% for status in statuses %}
+                        <option value="{{ status }}">{{ status|title() }}</option>
+                    {% endfor %}
+                    </select>
+
+                    <label for="company">Selskap</label>
+                    <select name="company">
+                    {% for company in companies %}
+                        <option value="{{ company.id }}">{{ company.name }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="four columns offset-by-two"> 
+
+                    <label for="position">Stillingstype</label>
+                    <input name="position" type="text" placeholder="Fulltid, deltids, trainee" />
+
+                    <label for="due_date">Søknadsfrist</label>
+                    <input name="due_date" type="date" />
+
+                    <label for="start_date">Tiltredelsesdato</label>
+                    <input name="start_date" type="date" />
+                </div>
             </div>
 
-            <form id="edit" method="post">
 
-                <label for="title">Tittel</label>
-                <input name="title" type="text" placeholder="Tittel" />
+            <div class="row">
+                
+                <div class="eight columns offset-by-two">
+                    <hr>
+                    
+                    <label for="title">Tittel</label>
+                    <input name="title" type="text" placeholder="Selskap søker stilling!" class="u-full-width"/>
 
-                <label for="position">Stillingstype</label>
-                <input name="position" type="text" placeholder="Stillingstype" />
+                    <textarea name="description" id="description"></textarea>
 
-                <label for="due_date">Søknadsfrist</label>
-                <input name="due_date" type="date" />
+                    <input class="button button-primary" type="submit" value="Lagre" />
+                </div>
+            </div>
+    </form>
 
-                <label for="start_date">Tiltredelsesdato</label>
-                <input name="start_date" type="date" />
-
-                <label for="place">Sted</label>
-                <input name="place" type="text" placeholder="Sted" />
-
-                <label for="company">Selskap</label>
-                <select name="company">
-                {% for company in companies %}
-                    <option value="{{ company.id }}">{{ company.name }}</option>
-                {% endfor %}
-                </select>
-
-                <textarea name="description" id="description">
-                </textarea>
-
-                <input class="button" type="submit" value="Lagre" />
-
-                <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    CKEDITOR.config.allowedContent = true;
-                    CKEDITOR.replace('description'); 
-                });
-                </script>
-            </form>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        CKEDITOR.config.allowedContent = true;
+        CKEDITOR.replace('description'); 
+    });
+    </script>
 
 {% endblock %}

@@ -5,6 +5,9 @@
 {% import 'macros/admin.html' as admin %}
 
     {{ navigation.render_back_links(logged_in = True, admin_url = False) }}
+
+    {{ admin.render_new_buttons() }}
+
     {{ admin.render_board(jobs = active_jobs,                 name = 'Aktive jobber') }}
     {{ admin.render_board(jobs = pending_jobs,                name = 'Avventende jobber') }}
     {{ admin.render_board(jobs = dead_jobs,                   name = 'Inaktive jobber') }}
