@@ -3,36 +3,39 @@
     <head>
         <meta charset="utf-8">
         <title>{% block title %}{% endblock %} - Studjobb</title>
+
         <meta name="title" content="Studjobb">
-        <meta name="description" content="Jobb for studenter og nyutdannede">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-        <link rel="stylesheet" type="text/css" href="/assets/style-mobile.css" media="only screen and (max-width: 480px), only screen and (max-device-width: 480px)" />
+
+        <link rel="stylesheet" href="assets/normalize.css">
+        <link rel="stylesheet" href="assets/skeleton.css"> 
+        <link rel="stylesheet" href="assets/style.css"> 
         <link rel="shortcut icon" href="/assets/favicon.ico" />
-        <meta name="google-site-verification" content="iXQ6VajFEYbVJjC1amLaY-JGK5758pb2F1kY0tBbVCo" />
+
         <meta property="og:title" content="Studjobb">
         <meta property="og:description" content="Jobb for studenter og nyutdannede">
         <meta property="og:url" content="http://studjobb.no">
         <meta property="og:type" content="website">
+
         {% include "analytics.html" %}
         {% block head %}{% endblock %}
     </head>
     <body>
         <a href="/">
-            <div id="header">
-            </div>
+            <div class="header"></div>
         </a>
         
-        <div id="container">
+        <div class="container">
             {% block container %}
             {% endblock %}
+
+            <div class="footer row">
+                {% block footer %}
+                <p class="four columns offset-by-two notice">&copy; Studjobb 2015 Org.nummer: 997452364</p>
+                <p class="four columns about-us"><a href="/om">Om oss</a></p>
+                {% endblock %}
+            </div>
         </div>
 
-        <div id="footer">
-            {% block footer %}
-            <p class="notice">&copy; Studjobb 2015 Org.nummer: 997452364</p>
-            <p class="about-us"><a href="/om">Om oss</a></p>
-            {% endblock %}
-        </div>
     </body>
 </html>

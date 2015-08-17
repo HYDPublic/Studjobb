@@ -1,14 +1,25 @@
-            <div id="board">
-                <h1>Nyeste jobber</h1>
-                <ul>
-                    {% for job in jobs %}
-                    <li class="entry">
-                        <a href="/stilling/{{ job.id }}">
-                            <span class="company">{{ job.company.name }}</span>
-                            <span class="job">{{ job.title }}</span>
-                            <span class="due_date">{{ job.human_readable_due_date }}</span>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
+
+            <div class="row">
+                <div class="eight columns offset-by-two">
+                    <table class="u-full-width">
+                        <thead>
+                            <tr>
+                                <th>Selskap</th>
+                                <th>Tittel</th>
+                                <th>Linje</th>
+                                <th>Søknadsfrist</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for job in jobs %}
+                            <tr>
+                                <td><strong>{{ job.company.name }}</strong></td>
+                                <td><a href="/stilling/{{ job.id }}">{{ job.title }}</a></td>
+                                <td>Datateknikk/Informatikk</td>
+                                <td>{{ job.human_readable_due_date }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
