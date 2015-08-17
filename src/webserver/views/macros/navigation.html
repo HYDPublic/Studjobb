@@ -1,4 +1,4 @@
-{% macro render_back_links(logged_in = False, edit_url = False) -%}
+{% macro render_back_links(logged_in = False, edit_url = False, admin_url = True) -%}
     <div class="row navigation">
         <div class="six columns offset-by-two">
             <a href="/">← Tilbake til forsiden</a>
@@ -7,8 +7,10 @@
                 |
                 <a href="{{ edit_url }}">Rediger</a>
                 {% endif %}
-            |
-            <a href="/admin">Til administrasjonspanel →</a>
+                {% if admin_url %}
+                |
+                <a href="/admin">Til administrasjonspanel →</a>
+                {% endif %}
             {% endif %}
         </div>
     </div>

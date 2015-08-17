@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Administrasjon{% endblock %}
 {% block container %}
-            <div id="navigation">
-                <a class="back" href="/">← Tilbake til forsiden</a>
-                |
-                <a class="new" href="/admin/selskap">Lag et nytt selskap</a>
-                |
-                <a class="new" href="/admin/stilling">Lag en ny stilling</a>
-            </div>
+{% import 'macros/navigation.html' as navigation %}
+{% import 'macros/admin.html' as admin %}
 
-            {% include "admin/active_board.html" %}
-            {% include "admin/pending_board.html" %}
-            {% include "admin/dead_board.html" %}
-            {% include "admin/scraped_list.html" %}
+    {{ navigation.render_back_links(logged_in = True, admin_url = False) }}
+    {{ admin.render_board(jobs = active_jobs,                 name = 'Aktive jobber') }}
+    {{ admin.render_board(jobs = pending_jobs,                name = 'Avventende jobber') }}
+    {{ admin.render_board(jobs = dead_jobs,                   name = 'Inaktive jobber') }}
+    {{ admin.render_scraped_list(scraped_jobs = scraped_jobs, name = 'Skrapte jobber') }}
+
 {% endblock %}

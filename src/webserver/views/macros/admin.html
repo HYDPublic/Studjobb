@@ -1,0 +1,49 @@
+{% macro render_board(name = '', jobs) -%}
+    <div class="eight columns offset-by-two board-admin">
+        <h2>{{ name }}</h2>
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Selskap</th>
+                    <th>Tittel</th>
+                    <th>Linje</th>
+                    <th>Søknadsfrist</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for job in jobs %}
+                <tr>
+                    <td><strong>{{ job.company.name }}</strong></td>
+                    <td><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></td>
+                    <td>Datateknikk/Informatikk</td>
+                    <td>{{ job.human_readable_due_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%- endmacro %}
+
+{% macro render_scraped_list(scraped_jobs, name) -%}
+    <div class="eight columns offset-by-two scraped-jobs-admin">
+        <h2>{{ name }}</h2>
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Selskap</th>
+                    <th>Tittel</th>
+                    <th>Søknadsfrist</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for scraped_job in scraped_jobs %}
+                <tr>
+                    <td><strong>{{ scraped_job.company }}</strong></td>
+                    <td><a href="/admin/skrapt/{{ scraped_job.guid }}">{{ scraped_job.title }}</a></td>
+                    <td>{{ scraped_job.due_date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%- endmacro %}

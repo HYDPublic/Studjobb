@@ -5,12 +5,5 @@
                     <p>Ingen avventende jobber.</p>
                 {% endif %}
                 <ul>
-                    {% for job in pending_jobs %}
-                    <li class="entry">
-                        <span class="company"><a href="/admin/selskap/{{ job.company.id }}">{{ job.company.name }}</a></span>
-                            <span class="job"><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></span>
-                            <span class="due_date">{{ job.human_readable_due_date }}</span>
-                    </li>
-                    {% endfor %}
                 </ul>
             </div>

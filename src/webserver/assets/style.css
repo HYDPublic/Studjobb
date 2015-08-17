@@ -16,6 +16,14 @@ body {
     list-style-type: none; 
 }
 
+.navigation {
+    margin-bottom: 50px;
+}
+
+.board-admin, .scraped-jobs-admin {
+    margin-bottom: 50px;
+}
+
 p.about-us {
     text-align: right;
 }
