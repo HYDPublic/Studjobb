@@ -17,6 +17,10 @@ body {
     color: #d3d3d3;
 }
 
+.search, .welcome {
+    margin-bottom: 25px;
+}
+
 .job-meta > ul {
     list-style-type: none; 
 }
