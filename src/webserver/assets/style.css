@@ -12,6 +12,10 @@ body {
     background-size: cover;
 }
 
+.job-meta > ul {
+    list-style-type: none; 
+}
+
 p.about-us {
     text-align: right;
 }

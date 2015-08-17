@@ -4,13 +4,19 @@
             
             <!-- Create macro for nav -->
 
-            <div id="job">
-                <div id="meta">
-                    <div id="company">
-                        <img class="logo" src="/{{ job.company.logo.url }}">
+            <div class="row section job">
+
+                <div class="three columns u-pull-right">
+
+                    <div class="row">
+                        <img class="u-max-full-width" src="/{{ job.company.logo.url }}">
                     </div>
-                    <div id="apply">
-                        <a href="#" class="button">Søk nå!</a>
+
+                    <div class="row">
+                        <a href="#" class="button button-primary u-full-width">Søk nå!</a>
+                    </div>
+
+                    <div class="row job-meta">
                         <ul>
                             <li>Sted: <strong>{{ job.place }}</strong></li>
                             <li>Stilling: <strong>{{ job.position }}</strong></li>
@@ -19,9 +25,13 @@
                         </ul>
                     </div>
                 </div>
-            </div><!--
-         --><div id="about">
-                <h1 class="title">{{ job.title }}</h1>
-                {{ job.description|safe }}
+
+                <div class="six columns offset-by-two u-pull-left">
+                    <h1 class="title">{{ job.title }}</h1>
+                    {{ job.description|safe }}
+                </div>
+
+
             </div>
+
 {% endblock %}
