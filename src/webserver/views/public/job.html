@@ -1,13 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{ job.title }}{% endblock %}
 {% block container %}
-            <div id="navigation">
-                <a class="back" href="/">← Tilbake til forsiden</a>
-                {% if logged_in %}
-                |
-                <a class="edit" href="/admin/stilling/{{ job.id }}">Rediger stilling</a>
-                {% endif %}
-            </div>
+            
+            <!-- Create macro for nav -->
 
             <div id="job">
                 <div id="meta">
