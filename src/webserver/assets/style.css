@@ -12,6 +12,11 @@ body {
     background-size: cover;
 }
 
+.footer {
+    margin-top: 50px;
+    color: #d3d3d3;
+}
+
 .job-meta > ul {
     list-style-type: none; 
 }
