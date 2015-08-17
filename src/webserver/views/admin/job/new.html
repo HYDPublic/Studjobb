@@ -13,13 +13,6 @@
                     <label for="place">Sted</label>
                     <input name="place" type="text" placeholder="Oslo, Trondheim, Bergen" />
 
-                    <label for="status">Status</label>
-                    <select name="status">
-                    {% for status in statuses %}
-                        <option value="{{ status }}">{{ status|title() }}</option>
-                    {% endfor %}
-                    </select>
-
                     <label for="company">Selskap</label>
                     <select name="company">
                     {% for company in companies %}
