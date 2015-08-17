@@ -1,23 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Lag nytt selskap{% endblock %}
 {% block container %}
-            <div id="navigation">
-                <a class="back" href="/admin">← Tilbake til administrasjon</a>
-            </div>
+{% import 'macros/navigation.html' as navigation %}
 
-            <form id="edit" method="post">
+    {{ navigation.render_back_links(logged_in = True) }}
 
-                <div class="field">
-                    <label for="name">Selskapsnavn</label>
-                    <input name="name" type="text"/>
-                </div>
+    <div class="row">
+        <div class="two columns offset-by-two">
+            <label for="name">Selskapsnavn</label>
+            <input name="name" type="text"/ placeholder="BEKK, Visma, KnowIT">
+        </div>
 
-                <div class="field">
-                    <label for="logo">Logo</label>
-                    <input name="logo" type="text" />
-                </div>
-
-                <input class="button" type="submit" value="Lagre" />
-            </form>
+        <div class="two columns offset-by-two">
+            <label for="logo">Logo</label>
+            <input name="logo" type="text" placeholder="Filnavn eller URL"/>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="two columns offset-by-two">
+            <input class="button button-primary" type="submit" value="Lagre" />
+        </div>
+    </div>
 
 {% endblock %}
