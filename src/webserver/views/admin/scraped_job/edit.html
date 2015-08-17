@@ -13,7 +13,7 @@
                     <label for="place">Sted</label>
                     <input name="place" type="text" value="{{ scraped_job.place }}" />
 
-                    <label for="company">Selskap</label>
+                    <label for="company">Selskap <a href="/admin/selskap">(Lag nytt)</a></label>
                     <select name="company">
                     {% for company in companies %}
                         {% if company.id == scraped_job.company.id %} 
