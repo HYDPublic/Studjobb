@@ -1,27 +1,26 @@
 {% extends "base.html" %}
-{% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
-{% block title %}Rediger {{ company.name }}{% endblock %}
+{% block title %}Lag nytt selskap{% endblock %}
 {% block container %}
-            <div id="navigation">
-                <a class="back" href="/admin">← Tilbake til administrasjon</a>
-            </div>
+{% import 'macros/navigation.html' as navigation %}
 
-            <form id="edit" method="post">
+    {{ navigation.render_back_links(logged_in = True) }}
 
-                <label for="name">Selskapsnavn</label>
-                <input name="name" type="text" value="{{ company.name }}" />
+    <div class="row">
+        <div class="two columns offset-by-two">
+            <label for="name">Selskapsnavn</label>
+            <input name="name" type="text"/ value="{{ company.name }}">
+        </div>
 
-                <label for="logo">Logo</label>
-                <input name="logo" type="text" value="{{ company.logo.filename }}" />
-
-                <input class="button" type="submit" value="Lagre" />
-
-                <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    CKEDITOR.config.allowedContent = true;
-                    CKEDITOR.replace('description'); 
-                });
-                </script>
-            </form>
+        <div class="two columns offset-by-two">
+            <label for="logo">Logo</label>
+            <input name="logo" type="text" value="{{ company.logo.filename }}"/>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="two columns offset-by-two">
+            <input class="button button-primary" type="submit" value="Lagre" />
+        </div>
+    </div>
 
 {% endblock %}

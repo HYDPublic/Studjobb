@@ -168,7 +168,8 @@ def create_job():
 @auth.login_required
 @app.route('/admin/selskap', methods = ['GET'])
 def new_company():
-    return render_template('admin/company/new.html') 
+    companies = company_repository.findAll()
+    return render_template('admin/company/new.html', companies = companies) 
 
 @auth.login_required
 @app.route('/admin/selskap', methods = ['POST'])

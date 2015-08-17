@@ -13,7 +13,7 @@
             <tbody>
             {% for job in jobs %}
                 <tr>
-                    <td><strong>{{ job.company.name }}</strong></td>
+                    <td><a href="/admin/selskap/{{ job.company.id }}"><strong>{{ job.company.name }}</strong></a></td>
                     <td><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></td>
                     <td>Datateknikk/Informatikk</td>
                     <td>{{ job.human_readable_due_date }}</td>
