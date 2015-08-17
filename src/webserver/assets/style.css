@@ -15,3 +15,26 @@ body {
 p.about-us {
     text-align: right;
 }
+
+a {
+    color: #926837 !important;
+}
+
+a:hover {
+    color: #6C4D28 !important;
+}
+
+input[type="text"]:focus {
+    border-color: #926837 !important;
+}
+
+.button-primary {
+    color: #ffffff !important;
+    background-color: #926837 !important;
+    border-color: #926837 !important;
+}
+
+.button-primary:hover {
+    background-color: #6C4D28 !important;
+    color: #ffffff !important;
+}
