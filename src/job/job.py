@@ -53,9 +53,6 @@ class Job(object):
     def company(self):
         return self._company
 
-    @property
-    def title(self):
-        return self._title
 
     @property
     def description(self):
@@ -69,10 +66,13 @@ class Job(object):
         else:
             raise JobException('Invalid status code.')
 
+    @property
+    def title(self):
+        return str(self._title)
+
     @title.setter
-    def title(self, title):
-        if Title.isValid(title):
-            self._title = Title.format(title)
+    def title(self, text):
+        self._title = Title(text)
 
     @description.setter
     def description(self, description):
