@@ -53,7 +53,6 @@ class Job(object):
     def company(self):
         return self._company
 
-
     @property
     def description(self):
         return self._description
