@@ -27,7 +27,7 @@ class Job(object):
 
     @property
     def status(self):
-        return str(self._status)
+        return unicode(self._status)
 
     @status.setter
     def status(self, status):
@@ -55,7 +55,7 @@ class Job(object):
 
     @property
     def title(self):
-        return str(self._title)
+        return unicode(self._title)
 
     @title.setter
     def title(self, text):

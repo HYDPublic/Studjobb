@@ -56,6 +56,6 @@ class TestJobTitle(unittest.TestCase):
         self.assertRaises(TitleException, Title, text = titleWithWeirdCharacters)
 
     def test_title_with_scandinavian_characters(self):
-        titleWithScandinavianCharacters = "Javascript-programmer på ÆØÅ"
+        titleWithScandinavianCharacters = u"Javascript-programmer på ÆØÅ"
         title = Title(text = titleWithScandinavianCharacters)
-        self.assertEqual(str(title), titleWithScandinavianCharacters)
+        self.assertEqual(unicode(title), titleWithScandinavianCharacters)
