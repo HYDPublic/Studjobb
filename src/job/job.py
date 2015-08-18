@@ -8,14 +8,24 @@ class JobException(Exception):
 
 class Job(object):
 
-    def __init__(self, id = None, status = None, title = None, description = None, due_date = None,start_date = None, company = None, place = None, position = None):
+    def __init__(self,
+        id          = None,
+        status      = 'pending',
+        title       = 'Mangler tittel',
+        description = 'Mangler beskrivelse',
+        due_date    = None,
+        start_date  = None,
+        company     = None,
+        place       = 'Ukjent',
+        position    = 'Ukjent'):
+
         self.id          = id 
-        self.title       = title       or 'Mangler tittel'
-        self.description = description or 'Mangler beskrivelse'
-        self.place       = place       or 'Ukjent'
-        self.position    = position    or 'Ukjent' 
-        self.status      = status      or 'pending'
-        self.due_date    = due_date    or self.dateThirtyDaysFromToday()
+        self.title       = title
+        self.description = description 
+        self.place       = place       
+        self.position    = position    
+        self.status      = status 
+        self.due_date    = due_date or self.dateThirtyDaysFromToday()
         self.start_date  = start_date
         self.company     = company
 
