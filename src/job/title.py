@@ -7,56 +7,45 @@ class TitleException(Exception):
 
 class Title(object):
     
-    @staticmethod
-    def hasInvalidType(title):
-        return isinstance(title, basestring) == False
-    
-    @staticmethod
-    def hasInvalidCharacters(title):
-        validCharacters = "æøåÆØÅ" + string.printable
-        return all(validCharacter in validCharacters for validCharacter in title) == False
+    def __init__(self, text = 'Mangler tittel'):
+        if self.isValid(text):
+            self._text = self.format(text)
 
-    @staticmethod
-    def hasTooFewCharacters(title):
-        return len(title) <= 5
+    def __str__(self):
+        return self._text
 
-    @staticmethod
-    def hasTooManyCharacters(title):
-        return len(title) > 50
-        
-    @staticmethod
-    def hasHTMLTags(title):
-        return re.match('<.*?>', title)
+    def format(self, title):
+        return self.capitalizeFirstLetter(title).strip().replace('\n', ' ')
 
-    @staticmethod
-    def isValid(title):
-        if Title.hasInvalidType(title):
+    def isValid(self, text):
+        if self.hasInvalidType(text):
             raise TitleException('Title must be a string.')
-        if Title.hasTooFewCharacters(Title.format(title)):
+        elif self.hasTooFewCharacters(self.format(text)):
             raise TitleException('Title must be longer than 5 characters.')
-        elif Title.hasTooManyCharacters(Title.format(title)):
+        elif self.hasTooManyCharacters(self.format(text)):
             raise TitleException('Title must be shorther than 50 characters.')
-        elif Title.hasHTMLTags(title):
+        elif self.hasHTMLTags(text):
             raise TitleException('Title seems to contain HTML-tags.')
-#        elif Title.hasInvalidCharacters(title):
-#            raise TitleException('Title must only contain letters, digits and symbols.')
         else:
             return True
 
-    @staticmethod
-    def capitalizeFirstLetter(title):
+    def hasInvalidType(self, title):
+        return isinstance(title, basestring) == False
+    
+    def hasInvalidCharacters(self, title):
+        validCharacters = "æøåÆØÅ" + string.printable
+        return all(validCharacter in validCharacters for validCharacter in title) == False
+
+    def hasTooFewCharacters(self, title):
+        return len(title) <= 5
+
+    def hasTooManyCharacters(self, title):
+        return len(title) > 50
+        
+    def hasHTMLTags(self, title):
+        return re.match('<.*?>', title)
+
+    def capitalizeFirstLetter(self, title):
         firstLetterOfTitle = title[0]
         restOfTitle        = title[1:]
         return firstLetterOfTitle.title() + restOfTitle 
-
-    @staticmethod
-    def format(title):
-        title = Title.capitalizeFirstLetter(title) 
-
-        # Strip whitespace
-        title = title.strip()
-        
-        # Remove linebreaks
-        title = title.replace('\n', ' ')
-
-        return title
