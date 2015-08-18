@@ -7,7 +7,7 @@ class TitleException(Exception):
 
 class Title(object):
     
-    def __init__(self, text = 'Mangler tittel'):
+    def __init__(self, text = None):
         if self.isValid(text):
             self._text = self.format(text)
 
@@ -20,6 +20,8 @@ class Title(object):
     def isValid(self, text):
         if self.hasInvalidType(text):
             raise TitleException('Title must be a string.')
+        elif self.isAnEmptyString(text):
+            raise TitleException('Title must not be empty.')
         elif self.hasTooFewCharacters(self.format(text)):
             raise TitleException('Title must be longer than 5 characters.')
         elif self.hasTooManyCharacters(self.format(text)):
@@ -28,6 +30,9 @@ class Title(object):
             raise TitleException('Title seems to contain HTML-tags.')
         else:
             return True
+
+    def isAnEmptyString(self, title):
+        return title == '' 
 
     def hasInvalidType(self, title):
         return isinstance(title, basestring) == False
