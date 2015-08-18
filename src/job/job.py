@@ -9,15 +9,15 @@ class JobException(Exception):
 class Job(object):
 
     def __init__(self,
-        id          = None,
-        status      = 'pending',
-        title       = 'Mangler tittel',
-        description = 'Mangler beskrivelse',
-        due_date    = None,
-        start_date  = None,
-        company     = None,
-        place       = 'Ukjent',
-        position    = 'Ukjent'):
+    id          = None,
+    status      = 'pending',
+    title       = 'Mangler tittel',
+    description = 'Mangler beskrivelse',
+    due_date    = None,
+    start_date  = None,
+    company     = None,
+    place       = 'Ukjent',
+    position    = 'Ukjent'):
 
         self.id          = id 
         self.title       = title
