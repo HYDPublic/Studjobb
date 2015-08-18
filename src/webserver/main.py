@@ -99,7 +99,7 @@ def save_job(id):
         job.company     = company 
     except (JobException, TitleException) as error:
         return render_template('admin/job/edit.html',
-            statuses  = job.statuses,
+            statuses  = Status.codes,
             error     = error,
             job       = job,
             companies = companies
@@ -109,7 +109,7 @@ def save_job(id):
     return render_template('admin/job/edit.html',
         job       = job,
         companies = companies,
-        statuses  = job.statuses
+        statuses  = Status.codes
     ) 
 
 @app.route('/admin/selskap/<int:id>', methods = ['GET'])
