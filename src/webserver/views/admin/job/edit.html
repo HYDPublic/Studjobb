@@ -64,10 +64,10 @@
                     <input name="position" type="text" value="{{ job.position }}" />
 
                     <label for="due_date">Søknadsfrist</label>
-                    <input name="due_date" type="date" value="{{ job.due_date }}"/>
+                    <input name="due_date" type="date" value="{{ job.due_date.date }}"/>
 
                     <label for="start_date">Tiltredelsesdato</label>
-                    <input name="start_date" type="date" value="{{ job.start_date }}"/>
+                    <input name="start_date" type="date" value="{{ job.start_date.date }}"/>
                 </div>
             </div>
 
