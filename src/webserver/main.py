@@ -21,6 +21,7 @@ from src.database.scraped_job_repository import ScrapedJobRepository
 from src.database.scraped_list_repository import ScrapedListRepository
 
 from src.job.job import Job 
+from src.job.status import Status 
 from src.job.job import JobException
 from src.job.title import TitleException
 from src.company.company import Company
@@ -64,19 +65,19 @@ def admin():
         dead_jobs    = board.jobs_by_status('dead')
     )
 
-@auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['GET'])
+@auth.login_required
 def edit_job(id):
     job = job_repository.find(id)
     companies = company_repository.findAll()
     return render_template('admin/job/edit.html',
         job       = job,
         companies = companies,
-        statuses  = job.statuses
+        statuses  = Status.codes 
     ) 
 
-@auth.login_required
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
+@auth.login_required
 def save_job(id):
 
     if request.form.get('delete', False):
@@ -111,14 +112,14 @@ def save_job(id):
         statuses  = job.statuses
     ) 
 
-@auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['GET'])
+@auth.login_required
 def edit_company(id):
     company = company_repository.find(id)
     return render_template('admin/company/edit.html', company = company) 
 
-@auth.login_required
 @app.route('/admin/skrapt/<string:guid>', methods = ['GET'])
+@auth.login_required
 def edit_scraped_job(guid):
     scraped_job = scraped_job_repository.find(guid)
     if scraped_job == None:
@@ -131,8 +132,8 @@ def edit_scraped_job(guid):
         companies   = companies 
     ) 
 
-@auth.login_required
 @app.route('/admin/selskap/<int:id>', methods = ['POST'])
+@auth.login_required
 def save_company(id):
     company = company_repository.find(id)
     company.name = request.form['name']
@@ -140,14 +141,14 @@ def save_company(id):
     company = company_repository.save(company) 
     return render_template('admin/company/edit.html', company = company) 
 
-@auth.login_required
 @app.route('/admin/stilling', methods = ['GET'])
+@auth.login_required
 def new_job():
     companies = company_repository.findAll()
     return render_template('admin/job/new.html', companies = companies) 
 
-@auth.login_required
 @app.route('/admin/stilling', methods = ['POST'])
+@auth.login_required
 def create_job():
 
     company    = Company()
@@ -165,14 +166,14 @@ def create_job():
     job = job_repository.save(job)
     return redirect('/admin/stilling/%d' % job.id)
 
-@auth.login_required
 @app.route('/admin/selskap', methods = ['GET'])
+@auth.login_required
 def new_company():
     companies = company_repository.findAll()
     return render_template('admin/company/new.html', companies = companies) 
 
-@auth.login_required
 @app.route('/admin/selskap', methods = ['POST'])
+@auth.login_required
 def create_company():
     company = Company() 
     company.name = request.form['name']
