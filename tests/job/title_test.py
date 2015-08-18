@@ -10,9 +10,9 @@ class TestJobTitle(unittest.TestCase):
         title = Title(text = "Javascript-programmer")
         self.assertEqual(str(title), "Javascript-programmer")
 
-    def test_title_has_a_default_string(self):
-        title = Title()
-        self.assertEqual(str(title), "Mangler tittel")
+    def test_title_does_not_raise_a_index_error_with_empty_string(self):
+        try: Title(text = '')
+        except TitleException: pass
 
     def test_title_capitalized(self):
         title = Title(text = "javascript-programmer")
