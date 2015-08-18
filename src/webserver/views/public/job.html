@@ -21,8 +21,8 @@
                         <ul>
                             <li>Sted: <strong>{{ job.place }}</strong></li>
                             <li>Stilling: <strong>{{ job.position }}</strong></li>
-                            <li>Søknadsfrist: <strong>{{ job.remaining_days_till_due_date }} dager</strong></li>
-                            <li>Tiltredelse: <strong>{{ job.start_date or "Ikke oppgitt" }}</strong></li>
+                            <li>Søknadsfrist: <strong>{{ job.due_date.remaining_days }} dager</strong></li>
+                            <li>Tiltredelse: <strong>{{ job.start_date.date or "Ikke oppgitt" }}</strong></li>
                         </ul>
                     </div>
                 </div>
