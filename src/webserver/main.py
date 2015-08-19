@@ -132,6 +132,17 @@ def edit_scraped_job(guid):
         companies   = companies 
     ) 
 
+@app.route('/kunde/stilling/<int:id>/<string:edit_url>', methods = ['GET'])
+def customer_edit_job(id, edit_url):
+    job = job_repository.find(id)
+    if job.edit_url != edit_url:
+        return abort(404)
+
+    return render_template('customer/job/edit.html',
+        job       = job,
+        statuses  = Status.codes 
+    )
+
 @app.route('/admin/selskap/<int:id>', methods = ['POST'])
 @auth.login_required
 def save_company(id):

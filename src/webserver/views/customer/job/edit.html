@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %}<script src="/assets/ckeditor/ckeditor.js"></script>{% endblock %}
+{% block title %}Rediger {{ job.title }}{% endblock %}
+{% block container %}
+{% import 'macros/navigation.html' as navigation %}
+
+    {{ navigation.render_back_links(logged_in = False) }}
+
+        <form method="post">
+
+            <div class="row">         
+
+                <div class="two columns offset-by-two"> 
+                    <label for="place">Sted</label>
+                    <input name="place" type="text" value="{{ job.place }}" />
+
+                    <label for="position">Stillingstype</label>
+                    <input name="position" type="text" value="{{ job.position }}" />
+                </div>
+
+                <div class="four columns offset-by-two"> 
+
+                    <label for="due_date">Søknadsfrist</label>
+                    <input name="due_date" type="date" value="{{ job.due_date.date }}"/>
+
+                    <label for="start_date">Tiltredelsesdato</label>
+                    <input name="start_date" type="date" value="{{ job.start_date.date }}"/>
+                </div>
+            </div>
+
+
+            <div class="row">
+                
+                <div class="eight columns offset-by-two">
+                    
+                    <label for="title">Tittel</label>
+                    <input name="title" type="text" value="{{ job.title }}" class="u-full-width"/>
+
+                    <textarea name="description" id="description">
+                    {{ job.description }}
+                    </textarea>
+
+                    <input class="button button-primary" type="submit" value="Lagre" />
+                </div>
+            </div>
+    </form>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        CKEDITOR.config.allowedContent = true;
+        CKEDITOR.replace('description'); 
+    });
+    </script>
+
+{% endblock %}
