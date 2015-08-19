@@ -7,10 +7,11 @@ class DueDateException(Exception):
 class DueDate(object):
     
     def __init__(self, date = None):
-        if isinstance(date, basestring):
-            date = DueDate.convertStringToDate(date)
-        elif date == None:
+
+        if not date:
             date = DueDate.thirtyDaysFromNow()
+        elif isinstance(date, basestring):
+            date = DueDate.convertStringToDate(date)
 
         self._date = date 
 

@@ -9,6 +9,9 @@ from src.job.due_date import DueDateException
 
 class TestJobDueDate(unittest.TestCase):
 
+    def test_due_date_can_be_provided_as_an_empty_string(self):
+        due_date = DueDate(date = '')
+
     def test_due_date_can_be_provided_as_a_ddmmyyy_string(self):
         due_date = DueDate(date = '2016-08-30')
         self.assertEqual(due_date.date, datetime.date(2016, 8, 30))
