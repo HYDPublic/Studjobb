@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+import uuid
 from title import Title 
 from status import Status 
 from due_date import DueDate 
@@ -24,6 +25,15 @@ class Job(object):
         self.due_date    = due_date
         self.start_date  = start_date
         self.company     = company
+        self.edit_url    = uuid.uuid4().hex
+
+    @property
+    def edit_url(self):
+        return self._edit_url
+
+    @edit_url.setter
+    def edit_url(self, url):
+        self._edit_url = url 
 
     @property
     def status(self):
