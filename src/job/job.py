@@ -79,6 +79,7 @@ class Job(object):
     def due_date(self, date):
         due_date = DueDate(date = date) 
 
+        # This is horrible
         if date and hasattr(self, '_start_date') and self._start_date.date and self.start_date.is_before(due_date.date):
             raise JobException('Start date (%s) can not be before due date (%s).' %
             (self.start_date.date.strftime("%B %d, %Y"), due_date.date.strftime("%B %d, %Y")))
@@ -93,6 +94,7 @@ class Job(object):
     def start_date(self, date):
         start_date = StartDate(date = date)
 
+        # This is also horrible
         if date and self.due_date.is_after(start_date.date):
             raise JobException('Due date (%s) can not be after start date (%s).' %
             (self.due_date.date.strftime("%B %d, %Y"), start_date.date.strftime("%B %d, %Y")))
