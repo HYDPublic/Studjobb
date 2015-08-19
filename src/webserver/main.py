@@ -135,13 +135,36 @@ def edit_scraped_job(guid):
 @app.route('/kunde/stilling/<int:id>/<string:edit_url>', methods = ['GET'])
 def customer_edit_job(id, edit_url):
     job = job_repository.find(id)
-    if job.edit_url != edit_url:
+    if job == None or job.edit_url != edit_url:
         return abort(404)
 
     return render_template('customer/job/edit.html',
         job       = job,
         statuses  = Status.codes 
     )
+
+@app.route('/kunde/stilling/<int:id>/<string:edit_url>', methods = ['POST'])
+def customer_save_job(id, edit_url):
+    job = job_repository.find(id)
+    if job == None or job.edit_url != edit_url:
+        return abort(404)
+
+    try:
+        job.title       = request.form.get('title')
+        job.description = request.form.get('description')
+        job.due_date    = request.form.get('due_date')
+        job.start_date  = request.form.get('start_date')
+        job.position    = request.form.get('position')
+        job.place       = request.form.get('place')
+    except (JobException, TitleException) as error:
+        return render_template('admin/job/edit.html',
+            statuses  = Status.codes,
+            error     = error,
+            job       = job,
+        ) 
+
+    job = job_repository.save(job) 
+    return "yey" 
 
 @app.route('/admin/selskap/<int:id>', methods = ['POST'])
 @auth.login_required
