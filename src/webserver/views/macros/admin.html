@@ -19,7 +19,7 @@
                     <td><a href="/admin/selskap/{{ job.company.id }}"><strong>{{ job.company.name }}</strong></a></td>
                     <td><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></td>
                     <td>Datateknikk/Informatikk</td>
-                    <td>{{ job.human_readable_due_date }}</td>
+                    <td>{{ job.due_date.human_readable_date }}</td>
                     {% if name == 'Aktive jobber' %}
                     <td><progress max="100" value="50"></progress></td>
                     {% endif %}
