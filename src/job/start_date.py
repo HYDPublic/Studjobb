@@ -7,6 +7,8 @@ class StartDateException(Exception):
 class StartDate(object):
     
     def __init__(self, date = None):
+        date = None if date == "" else date
+
         if isinstance(date, basestring):
             date = StartDate.convertStringToDate(date)
 

@@ -9,6 +9,9 @@ from src.job.start_date import StartDateException
 
 class TestJobStartDate(unittest.TestCase):
 
+    def test_start_date_can_be_an_empty_string(self):
+        start_date = StartDate(date = '')
+
     def test_start_date_can_be_provided_as_a_ddmmyyy_string(self):
         start_date = StartDate(date = '2016-08-30')
         self.assertEqual(start_date.date, datetime.date(2016, 8, 30))
