@@ -16,7 +16,7 @@
                                 <td><strong>{{ job.company.name }}</strong></td>
                                 <td><a href="/stilling/{{ job.id }}">{{ job.title }}</a></td>
                                 <td>Datateknikk/Informatikk</td>
-                                <td>{{ job.human_readable_due_date }}</td>
+                                <td>{{ job.due_date.human_readable_date }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
