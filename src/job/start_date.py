@@ -17,7 +17,10 @@ class StartDate(object):
         return self._date
 
     def is_before(self, date):
-        return self.date < date
+        if date == None:
+            return True
+        else:
+            return self.date < date
 
     @staticmethod
     def convertStringToDate(date_as_string):

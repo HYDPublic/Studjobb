@@ -7,11 +7,10 @@ class DueDateException(Exception):
 class DueDate(object):
     
     def __init__(self, date = None):
-        if date == None:
-            date = DueDate.thirtyDaysFromNow()
-
         if isinstance(date, basestring):
             date = DueDate.convertStringToDate(date)
+        elif date == None:
+            date = DueDate.thirtyDaysFromNow()
 
         self._date = date 
 
@@ -34,7 +33,10 @@ class DueDate(object):
         return '%s %d' % (month[:3], self._date.day)
 
     def is_after(self, date):
-        return self.date > date
+        if date == None:
+            return True
+        else:
+            return self.date > date
 
     @staticmethod
     def todaysDate():

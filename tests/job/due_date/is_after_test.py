@@ -5,6 +5,10 @@ from src.job.due_date import DueDate
 
 class TestIsAfter(unittest.TestCase):
 
+    def test_returns_true_if_date_is_none(self):
+        due_date = DueDate(date = datetime.date(2015, 01, 1))
+        self.assertEqual(due_date.is_after(None), True)
+
     def test_returns_true_if_due_date_is_after_date(self):
         due_date = DueDate(date = datetime.date(2015, 01, 1))
         self.assertEqual(due_date.is_after(datetime.date(2014, 1, 1)), True)

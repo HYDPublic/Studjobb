@@ -5,6 +5,10 @@ from src.job.start_date import StartDate
 
 class TestIsBefore(unittest.TestCase):
 
+    def test_returns_true_if_date_is_none(self):
+        start_date = StartDate(date = datetime.date(2015, 01, 1))
+        self.assertEqual(start_date.is_before(None), True)
+    
     def test_returns_true_if_start_date_is_before_date(self):
         start_date = StartDate(date = datetime.date(2015, 01, 1))
         self.assertEqual(start_date.is_before(datetime.date(2016, 1, 1)), True)

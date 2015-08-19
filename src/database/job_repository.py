@@ -61,8 +61,8 @@ class JobRepository(object):
             company_id  = int(job.company.id),
             position    = job.position,
             place       = job.place,
-            due_date    = job.due_date,
-            start_date  = job.start_date,
+            due_date    = job.due_date.date,
+            start_date  = job.start_date.date,
             status      = job.status
         )
         job.id = result.lastrowid
@@ -76,8 +76,8 @@ class JobRepository(object):
             company_id  = int(job.company.id),
             position    = job.position,
             place       = job.place,
-            due_date    = job.due_date,
-            start_date  = job.start_date,
+            due_date    = job.due_date.date,
+            start_date  = job.start_date.date,
             id          = job.id,
             status      = job.status
         )

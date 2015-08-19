@@ -29,6 +29,14 @@ class TestJobDueDateBeforeStartDate(unittest.TestCase):
         job = Job(due_date = datetime.date(2000, 1, 1))
         job.start_date = datetime.date(2000, 1, 1)
 
+    def test_both_dates_are_included_in_exception_message(self):
+        with self.assertRaisesRegexp(JobException, '2000|1999'):
+            Job(due_date = datetime.date(2000, 1, 1), start_date = datetime.date(1999, 1, 1))
+
+    def test_both_dates_are_included_in_exception_message(self):
+        with self.assertRaisesRegexp(JobException, '2000|1999'):
+            Job(due_date = datetime.date(2000, 1, 1), start_date = datetime.date(1999, 1, 1))
+
     @mock.patch("src.job.due_date.DueDate.todaysDate")
     def test_job_can_have_a_start_date_without_a_due_date_as_long_as_its_after(self, mock_date_today):
         mock_date_today.return_value = datetime.date(2000, 1, 1)
