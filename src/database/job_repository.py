@@ -24,7 +24,8 @@ class JobRepository(object):
             place = row.place,
             position = row.position,
             start_date = row.start_date,
-            status = row.status
+            status = row.status,
+            edit_url = row.edit_url
         )
         return job
 
@@ -42,7 +43,8 @@ class JobRepository(object):
                 place = row.place,
                 position = row.position,
                 start_date = row.start_date,
-                status = row.status
+                status = row.status,
+                edit_url = row.edit_url
             )
             jobs.append(job)
         return jobs
@@ -63,7 +65,8 @@ class JobRepository(object):
             place       = job.place,
             due_date    = job.due_date.date,
             start_date  = job.start_date.date,
-            status      = job.status
+            status      = job.status,
+            edit_url    = job.edit_url
         )
         job.id = result.lastrowid
         return job 

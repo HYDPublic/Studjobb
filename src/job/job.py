@@ -14,7 +14,7 @@ class Job(object):
 
     def __init__(self, id = None, status = 'pending', title = 'Mangler tittel',
                  description = 'Mangler beskrivelse', due_date = None, start_date = None,
-                 company = None, place = 'Ukjent', position = 'Ukjent'):
+                 company = None, place = 'Ukjent', position = 'Ukjent', edit_url = None):
 
         self.id          = id 
         self.title       = title
@@ -25,7 +25,7 @@ class Job(object):
         self.due_date    = due_date
         self.start_date  = start_date
         self.company     = company
-        self.edit_url    = uuid.uuid4().hex
+        self.edit_url    = edit_url
 
     @property
     def edit_url(self):
@@ -33,7 +33,7 @@ class Job(object):
 
     @edit_url.setter
     def edit_url(self, url):
-        self._edit_url = url 
+        self._edit_url = url or uuid.uuid4().hex
 
     @property
     def status(self):
