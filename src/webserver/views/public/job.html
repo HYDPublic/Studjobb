@@ -3,7 +3,7 @@
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
 
-            {{ navigation.render_back_links(logged_in = True, edit_url = "/admin/stilling/%d" % job.id) }}
+            {{ navigation.render_back_links(logged_in = logged_in, edit_url = "/admin/stilling/%d" % job.id) }}
 
             <div class="row section job">
 
