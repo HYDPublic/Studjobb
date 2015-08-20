@@ -43,9 +43,7 @@ class TestEmailTemplate(unittest.TestCase):
             template = Template('Hello %name%. Do you like the name %name%?')
             template.format({'firstname': 'Michael'})
 
-    @unittest.skip('')
-    def test_template_can_have_variables(self):
-        template = Template('This is a template with a %var%.', {
-            'var': 'variable'    
-        })
-        self.assertEqual(template.text, 'This is a template variable.')
+    def test_template_variables_still_work_over_multiple_lines(self):
+        template = Template("Hello %firstname%!\n Is your lastname %lastname%?")
+        template.format({'firstname': 'Michael', 'lastname': 'McMillan'})
+        self.assertEqual(template.text, 'Hello Michael!\n Is your lastname McMillan?')
