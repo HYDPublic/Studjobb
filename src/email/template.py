@@ -6,14 +6,20 @@ class TemplateError(Exception):
 
 class Template(object):
 
-    def __init__(self, text, variables = {}):
+    def __init__(self, text, variables = {}, title = 'Untitled'):
         self.text = text
-    
-    def format(self, variables_with_values):
-        variables_remaining_in_template = self.variables
+        self.title = title
+
+        self.user_defined_variables = variables
+        self.template_defined_variables = self.extract_variables(text) 
+
+        self.format()
+
+    def format(self):
+        variables_remaining_in_template = self.template_defined_variables
          
-        for variable in variables_with_values:
-            value = variables_with_values[variable]
+        for variable in self.user_defined_variables:
+            value = self.user_defined_variables[variable]
             self.text = self.text.replace('%' + variable + '%', value)
 
             if variable in variables_remaining_in_template:
@@ -22,9 +28,9 @@ class Template(object):
         if variables_remaining_in_template:
             raise TemplateError('Undefined variables in template.')
 
-    @property
-    def variables(self):
-        variable_matches = re.findall('\%([a-zA-Z]*)\%', self.text)
+    @staticmethod
+    def extract_variables(text):
+        variable_matches = re.findall('\%([a-zA-Z]*)\%', text)
         variable_matches = filter(None, variable_matches)
         variable_matches = list(set(variable_matches))
         return variable_matches
