@@ -4,7 +4,8 @@ class EmailError(Exception):
 
 class Email(object):
 
-    def __init__(self, recipient = None, sender = None, subject = 'Missing subject', body = None):
+    def __init__(self, id = None, recipient = None, sender = None, subject = 'Missing subject', body = None):
+        self.id        = id 
         self.recipient = recipient 
         self.sender    = sender 
         self.subject   = subject
@@ -21,3 +22,9 @@ class Email(object):
 
         if not self.body:
             raise EmailError('Missing body.')
+
+    def __eq__(self, other_id):
+        return self.id == other_id
+
+    def __hash__(self):
+        return self.id
