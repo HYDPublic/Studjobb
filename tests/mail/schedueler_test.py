@@ -6,12 +6,8 @@ from src.email.schedueler import Schedueler
 
 class FakeEmail(Email):
     def __init__(self, id = None, when = None):
-        self.id        = id
-        self.when      = when
-        self.recipient = 'bogus@recipient'
-        self.sender    = 'bogus@sender'
-        self.subject   = 'bogus subject'
-        self.body      = 'bogus body'
+        self.id   = id
+        self.when = when
 
 class TestSchedueler(unittest.TestCase):
 
