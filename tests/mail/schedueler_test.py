@@ -3,6 +3,7 @@ import unittest
 import datetime
 from src.email.email import Email 
 from src.email.schedueler import Schedueler 
+from src.email.schedueled_entry import SchedueledEntry 
 
 class FakeEmail(Email):
     def __init__(self, id = None):
@@ -46,3 +47,11 @@ class TestSchedueler(unittest.TestCase):
         schedueler.enqueue(email = FakeEmail(), when = datetime.datetime(2016, 01, 01,  9, 0))
         schedueler.send(now = datetime.datetime(2018, 01, 01, 8, 30))
         self.assertEqual(len(schedueler.queue), 0)
+
+    def test_schedueler_can_take_schedueler_entries_in_constructor(self):
+        schedueler = Schedueler([
+            SchedueledEntry(FakeEmail(), datetime.datetime(2016, 01, 01)),
+            SchedueledEntry(FakeEmail(), datetime.datetime(2017, 01, 01)),
+            SchedueledEntry(FakeEmail(), datetime.datetime(2018, 01, 01))
+        ])
+        self.assertEqual(len(schedueler.queue), 3)

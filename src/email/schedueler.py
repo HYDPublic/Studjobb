@@ -7,8 +7,8 @@ class ScheduelerError(Exception):
 
 class Schedueler(object):
 
-    def __init__(self):
-        self._queue = []
+    def __init__(self, queue = None):
+        self._queue = queue or []
 
     @property
     def queue(self):
