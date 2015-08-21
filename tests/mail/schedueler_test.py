@@ -5,9 +5,8 @@ from src.email.email import Email
 from src.email.schedueler import Schedueler 
 
 class FakeEmail(Email):
-    def __init__(self, id = None, when = None):
-        self.id   = id
-        self.when = when
+    def __init__(self, id = None):
+        self.id = id
 
 class TestSchedueler(unittest.TestCase):
 
@@ -45,6 +44,5 @@ class TestSchedueler(unittest.TestCase):
     def test_schedueler_clears_sent_jobs_after_run(self):
         schedueler = Schedueler()
         schedueler.enqueue(email = FakeEmail(), when = datetime.datetime(2016, 01, 01,  9, 0))
-        mock_now = datetime.datetime(2018, 01, 01, 8, 30)
-        schedueler.send(now = mock_now)
+        schedueler.send(now = datetime.datetime(2018, 01, 01, 8, 30))
         self.assertEqual(len(schedueler.queue), 0)
