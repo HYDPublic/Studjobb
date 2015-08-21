@@ -1,12 +1,12 @@
 from sqlalchemy.sql  import text
 from src.email.email import Email 
-from src.email.schedueled_email import SchedueledEmail 
+from src.email.schedueled_entry import SchedueledEntry 
 
-class SchedueledEmailRepository(object):
+class SchedueledEntryRepository(object):
 
     def __init__(self, database):
         self._database = database
-        self._table = 'schedueled_emails'
+        self._table = 'schedueled_entrys'
 
     def find(self, id):
         result = self._database.execute(text(
@@ -17,8 +17,7 @@ class SchedueledEmailRepository(object):
         )
         row = result.fetchone()
         email = Email(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
-        schedueled_email = SchedueledEmail(email = email, when = row.when)
-        return email 
+        return SchedueledEntry(email = email, when = row.when)
 
     def findAll(self):
         result = self._database.execute(text(
@@ -26,21 +25,19 @@ class SchedueledEmailRepository(object):
         ),
             table = self._table
         )
-        schedueled_emails = []
+        schedueled_entries = []
         for row in result:
             email = Email(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
-            schedueled_email = SchedueledEmail(email = email, when = row.when)
-            schedueled_emails.append(schedueled_email)
+            schedueled_entries.append(SchedueledEntry(email = email, when = row.when))
+        return schedueled_entries 
 
-        return schedueled_emails 
-
-    def save(self, schedueled_email):
-        if schedueled_email.id is None:
-            return self.create(schedueled_email)
+    def save(self, schedueled_entry):
+        if schedueled_entry.id is None:
+            return self.create(schedueled_entry)
         else:
-            return self.update(schedueled_email)
+            return self.update(schedueled_entry)
 
-    def update(self, schedueled_email):
+    def update(self, schedueled_entry):
         result = self._database.execute(text(
             """UPDATE :table SET
             recipient = :recipient,
@@ -50,17 +47,17 @@ class SchedueledEmailRepository(object):
             when      = :when
             WHERE id = :id"""
         ),
-            recipient = schedueled_email.recipient,
-            sender    = schedueled_email.sender,
-            subject   = schedueled_email.subject,
-            body      = schedueled_email.body,
-            when      = schedueled_email.when,
-            id        = schedueled_email.id,
+            recipient = schedueled_entry.email.recipient,
+            sender    = schedueled_entry.email.sender,
+            subject   = schedueled_entry.email.subject,
+            body      = schedueled_entry.email.body,
+            when      = schedueled_entry.email.when,
+            id        = schedueled_entry.email.id,
             table     = self._table
         )
         return self.find(email.id) 
 
-    def create(self, email):
+    def create(self, schedueled_entry):
         result = self._database.execute(text(
             """INSERT INTO :table SET
             recipient = :recipient,
@@ -68,10 +65,10 @@ class SchedueledEmailRepository(object):
             subject   = :subject,
             body      = :body"""
         ),
-            recipient = email.recipient,
-            sender    = email.sender,
-            subject   = email.subject,
-            body      = email.body,
+            recipient = schedueled_entry.email.recipient,
+            sender    = schedueled_entry.email.sender,
+            subject   = schedueled_entry.email.subject,
+            body      = schedueled_entry.email.body,
             table     = self._table
         )
         email.id = result.lastrowid
