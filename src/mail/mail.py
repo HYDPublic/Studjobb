@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-class EmailError(Exception):
+class MailError(Exception):
     pass
 
-class Email(object):
+class Mail(object):
 
     def __init__(self, id = None, recipient = None, sender = None, subject = 'Missing subject', body = None):
         self.id        = id 
@@ -15,13 +15,13 @@ class Email(object):
 
     def validate_fields(self):
         if not self.recipient:
-            raise EmailError('Missing recipient.')
+            raise MailError('Missing recipient.')
 
         if not self.sender:
-            raise EmailError('Missing sender.')
+            raise MailError('Missing sender.')
 
         if not self.body:
-            raise EmailError('Missing body.')
+            raise MailError('Missing body.')
 
     def __eq__(self, other_id):
         return self.id == other_id

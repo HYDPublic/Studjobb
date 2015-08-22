@@ -24,6 +24,7 @@ from src.job.job import Job
 from src.job.status import Status 
 from src.job.job import JobException
 from src.job.title import TitleException
+from src.job.email import Email 
 from src.company.company import Company
     
 # Configuration
@@ -76,10 +77,22 @@ def edit_job(id):
         statuses  = Status.codes 
     ) 
 
+@app.route('/admin/mail', methods = ['GET'])
+@auth.login_required
+def send_email(job_id):
+    email = Email(
+        recipient = request.form.get('to'),
+        sender    = 'email@michaelmcmillan.net', 
+        subject   = 'Heheyhey',
+        body      = 'Trolorlo'
+    )
+    schedueled_entry = SchedueledEntry(email = email, when = datetime.datetime.now())
+    schedueled_entry_repository.save(shedueled_entry)
+    return "yey success"
+
 @app.route('/admin/stilling/<int:id>', methods = ['POST'])
 @auth.login_required
 def save_job(id):
-
     if request.form.get('delete', False):
         job_repository.remove(id)
         return redirect('/admin')

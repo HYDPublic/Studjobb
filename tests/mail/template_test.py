@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest 
-from src.email.template import Template 
-from src.email.template import TemplateError
+from src.mail.template import Template 
+from src.mail.template import TemplateError
 
 class TestEmailTemplate(unittest.TestCase):
 

@@ -14,17 +14,17 @@ class Schedueler(object):
     def queue(self):
         return self._queue
     
-    def enqueue(self, email, when):
-        self._queue.append(SchedueledEntry(email, when))
+    def enqueue(self, mail, when):
+        self._queue.append(SchedueledEntry(mail, when))
 
     def remove_duplicates(self):
         self._queue = list(set(self._queue))
 
-    def emails_to_be_sent_now(self, now = datetime.datetime.now()):
+    def mails_to_be_sent_now(self, now = datetime.datetime.now()):
         return filter(lambda schedueled_entry: schedueled_entry.when < now, self._queue)
 
     def send(self, now = datetime.datetime.now()):
-        for schedueled_email in self.emails_to_be_sent_now(now = now):
-            email = self._queue.pop(self._queue.index(schedueled_email))
+        for schedueled_mail in self.mails_to_be_sent_now(now = now):
+            mail = self._queue.pop(self._queue.index(schedueled_mail))
 
-            # Pass on to email library
+            # Pass on to mail library

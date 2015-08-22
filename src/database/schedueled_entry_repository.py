@@ -6,7 +6,7 @@ class SchedueledEntryRepository(object):
 
     def __init__(self, database):
         self._database = database
-        self._table = 'schedueled_entrys'
+        self._table = 'schedueled_entries'
 
     def find(self, id):
         result = self._database.execute(text(
@@ -55,7 +55,7 @@ class SchedueledEntryRepository(object):
             id        = schedueled_entry.email.id,
             table     = self._table
         )
-        return self.find(email.id) 
+        return self.find(schedueled_entry.email.id) 
 
     def create(self, schedueled_entry):
         result = self._database.execute(text(
