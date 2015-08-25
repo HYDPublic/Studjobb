@@ -5,10 +5,12 @@ from src.job.status import Status
 from src.company.company import Company 
 from src.database.job_repository import JobRepository
 from src.database.company_repository import CompanyRepository
+from src.webserver.authentication import Authentication
 
 class JobController(Controller):
     
     def __init__(self, database):
+        self.authentication = Authentication(database)
         self.company_repository = CompanyRepository(database) 
         self.job_repository = JobRepository(database) 
         super(JobController, self).__init__()
@@ -19,7 +21,9 @@ class JobController(Controller):
 
     def edit(self, id):
         job = self.job_repository.find(id)
-        if not job: return self.abort(404)
+        if not job:
+            return self.abort(404)
+
         companies = self.company_repository.findAll()
         return self.render('admin/job/edit.html',
             job = job, companies = companies, statuses  = Status.codes) 
