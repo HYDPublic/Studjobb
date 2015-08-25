@@ -5,22 +5,23 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
-    <div class="row">
-        <div class="two columns offset-by-two">
-            <label for="name">Selskapsnavn</label>
-            <input name="name" type="text"/ value="{{ company.name }}">
-        </div>
+    <form method="POST">
+        <div class="row">
+            <div class="two columns offset-by-two">
+                <label for="name">Selskapsnavn</label>
+                <input name="name" type="text"/ value="{{ company.name }}">
+            </div>
 
-        <div class="two columns offset-by-two">
-            <label for="logo">Logo</label>
-            <input name="logo" type="text" value="{{ company.logo.filename }}"/>
+            <div class="two columns offset-by-two">
+                <label for="logo">Logo</label>
+                <input name="logo" type="text" value="{{ company.logo.filename }}"/>
+            </div>
         </div>
-    </div>
-    
-    <div class="row">
-        <div class="two columns offset-by-two">
-            <input class="button button-primary" type="submit" value="Lagre" />
+        
+        <div class="row">
+            <div class="two columns offset-by-two">
+                <input class="button button-primary" type="submit" value="Lagre" />
+            </div>
         </div>
-    </div>
-
+    </form>
 {% endblock %}
