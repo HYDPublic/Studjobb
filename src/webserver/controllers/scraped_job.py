@@ -12,6 +12,8 @@ class ScrapedJobController(Controller):
         super(ScrapedJobController, self).__init__()
 
     def edit(self, guid):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         scraped_job = self.scraped_job_repository.find(guid)
         companies = self.company_repository.findAll()
         if not scraped_job: return self.abort(404)

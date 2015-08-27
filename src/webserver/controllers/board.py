@@ -10,6 +10,8 @@ class BoardController(Controller):
         super(BoardController, self).__init__()
 
     def control_panel(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         board = self.board_repository.find()
         scraped_list = self.scraped_list_repository.find()
         return self.render('admin/admin.html', 

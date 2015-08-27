@@ -5,7 +5,6 @@ from src.job.status import Status
 from src.company.company import Company 
 from src.database.job_repository import JobRepository
 from src.database.company_repository import CompanyRepository
-from src.webserver.authentication import Authentication
 
 class JobController(Controller):
     

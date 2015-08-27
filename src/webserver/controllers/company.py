@@ -10,14 +10,20 @@ class CompanyController(Controller):
         super(CompanyController, self).__init__()
 
     def new(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         return self.render('admin/company/new.html') 
 
     def edit(self, id):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         company = self.company_repository.find(id)
         if not company: return self.abort(404)
         return self.render('admin/company/edit.html', company = company) 
 
     def create(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         company = Company() 
         company.name = self.request.form['name']
         company.logo = self.request.form['logo'].encode('utf8')
@@ -25,6 +31,8 @@ class CompanyController(Controller):
         return self.redirect(self.url_for('company.edit', id = company.id))
 
     def update(self, id):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         company = self.company_repository.find(id)
         company.name = self.request.form['name']
         company.logo = self.request.form['logo'].encode('utf8')
