@@ -10,16 +10,19 @@ from src.webserver.authentication import Authentication
 class JobController(Controller):
     
     def __init__(self, database):
-        self.authentication = Authentication(database)
         self.company_repository = CompanyRepository(database) 
         self.job_repository = JobRepository(database) 
         super(JobController, self).__init__()
 
     def new(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         companies = self.company_repository.findAll()
         return self.render('admin/job/new.html', companies = companies) 
 
     def edit(self, id):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         job = self.job_repository.find(id)
         if not job:
             return self.abort(404)
@@ -34,6 +37,8 @@ class JobController(Controller):
         return self.render('public/job.html', job = job)
 
     def create(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         job             = Job() 
         job.company     = self.company_repository.find(self.request.form['company'])
         job.title       = self.request.form.get('title')
@@ -46,6 +51,8 @@ class JobController(Controller):
         return self.redirect(self.url_for('job.edit', id = job.id))
 
     def update(self, id):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
         job = self.job_repository.find(id)
         company = self.company_repository.find(self.request.form['company'])
 

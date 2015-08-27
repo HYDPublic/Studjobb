@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Om oss{% endblock %}
+{% block container %}
+{% import 'macros/navigation.html' as navigation %}
+
+            {{ navigation.render_back_links() }}
+            <div class="row section about-us">
+                <div class="eight columns offset-by-two">
+                    <h1>Vennligst logg inn</h1>
+                    <p>
+                        Du må være innlogget for å se denne siden.
+                    </p>
+                </div>
+            </div>
+{% endblock %}

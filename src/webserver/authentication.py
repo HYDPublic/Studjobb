@@ -7,7 +7,7 @@ class AuthenticationException(Exception):
 
 class Authentication():
     
-    def __init__(self, database = None):
+    def __init__(self):
         self.user_repository = UserRepository(database) 
 
     def decode_credentials(self, credentials):
