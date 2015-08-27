@@ -1,0 +1,13 @@
+[company_logo]
+location = dir
+url      = example.com/logos
+
+[webserver]
+domain   = example.com
+port     = 80 
+
+[database]
+host     = 127.0.0.1
+user     = user 
+password = pass
+name     = database 
