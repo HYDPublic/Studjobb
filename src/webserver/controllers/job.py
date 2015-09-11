@@ -47,6 +47,7 @@ class JobController(Controller):
         job.position    = self.request.form.get('position')
         job.description = self.request.form.get('description')
         job = self.job_repository.save(job)
+
         return self.redirect(self.url_for('job.edit', id = job.id))
 
     def update(self, id):
