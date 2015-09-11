@@ -5,10 +5,14 @@ class SchedueledEntry(object):
 
     def __init__(self, mail, when):
         self.mail = mail
-        self.when  = when 
+        self.when = when 
 
-    def __eq__(self, other_id):
-        return self.mail.id == other_id
+    @property
+    def id(self):
+        return self.mail.id
+
+    def __eq__(self, other_mail_id):
+        return self.mail.id == other_mail_id
 
     def __hash__(self):
         return self.mail.id

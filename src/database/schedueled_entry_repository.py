@@ -1,6 +1,6 @@
 from sqlalchemy.sql  import text
-from src.email.email import Email 
-from src.email.schedueled_entry import SchedueledEntry 
+from src.mail.mail import Mail 
+from src.mail.schedueled_entry import SchedueledEntry 
 
 class SchedueledEntryRepository(object):
 
@@ -16,8 +16,8 @@ class SchedueledEntryRepository(object):
             table = self._table
         )
         row = result.fetchone()
-        email = Email(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
-        return SchedueledEntry(email = email, when = row.when)
+        mail = Mail(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
+        return SchedueledEntry(mail = mail, when = row.when)
 
     def findAll(self):
         result = self._database.execute(text(
@@ -27,8 +27,8 @@ class SchedueledEntryRepository(object):
         )
         schedueled_entries = []
         for row in result:
-            email = Email(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
-            schedueled_entries.append(SchedueledEntry(email = email, when = row.when))
+            mail = Mail(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
+            schedueled_entries.append(SchedueledEntry(mail = mail, when = row.when))
         return schedueled_entries 
 
     def save(self, schedueled_entry):
@@ -47,29 +47,28 @@ class SchedueledEntryRepository(object):
             when      = :when
             WHERE id = :id"""
         ),
-            recipient = schedueled_entry.email.recipient,
-            sender    = schedueled_entry.email.sender,
-            subject   = schedueled_entry.email.subject,
-            body      = schedueled_entry.email.body,
-            when      = schedueled_entry.email.when,
-            id        = schedueled_entry.email.id,
+            recipient = schedueled_entry.mail.recipient,
+            sender    = schedueled_entry.mail.sender,
+            subject   = schedueled_entry.mail.subject,
+            body      = schedueled_entry.mail.body,
+            when      = schedueled_entry.mail.when,
+            id        = schedueled_entry.mail.id,
             table     = self._table
         )
-        return self.find(schedueled_entry.email.id) 
+        return self.find(schedueled_entry.mail.id) 
 
     def create(self, schedueled_entry):
         result = self._database.execute(text(
-            """INSERT INTO :table SET
+            """INSERT INTO %s SET
             recipient = :recipient,
             sender    = :sender,
             subject   = :subject,
             body      = :body"""
-        ),
-            recipient = schedueled_entry.email.recipient,
-            sender    = schedueled_entry.email.sender,
-            subject   = schedueled_entry.email.subject,
-            body      = schedueled_entry.email.body,
-            table     = self._table
+        % self._table),
+            recipient = schedueled_entry.mail.recipient,
+            sender    = schedueled_entry.mail.sender,
+            subject   = schedueled_entry.mail.subject,
+            body      = schedueled_entry.mail.body
         )
-        email.id = result.lastrowid
-        return email 
+        schedueled_entry.mail.id = result.lastrowid
+        return schedueled_entry 
