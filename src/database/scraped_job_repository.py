@@ -43,5 +43,6 @@ class ScrapedJobRepository(object):
     def save(self):
         pass
 
-    def remove(self):
-        pass
+    def remove(self, guid):
+        result = self._database.execute(text('delete from scraped_jobs where guid = :guid'), guid = guid)
+        return result
