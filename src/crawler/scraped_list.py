@@ -6,11 +6,7 @@ class ScrapedList(object):
 
     @property
     def scraped_jobs(self):
-        return self.filter_out_non_visible_scraped_jobs(self._scraped_jobs)
-
-    @staticmethod
-    def filter_out_non_visible_scraped_jobs(scraped_jobs):
-        return [scraped_job for scraped_job in scraped_jobs if scraped_job.visible]
+        return self._scraped_jobs
 
     @property
     def sources(self):
