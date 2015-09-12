@@ -12,3 +12,8 @@ class TestScrapedList(unittest.TestCase):
         scraped_jobs = [ScrapedJob(), ScrapedJob(), ScrapedJob()]
         scraped_list = ScrapedList(scraped_jobs = scraped_jobs)
         self.assertEqual(len(scraped_list.scraped_jobs), 3)
+
+    def test_list_does_not_show_jobs_where_visibility_is_false(self):
+        scraped_jobs = [ScrapedJob(visible = False)]
+        scraped_list = ScrapedList(scraped_jobs = scraped_jobs)
+        self.assertEqual(len(scraped_list.scraped_jobs), 0)
