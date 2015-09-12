@@ -6,6 +6,13 @@ from src.crawler.scraped_job import ScrapedJob
 
 class TestScrapedJob(unittest.TestCase):
 
+    def test_default_visibility_is_true(self):
+        self.assertEqual(ScrapedJob().visible, True)
+
+    def test_default_visibility_can_be_set_to_false(self):
+        scraped = ScrapedJob(visible = False)
+        self.assertEqual(scraped.visible, False)
+
     def test_default_due_date_is_not_a_date(self):
         self.assertEqual(isinstance(ScrapedJob().due_date, datetime.datetime), False) 
 
