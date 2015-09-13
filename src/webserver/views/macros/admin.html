@@ -39,6 +39,7 @@
                     <th>Selskap</th>
                     <th>Tittel</th>
                     <th>Søknadsfrist</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +48,7 @@
                     <td><strong>{{ scraped_job.company }}</strong></td>
                     <td><a href="/admin/skrapt/{{ scraped_job.guid }}">{{ scraped_job.title }}</a></td>
                     <td>{{ scraped_job.due_date }}</td>
+                    <td><a href="#">Slett</a></td>
                 </tr>
             {% endfor %}
             </tbody>
