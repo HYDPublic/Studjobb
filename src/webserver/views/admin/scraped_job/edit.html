@@ -52,14 +52,7 @@
                     </textarea>
 
                     <input class="button button-primary" type="submit" value="Lagre som avventende" />
-                </div>
-            </div>
-    </form>
-    
-    <form method="post">
-            <div class="row">
-                <div class="eight columns offset-by-two">
-                    <input class="button button-primary" type="submit" name="delete" value="Slett" />
+                    <a href="/admin/skrapt/{{ scraped_job.guid }}/delete" class="button button-primary">Slett</a>
                 </div>
             </div>
     </form>

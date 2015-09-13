@@ -21,7 +21,7 @@ app.add_url_rule('/admin/stilling/<int:id>/', 'job.update', view_func = job_cont
 
 # Scraped job
 app.add_url_rule('/admin/skrapt/<string:guid>/', 'scraped_job.edit', view_func = scraped_job_controller.edit)
-app.add_url_rule('/admin/skrapt/<string:guid>/', 'scraped_job.update', view_func = scraped_job_controller.update, methods = ['POST'])
+app.add_url_rule('/admin/skrapt/<string:guid>/delete', 'scraped_job.delete', view_func = scraped_job_controller.delete, methods = ['GET'])
 
 # Company
 app.add_url_rule('/admin/selskap/', 'comapany.new', view_func = company_controller.new)

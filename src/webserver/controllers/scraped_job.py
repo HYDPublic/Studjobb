@@ -20,9 +20,7 @@ class ScrapedJobController(Controller):
         if not scraped_job: return self.abort(404)
         return self.render('admin/scraped_job/edit.html', scraped_job = scraped_job, companies = companies) 
 
-    def update(self, guid):
+    def delete(self, guid):
         if not self.user_is_authenticated(): return self.prompt_for_password()
-
-        # This will always be a delete action
         self.scraped_job_repository.remove(guid)
         return self.redirect(self.url_for('board.control_panel'))
