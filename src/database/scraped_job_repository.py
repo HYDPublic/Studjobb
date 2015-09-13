@@ -8,7 +8,7 @@ class ScrapedJobRepository(object):
         self._table = 'scraped_jobs'
 
     def find(self, guid):
-        result = self._database.execute(text('select * from scraped_jobs where guid = :guid'), 
+        result = self._database.execute(text('select * from scraped_jobs where guid = :guid and visible = true'), 
                 guid = guid)
         row = result.fetchone()
         if row is None: return None
@@ -25,7 +25,7 @@ class ScrapedJobRepository(object):
         return scraped_job
 
     def findAll(self):
-        result = self._database.execute('select * from %s' % (self._table))
+        result = self._database.execute('select * from %s where visible = true' % (self._table))
         scraped_jobs = []
         for row in result:
             scraped_job = ScrapedJob(
@@ -44,5 +44,5 @@ class ScrapedJobRepository(object):
         pass
 
     def remove(self, guid):
-        result = self._database.execute(text('delete from scraped_jobs where guid = :guid'), guid = guid)
+        result = self._database.execute(text('update scraped_jobs set visible = false where guid = :guid'), guid = guid)
         return result
