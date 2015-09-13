@@ -27,4 +27,7 @@ class Schedueler(object):
         for schedueled_mail in self.mails_to_be_sent_now(now = now):
             mail = self._queue.pop(self._queue.index(schedueled_mail))
 
-            # Pass on to mail library
+            # Pass on to mail library. This is not implemented yet, obviously.
+            # It's quite difficult to test. A good idea is to
+            # easily mock out the depedency to avoid emails actually being sent.
+
