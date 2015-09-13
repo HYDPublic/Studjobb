@@ -15,7 +15,8 @@ class Schedueler(object):
         return self._queue
     
     def enqueue(self, mail, when):
-        self._queue.append(SchedueledEntry(mail, when))
+        schedueled_entry = SchedueledEntry(mail, when)
+        self._queue.append(schedueled_entry)
 
     def remove_duplicates(self):
         self._queue = list(set(self._queue))
