@@ -1,15 +1,14 @@
 import base64
-from src.database.engine import database
 from src.database.user_repository import UserRepository
 
 class AuthenticationException(Exception):
     pass
 
 class Authentication():
-    
-    def __init__(self):
-        self.user_repository = UserRepository(database) 
 
+    def __init__(self, database = None):
+        self.user_repository = UserRepository(database)
+    
     def decode_credentials(self, credentials):
         return base64.b64decode(credentials)
 

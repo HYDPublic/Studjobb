@@ -1,10 +1,11 @@
 from flask import make_response, render_template, abort, request, redirect, url_for, g
 from src.webserver.authentication import Authentication
+from src.database.engine import database
 
 class Controller(object):
     
     def __init__(self):
-        self.authentication = Authentication()
+        self.authentication = Authentication(database)
         self.request        = request
         self.render         = render_template
         self.abort          = abort
