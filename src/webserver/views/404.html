@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Side ikke funnet{% endblock %}
 {% block container %}
-            <p class="back"><a href="/">← Tilbake til forsiden</a></p>
+{% import 'macros/navigation.html' as navigation %}
+            {{ navigation.render_back_links() }}
 
-            <div id="about" class="us">
-                <h1>404 - Vi fant ikke siden</h1>
-                <p>
-                    Vi fant dessverre ikke siden du lette etter.
-                </p>
+            <div class="row section">
+                <div class="eight columns offset-by-two">
+                    <h1>404 - Vi fant ikke siden</h1>
+                    <p>
+                        Vi fant dessverre ikke siden du lette etter.
+                    </p>
+                </div>
             </div>
 {% endblock %}
