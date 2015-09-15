@@ -6,9 +6,10 @@ from src.job.job import Job
 class ScrapedJob(Job):
 
     def __init__(self, *args, **kwargs):
-        if 'guid'    in kwargs: self.guid    = kwargs.pop('guid')
-        if 'url'     in kwargs: self.url     = kwargs.pop('url')
-        if 'source'  in kwargs: self.source  = kwargs.pop('source')
+        if 'guid'       in kwargs: self.guid    = kwargs.pop('guid')
+        if 'url'        in kwargs: self.url     = kwargs.pop('url')
+        if 'source'     in kwargs: self.source  = kwargs.pop('source')
+        if 'scraped_at' in kwargs: self.scraped_at = kwargs.pop('scraped_at')
 
         super(ScrapedJob, self).__init__(*args, **kwargs)
 

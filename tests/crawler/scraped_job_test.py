@@ -6,6 +6,11 @@ from src.crawler.scraped_job import ScrapedJob
 
 class TestScrapedJob(unittest.TestCase):
 
+    def test_scraped_job_takes_a_scraped_at_argument(self):
+        now = datetime.datetime.now()
+        scraped_job = ScrapedJob(scraped_at = now)
+        self.assertEqual(scraped_job.scraped_at, now) 
+
     def test_default_due_date_is_not_a_date(self):
         self.assertEqual(isinstance(ScrapedJob().due_date, datetime.datetime), False) 
 
