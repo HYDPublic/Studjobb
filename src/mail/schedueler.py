@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
-from sender import Sender 
+from mailer import Mailer 
 from schedueled_entry import SchedueledEntry
 
 class ScheduelerError(Exception):
@@ -9,7 +9,8 @@ class ScheduelerError(Exception):
 class Schedueler(object):
 
     def __init__(self, queue = None):
-        self._queue = queue or []
+        self._mailer = Mailer()
+        self._queue  = queue or []
 
     @property
     def queue(self):
@@ -31,6 +32,6 @@ class Schedueler(object):
             mail  = self._queue.pop(index)
 
             try:
-                Sender(mail)
+                self._mailer.send(mail)
             except Exception:
                 self._queue.append(mail)
