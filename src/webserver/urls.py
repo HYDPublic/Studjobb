@@ -25,6 +25,7 @@ app.add_url_rule('/admin/skrapt/<string:guid>/delete', 'scraped_job.delete', vie
 
 # Company
 app.add_url_rule('/admin/selskap/', 'comapany.new', view_func = company_controller.new)
+app.add_url_rule('/admin/selskap/list', 'company.list', view_func = company_controller.list)
 app.add_url_rule('/admin/selskap/<int:id>/', 'company.edit', view_func = company_controller.edit)
 
 app.add_url_rule('/admin/selskap/', 'company.create', view_func = company_controller.create, methods = ['POST'])

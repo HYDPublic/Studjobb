@@ -1,4 +1,6 @@
 from controller import Controller
+from flask import Response
+import json
 
 from src.company.company import Company 
 from src.database.company_repository import CompanyRepository
@@ -13,6 +15,16 @@ class CompanyController(Controller):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         return self.render('admin/company/new.html') 
+
+    def list(self):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
+        companies = self.company_repository.findAll()
+        json_dict = {}
+        for company in companies:
+            json_dict[company.id] = company.name
+        response = json.dumps(json_dict)
+        return Response(response, status = 200, mimetype = "application/json")
 
     def edit(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
