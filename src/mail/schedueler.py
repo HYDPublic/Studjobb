@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+from sender import Sender 
 from schedueled_entry import SchedueledEntry
 
 class ScheduelerError(Exception):
@@ -26,9 +27,10 @@ class Schedueler(object):
 
     def send(self, now = datetime.datetime.now()):
         for schedueled_mail in self.mails_to_be_sent_now(now = now):
-            mail = self._queue.pop(self._queue.index(schedueled_mail))
+            index = self._queue.index(schedueled_mail)
+            mail  = self._queue.pop(index)
 
-            # Pass on to mail library. This is not implemented yet, obviously.
-            # It's quite difficult to test. A good idea is to
-            # easily mock out the depedency to avoid emails actually being sent.
-
+            try:
+                Sender(mail)
+            except Exception:
+                self._queue.append(mail)
