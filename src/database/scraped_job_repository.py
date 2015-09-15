@@ -25,7 +25,7 @@ class ScrapedJobRepository(object):
         return scraped_job
 
     def findAll(self):
-        result = self._database.execute('select * from %s where visible = true' % (self._table))
+        result = self._database.execute('select * from %s where visible = true order by scraped_at desc' % (self._table))
         scraped_jobs = []
         for row in result:
             scraped_job = ScrapedJob(
