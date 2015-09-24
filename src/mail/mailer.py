@@ -45,4 +45,4 @@ class Mailer(object):
         if self.is_connection_alive == False:
             self.reconnect()
 
-        self.server.sendmail(mail.from, mail.sender, mail.body)
+        self.server.sendmail(mail.sender, mail.recipient, mail.body)
