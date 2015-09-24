@@ -26,12 +26,15 @@ class Schedueler(object):
     def mails_to_be_sent_now(self, now = datetime.datetime.now()):
         return filter(lambda schedueled_entry: schedueled_entry.when < now, self._queue)
 
-    def send(self, now = datetime.datetime.now()):
+    def dequeue(self, now = datetime.datetime.now()):
+
         for schedueled_mail in self.mails_to_be_sent_now(now = now):
             index = self._queue.index(schedueled_mail)
             mail  = self._queue.pop(index)
+            self.send(mail);
 
-            try:
-                self._mailer.send(mail)
-            except Exception:
-                self._queue.append(mail)
+    def send(self, mail):
+        try:
+            self._mailer.send(mail)
+        except Exception:
+            self._queue.append(mail)

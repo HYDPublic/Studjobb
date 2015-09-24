@@ -47,7 +47,7 @@ class TestSchedueler(unittest.TestCase):
     def test_schedueler_clears_sent_jobs_after_run(self, mock_mailer):
         schedueler = Schedueler()
         schedueler.enqueue(mail = FakeMail(), when = datetime.datetime(2016, 01, 01,  9, 0))
-        schedueler.send(now = datetime.datetime(2018, 01, 01, 8, 30))
+        schedueler.dequeue(now = datetime.datetime(2018, 01, 01, 8, 30))
         self.assertEqual(len(schedueler.queue), 0)
 
     @mock.patch('src.mail.mailer.Mailer.send')
@@ -55,7 +55,7 @@ class TestSchedueler(unittest.TestCase):
         mock_sender.side_effect = Exception('Mail could not be sent.')
         schedueler = Schedueler()
         schedueler.enqueue(mail = FakeMail(), when = datetime.datetime(2016, 01, 01,  9, 0))
-        schedueler.send(now = datetime.datetime(2018, 01, 01, 8, 30))
+        schedueler.dequeue(now = datetime.datetime(2018, 01, 01, 8, 30))
         self.assertEqual(len(schedueler.queue), 1)
 
     def test_schedueler_can_take_schedueler_entries_in_constructor(self):
