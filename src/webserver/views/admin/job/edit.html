@@ -6,20 +6,22 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
-        <div class="row">
-            <div class="eight columns offset-by-two">
-                
-                <label for="subject">Emne</label>
-                <input name="subject" type="text" class="u-full-width" required/>
+        <form action="/admin/stilling/{{ job.id }}/mail" method="post">
+            <div class="row">
+                <div class="eight columns offset-by-two">
+                    
+                    <label for="subject">Emne</label>
+                    <input name="subject" type="text" class="u-full-width" required/>
 
-                <label for="to">Mottaker</label>
-                <input name="to" type="email" class="u-full-width" required />
+                    <label for="to">Mottaker</label>
+                    <input name="recipient" type="email" class="u-full-width" required />
 
-                <label for="body">Melding</label>
-                <textarea name="body" class="u-full-width" required></textarea>
-                <input class="button button-primary" type="submit" value="Send e-post" />
+                    <label for="body">Melding</label>
+                    <textarea name="body" class="u-full-width" required></textarea>
+                    <input class="button button-primary" type="submit" value="Send e-post" />
+                </div>
             </div>
-        </div>
+        </form>
 
         <form method="post">
 
