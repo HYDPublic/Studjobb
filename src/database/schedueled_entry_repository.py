@@ -66,7 +66,6 @@ class SchedueledEntryRepository(object):
             recipient = :recipient,
             sender    = :sender,
             subject   = :subject,
-            when      = :when,
             sent      = :sent,
             body      = :body"""
         % self._table),
@@ -74,8 +73,7 @@ class SchedueledEntryRepository(object):
             sender    = schedueled_entry.mail.sender,
             subject   = schedueled_entry.mail.subject,
             body      = schedueled_entry.mail.body,
-            when      = schedueled_entry.when,
-            sent      = schedueled_entry.sent
+            sent      = schedueled_entry.sent 
         )
         schedueled_entry.mail.id = result.lastrowid
         return schedueled_entry 
