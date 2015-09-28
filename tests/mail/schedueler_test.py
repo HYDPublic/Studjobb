@@ -12,6 +12,10 @@ class FakeMail(Mail):
 
 class TestSchedueler(unittest.TestCase):
 
+    def test_schedueled_entry_is_not_sent_by_default(self):
+        schedueled_entry = SchedueledEntry(FakeMail(), datetime.datetime(2016, 01, 01))
+        self.assertEqual(schedueled_entry.sent, False);
+
     def test_schedueler_can_enqueue_a_single_mail(self):
         schedueler = Schedueler()
         schedueler.enqueue(mail = FakeMail(), when = None)
