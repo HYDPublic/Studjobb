@@ -20,7 +20,7 @@ class MailerController(Controller):
             body      = self.request.form['body']
         ) 
         
-        schedueled_entry = SchedueledEntry(mail, datetime.datetime.now())
+        schedueled_entry = SchedueledEntry(mail, datetime.datetime(2015, 9, 24, 12, 30))
         self.schedueled_entry_repository.create(schedueled_entry)
 
         return self.redirect(self.url_for('board.control_panel'))
