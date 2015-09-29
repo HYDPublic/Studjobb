@@ -15,11 +15,7 @@ class Board(object):
         return self._jobs 
     
     def jobs_by_status(self, status = None):
-        jobs_that_meet_status_criteria = []
-        for job in self._jobs:
-            if job.status == status:
-                jobs_that_meet_status_criteria.append(job)
-        return jobs_that_meet_status_criteria
+        return filter(lambda job: job.status == status, self._jobs)
 
     def jobs_sorted_by(self, attribute = None):
         try:
