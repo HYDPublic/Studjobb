@@ -3,6 +3,7 @@ from controller import Controller
 from src.job.job import Job 
 from src.job.status import Status 
 from src.company.company import Company 
+from src.mail.best_send_date import BestSendDate 
 from src.database.job_repository import JobRepository
 from src.database.company_repository import CompanyRepository
 
@@ -28,7 +29,7 @@ class JobController(Controller):
 
         companies = self.company_repository.findAll()
         return self.render('admin/job/edit.html',
-            job = job, companies = companies, statuses  = Status.codes) 
+            job = job, companies = companies, statuses  = Status.codes, reccomended_send_date = BestSendDate().date) 
 
     def view(self, id):
         job = self.job_repository.find(id)
