@@ -1,4 +1,4 @@
-from src.person.email import Email
+from src.person.mail_address import MailAddress
 
 class Person(object):
 
@@ -17,7 +17,7 @@ class Person(object):
     
     @email.setter
     def email(self, email):
-        if Email.isValid(email):
+        if MailAddress.isValid(email):
             self._email = email
         else:
             self._email = None

@@ -1,7 +1,7 @@
-class EmailException(Exception):
+class MailAddressException(Exception):
     pass
 
-class Email(object):
+class MailAddress(object):
 
     @staticmethod
     def doesNotContainExactlyOneAtSign(email):
@@ -11,6 +11,6 @@ class Email(object):
     def isValid(email):
         if email is None:
             return False
-        elif Email.doesNotContainExactlyOneAtSign(email):
-            raise EmailException("Invalid email address.")
+        elif MailAddress.doesNotContainExactlyOneAtSign(email):
+            raise MailAddressException("Invalid email address.")
         return True
