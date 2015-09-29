@@ -19,7 +19,7 @@ class Mailer(object):
         }
 
     def connect(self):
-        self.server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        self.server = smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10)
 
     def authenticate(self):
         self.server.ehlo()
