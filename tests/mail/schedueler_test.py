@@ -50,11 +50,18 @@ class TestSchedueler(unittest.TestCase):
 
     @mock.patch('src.mail.mailer.Mailer.send')
     def test_schedueler_does_not_clear_jobs_if_sender_raises_exception(self, mock_sender):
-        mock_sender.side_effect = smtplib.SMTPException('Mail could not be sent.')
+        mock_sender.side_effect = smtplib.SMTPException('Connection timed out.')
         schedueled_entries = [SchedueledEntry(mail = FakeMail(), when = datetime.datetime(2016, 01, 01,  9, 0))]
         schedueler = Schedueler(schedueled_entries)
         schedueler.run(now = datetime.datetime(2018, 01, 01, 8, 30))
         self.assertEqual(len(schedueler.queue), 1)
+
+    @mock.patch('src.mail.mailer.Mailer.send')
+    def test_schedueled_entry_has_sent_property_set_to_true_after_being_sucessfully_sent(self, mock_sender):
+        schedueled_entry = SchedueledEntry(mail = FakeMail(), when = datetime.datetime(2016, 01, 01,  9, 0))
+        schedueler = Schedueler([schedueled_entry])
+        schedueler.run(now = datetime.datetime(2018, 01, 01, 8, 30))
+        self.assertEqual(schedueled_entry.sent, True) 
 
     def test_schedueler_can_take_schedueler_entries_in_constructor(self):
         schedueler = Schedueler([
