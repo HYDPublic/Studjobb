@@ -6,11 +6,7 @@
                 <tr>
                     <th>Selskap</th>
                     <th>Tittel</th>
-                    <th>Linje</th>
                     <th>Søknadsfrist</th>
-                    {% if name == 'Aktive jobber' %}
-                    <th>Gjenværende levetid</th>
-                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -18,11 +14,7 @@
                 <tr>
                     <td><a href="/admin/selskap/{{ job.company.id }}"><strong>{{ job.company.name }}</strong></a></td>
                     <td><a href="/admin/stilling/{{ job.id }}">{{ job.title }}</a></td>
-                    <td>Datateknikk/Informatikk</td>
                     <td>{{ job.due_date.human_readable_date }}</td>
-                    {% if name == 'Aktive jobber' %}
-                    <td><progress max="100" value="50"></progress></td>
-                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
