@@ -10,10 +10,9 @@ class SchedueledEntryRepository(object):
 
     def find(self, id):
         result = self._database.execute(text(
-            """SELECT * FROM :table WHERE id = :id"""
-        ), 
-            id    = id,
-            table = self._table
+            """SELECT * FROM %s WHERE id = :id"""
+        % self._table), 
+            id = id
         )
         row = result.fetchone()
         mail = Mail(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
@@ -21,10 +20,8 @@ class SchedueledEntryRepository(object):
 
     def findAll(self):
         result = self._database.execute(text(
-            """SELECT * FROM :table"""
-        ),
-            table = self._table
-        )
+            """SELECT * FROM %s""" % (self._table)
+        ))
         schedueled_entries = []
         for row in result:
             mail = Mail(id = row.id, recipient = row.recipient, sender = row.sender, subject = row.subject, body = row.body)
@@ -40,23 +37,22 @@ class SchedueledEntryRepository(object):
 
     def update(self, schedueled_entry):
         result = self._database.execute(text(
-            """UPDATE :table SET
+            """UPDATE %s SET
             recipient = :recipient,
             sender    = :sender,
             subject   = :subject,
             body      = :body,
-            when      = :when,
+            schedueled_entries.when = :when,
             sent      = :sent
-            WHERE id = :id"""
-        ),
+            WHERE id  = :id"""
+        % self._table),
             id        = schedueled_entry.mail.id,
             recipient = schedueled_entry.mail.recipient,
             sender    = schedueled_entry.mail.sender,
             subject   = schedueled_entry.mail.subject,
             body      = schedueled_entry.mail.body,
             when      = schedueled_entry.when,
-            sent      = schedueled_entry.sent,
-            table     = self._table
+            sent      = schedueled_entry.sent
         )
         return self.find(schedueled_entry.mail.id) 
 
@@ -67,12 +63,14 @@ class SchedueledEntryRepository(object):
             sender    = :sender,
             subject   = :subject,
             sent      = :sent,
+            schedueled_entries.when = :when,
             body      = :body"""
         % self._table),
             recipient = schedueled_entry.mail.recipient,
             sender    = schedueled_entry.mail.sender,
             subject   = schedueled_entry.mail.subject,
             body      = schedueled_entry.mail.body,
+            when      = schedueled_entry.when,
             sent      = schedueled_entry.sent 
         )
         schedueled_entry.mail.id = result.lastrowid
