@@ -11,8 +11,12 @@ class BestSendDate(object):
     def __init__(self, now = datetime.datetime.now()):
         self._now              = now
         self._hour_threshold   = 14
+
         self._preferred_hour   = 10
         self._preferred_minute = 45
+
+    def adjust_time_of_day_preferred(self, date):
+        return date.replace(hour=self._preferred_hour, minute=self._preferred_minute)
 
     @staticmethod
     def date_is_in_weekend(date):
@@ -32,12 +36,12 @@ class BestSendDate(object):
 
     def current_date_is_friday(self):
         return BestSendDate.weekdays[self._now.weekday()] == 'friday' 
-
-    def tomorrows_date(self):
-        return self._now + datetime.timedelta(1)
     
     def current_date_is_past_hour_threshold(self):
         return self._now.hour > self._hour_threshold 
+
+    def tomorrows_date(self):
+        return self._now + datetime.timedelta(1)
 
     def next_monday(self):
         return self.next_date_for_weekday(self._now, 'monday')
@@ -48,13 +52,13 @@ class BestSendDate(object):
     @property
     def date(self):
         if self.current_date_is_in_weekend():
-            return self.next_monday().replace(hour=self._preferred_hour, minute=self._preferred_minute)
+            return self.adjust_time_of_day_preferred(self.next_monday())
 
         elif self.current_date_is_past_hour_threshold():
             if self.current_date_is_friday():
-                return self.next_monday().replace(hour=self._preferred_hour, minute=self._preferred_minute)
+                return self.adjust_time_of_day_preferred(self.next_monday())            
             else:
-                return self.tomorrows_date().replace(hour=self._preferred_hour, minute=self._preferred_minute)
+                return self.adjust_time_of_day_preferred(self.tomorrows_date())
 
         else:
             return self.todays_date()
