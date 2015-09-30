@@ -8,3 +8,4 @@ src/crawler/crawler/
 src/crawler/scrapy.cfg
 idea
 src/webserver/assets/logos
+logs/*.log

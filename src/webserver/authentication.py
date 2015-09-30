@@ -1,5 +1,7 @@
 import base64
 from src.database.user_repository import UserRepository
+from src.logger.logger import logging
+logger = logging.getLogger(__name__)
 
 class AuthenticationException(Exception):
     pass
@@ -62,4 +64,6 @@ class Authentication():
 
     def verify_credentials(self, username, password):
         user = self.look_up_user(username)
-        return user.checkCredentials(password)
+        if user.checkCredentials(password) == False:
+            raise AuthenticationException('Wrong password.') 
+        return True 
