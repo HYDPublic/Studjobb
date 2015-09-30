@@ -1,7 +1,5 @@
 import base64
 from src.database.user_repository import UserRepository
-from src.logger.logger import logging
-logger = logging.getLogger(__name__)
 
 class AuthenticationException(Exception):
     pass
