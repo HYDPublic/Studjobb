@@ -15,7 +15,8 @@ class MailerController(Controller):
 
         mail = Mail(
             recipient = self.request.form['recipient'],
-            sender    = 'email@michaelmcmillan.net',
+            # This must not be a constant
+            sender    = 'michael@studjobb.no',
             subject   = self.request.form['subject'],
             body      = self.request.form['body']
         ) 
