@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import smtplib
+from email import message
 from smtplib import SMTPServerDisconnected 
 from ConfigParser import SafeConfigParser
 
@@ -41,8 +42,18 @@ class Mailer(object):
         self.disconnect()
         self.connect()
 
-    def send(self, mail = False):
-        if self.is_connection_alive == False:
-            self.reconnect()
+    @staticmethod
+    def turn_mail_into_message(mail):
+        message_to_be_sent =  message.Message()
+        message_to_be_sent.add_header('to',      mail.recipient)
+        message_to_be_sent.add_header('from',    mail.sender)
+        message_to_be_sent.add_header('subject', mail.subject)
+        message_to_be_sent.set_payload(mail.body)
+        return message_to_be_sent.as_string()
 
-        self.server.sendmail(mail.sender, mail.recipient, mail.body)
+    def send(self, mail = False):
+        if self.is_connection_alive() == False:
+            self.reconnect()
+        
+        message = self.turn_mail_into_message(mail)
+        self.server.sendmail(mail.sender, mail.recipient, message)
