@@ -29,7 +29,7 @@ class JobController(Controller):
 
         companies = self.company_repository.findAll()
         return self.render('admin/job/edit.html',
-            job = job,
+            job       = job,
             companies = companies,
             statuses  = Status.codes,
             reccomended_send_date = BestSendDate().date
