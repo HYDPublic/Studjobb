@@ -8,8 +8,8 @@ class BestSendDate(object):
         'sunday'
     ]
 
-    def __init__(self, now = datetime.datetime.now()):
-        self._now              = now
+    def __init__(self, now = False):
+        self._now              = now or datetime.datetime.now() 
         self._hour_threshold   = 14
 
         self._preferred_hour   = 10
