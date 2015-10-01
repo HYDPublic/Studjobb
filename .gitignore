@@ -9,3 +9,4 @@ src/crawler/scrapy.cfg
 idea
 src/webserver/assets/logos
 logs/*.log
+src/mail/templates/*
