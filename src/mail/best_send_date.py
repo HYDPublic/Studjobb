@@ -49,7 +49,7 @@ class BestSendDate(object):
     def todays_date(self):
         return self._now
 
-    # Returns optimal_date and flag if time needs adjustment
+    # Returns optimal_date and True if time needs adjustment
     def find_optimal_date(self):
         if self.current_date_is_in_weekend():
             return (self.next_monday(), True)
