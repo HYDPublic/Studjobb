@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import os
 import smtplib
-from email import message
 from smtplib import SMTPServerDisconnected 
 from ConfigParser import SafeConfigParser
+
+from email import message
+from email.header import Header
+from email.mime.text import MIMEText
 
 class Mailer(object):
 
@@ -44,11 +47,10 @@ class Mailer(object):
 
     @staticmethod
     def turn_mail_into_message(mail):
-        message_to_be_sent =  message.Message()
-        message_to_be_sent.add_header('to',      mail.recipient)
-        message_to_be_sent.add_header('from',    mail.sender)
-        message_to_be_sent.add_header('subject', mail.subject)
-        message_to_be_sent.set_payload(mail.body)
+        message_to_be_sent            = MIMEText(mail.body, 'plain', 'utf-8')
+        message_to_be_sent['to']      = mail.recipient
+        message_to_be_sent['from']    = mail.sender
+        message_to_be_sent['subject'] = Header(mail.subject, 'utf-8')
         return message_to_be_sent.as_string()
 
     def send(self, mail = False):

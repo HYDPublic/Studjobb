@@ -42,9 +42,14 @@ class TestMailer(unittest.TestCase):
     def test_message_contains_subject_header_with_correct_value(self):
         mail = Mail(recipient = 'recipient@domain.com', sender = 'sender@domain.com', body = 'Hello world', subject = 'Hola!')
         message = Mailer.turn_mail_into_message(mail)
-        self.assertEqual('subject: Hola!\n' in message, True)
+        self.assertEqual('subject: =?utf-8?q?Hola!?=\n' in message, True)
 
     def test_message_contains_body_with_correct_value(self):
         mail = Mail(recipient = 'recipient@domain.com', sender = 'sender@domain.com', body = 'Hello world', subject = 'Hola!')
         message = Mailer.turn_mail_into_message(mail)
-        self.assertEqual('\n\nHello world' in message, True)
+        self.assertEqual('\n\nSGVsbG8gd29ybGQ=' in message, True)
+
+    def test_message_can_contain_subject_with_scandinavian_characters(self):
+        mail = Mail(recipient = 'recipient@domain.com', sender = 'sender@domain.com', body = 'Hello world', subject = 'Hællæ bællå ålø!')
+        message = Mailer.turn_mail_into_message(mail)
+        self.assertEqual('subject: =?utf-8?b?SMOmbGzDpiBiw6ZsbMOlIMOlbMO4IQ==?=\n' in message, True)
