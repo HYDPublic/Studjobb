@@ -14,11 +14,12 @@ class MailerController(Controller):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         mail = Mail(
-            recipient = self.request.form['recipient'],
-            sender_name = 'Michael McMillan',
-            sender      = 'michael@studjobb.no',
-            subject     = self.request.form['subject'],
-            body        = self.request.form['body']
+            recipient      = self.request.form['recipient'],
+            recipient_name = self.request.form['recipient_name'],
+            sender_name    = 'Michael McMillan',
+            sender         = 'michael@studjobb.no',
+            subject        = self.request.form['subject'],
+            body           = self.request.form['body']
         ) 
         
         when = datetime.datetime.strptime(self.request.form['when'], '%Y-%m-%dT%H:%M')
