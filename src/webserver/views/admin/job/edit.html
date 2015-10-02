@@ -10,21 +10,41 @@
             <div class="row">
                 <div class="eight columns offset-by-two">
                     
-                    <label for="subject">Emne</label>
-                    <input name="subject" type="text" class="u-full-width" required/>
 
-                    <label for="recipient">Mottaker</label>
-                    <input name="recipient" type="email" class="u-full-width" required />
+                    <div class="row">
+                        <div class="field five columns">
+                            <label for="recipient">Mottaker</label>
+                            <input name="recipient" type="email" class="u-full-width" required />
+                        </div>
+                        <div class="field five columns">
+                            <label for="recipient_name">Navn på mottaker</label>
+                            <input name="recipient_name" type="text" class="u-full-width" />
+                        </div>
+                    </div>
 
-                    <label for="recipient_name">Navn på mottaker</label>
-                    <input name="recipient_name" type="text" class="u-full-width" />
+                    
+                    <div class="row">
 
-                    <label for="when">Sendes</label>
-                    <input name="when" type="datetime-local" class="u-full-width" value="{{ reccomended_send_date.strftime('%Y-%m-%dT%H:%M') }}" required />
+                        <div class="field five columns">
+                            <label for="template">Mal</label>
+                            <select name="template" class="u-full-width">
+                                <option>Standard</option>
+                            </select>
+                        </div>
+                        
+                        <div class="field five columns">
+                            <label for="when">Sendes</label>
+                            <input name="when" type="datetime-local" class="u-full-width" value="{{ reccomended_send_date.strftime('%Y-%m-%dT%H:%M') }}" required />
+                        </div>
+                    </div>
 
-                    <label for="body">Melding</label>
-                    <textarea name="body" class="u-full-width" required></textarea>
-                    <input class="button button-primary" type="submit" value="Send e-post" />
+                    <div class="row">
+                        <label for="subject">Emne</label>
+                        <input name="subject" type="text" class="u-full-width" required/>
+                        <label for="body">Melding</label>
+                        <textarea name="body" class="u-full-width" required></textarea>
+                        <input class="button button-primary" type="submit" value="Send e-post" />
+                    </div>
                 </div>
             </div>
         </form>
@@ -37,14 +57,14 @@
                     <hr>
                 </div>
 
-                <div class="two columns offset-by-two"> 
+                <div class="four columns offset-by-two"> 
 
 
                     <label for="place">Sted</label>
-                    <input name="place" type="text" value="{{ job.place }}" />
+                    <input name="place" type="text" class="u-full-width" value="{{ job.place }}" />
 
                     <label for="status">Status</label>
-                    <select name="status">
+                    <select name="status" class="u-full-width">
                     {% for status in statuses %}
                         {% if job.status == status %} 
                         <option value="{{ status }}" selected>{{ status|title() }}</option>
@@ -55,7 +75,7 @@
                     </select>
 
                     <label for="company">Selskap</label>
-                    <select name="company">
+                    <select name="company" class="u-full-width">
                     {% for company in companies %}
                         {% if company.id == job.company.id %} 
                         <option value="{{ company.id }}" selected>{{ company.name }}</option>
@@ -66,16 +86,16 @@
                     </select>
                 </div>
 
-                <div class="four columns offset-by-two"> 
+                <div class="four columns"> 
 
                     <label for="position">Stillingstype</label>
-                    <input name="position" type="text" value="{{ job.position }}" />
+                    <input name="position" type="text" class="u-full-width" value="{{ job.position }}" />
 
                     <label for="due_date">Søknadsfrist</label>
-                    <input name="due_date" type="date" value="{{ job.due_date.date }}"/>
+                    <input name="due_date" type="date" class="u-full-width" value="{{ job.due_date.date }}"/>
 
                     <label for="start_date">Tiltredelsesdato</label>
-                    <input name="start_date" type="date" value="{{ job.start_date.date }}"/>
+                    <input name="start_date" type="date" class="u-full-width" value="{{ job.start_date.date }}"/>
                 </div>
             </div>
 
