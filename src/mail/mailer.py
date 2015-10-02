@@ -48,13 +48,17 @@ class Mailer(object):
     @staticmethod
     def turn_mail_into_message(mail):
         message_to_be_sent            = MIMEText(mail.body, 'plain', 'utf-8')
-        message_to_be_sent['to']      = mail.recipient
         message_to_be_sent['subject'] = Header(mail.subject, 'utf-8')
         if mail.sender_name:
             message_to_be_sent['from'] = '%s <%s>' % (mail.sender_name, mail.sender)
         else:
             message_to_be_sent['from'] = mail.sender
 
+        if mail.recipient_name:
+            message_to_be_sent['to'] = '%s <%s>' % (mail.recipient_name, mail.recipient)
+        else:
+            message_to_be_sent['to'] = mail.recipient
+            
         return message_to_be_sent.as_string()
 
     def send(self, mail = False):
