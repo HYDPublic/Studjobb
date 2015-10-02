@@ -4,13 +4,14 @@ class MailError(Exception):
 
 class Mail(object):
 
-    def __init__(self, id = None, recipient = None, sender = None, sender_name = None, subject = 'Missing subject', body = None):
-        self.id          = id 
-        self.recipient   = recipient 
-        self.sender      = sender 
-        self.subject     = subject
-        self.body        = body
-        self.sender_name = sender_name
+    def __init__(self, id = None, recipient = None, recipient_name = None, sender = None, sender_name = None, subject = 'Missing subject', body = None):
+        self.id             = id 
+        self.recipient      = recipient 
+        self.recipient_name = recipient_name
+        self.sender         = sender 
+        self.sender_name    = sender_name
+        self.subject        = subject
+        self.body           = body
 
         self.validate_fields()
 
