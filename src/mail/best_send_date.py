@@ -3,8 +3,8 @@ import datetime
 class BestSendDate(object):
 
     weekdays = [
-        'monday', 'tuesday', 'wednesday',
-        'thursday', 'friday', 'saturday',
+        'monday',   'tuesday', 'wednesday',
+        'thursday', 'friday',  'saturday',
         'sunday'
     ]
 
