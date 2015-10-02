@@ -15,7 +15,7 @@ class BestSendDate(object):
         self._preferred_hour   = 10
         self._preferred_minute = 45
 
-    def adjust_time_of_day_preferred(self, date):
+    def adjust_date_to_preferred_time(self, date):
         return date.replace(hour=self._preferred_hour, minute=self._preferred_minute)
 
     @staticmethod
@@ -49,16 +49,23 @@ class BestSendDate(object):
     def todays_date(self):
         return self._now
 
-    @property
-    def date(self):
+    # Returns optimal_date and flag if time needs adjustment
+    def find_optimal_date(self):
         if self.current_date_is_in_weekend():
-            return self.adjust_time_of_day_preferred(self.next_monday())
+            return (self.next_monday(), True)
 
         elif self.current_date_is_past_hour_threshold():
             if self.current_date_is_friday():
-                return self.adjust_time_of_day_preferred(self.next_monday())            
+                return (self.next_monday(), True)
             else:
-                return self.adjust_time_of_day_preferred(self.tomorrows_date())
-
+                return (self.tomorrows_date(), True)
         else:
-            return self.todays_date()
+            return (self.todays_date(), False)
+
+    @property
+    def date(self):
+        optimal_date, time_must_be_adjusted = self.find_optimal_date()
+        if time_must_be_adjusted:
+            return self.adjust_date_to_preferred_time(optimal_date)
+        return optimal_date
+
