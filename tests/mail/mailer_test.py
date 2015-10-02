@@ -39,6 +39,11 @@ class TestMailer(unittest.TestCase):
         message = Mailer.turn_mail_into_message(mail)
         self.assertEqual('from: sender@domain.com\n' in message, True)
 
+    def test_message_contains_from_header_with_name_if_provided(self):
+        mail = Mail(recipient = 'recipient@domain.com', sender = 'sender@domain.com', sender_name = 'Billy Bob', body = 'Hello world')
+        message = Mailer.turn_mail_into_message(mail)
+        self.assertEqual('from: Billy Bob <sender@domain.com>\n' in message, True)
+
     def test_message_contains_subject_header_with_correct_value(self):
         mail = Mail(recipient = 'recipient@domain.com', sender = 'sender@domain.com', body = 'Hello world', subject = 'Hola!')
         message = Mailer.turn_mail_into_message(mail)

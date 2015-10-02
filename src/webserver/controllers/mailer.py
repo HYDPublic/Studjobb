@@ -16,9 +16,10 @@ class MailerController(Controller):
         mail = Mail(
             recipient = self.request.form['recipient'],
             # This must not be a constant
-            sender    = 'michael@studjobb.no',
-            subject   = self.request.form['subject'],
-            body      = self.request.form['body']
+            sender_name = 'Michael',
+            sender      = 'michael@studjobb.no',
+            subject     = self.request.form['subject'],
+            body        = self.request.form['body']
         ) 
         
         when = datetime.datetime.strptime(self.request.form['when'], '%Y-%m-%dT%H:%M')
