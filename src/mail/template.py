@@ -6,14 +6,35 @@ class TemplateError(Exception):
 
 class Template(object):
 
-    def __init__(self, text, variables = {}, title = 'Untitled'):
-        self.text = text
+    def __init__(self, text, variables = {}, title = 'Untitled', job = None):
+        self.text  = text
         self.title = title
+        self.job   = job
 
-        self.user_defined_variables = variables
+        self.user_defined_variables     = variables
         self.template_defined_variables = self.extract_variables(text) 
+        
+        if self.job:
+            self.job_properties = self.extract_properties_from_job(job)
+            self.merge_user_defined_variables_with_job_properties()
 
         self.format()
+
+    @staticmethod
+    def extract_properties_from_job(job):
+        job_properties = {
+            "job.title":    job.title,
+            "job.place":    job.place,
+            "job.position": job.position,
+            "job.company":  job.company
+        }
+        # Removes job properties that evaluates to False
+        return dict((k, v) for k, v in job_properties.iteritems() if v)
+        
+    def merge_user_defined_variables_with_job_properties(self):
+        part_one = self.job_properties.items()
+        part_two = self.user_defined_variables.items()
+        self.user_defined_variables = dict(part_one + part_two)
 
     def format(self):
         variables_remaining_in_template = self.template_defined_variables
