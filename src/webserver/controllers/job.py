@@ -6,12 +6,14 @@ from src.company.company import Company
 from src.mail.best_send_date import BestSendDate 
 from src.database.job_repository import JobRepository
 from src.database.company_repository import CompanyRepository
+from src.database.template_repository import TemplateRepository
 
 class JobController(Controller):
     
     def __init__(self, database):
-        self.company_repository = CompanyRepository(database) 
-        self.job_repository = JobRepository(database) 
+        self.job_repository      = JobRepository(database) 
+        self.company_repository  = CompanyRepository(database) 
+        self.template_repository = TemplateRepository(database) 
         super(JobController, self).__init__()
 
     def new(self):
@@ -28,11 +30,14 @@ class JobController(Controller):
             return self.abort(404)
 
         companies = self.company_repository.findAll()
+        templates = self.template_repository.findAll()
+
         return self.render('admin/job/edit.html',
             job                   = job,
             companies             = companies,
+            templates             = templates,
             statuses              = Status.codes,
-            reccomended_send_date = BestSendDate().date 
+            reccomended_send_date = BestSendDate().date
         ) 
 
     def view(self, id):
