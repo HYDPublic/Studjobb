@@ -6,7 +6,8 @@ class TemplateError(Exception):
 
 class Template(object):
 
-    def __init__(self, text, variables = {}, title = 'Untitled', job = None):
+    def __init__(self, text, variables = {}, title = 'Untitled', job = None, id = None):
+        self.id    = id
         self.text  = text
         self.title = title
         self.job   = job
