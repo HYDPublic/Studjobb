@@ -6,12 +6,21 @@ from logoexception  import LogoException
 from logodownloader import LogoDownloader
 from logorescaler   import LogoRescaler
 from logoconfig     import LogoConfig
+from logopalette    import LogoPalette
 
 class Logo(object):
 
-    def __init__(self, path):
+    def __init__(self, path, color = None):
+        self._color = color
+
         if path is not None:
             self.path = path 
+
+    @property
+    def color(self):
+        if self._color is None:
+            self._color = LogoPalette(self.path).color_in_hex
+        return self._color
 
     @property
     def url(self):
