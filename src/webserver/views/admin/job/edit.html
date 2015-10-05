@@ -6,48 +6,62 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
-        <form action="/admin/stilling/{{ job.id }}/mail" method="post">
             <div class="row">
                 <div class="eight columns offset-by-two">
                     
-
-                    <div class="row">
-                        <div class="field five columns">
-                            <label for="recipient">Mottaker</label>
-                            <input name="recipient" type="email" class="u-full-width" required />
+                    <form>
+                        <div class="row">
+                            <div class="field five columns">
+                                <label for="template">Mal</label>
+                                <select name="template" class="u-full-width">
+                                    {% for template in templates %}
+                                        {% if template.id == current_template.id %} 
+                                        <option value="{{ template.id }}" selected>{{ template.title|title() }}</option>
+                                        {% else %}
+                                        <option value="{{ template.id }}">{{ template.title|title() }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="field five columns">
+                                <input style="margin-top:25px;" class="button button-primary" type="submit" value="Velg" />
+                            </div>
                         </div>
-                        <div class="field five columns">
-                            <label for="recipient_name">Navn på mottaker</label>
-                            <input name="recipient_name" type="text" class="u-full-width" />
-                        </div>
-                    </div>
-
+                    </form>
                     
-                    <div class="row">
+                    <form action="/admin/stilling/{{ job.id }}/mail" method="post">
 
-                        <div class="field five columns">
-                            <label for="template">Mal</label>
-                            <select name="template" class="u-full-width">
-                                <option>Standard</option>
-                            </select>
+                        <div class="row">
+                            <div class="field five columns">
+                                <label for="recipient">Mottaker</label>
+                                <input name="recipient" type="email" class="u-full-width" required />
+                            </div>
+                            <div class="field five columns">
+                                <label for="recipient_name">Navn på mottaker</label>
+                                <input name="recipient_name" type="text" class="u-full-width" />
+                            </div>
                         </div>
+
                         
-                        <div class="field five columns">
-                            <label for="when">Sendes</label>
-                            <input name="when" type="datetime-local" class="u-full-width" value="{{ reccomended_send_date.strftime('%Y-%m-%dT%H:%M') }}" required />
+                        <div class="row">
+                            <div class="field five columns">
+                                <label for="subject">Emne</label>
+                                <input name="subject" type="text" class="u-full-width" required/>
+                            </div>
+                            <div class="field five columns">
+                                <label for="when">Sendes</label>
+                                <input name="when" type="datetime-local" class="u-full-width" value="{{ reccomended_send_date.date.strftime('%Y-%m-%dT%H:%M') }}" required />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <label for="subject">Emne</label>
-                        <input name="subject" type="text" class="u-full-width" required/>
-                        <label for="body">Melding</label>
-                        <textarea name="body" class="u-full-width" required></textarea>
-                        <input class="button button-primary" type="submit" value="Send e-post" />
-                    </div>
+                        <div class="row">
+                            <label for="body">Melding</label>
+                            <textarea name="body" class="u-full-width" required>{{ current_template }}</textarea>
+                            <input class="button button-primary" type="submit" value="Send e-post" />
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
 
         <form method="post">
 

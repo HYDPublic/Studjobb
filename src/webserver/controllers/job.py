@@ -24,20 +24,23 @@ class JobController(Controller):
 
     def edit(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
-
-        job = self.job_repository.find(id)
-        if not job:
+        template_id      = self.request.args.get('template') or 1
+        job              = self.job_repository.find(id)
+        current_template = self.template_repository.find(template_id)
+        if not job or not current_template:
             return self.abort(404)
 
-        companies = self.company_repository.findAll()
-        templates = self.template_repository.findAll()
+        companies        = self.company_repository.findAll()
+        templates        = self.template_repository.findAll()
+        current_template.job = job
 
         return self.render('admin/job/edit.html',
             job                   = job,
             companies             = companies,
             templates             = templates,
+            current_template      = current_template.text,
             statuses              = Status.codes,
-            reccomended_send_date = BestSendDate().date
+            reccomended_send_date = BestSendDate()
         ) 
 
     def view(self, id):
