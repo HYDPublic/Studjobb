@@ -49,6 +49,10 @@ a:hover {
     color: #6C4D28 !important;
 }
 
+textarea[name="body"] {
+    height: 300px;
+}
+
 input[type="text"]:focus {
     border-color: #926837 !important;
 }
