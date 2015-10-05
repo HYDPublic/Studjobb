@@ -7,16 +7,28 @@
     {{ navigation.render_back_links(logged_in = True) }}
 
         <form method="post" action="/admin/stilling/">
+
             <div class="row">         
-                <div class="two columns offset-by-two"> 
 
+                <div class="four columns offset-by-two"> 
                     <label for="place">Sted</label>
-                    <input name="place" type="text" value="{{ scraped_job.place }}" />
+                    <input name="place" type="text" class="u-full-width" value="{{ scraped_job.place }}" />
+                </div>
 
+                <div class="four columns"> 
+                    <label for="position">Stillingstype</label>
+                    <input name="position" type="text" class="u-full-width" value="{{ scraped_job.position }}" />
+                </div>
+
+             </div>
+
+            <div class="row">         
+
+                <div class="four columns offset-by-two"> 
                     <label for="company">Selskap</label>
                     <a class="button" href="/admin/selskap" target="_blank">Opprett</a>
                     <a class="button" href="#" id="xhr_companies">Oppdater</a>
-                    <select name="company">
+                    <select name="company" class="u-full-width">
                     {% for company in companies %}
                         {% if company.id == scraped_job.company.id %} 
                         <option value="{{ company.id }}" selected>{{ company.name }}</option>
@@ -27,17 +39,14 @@
                     </select>
                 </div>
 
-                <div class="four columns offset-by-two"> 
-
-                    <label for="position">Stillingstype</label>
-                    <input name="position" type="text" value="{{ scraped_job.position }}" />
-
+                <div class="four columns"> 
                     <label for="due_date">Søknadsfrist</label>
-                    <input name="due_date" type="date" value="{{ scraped_job.due_date }}"/>
+                    <input name="due_date" type="date" class="u-full-width" value="{{ scraped_job.due_date }}"/>
 
                     <label for="start_date">Tiltredelsesdato</label>
-                    <input name="start_date" type="date" value="{{ scraped_job.start_date }}"/>
+                    <input name="start_date" type="date" class="u-full-width" value="{{ scraped_job.start_date }}"/>
                 </div>
+
             </div>
 
 
