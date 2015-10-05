@@ -9,6 +9,14 @@ class TestEmailTemplate(unittest.TestCase):
         template = Template('This is a template with a default title.')
         self.assertEqual(template.title, 'Untitled')
 
+    def test_template_has_a_default_subject(self):
+        template = Template('This is a template with a default title.')
+        self.assertEqual(template.subject, 'Missing subject')
+
+    def test_template_has_a_default_subject(self):
+        template = Template('This is a template with a default title.', subject = 'Subject')
+        self.assertEqual(template.subject, 'Subject')
+
     def test_template_can_override_default_title(self):
         template = Template('This is a template with a defined title.', title = 'Title')
         self.assertEqual(template.title, 'Title')

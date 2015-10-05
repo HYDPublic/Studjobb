@@ -6,11 +6,12 @@ class TemplateError(Exception):
 
 class Template(object):
 
-    def __init__(self, text, title = 'Untitled', id = None):
+    def __init__(self, text, title = 'Untitled', subject = 'Missing subject', id = None):
         self.id                          = id
         self._text                       = text
         self._job                        = None
         self.title                       = title
+        self.subject                     = subject
 
         self._user_defined_variables     = {}
         self._template_defined_variables = self.extract_variables(text) 
