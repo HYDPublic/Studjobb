@@ -38,7 +38,7 @@ class JobController(Controller):
             job                   = job,
             companies             = companies,
             templates             = templates,
-            current_template      = current_template.text,
+            current_template      = current_template,
             statuses              = Status.codes,
             reccomended_send_date = BestSendDate()
         ) 
