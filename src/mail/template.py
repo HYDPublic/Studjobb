@@ -6,20 +6,46 @@ class TemplateError(Exception):
 
 class Template(object):
 
-    def __init__(self, text, variables = {}, title = 'Untitled', job = None, id = None):
-        self.id    = id
-        self.text  = text
-        self.title = title
-        self.job   = job
+    def __init__(self, text, title = 'Untitled', id = None):
+        self.id                          = id
+        self._text                       = text
+        self._job                        = None
+        self.title                       = title
 
-        self.user_defined_variables     = variables
-        self.template_defined_variables = self.extract_variables(text) 
+        self._user_defined_variables     = {}
+        self._template_defined_variables = self.extract_variables(text) 
+
+    @property
+    def job(self):
+        return self._job
         
-        if self.job:
-            self.job_properties = self.extract_properties_from_job(job)
-            self.merge_user_defined_variables_with_job_properties()
+    @job.setter
+    def job(self, job):
+        variables_from_job  = self.extract_properties_from_job(job)
+        variables_from_user = self._user_defined_variables
+        self._user_defined_variables = self.merge(variables_from_job, variables_from_user)
 
-        self.format()
+    @property
+    def text(self):
+        return self.compile()
+
+    @text.setter
+    def text(self, text):
+        self._text = text
+
+    @property
+    def variables(self):
+        return self._user_defined_variables
+
+    @variables.setter
+    def variables(self, variables):
+        self._user_defined_variables = variables
+
+    def compile(self):
+        compiled = self._text 
+        for variable, value in self._user_defined_variables.iteritems():
+            compiled = compiled.replace('%' + variable + '%', value)
+        return compiled
 
     @staticmethod
     def extract_properties_from_job(job):
@@ -31,24 +57,10 @@ class Template(object):
         }
         # Removes job properties that evaluates to False
         return dict((k, v) for k, v in job_properties.iteritems() if v)
-        
-    def merge_user_defined_variables_with_job_properties(self):
-        part_one = self.job_properties.items()
-        part_two = self.user_defined_variables.items()
-        self.user_defined_variables = dict(part_one + part_two)
 
-    def format(self):
-        variables_remaining_in_template = self.template_defined_variables
-         
-        for variable in self.user_defined_variables:
-            value = self.user_defined_variables[variable]
-            self.text = self.text.replace('%' + variable + '%', value)
-
-            if variable in variables_remaining_in_template:
-                variables_remaining_in_template.remove(variable)
-
-        if variables_remaining_in_template:
-            raise TemplateError('Undefined variables in template.')
+    @staticmethod
+    def merge(first_dict, second_dict):
+        return dict(first_dict.items() + second_dict.items())
 
     @staticmethod
     def extract_variables(text):
