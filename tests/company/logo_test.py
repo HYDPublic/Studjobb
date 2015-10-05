@@ -95,15 +95,17 @@ class TestCompanyLogo(unittest.TestCase):
         self.assertEqual(logoURL, "http://website.no/logos/wee.png")
 
     @mock.patch('src.company.logo.logo.LogoPalette')
+    @mock.patch('src.company.logo.logo.LogoConfig')
     @mock.patch('src.company.logo.logo.Logo.isValid')
-    def test_logo_does_not_get_its_colors_extracted_if_color_is_supplied_in_constructor(self, mock_is_valid, mock_logo_palette):
+    def test_logo_does_not_get_its_colors_extracted_if_color_is_supplied_in_constructor(self, mock_is_valid, mock_config, mock_logo_palette):
         mock_is_valid.return_value = True
         logo = Logo(path = "", color = "#ffffff")
         assert not mock_logo_palette.called
 
     @mock.patch('src.company.logo.logo.LogoPalette')
+    @mock.patch('src.company.logo.logo.LogoConfig')
     @mock.patch('src.company.logo.logo.Logo.isValid')
-    def test_logo_does_get_its_colors_extracted_if_color_is_not_supplied_in_constructor(self, mock_is_valid, mock_logo_palette):
+    def test_logo_does_get_its_colors_extracted_if_color_is_not_supplied_in_constructor(self, mock_is_valid, mock_config, mock_logo_palette):
         mock_is_valid.return_value = True
         logo = Logo(path = "")
         logo.color
