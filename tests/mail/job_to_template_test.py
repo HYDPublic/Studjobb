@@ -25,3 +25,8 @@ class TestJobToTemplate(unittest.TestCase):
         template = Template('Your job is titled: %job.title% and is %job.position% type job.')
         template.job = Job(title = 'Developer', place = 'Trondheim', position = 'Fulltid')
         self.assertEqual(template.text, 'Your job is titled: Developer and is Fulltid type job.')
+
+    def test_exception_is_not_thrown_when_job_without_company_is_provided(self):
+        template = Template('Your job is titled: %job.company%.')
+        template.job = Job(title = 'Developer', place = 'Trondheim', position = 'Fulltid')
+        self.assertEqual(template.text, 'Your job is titled: %job.company%.')
