@@ -4,10 +4,10 @@ from name      import Name
 
 class Company(object):
 
-    def __init__(self, id = None, name = None, logo = None):
+    def __init__(self, id = None, name = None, logo = None, color = None):
         self.id   = id
         self.name = name or 'Mangler navn'
-        self.logo = logo
+        self.logo = { "path": logo, "color": color }
 
     def __str__(self):
         return self.name
@@ -21,8 +21,8 @@ class Company(object):
         return self._logo
 
     @logo.setter
-    def logo(self, logo):
-        self._logo = Logo(logo) 
+    def logo(self, args):
+        self._logo = Logo(path = args["path"], color = args["color"]) 
 
     @name.setter
     def name(self, name):
