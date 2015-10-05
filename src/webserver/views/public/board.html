@@ -6,7 +6,6 @@
                             <tr>
                                 <th>Selskap</th>
                                 <th>Tittel</th>
-                                <th>Linje</th>
                                 <th>Søknadsfrist</th>
                             </tr>
                         </thead>
@@ -15,7 +14,6 @@
                             <tr>
                                 <td><strong>{{ job.company.name }}</strong></td>
                                 <td><a href="/stilling/{{ job.id }}">{{ job.title }}</a></td>
-                                <td>Datateknikk/Informatikk</td>
                                 <td>{{ job.due_date.human_readable_date }}</td>
                             </tr>
                         {% endfor %}
