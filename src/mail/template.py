@@ -53,7 +53,7 @@ class Template(object):
             "job.title":    job.title,
             "job.place":    job.place,
             "job.position": job.position,
-            "job.company":  job.company
+            "job.company":  job.company.name
         }
         # Removes job properties that evaluates to False
         return dict((k, v) for k, v in job_properties.iteritems() if v)
