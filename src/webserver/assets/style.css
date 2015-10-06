@@ -21,6 +21,10 @@ body {
     margin-bottom: 25px;
 }
 
+img.preview.logo {
+    width: 150px;
+}
+
 .job-meta > ul {
     list-style-type: none; 
 }
