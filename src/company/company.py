@@ -9,6 +9,9 @@ class Company(object):
         self.name = name or 'Mangler navn'
         self.logo = logo
 
+    def __str__(self):
+        return self.name
+
     @property
     def name(self):
         return self._name 
