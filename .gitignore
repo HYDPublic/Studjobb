@@ -4,8 +4,6 @@ assets/logos/*
 *.swp
 *.pyc
 config
-src/crawler/crawler/
-src/crawler/scrapy.cfg
 src/crawler/elite-proxy-finder
 idea
 src/webserver/assets/logos
