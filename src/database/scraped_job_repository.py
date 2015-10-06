@@ -42,8 +42,15 @@ class ScrapedJobRepository(object):
             scraped_jobs.append(scraped_job)
         return scraped_jobs 
     
-    def save(self):
-        pass
+    def save(self, scraped_job):
+        result = self._database.execute(text('insert ignore into scraped_jobs set guid = :guid, title = :title, description = :description, company = :company'),
+            guid        = scraped_job.guid,
+            url         = scraped_job.url,
+            title       = scraped_job.title,
+            description = scraped_job.description,
+            company     = scraped_job.company
+        )
+        return scraped_job 
 
     def remove(self, guid):
         result = self._database.execute(text('update scraped_jobs set visible = false where guid = :guid'), guid = guid)
