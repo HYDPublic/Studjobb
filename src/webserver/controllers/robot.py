@@ -1,4 +1,5 @@
 from controller import Controller
+from flask import Response
 import os
 
 class RobotController(Controller):
@@ -18,8 +19,10 @@ class RobotController(Controller):
 
     def sitemap(self):
         path_to_sitemap_dot_xml = self.get_path_to_asset('sitemap.xml')
-        return self.get_file_contents(path_to_sitemap_dot_xml)
+        response = self.get_file_contents(path_to_sitemap_dot_xml)
+        return Response(response, status = 200, mimetype = "application/xml")
 
     def robots(self):
         path_to_robots_dot_txt = self.get_path_to_asset('robots.txt')
-        return self.get_file_contents(path_to_robots_dot_txt)
+        response = self.get_file_contents(path_to_robots_dot_txt)
+        return Response(response, status = 200, mimetype = "text/plain")
