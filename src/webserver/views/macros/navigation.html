@@ -1,4 +1,4 @@
-{% macro render_back_links(logged_in = False, edit_url = False, admin_url = True) -%}
+{% macro render_back_links(logged_in = False, edit_url = False, admin_url = True, mail_url = False) -%}
     <div class="row navigation">
         <div class="six columns offset-by-two">
             <a href="/">← Tilbake til forsiden</a>
@@ -10,6 +10,10 @@
                 {% if admin_url %}
                 |
                 <a href="/admin">Til administrasjonspanel →</a>
+                {% endif %}
+                {% if mail_url %}
+                |
+                <a href="/admin/stilling/{{ mail_url }}/mail">Send e-post</a>
                 {% endif %}
             {% endif %}
         </div>

@@ -4,13 +4,13 @@
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
 
-    {{ navigation.render_back_links(logged_in = True) }}
+    {{ navigation.render_back_links(logged_in = True, mail_url = job.id) }}
 
 
         <form method="post">
-
-            <div class="row">         
                 
+            <div class="row">         
+
                 <div class="four columns offset-by-two"> 
 
                     <label for="place">Sted</label>
