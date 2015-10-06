@@ -59,6 +59,7 @@ class JobController(Controller):
         job.start_date  = self.request.form.get('start_date')
         job.position    = self.request.form.get('position')
         job.description = self.request.form.get('description')
+        job.apply_url   = self.request.form.get('apply_url')
         job = self.job_repository.save(job)
 
         return self.redirect(self.url_for('job.edit', id = job.id))
@@ -76,6 +77,7 @@ class JobController(Controller):
         job.start_date  = self.request.form.get('start_date')
         job.position    = self.request.form.get('position')
         job.place       = self.request.form.get('place')
+        job.apply_url   = self.request.form.get('apply_url')
         job.company     = company 
 
         self.job_repository.save(job)

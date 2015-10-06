@@ -25,7 +25,7 @@ class JobRepository(object):
             position = row.position,
             start_date = row.start_date,
             status = row.status,
-            edit_url = row.edit_url
+            edit_url = row.edit_url,
             apply_url = row.apply_url
         )
         return job
