@@ -37,9 +37,12 @@ class CompanyController(Controller):
     def create(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
-        company = Company() 
-        company.name = self.request.form['name']
-        company.logo = self.request.form['logo'].encode('utf8')
+        company_name = self.request.form['name']
+        logo_path    = self.request.form['logo'].encode('utf8')
+
+        logo    = Logo(path = logo_path)
+        company = Company(name = company_name, logo = logo) 
+
         company = self.company_repository.save(company) 
         return self.redirect(self.url_for('company.edit', id = company.id))
 

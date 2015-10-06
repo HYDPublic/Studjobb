@@ -61,6 +61,10 @@ input[type="text"]:focus {
     border-color: #926837 !important;
 }
 
+.button.no-border {
+    border: 0;
+}
+
 .button-primary {
     color: #ffffff !important;
     background-color: #926837 !important;
