@@ -12,20 +12,22 @@ class JobException(Exception):
 
 class Job(object):
 
-    def __init__(self, id = None, status = 'pending', title = 'Mangler tittel',
-                 description = 'Mangler beskrivelse', due_date = None, start_date = None,
-                 company = None, place = 'Ukjent', position = 'Ukjent', edit_url = None):
+    def __init__(self, id = None, status = None, title = None,
+                 description = None, due_date = None, start_date = None,
+                 company = None, place = 'Ukjent', position = None, edit_url = None,
+                 apply_url = None):
 
         self.id          = id 
-        self.title       = title
-        self.description = description 
-        self.place       = place       
-        self.position    = position    
-        self.status      = status 
+        self.title       = title or 'Mangler tittel'
+        self.description = description or 'Mangler beskrivelse'
+        self.place       = place     
+        self.position    = position or 'Ukjent'   
+        self.status      = status or 'pending'
         self.due_date    = due_date
         self.start_date  = start_date
         self.company     = company
         self.edit_url    = edit_url
+        self.apply_url   = apply_url or '#'
 
     @property
     def edit_url(self):
