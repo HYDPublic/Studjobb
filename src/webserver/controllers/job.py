@@ -20,7 +20,7 @@ class JobController(Controller):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         companies = self.company_repository.findAll()
-        return self.render('admin/job/new.html', companies = companies) 
+        return self.render('admin/job/new.html', companies = companies, statuses = Status.codes) 
 
     def edit(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()

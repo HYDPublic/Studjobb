@@ -6,31 +6,45 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
-    <form method="post">
+        <form method="post">
+
             <div class="row">         
-                <div class="two columns offset-by-two"> 
+
+                <div class="four columns offset-by-two"> 
+
 
                     <label for="place">Sted</label>
-                    <input name="place" type="text" placeholder="Oslo, Trondheim, Bergen" />
+                    <input name="place" type="text" class="u-full-width" placeholder="Oslo, Bergen, Trondheim" />
+
+                    <label for="status">Status</label>
+                    <select name="status" class="u-full-width">
+                    {% for status in statuses %}
+                        <option value="{{ status }}">{{ status|title() }}</option>
+                    {% endfor %}
+                    </select>
 
                     <label for="company">Selskap</label>
-                    <select name="company">
+                    <select name="company" class="u-full-width">
                     {% for company in companies %}
                         <option value="{{ company.id }}">{{ company.name }}</option>
                     {% endfor %}
                     </select>
+
+                    
+                    <label for="apply_url">Søknadslenke</label>
+                    <input name="apply_url" type="text" class="u-full-width" placeholder="http://company.com/apply" />
                 </div>
 
-                <div class="four columns offset-by-two"> 
+                <div class="four columns"> 
 
                     <label for="position">Stillingstype</label>
-                    <input name="position" type="text" placeholder="Fulltid, deltids, trainee" />
+                    <input name="position" type="text" class="u-full-width" placeholder="Fulltid, deltid, sommerjobb" />
 
                     <label for="due_date">Søknadsfrist</label>
-                    <input name="due_date" type="date" />
+                    <input name="due_date" type="date" class="u-full-width" />
 
                     <label for="start_date">Tiltredelsesdato</label>
-                    <input name="start_date" type="date" />
+                    <input name="start_date" type="date" class="u-full-width" />
                 </div>
             </div>
 
@@ -38,12 +52,13 @@
             <div class="row">
                 
                 <div class="eight columns offset-by-two">
-                    <hr>
                     
                     <label for="title">Tittel</label>
-                    <input name="title" type="text" placeholder="Selskap søker stilling!" class="u-full-width"/>
+                    <input name="title" type="text" placeholder="Selskap søker utviklere" class="u-full-width"/>
 
-                    <textarea name="description" id="description"></textarea>
+                    <textarea name="description" id="description">
+
+                    </textarea>
 
                     <input class="button button-primary" type="submit" value="Lagre" />
                 </div>
