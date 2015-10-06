@@ -26,6 +26,7 @@ class JobRepository(object):
             start_date = row.start_date,
             status = row.status,
             edit_url = row.edit_url
+            apply_url = row.apply_url
         )
         return job
 
@@ -44,7 +45,8 @@ class JobRepository(object):
                 position = row.position,
                 start_date = row.start_date,
                 status = row.status,
-                edit_url = row.edit_url
+                edit_url = row.edit_url,
+                apply_url = row.apply_url
             )
             jobs.append(job)
         return jobs
@@ -56,7 +58,7 @@ class JobRepository(object):
             return self.update(job)
 
     def create(self, job):
-        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date, status = :status, edit_url = :edit_url'),
+        result = self._database.execute(text('insert into jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date, status = :status, edit_url = :edit_url, apply_url = :apply_url'),
             table       = self._table,
             title       = job.title,
             description = job.description,
@@ -66,13 +68,14 @@ class JobRepository(object):
             due_date    = job.due_date.date,
             start_date  = job.start_date.date,
             status      = job.status,
-            edit_url    = job.edit_url
+            edit_url    = job.edit_url,
+            apply_url   = job.apply_url
         )
         job.id = result.lastrowid
         return job 
 
     def update(self, job):
-        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date, status = :status where id = :id'),
+        result = self._database.execute(text('update jobs set title = :title, description = :description, company_id = :company_id, position = :position, place = :place, due_date = :due_date, start_date = :start_date, apply_url = :apply_url, status = :status where id = :id'),
             table       = self._table,
             title       = job.title,
             description = job.description,
@@ -82,7 +85,8 @@ class JobRepository(object):
             due_date    = job.due_date.date,
             start_date  = job.start_date.date,
             id          = job.id,
-            status      = job.status
+            status      = job.status,
+            apply_url   = job.apply_url
         )
         return self.find(job.id)
 
