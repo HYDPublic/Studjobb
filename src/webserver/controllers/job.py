@@ -46,7 +46,7 @@ class JobController(Controller):
     def view(self, id):
         job = self.job_repository.find(id)
         if not job: return self.abort(404)
-        return self.render('public/job.html', job = job)
+        return self.render('public/job.html', job = job, logged_in = self.user_is_authenticated())
 
     def create(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()
