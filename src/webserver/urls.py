@@ -32,6 +32,7 @@ app.add_url_rule('/admin/selskap/', 'company.create', view_func = company_contro
 app.add_url_rule('/admin/selskap/<int:id>/', 'company.update', view_func = company_controller.update, methods = ['POST'])
 
 # Mail
+app.add_url_rule('/admin/stilling/<int:id>/mail', 'mail.new', view_func = mailer_controller.new)
 app.add_url_rule('/admin/stilling/<int:id>/mail', 'mail.create', view_func = mailer_controller.create, methods = ['POST'])
 
 # Crawler

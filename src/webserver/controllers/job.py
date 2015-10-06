@@ -3,44 +3,37 @@ from controller import Controller
 from src.job.job import Job 
 from src.job.status import Status 
 from src.company.company import Company 
-from src.mail.best_send_date import BestSendDate 
 from src.database.job_repository import JobRepository
 from src.database.company_repository import CompanyRepository
-from src.database.template_repository import TemplateRepository
 
 class JobController(Controller):
     
     def __init__(self, database):
         self.job_repository      = JobRepository(database) 
         self.company_repository  = CompanyRepository(database) 
-        self.template_repository = TemplateRepository(database) 
         super(JobController, self).__init__()
 
     def new(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         companies = self.company_repository.findAll()
-        return self.render('admin/job/new.html', companies = companies, statuses = Status.codes) 
+        return self.render('admin/job/new.html',
+            companies = companies,
+            statuses = Status.codes
+        ) 
 
     def edit(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
-        template_id      = self.request.args.get('template') or 1
-        job              = self.job_repository.find(id)
-        current_template = self.template_repository.find(template_id)
-        if not job or not current_template:
+
+        job = self.job_repository.find(id)
+        companies = self.company_repository.findAll()
+        if not job:
             return self.abort(404)
 
-        companies        = self.company_repository.findAll()
-        templates        = self.template_repository.findAll()
-        current_template.job = job
-
         return self.render('admin/job/edit.html',
-            job                   = job,
-            companies             = companies,
-            templates             = templates,
-            current_template      = current_template,
-            statuses              = Status.codes,
-            reccomended_send_date = BestSendDate()
+            job        = job,
+            companies  = companies,
+            statuses   = Status.codes
         ) 
 
     def view(self, id):

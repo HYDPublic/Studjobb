@@ -2,13 +2,37 @@ from controller import Controller
 import datetime
 from src.mail.mail import Mail
 from src.mail.schedueled_entry import SchedueledEntry
+from src.mail.best_send_date import BestSendDate 
 from src.database.schedueled_entry_repository import SchedueledEntryRepository
+from src.database.job_repository import JobRepository
+from src.database.template_repository import TemplateRepository
 
 class MailerController(Controller):
     
     def __init__(self, database):
         self.schedueled_entry_repository = SchedueledEntryRepository(database) 
+        self.job_repository = JobRepository(database) 
+        self.template_repository = TemplateRepository(database) 
         super(MailerController, self).__init__()
+
+    def new(self, id):
+        if not self.user_is_authenticated(): return self.prompt_for_password()
+
+        job = self.job_repository.find(id)
+        template_id = self.request.args.get('template') or 1
+        current_template = self.template_repository.find(template_id)
+        if not job or not current_template:
+            return self.abort(404)
+
+        templates = self.template_repository.findAll()
+        current_template.job = job
+
+        return self.render('admin/mail/new.html',
+            job                   = job,
+            templates             = templates,
+            current_template      = current_template,
+            reccomended_send_date = BestSendDate()
+        ) 
 
     def create(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
