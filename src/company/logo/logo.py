@@ -12,9 +12,7 @@ class Logo(object):
 
     def __init__(self, path, color = None):
         self._color = color
-
-        if path is not None:
-            self.path = path 
+        self.path   = path 
 
     @property
     def color(self):

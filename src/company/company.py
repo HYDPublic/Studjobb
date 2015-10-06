@@ -4,25 +4,14 @@ from name      import Name
 
 class Company(object):
 
-    def __init__(self, id = None, name = None, logo = None, color = None):
+    def __init__(self, id = None, name = None, logo = None):
         self.id   = id
         self.name = name or 'Mangler navn'
-        self.logo = { "path": logo, "color": color }
-
-    def __str__(self):
-        return self.name
+        self.logo = logo
 
     @property
     def name(self):
         return self._name 
-
-    @property
-    def logo(self):
-        return self._logo
-
-    @logo.setter
-    def logo(self, args):
-        self._logo = Logo(path = args["path"], color = args["color"]) 
 
     @name.setter
     def name(self, name):

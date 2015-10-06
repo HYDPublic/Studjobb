@@ -22,7 +22,7 @@ def setUpModule():
 def tearDownModule():
     clean_up_rescaled_images() 
 
-class TestCompanyLogoRescale(unittest.TestCase):
+class TestLogoRescale(unittest.TestCase):
 
     def test_logo_width_can_be_resized_to_500px_from_501px(self):
         pathToDirWithLogo              = os.path.abspath(os.path.join(__file__, '..', '..', 'fixtures'))
