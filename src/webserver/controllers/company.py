@@ -3,6 +3,7 @@ from flask import Response
 import json
 
 from src.company.company import Company 
+from src.company.logo.logo import Logo
 from src.database.company_repository import CompanyRepository
 
 class CompanyController(Controller):
@@ -44,9 +45,13 @@ class CompanyController(Controller):
 
     def update(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
+        company_name = self.request.form['name']
+        logo_path    = self.request.form['logo'].encode('utf8')
+        logo_color   = self.request.form['color']
 
-        company = self.company_repository.find(id)
-        company.name = self.request.form['name']
-        company.logo = self.request.form['logo'].encode('utf8')
+        company      = self.company_repository.find(id)
+        company.name = company_name
+        company.logo = Logo(path = logo_path, color = logo_color)
+        
         company = self.company_repository.save(company) 
         return self.redirect(self.url_for('company.edit', id = company.id))

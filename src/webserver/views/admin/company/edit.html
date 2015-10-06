@@ -5,7 +5,7 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
-    <form method="POST">
+    <form method="post">
         <div class="row">
             <div class="two columns offset-by-two">
                 <label for="name">Selskapsnavn</label>
@@ -15,6 +15,13 @@
             <div class="two columns offset-by-two">
                 <label for="logo">Logo</label>
                 <input name="logo" type="text" value="{{ company.logo.filename }}"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="two columns offset-by-two">
+                <label for="name">Farge</label>
+                <input name="color" type="text"/ value="{{ company.logo.color }}">
             </div>
         </div>
         

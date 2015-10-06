@@ -1,5 +1,6 @@
 from sqlalchemy.sql      import text
 from src.company.company import Company
+from src.company.logo.logo import Logo
 
 class CompanyRepository(object):
 
@@ -10,14 +11,17 @@ class CompanyRepository(object):
     def find(self, id):
         result = self._database.execute('select * from %s where id = %d' % (self._table, int(id)))
         row = result.fetchone()
-        company = Company(id = row.id, name = row.name, logo = row.logo.encode('utf8'), color = row.color)
+        logo    = Logo(path = row.logo.encode('utf8'), color = row.color)
+        company = Company(id = row.id, name = row.name, logo = logo)
         return company 
 
     def findAll(self):
         result = self._database.execute('select * from %s' % (self._table))
         companies = []
         for row in result:
-            companies.append(Company(id = row.id, name = row.name, logo = row.logo.encode('utf8'), color = row.color))
+            logo    = Logo(path = row.logo.encode('utf8'), color = row.color)
+            company = Company(id = row.id, name = row.name, logo = logo)
+            companies.append(company)
         return companies 
 
     def save(self, company):
