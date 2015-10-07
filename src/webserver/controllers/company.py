@@ -43,6 +43,9 @@ class CompanyController(Controller):
         logo    = Logo(path = logo_path)
         company = Company(name = company_name, logo = logo) 
 
+        # Fetch hex-color from logo, needs refactoring into method
+        company.logo.color
+
         company = self.company_repository.save(company) 
         return self.redirect(self.url_for('company.edit', id = company.id))
 
