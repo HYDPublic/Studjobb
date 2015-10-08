@@ -54,7 +54,7 @@ class Spider(object):
         return bool(urlparse.urlparse(url).netloc)
 
     def selector(self, response_body, css_selector):
-        soup = BeautifulSoup(response_body)
+        soup = BeautifulSoup(response_body, 'html')
         return soup.select(css_selector)
 
     def request(self, url):
