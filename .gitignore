@@ -9,4 +9,4 @@ idea
 src/webserver/assets/logos
 logs/*.log
 src/mail/templates/*
-src/crawler/spiders
+src/crawler/formulas
