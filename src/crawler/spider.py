@@ -3,6 +3,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 import requests
 import urlparse
+
 from hashlib import md5
 from bs4 import BeautifulSoup 
 from src.database.scraped_job_repository import ScrapedJobRepository
@@ -13,7 +14,30 @@ class Spider(object):
     user_agent = 'Mozilla/5.0 (Windows NT x.y; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0'
     repository = ScrapedJobRepository(database)
 
-    def __init__(self):
+    def __init__(self, debug = False):
+        if not debug:
+            self.runner()
+        else:
+            self.debug()
+
+    def debug(self):
+        print 'Debugging {0} spider'.format(type(self).__name__)
+
+        print '=> Found the following urls'
+        urls = self.collect_urls() 
+        print urls
+
+        index = int(raw_input('=> Which url would you like to test? '))
+        url_to_test = urls[index]
+
+        response = self.visit_url(url_to_test).text
+        scraped_job = self.scrape(url_to_test, response)
+
+        print 'Title: {0}'.format(scraped_job.title.encode('utf-8'))
+        print 'Place: {0}'.format(scraped_job.place.encode('utf-8'))
+        print 'Position: {0}'.format(scraped_job.position.encode('utf-8'))
+
+    def runner(self):
         print 'Loading {0} spider'.format(type(self).__name__)
         urls = self.collect_urls()
         for url in urls:
@@ -23,6 +47,8 @@ class Spider(object):
                 scraped_job = self.scrape(url, response)
                 self.repository.save(scraped_job)
                 print '=> Saved data'
+            else:
+                print '=> Not visiting again {0}'.format(url)
 
     def is_absolute(self, url):
         return bool(urlparse.urlparse(url).netloc)
@@ -35,7 +61,7 @@ class Spider(object):
         return requests.get(url, headers = {
             'User-Agent': self.user_agent    
         }, proxies = {
-#            'http': 'http://191.253.85.9:8080'
+#            'http': 'http://168.96.7.46:80'
         })
 
     def extract_href(self, a_tag):
