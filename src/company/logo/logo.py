@@ -16,9 +16,12 @@ class Logo(object):
 
     @property
     def color(self):
+        self.set_color_to_dominant_color_if_not_already_set()
+        return self._color
+
+    def set_color_to_dominant_color_if_not_already_set(self):
         if self._color is None:
             self._color = LogoPalette(self.path).color_in_hex
-        return self._color
 
     @property
     def url(self):
