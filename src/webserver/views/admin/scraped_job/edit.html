@@ -27,7 +27,7 @@
                 <div class="four columns offset-by-two"> 
                     <label for="company">Selskap</label>
                     <a class="button" href="/admin/selskap" target="_blank">Opprett</a>
-                    <a class="button" href="#" id="xhr_companies">Oppdater</a>
+                    <a class="button" href="#" id="xhr_companies">Oppdater <img src="/assets/spinner.gif" class="spinner"></a>
                     <select name="company" class="u-full-width">
                     {% for company in companies %}
                         {% if company.id == scraped_job.company.id %} 
@@ -73,20 +73,39 @@
             CKEDITOR.config.allowedContent = true;
             CKEDITOR.replace('description'); 
 
-            document.querySelector('a#xhr_companies').onclick = function (event) {
-                event.preventDefault();
+            var spinner_element = document.querySelector('img.spinner');
+            stop_spinner();
+
+            function get_json (url, callback) {
                 var request = new XMLHttpRequest();
-                request.open('GET', '/admin/selskap/list', true);
+                request.open('GET', url, true);
                 request.onreadystatechange = function () {
                   if (request.readyState != 4 || request.status != 200) return;
-                  html = '';
-                  companies = JSON.parse(request.responseText);
-                  for (id in companies)
-                      html += '<option value="' + id + '">' + companies[id] + '</option>'; 
-                  document.querySelector('select[name="company"]').innerHTML = html;
+                  callback(JSON.parse(request.responseText));
                 };
                 request.send();
             }
+
+            function start_spinner () {
+                spinner_element.style.display = 'initial';
+            }
+
+            function stop_spinner () {
+                spinner_element.style.display = 'none';
+            }
+
+            document.querySelector('a#xhr_companies').onclick = function (event) {
+                event.preventDefault();
+                start_spinner();
+
+                get_json('/admin/selskap/list', function (companies) {
+                    html = '';
+                    for (id in companies)
+                      html += '<option value="' + id + '">' + companies[id] + '</option>'; 
+                    document.querySelector('select[name="company"]').innerHTML = html;
+                    stop_spinner();
+                });
+            };
         });
         </script>
 

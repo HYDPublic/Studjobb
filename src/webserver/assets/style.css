@@ -21,6 +21,12 @@ body {
     margin-bottom: 25px;
 }
 
+.spinner {
+    margin-left: 10px;
+    position: relative; 
+    top: 2px;
+}
+
 .search input {
     width: 100%;
 }
