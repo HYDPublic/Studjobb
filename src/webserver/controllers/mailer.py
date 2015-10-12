@@ -19,7 +19,10 @@ class MailerController(Controller):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         job = self.job_repository.find(id)
-        template_id = self.request.args.get('template') or 1
+        template_id = self.request.args.get('template')
+        if not template_id:
+            template_id = 1
+
         current_template = self.template_repository.find(template_id)
         if not job or not current_template:
             return self.abort(404)
