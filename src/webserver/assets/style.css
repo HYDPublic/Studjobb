@@ -21,6 +21,10 @@ body {
     margin-bottom: 25px;
 }
 
+.search input {
+    width: 100%;
+}
+
 img.preview.logo {
     width: 150px;
 }
@@ -59,6 +63,11 @@ textarea[name="body"] {
 
 input[type="text"]:focus {
     border-color: #926837 !important;
+}
+
+.button {
+    padding: 0;
+    width: 100%;
 }
 
 .button.no-border {
