@@ -50,11 +50,6 @@ class TestJobTitle(unittest.TestCase):
         titleThatsNotAString = 123 
         self.assertRaises(TitleException, Title, text = titleThatsNotAString)
 
-    @unittest.skip('Not compatible with MySQL')
-    def test_title_raises_error_when_title_contains_non_printable_characters(self):
-        titleWithWeirdCharacters = "ǝlʇᴉʇ pɹᴉǝʍ ɐ sᴉ sᴉɥʇ"
-        self.assertRaises(TitleException, Title, text = titleWithWeirdCharacters)
-
     def test_title_with_scandinavian_characters(self):
         titleWithScandinavianCharacters = u"Javascript-programmer på ÆØÅ"
         title = Title(text = titleWithScandinavianCharacters)
