@@ -61,7 +61,8 @@ class Spider(object):
         return requests.get(url, headers = {
             'User-Agent': self.user_agent    
         }, proxies = {
-            'http': 'http://168.96.7.46:80'
+            'http':  'http://168.96.7.46:80',
+            'https': 'http://168.96.7.46:80'
         })
 
     def extract_href(self, a_tag):
