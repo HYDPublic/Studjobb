@@ -57,6 +57,10 @@ class Spider(object):
         soup = BeautifulSoup(response_body, 'html.parser')
         return soup.select(css_selector)
 
+    def elements_with_text(self, text):
+        soup = BeautifulSoup(response_body, 'html.parser')
+        return soup(text = text)
+
     def request(self, url):
         return requests.get(url, headers = {
             'User-Agent': self.user_agent    
