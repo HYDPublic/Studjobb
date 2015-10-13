@@ -54,14 +54,14 @@ class Spider(object):
         return bool(urlparse.urlparse(url).netloc)
 
     def selector(self, response_body, css_selector):
-        soup = BeautifulSoup(response_body, 'html')
+        soup = BeautifulSoup(response_body, 'html.parser')
         return soup.select(css_selector)
 
     def request(self, url):
         return requests.get(url, headers = {
             'User-Agent': self.user_agent    
         }, proxies = {
-#            'http': 'http://168.96.7.46:80'
+            'http': 'http://168.96.7.46:80'
         })
 
     def extract_href(self, a_tag):
