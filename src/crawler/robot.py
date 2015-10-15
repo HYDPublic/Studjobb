@@ -1,3 +1,4 @@
+from src.config.config import config
 from urlparse import urlparse
 import requests
 
@@ -8,6 +9,10 @@ class Robot(object):
 
     def __init__(self):
         self.visited_urls = []
+
+    @property
+    def user_agent(self):
+        return config('crawler', 'user_agent')
 
     def visit(self, url):
         if not Robot.is_valid_url(url):
@@ -21,7 +26,7 @@ class Robot(object):
             'url': url,
             'method': method,
             'headers': {
-                'user-agent': 'Mozilla'
+                'user-agent': self.user_agent 
             }
         }
         response = requests.request(**arguments)

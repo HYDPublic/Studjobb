@@ -27,20 +27,23 @@ class TestRobot(unittest.TestCase):
         robot.visit('http://website.com/page/3')
         assert robot.request.called
 
+    @mock.patch('src.crawler.robot.Robot.user_agent')
     @mock.patch('src.crawler.robot.requests')
-    def test_robot_uses_GET_requests_by_default(self, requests_library):
+    def test_robot_uses_GET_requests_by_default(self, requests_library, user_agent):
         robot = Robot()
         robot.request('http://website.com/page/101')
         assert requests_library.request.call_args[1]['method'] == 'GET'
 
+    @mock.patch('src.crawler.robot.Robot.user_agent')
     @mock.patch('src.crawler.robot.requests')
-    def test_robot_can_use_POST_requests(self, requests_library):
+    def test_robot_can_use_POST_requests(self, requests_library, user_agent):
         robot = Robot()
         robot.request('http://website.com/page/101', method = 'POST')
         assert requests_library.request.call_args[1]['method'] == 'POST'
 
+    @mock.patch('src.crawler.robot.Robot.user_agent')
     @mock.patch('src.crawler.robot.requests')
-    def test_robot_remembers_visited_urls(self, requests_library):
+    def test_robot_remembers_visited_urls(self, requests_library, user_agent):
         robot = Robot()
         robot.request('http://website.com/page/101')
         assert robot.visited_urls[0] == 'http://website.com/page/101'
