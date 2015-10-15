@@ -29,6 +29,10 @@ class Robot(object):
         arguments = {
             'url': url,
             'method': method,
+            'proxies': {
+                'http':  self.proxy,
+                'https': self.proxy
+            },
             'headers': {
                 'user-agent': self.user_agent 
             }
