@@ -3,7 +3,7 @@ npm-debug.log
 assets/logos/*
 *.swp
 *.pyc
-config
+/config
 src/crawler/elite-proxy-finder
 idea
 src/webserver/assets/logos
