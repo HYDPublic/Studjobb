@@ -18,3 +18,4 @@ password = top-secret
 
 [crawler]
 user_agent = Mozilla
+proxy      = http://proxy.com:8080

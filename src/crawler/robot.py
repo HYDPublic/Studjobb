@@ -14,6 +14,10 @@ class Robot(object):
     def user_agent(self):
         return config('crawler', 'user_agent')
 
+    @property
+    def proxy(self):
+        return config('crawler', 'proxy')
+
     def visit(self, url):
         if not Robot.is_valid_url(url):
             raise ValueError('Invalid URL provided.')
