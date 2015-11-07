@@ -2,6 +2,7 @@
 from application import app
 from controllers import * 
 
+app.error_handlers[500] = error_controller.exception 
 app.error_handlers[404] = error_controller.not_found 
 app.add_url_rule('/sitemap.xml', view_func = robot_controller.sitemap)
 app.add_url_rule('/robots.txt', view_func = robot_controller.robots)
@@ -26,7 +27,6 @@ app.add_url_rule('/admin/skrapt/<string:guid>/delete', 'scraped_job.delete', vie
 app.add_url_rule('/admin/selskap/', 'comapany.new', view_func = company_controller.new)
 app.add_url_rule('/admin/selskap/list', 'company.list', view_func = company_controller.list)
 app.add_url_rule('/admin/selskap/<int:id>/', 'company.edit', view_func = company_controller.edit)
-
 app.add_url_rule('/admin/selskap/', 'company.create', view_func = company_controller.create, methods = ['POST'])
 app.add_url_rule('/admin/selskap/<int:id>/', 'company.update', view_func = company_controller.update, methods = ['POST'])
 

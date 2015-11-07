@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}En feil oppstod{% endblock %}
+{% block container %}
+{% import 'macros/navigation.html' as navigation %}
+            {{ navigation.render_back_links() }}
+
+            <div class="row section">
+                <div class="eight columns offset-by-two">
+                    <h1>500 - En feil oppstod</h1>
+                    <p>
+                        {{ message }}
+                    </p>
+                </div>
+            </div>
+{% endblock %}
