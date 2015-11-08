@@ -2,10 +2,8 @@ from urlparse import urlparse
 
 class Website(object):
 
-    def __init__(self, name, url):
+    def __init__(self, url):
         self._pages = []
-        self.name = name
-
         if self.is_valid_url(url): 
             self.url = url
         else:
