@@ -1,3 +1,4 @@
+import hashlib
 from bs4 import BeautifulSoup
 from urlparse import urlparse
 from src.job.job import Job
@@ -12,6 +13,17 @@ class ScrapedJob(Job):
         if 'scraped_at' in kwargs: self.scraped_at = kwargs.pop('scraped_at')
 
         super(ScrapedJob, self).__init__(*args, **kwargs)
+
+    @property
+    def guid(self):
+        if hasattr(self, 'url'):
+            return hashlib.md5(self.url).hexdigest()
+        else:
+            return self._guid
+
+    @guid.setter
+    def guid(self, guid):
+        self._guid = guid
 
     @property
     def due_date(self):

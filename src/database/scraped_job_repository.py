@@ -48,7 +48,8 @@ class ScrapedJobRepository(object):
             url         = scraped_job.url,
             title       = scraped_job.title,
             description = scraped_job.description,
-            company     = scraped_job.company
+            company     = scraped_job.company,
+            source      = scraped_job.source
         )
         return scraped_job 
 
