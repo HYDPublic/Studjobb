@@ -10,3 +10,4 @@ src/webserver/assets/logos
 logs/*.log
 src/mail/templates/*
 src/crawler/formulas
+src/crawler/runner.py
