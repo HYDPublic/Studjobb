@@ -16,7 +16,7 @@ class ScrapedJob(Job):
 
     @property
     def guid(self):
-        if hasattr(self, 'url'):
+        if hasattr(self, 'url') and self.url:
             return hashlib.md5(self.url).hexdigest()
         else:
             return self._guid
