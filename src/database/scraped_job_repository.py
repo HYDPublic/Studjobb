@@ -43,13 +43,14 @@ class ScrapedJobRepository(object):
         return scraped_jobs 
     
     def save(self, scraped_job):
-        result = self._database.execute(text('insert ignore into scraped_jobs set guid = :guid, title = :title, description = :description, company = :company'),
+        result = self._database.execute(text('insert ignore into scraped_jobs set guid = :guid, title = :title, url = :url, source = :source, due_date = :due_date, description = :description, company = :company'),
             guid        = scraped_job.guid,
             url         = scraped_job.url,
             title       = scraped_job.title,
             description = scraped_job.description,
             company     = scraped_job.company,
-            source      = scraped_job.source
+            source      = scraped_job.source,
+            due_date    = scraped_job.due_date
         )
         return scraped_job 
 
