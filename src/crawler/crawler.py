@@ -9,14 +9,15 @@ from src.database.scraped_job_repository import ScrapedJobRepository
 class Crawler(object):
 
     def __init__(self, formulas = []):
-        self.proxy_finder = ProxyFinder()
+        self.proxy_ip = ProxyFinder().find_proxy()
         self.repository = ScrapedJobRepository(database)
         self.formulas = formulas
         self.headers  = {
            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
         }
         self.proxies  = {
-            'http': self.proxy_finder.find_proxy() 
+            'http': 'http://' + self.proxy_ip,
+            'https': 'http://' + self.proxy_ip
         }
 
     def run(self):
