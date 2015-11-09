@@ -19,10 +19,7 @@ class Crawler(object):
             'http': self.proxy_finder.find_proxy() 
         }
 
-        self.run()
-
     def run(self):
-        print self.proxies
 
         for formula in self.formulas:
             # Get job urls for current formula
