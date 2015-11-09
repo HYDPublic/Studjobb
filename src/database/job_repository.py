@@ -31,7 +31,7 @@ class JobRepository(object):
         return job
 
     def findAll(self):
-        result = self._database.execute('select * from %s' % (self._table))
+        result = self._database.execute('select * from %s order by id desc' % (self._table))
         jobs = []
         for row in result:
             company = self._companyRepository.find(row.company_id)
