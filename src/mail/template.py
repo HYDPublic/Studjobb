@@ -54,6 +54,7 @@ class Template(object):
             "job.title":    job.title,
             "job.place":    job.place,
             "job.position": job.position,
+            "job.edit_url": job.edit_url,
             "job.company":  str(job.company) if job.company else None
         }
         # Removes job properties that evaluates to False
