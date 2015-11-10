@@ -48,9 +48,10 @@ class Crawler(object):
 
     def debug_print(self, scraped_job):
         if self.debug:
-            print 'URL: ' + scraped_job.url
-            print 'Title: ' + scraped_job.title
-            print 'Description: ' + scraped_job.description
+            print u'URL: {0}'.format(scraped_job.url)
+            print u'Title: {0}'.format(scraped_job.title)
+            print u'Due date: {0}'.format(scraped_job.due_date)
+            print u'Description: {0}'.format(scraped_job.description)
             print '\n'
 
     def get_all_job_urls(self, formula):
