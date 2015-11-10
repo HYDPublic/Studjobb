@@ -70,7 +70,6 @@ class TestGoogle(unittest.TestCase):
         google = Google()
         result = {u'url': u'http://x.no/logo.png', u'width': '500'}
         query_result = google.extract_query_result(result)
-        print query_result.width
         assert query_result.width == 500
 
     def test_google_sets_query_result_width_to_none_if_missing_height_from_result(self):
