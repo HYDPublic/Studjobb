@@ -1,6 +1,7 @@
 import requests
 import uuid
 import os
+import imghdr
 
 from urlparse       import urlparse
 from logoexception  import LogoException
@@ -32,23 +33,20 @@ class LogoDownloader(object):
     @staticmethod
     def download(url):
         imagedata               = LogoDownloader.requestExternalImageOverHTTP(url)
-        extension               = LogoDownloader.getExtensionFromURL(url)
+        extension               = LogoDownloader.determineExtension(imagedata)
         pathToStoreLogoIn       = LogoDownloader.generatePathForImage(extension) 
         pathToWhereLogoIsStored = LogoDownloader.writeTo(pathToStoreLogoIn, imagedata)
         return pathToWhereLogoIsStored
+
+    @staticmethod
+    def determineExtension(imageData):
+        return imghdr.what(None, h = imageData)
 
     @staticmethod
     def writeTo(path, imageData):
         with open(path, 'wb') as handle:
             handle.write(imageData)
         return path 
-
-    @staticmethod
-    def getExtensionFromURL(url):
-        path = urlparse(url).path
-        if path.endswith('.png'): return 'png'
-        if path.endswith('.gif'): return 'gif'
-        if path.endswith('.jpg'): return 'jpg'
 
     @staticmethod
     def isDownloadable(logoPath):

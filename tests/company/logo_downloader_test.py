@@ -55,8 +55,3 @@ class TestLogoDownloader(unittest.TestCase):
     def test_logo_gets_written_to_path(self, mock_open):
         LogoDownloader.writeTo("/Users/user/store/logos/here/logo.png", "imagedata")
         mock_open.assert_called_with("/Users/user/store/logos/here/logo.png", "wb")
-
-    def test_logo_can_determine_extension_from_url(self):
-        self.assertEqual(LogoDownloader.getExtensionFromURL('http://domain.com/logo.png'), 'png')
-        self.assertEqual(LogoDownloader.getExtensionFromURL('http://domain.com/logo.gif'), 'gif')
-        self.assertEqual(LogoDownloader.getExtensionFromURL('http://domain.com/logo.jpg'), 'jpg')
