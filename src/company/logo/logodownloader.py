@@ -5,7 +5,6 @@ import imghdr
 
 from urlparse       import urlparse
 from logoexception  import LogoException
-from logo           import LogoException
 from logoconfig     import LogoConfig
 
 class LogoDownloader(object):
@@ -40,7 +39,12 @@ class LogoDownloader(object):
 
     @staticmethod
     def determineExtension(imageData):
-        return imghdr.what(None, h = imageData)
+        allowedExtensions = ['png', 'jpg', 'gif']
+        extension = imghdr.what(None, h = imageData)
+        if extension in allowedExtension:
+            return extension
+        else:
+            raise LogoException('Illegal file extension.')
 
     @staticmethod
     def writeTo(path, imageData):
