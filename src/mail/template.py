@@ -45,7 +45,7 @@ class Template(object):
     def compile(self):
         compiled = self._text 
         for variable, value in self._user_defined_variables.iteritems():
-            compiled = compiled.replace('%' + variable.encode('utf-8') + '%', value.encode('utf-8'))
+            compiled = compiled.replace('%' + variable + '%', value)
         return compiled
 
     @staticmethod
