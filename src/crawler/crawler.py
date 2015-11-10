@@ -8,8 +8,9 @@ from src.database.scraped_job_repository import ScrapedJobRepository
 
 class Crawler(object):
 
-    def __init__(self, formulas = []):
-        self.proxy_ip = ProxyFinder().find_proxy()
+    def __init__(self, formulas = [], debug = False):
+        self.debug = debug
+        self.proxy_ip = self.find_proxy()
         self.repository = ScrapedJobRepository(database)
         self.formulas = formulas
         self.headers  = {
@@ -20,9 +21,18 @@ class Crawler(object):
             'https': 'http://' + self.proxy_ip
         }
 
+    def find_proxy(self):
+        if self.debug: print 'Finding proxy. This may take a while.'
+        proxy_ip_address = ProxyFinder().find_proxy()
+        if self.debug: print 'Proxy found: {0}'.format(proxy_ip_address)
+        return proxy_ip_address
+
     def run(self):
 
         for formula in self.formulas:
+            name = formula.__class__.__name__
+            if self.debug: print 'Crawling {0}.'.format(name)
+
             # Get job urls for current formula
             job_urls = self.get_all_job_urls(formula)
 
@@ -30,13 +40,24 @@ class Crawler(object):
             for job_url in job_urls:
                 html = self.request(formula.session, job_url)
                 scraped_job = formula.extract_job(job_url, html)
+                self.debug_print(scraped_job)
 
                 # Save each job
-                self.repository.save(scraped_job)
+                if not self.debug:
+                    self.repository.save(scraped_job)
+
+    def debug_print(self, scraped_job):
+        if self.debug:
+            print 'URL: ' + scraped_job.url
+            print 'Title: ' + scraped_job.title
+            print 'Description: ' + scraped_job.description
+            print '\n'
 
     def get_all_job_urls(self, formula):
+        if self.debug: print 'Looking for urls.'
         html = self.request(formula.session, formula.board_url)
         job_urls = formula.extract_job_urls(html)
+        if self.debug: print 'Found {0} urls.'.format(len(job_urls))
         return job_urls
 
     def request(self, session, url):
