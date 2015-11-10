@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Lag nytt selskap{% endblock %}
+{% block head %}
+<script type="text/javascript" src="/search_result.js"></script>
+{% endblock %}
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
 
@@ -21,20 +24,6 @@
             </div>
         </div>
     </form>
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            logo_url_field = document.querySelector('input[name="logo"]');
-            search_results = document.querySelectorAll('img.search-result');
-            for (i = 0; i < search_results.length; i++) {
-                search_result = search_results[i];
-                search_result.addEventListener('click', function () {
-                    image_url = this.src;
-                    logo_url_field.value = image_url;
-                });
-            }
-        });
-    </script>
 
     <form method="post">
         <div class="row">
