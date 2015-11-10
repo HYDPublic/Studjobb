@@ -2,18 +2,14 @@
 import unittest 
 from mock import PropertyMock, MagicMock, patch
 
-from src.company.logo.logofinder import SearchEngine
-from src.company.logo.logofinder import SearchEngineError
-
-from src.company.logo.logofinder import Google
-from src.company.logo.logofinder import GoogleError 
-
+from src.company.logo.search_engine import SearchEngine, SearchEngineError
+from src.company.logo.google import Google, GoogleError
 from src.company.logo.logofinder import LogoFinder
 from src.company.logo.logoexception import LogoException
 
 class TestSearchEngine(unittest.TestCase):
 
-    @patch('src.company.logo.logofinder.requests.get')
+    @patch('src.company.logo.search_engine.requests.get')
     def test_exception_is_thrown_if_response_is_not_ok(self, requests):
         type(requests.return_value).ok = PropertyMock(return_value=False)
         with self.assertRaisesRegexp(SearchEngineError, 'server error'):
