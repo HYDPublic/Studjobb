@@ -39,9 +39,9 @@ class LogoDownloader(object):
 
     @staticmethod
     def determineExtension(imageData):
-        allowedExtensions = ['png', 'jpg', 'gif']
+        allowedExtensions = ['png', 'jpeg', 'gif']
         extension = imghdr.what(None, h = imageData)
-        if extension in allowedExtension:
+        if extension in allowedExtensions:
             return extension
         else:
             raise LogoException('Illegal file extension.')
