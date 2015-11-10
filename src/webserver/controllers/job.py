@@ -38,7 +38,10 @@ class JobController(Controller):
 
     def view(self, id):
         job = self.job_repository.find(id)
-        if not job: return self.abort(404)
+        published = job.status == 'active'
+        if not job or not published:
+            return self.abort(404)
+
         return self.render('public/job.html', job = job, logged_in = self.user_is_authenticated())
 
     def create(self):
