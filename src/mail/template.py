@@ -51,6 +51,7 @@ class Template(object):
     @staticmethod
     def extract_properties_from_job(job):
         job_properties = {
+            "job.id":       job.id,
             "job.title":    job.title,
             "job.place":    job.place,
             "job.position": job.position,
