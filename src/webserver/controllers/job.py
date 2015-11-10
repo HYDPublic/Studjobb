@@ -36,6 +36,13 @@ class JobController(Controller):
             statuses   = Status.codes
         ) 
 
+    def preview(self, id, token):
+        job = self.job_repository.find(id)
+        if not job or job.edit_url != token:
+            return self.abort(404)
+
+        return self.render('public/job.html', job = job, logged_in = self.user_is_authenticated())
+
     def view(self, id):
         job = self.job_repository.find(id)
         published = job.status == 'active'

@@ -14,6 +14,7 @@ app.add_url_rule('/admin', 'board.control_panel', view_func = board_controller.c
 
 # Job
 app.add_url_rule('/stilling/<int:id>/', 'job.view', view_func = job_controller.view)
+app.add_url_rule('/stilling/<int:id>/<string:token>', 'job.preview', view_func = job_controller.preview)
 app.add_url_rule('/admin/stilling/', 'job.new', view_func = job_controller.new)
 app.add_url_rule('/admin/stilling/<int:id>/', 'job.edit', view_func = job_controller.edit)
 app.add_url_rule('/admin/stilling/', 'job.create', view_func = job_controller.create, methods = ['POST'])
