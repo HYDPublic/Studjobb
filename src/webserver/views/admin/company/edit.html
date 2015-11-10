@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Rediger selskap{% endblock %}
 {% block head %}
-<script type="text/javascript" src="/search_result.js"></script>
+<script type="text/javascript" src="/assets/search_result.js"></script>
 {% endblock %}
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
@@ -18,7 +18,11 @@
                 </div>
                 <div class="four columns">
                 {% for search_result in search_results %}
-                    <img class="search-result u-max-full-width" src="{{ search_result.url }}">
+                    <div class="row">
+                        <img class="search-result u-max-full-width" src="{{ search_result.url }}">
+                        <p class="dimensions">{{ search_result.width }}px x {{ search_result.height }}px</p>
+                    </div>
+
                 {% endfor %}
                 </div>
             </div>

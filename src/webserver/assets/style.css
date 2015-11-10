@@ -90,3 +90,7 @@ input[type="text"]:focus {
     background-color: #6C4D28 !important;
     color: #ffffff !important;
 }
+
+p.dimensions {
+    text-align: center;
+}
