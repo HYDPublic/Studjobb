@@ -4,6 +4,7 @@ import json
 
 from src.company.company import Company 
 from src.company.logo.logo import Logo
+from src.company.logo.logofinder import LogoFinder, Google
 from src.database.company_repository import CompanyRepository
 
 class CompanyController(Controller):
@@ -15,7 +16,10 @@ class CompanyController(Controller):
     def new(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
-        return self.render('admin/company/new.html') 
+        query = self.request.args.get('query', None)
+        results = self.google_image_search(query)
+
+        return self.render('admin/company/new.html', search_results = results) 
 
     def list(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()
@@ -27,12 +31,22 @@ class CompanyController(Controller):
         response = json.dumps(json_dict)
         return Response(response, status = 200, mimetype = "application/json")
 
+    def google_image_search(self, query):
+        if query:
+            return LogoFinder(query).search(Google())
+        else:
+            return []
+
     def edit(self, id):
         if not self.user_is_authenticated(): return self.prompt_for_password()
 
         company = self.company_repository.find(id)
         if not company: return self.abort(404)
-        return self.render('admin/company/edit.html', company = company) 
+
+        query = self.request.args.get('query', None)
+        results = self.google_image_search(query)
+
+        return self.render('admin/company/edit.html', company = company, search_results = results) 
 
     def create(self):
         if not self.user_is_authenticated(): return self.prompt_for_password()

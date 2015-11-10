@@ -5,6 +5,43 @@
 
     {{ navigation.render_back_links(logged_in = True) }}
 
+    <form method="get">
+        <div class="row">
+            <div class="eight columns offset-by-two">
+                <div class="four columns">
+                    <label for="name">Søk etter logo på nett</label>
+                    <input name="query" type="text"/ value="{{ company.name }}">
+                    <input class="button" type="submit" value="Søk" />
+                </div>
+                <div class="four columns">
+                {% for search_result in search_results %}
+                    <img class="search-result u-max-full-width" src="{{ search_result.url }}">
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            logo_url_field = document.querySelector('input[name="logo"]');
+            search_results = document.querySelectorAll('img.search-result');
+            for (i = 0; i < search_results.length; i++) {
+                search_result = search_results[i];
+                search_result.addEventListener('click', function () {
+                    image_url = this.src;
+                    logo_url_field.value = image_url;
+                });
+            }
+        });
+    </script>
+
+    <div class="row">
+        <div class="eight columns offset-by-two">
+            <hr>
+        </div>
+    </div>
+
     <form method="post">
         <div class="row">
             <div class="two columns offset-by-two">
