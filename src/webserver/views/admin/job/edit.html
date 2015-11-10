@@ -4,7 +4,7 @@
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
 
-    {{ navigation.render_back_links(logged_in = True, mail_url = job.id) }}
+{{ navigation.render_back_links(logged_in = True, mail_url = job.id, preview_url = (job.id, job.edit_url)) }}
 
 
         <form method="post">

@@ -1,6 +1,6 @@
-{% macro render_back_links(logged_in = False, edit_url = False, admin_url = True, mail_url = False, back_to_job_url = False) -%}
+{% macro render_back_links(logged_in = False, edit_url = False, admin_url = True, mail_url = False, back_to_job_url = False, preview_url = False) -%}
     <div class="row navigation">
-        <div class="six columns offset-by-two">
+        <div class="eight columns offset-by-two">
             <a href="/">← Tilbake til forsiden</a>
             {% if logged_in %}
                 {% if edit_url %}
@@ -14,6 +14,10 @@
                 {% if mail_url %}
                 |
                 <a href="/admin/stilling/{{ mail_url }}/mail">Send e-post</a>
+                {% endif %}
+                {% if preview_url %}
+                |
+                <a href="/stilling/{{ preview_url[0] }}/{{ preview_url[1] }}">Forhåndsvis</a>
                 {% endif %}
                 {% if admin_url %}
                 |
