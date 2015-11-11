@@ -25,5 +25,5 @@ class TestDescription(unittest.TestCase):
         description = Description(text = "<strong>Søk nå!</strong>")
         self.assertEqual(str(description), "<strong>Søk nå!</strong>")
 
-    def test_description_can_not_be_longer_than_1000_words(self):
-        self.assertRaisesRegexp(DescriptionException, 'long', Description, text = "This is really five words\n" * 200)
+    def test_description_can_not_be_longer_than_1500_words(self):
+        self.assertRaisesRegexp(DescriptionException, 'long', Description, text = "This is really five words\n" * 350)

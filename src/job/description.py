@@ -44,5 +44,5 @@ class Description(object):
 
     def hasTooManyWords(self, text):
         wordCountInDescription = len(text.split())
-        return wordCountInDescription >= 1000
+        return wordCountInDescription >= 1500
 
