@@ -9,9 +9,8 @@ class BoardController(Controller):
         self.board_repository        = BoardRepository(database) 
         super(BoardController, self).__init__()
 
+    @Controller.authentication_required
     def control_panel(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         board = self.board_repository.find()
         scraped_list = self.scraped_list_repository.find()
         return self.render('admin/admin.html', 

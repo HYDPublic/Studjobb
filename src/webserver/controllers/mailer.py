@@ -15,9 +15,8 @@ class MailerController(Controller):
         self.template_repository = TemplateRepository(database) 
         super(MailerController, self).__init__()
 
+    @Controller.authentication_required
     def new(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         job = self.job_repository.find(id)
         template_id = self.request.args.get('template')
         if not template_id:
@@ -37,9 +36,8 @@ class MailerController(Controller):
             reccomended_send_date = BestSendDate()
         ) 
 
+    @Controller.authentication_required
     def create(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         mail = Mail(
             recipient      = self.request.form['recipient'],
             recipient_name = self.request.form['recipient_name'],

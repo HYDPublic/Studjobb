@@ -14,7 +14,6 @@ class JobController(Controller):
         super(JobController, self).__init__()
 
     def new(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
 
         companies = self.company_repository.findAll()
         return self.render('admin/job/new.html',
@@ -22,9 +21,8 @@ class JobController(Controller):
             statuses = Status.codes
         ) 
 
+    @Controller.authentication_required
     def edit(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         job = self.job_repository.find(id)
         companies = self.company_repository.findAll()
         if not job:
@@ -51,9 +49,8 @@ class JobController(Controller):
 
         return self.render('public/job.html', job = job, logged_in = self.user_is_authenticated())
 
+    @Controller.authentication_required
     def create(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         job             = Job() 
         job.company     = self.company_repository.find(self.request.form['company'])
         job.title       = self.request.form.get('title')
@@ -67,9 +64,8 @@ class JobController(Controller):
 
         return self.redirect(self.url_for('job.edit', id = job.id))
 
+    @Controller.authentication_required
     def update(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         job = self.job_repository.find(id)
         company = self.company_repository.find(self.request.form['company'])
 

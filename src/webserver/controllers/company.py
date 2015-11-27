@@ -13,17 +13,15 @@ class CompanyController(Controller):
         self.company_repository = CompanyRepository(database) 
         super(CompanyController, self).__init__()
 
+    @Controller.authentication_required
     def new(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         query = self.request.args.get('query', None)
         results = self.google_image_search(query)
 
         return self.render('admin/company/new.html', search_results = results) 
 
+    @Controller.authentication_required
     def list(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         companies = self.company_repository.findAll()
         json_dict = {}
         for company in companies:
@@ -37,9 +35,8 @@ class CompanyController(Controller):
         else:
             return []
 
+    @Controller.authentication_required
     def edit(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         company = self.company_repository.find(id)
         if not company: return self.abort(404)
 
@@ -48,9 +45,8 @@ class CompanyController(Controller):
 
         return self.render('admin/company/edit.html', company = company, search_results = results) 
 
+    @Controller.authentication_required
     def create(self):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
-
         company_name = self.request.form['name']
         logo_path    = self.request.form['logo'].encode('utf8')
 
@@ -61,8 +57,8 @@ class CompanyController(Controller):
         company = self.company_repository.save(company) 
         return self.redirect(self.url_for('company.edit', id = company.id))
 
+    @Controller.authentication_required
     def update(self, id):
-        if not self.user_is_authenticated(): return self.prompt_for_password()
         company_name = self.request.form['name']
         logo_path    = self.request.form['logo'].encode('utf8')
         logo_color   = self.request.form['color']
