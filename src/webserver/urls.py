@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from application import app
+from flask_app import app
 from controllers import * 
 
 app.error_handlers[500] = error_controller.exception 
