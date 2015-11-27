@@ -10,19 +10,19 @@ class TestBestSendDate(unittest.TestCase):
 
     def test_next_monday_returns_a_date_that_falls_on_monday(self):
         monday = datetime.datetime(2015, 9, 28)
-        next_date = BestSendDate().next_date_for_weekday(monday, 'monday')
+        next_date = BestSendDate().when_is_the_next_workday(monday, 'monday')
         self.assertEqual(next_date, monday)
 
     def test_next_wednesday_returns_a_date_that_falls_on_wednesday(self):
         tuesday   = datetime.datetime(2015, 9, 29)
         wednesday = datetime.datetime(2015, 9, 30)
-        next_date = BestSendDate().next_date_for_weekday(tuesday, 'wednesday')
+        next_date = BestSendDate().when_is_the_next_workday(tuesday, 'wednesday')
         self.assertEqual(next_date, wednesday)
 
     def test_next_friday_returns_a_date_that_falls_on_friday(self):
         sunday = datetime.datetime(2015,  9, 27)
         friday = datetime.datetime(2015, 10, 02)
-        next_date = BestSendDate().next_date_for_weekday(sunday, 'friday')
+        next_date = BestSendDate().when_is_the_next_workday(sunday, 'friday')
         self.assertEqual(next_date, friday)
 
     def test_returns_monday_if_currently_sunday(self):

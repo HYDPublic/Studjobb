@@ -23,9 +23,9 @@ class BestSendDate(object):
         return date.weekday() > 4 
 
     @staticmethod
-    def next_date_for_weekday(since, weekday):
-        next_date      = since 
-        weekday_number = BestSendDate.weekdays.index(weekday.lower())
+    def when_is_the_next_workday(after, weekday_name):
+        next_date = after 
+        weekday_number = BestSendDate.weekdays.index(weekday_name.lower())
 
         while next_date.weekday() != weekday_number:
             next_date += datetime.timedelta(1)
@@ -44,7 +44,7 @@ class BestSendDate(object):
         return self._now + datetime.timedelta(1)
 
     def next_monday(self):
-        return self.next_date_for_weekday(self._now, 'monday')
+        return self.when_is_the_next_workday(self._now, 'monday')
 
     def todays_date(self):
         return self._now
