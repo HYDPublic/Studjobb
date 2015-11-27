@@ -11,7 +11,6 @@ from flask import abort
 from flask import request
 from flask import redirect 
 from flask import send_from_directory
-from flask.ext.httpauth import HTTPBasicAuth
 
 app = Flask(
     __name__,
