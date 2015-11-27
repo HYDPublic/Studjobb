@@ -13,6 +13,14 @@ class Controller(object):
         self.redirect       = redirect 
         self.url_for        = url_for 
 
+    @staticmethod
+    def authentication_required(view_function):
+        def decorator(self, *args, **kwargs):
+            if not self.user_is_authenticated():
+                return self.prompt_for_password()
+            return view_function(self, *args, **kwargs)
+        return decorator
+
     def user_is_authenticated(self):
         request_header = request.headers.get('Authorization')
         if not self.authentication.is_valid_authentication_format(request_header):
