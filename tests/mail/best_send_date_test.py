@@ -61,3 +61,8 @@ class TestBestSendDate(unittest.TestCase):
         thursday_one_o_clock = datetime.datetime(2015, 10, 01, 13, 13)
         best_date = BestSendDate(now = thursday_one_o_clock)
         self.assertEqual(best_date.date, thursday_one_o_clock)
+
+    def test_time_is_adjusted_if_past_minute_threshold_on_a_thursday(self):
+        thursday_one_o_clock = datetime.datetime(2015, 10, 01, 15, 00)
+        best_date = BestSendDate(now = thursday_one_o_clock)
+        self.assertNotEqual(best_date.date, thursday_one_o_clock)
