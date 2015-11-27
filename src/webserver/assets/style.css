@@ -43,6 +43,10 @@ img.preview.logo {
     margin-bottom: 50px;
 }
 
+thead > tr > th {
+    font-weight: initial;
+}
+
 .board-admin, .scraped-jobs-admin {
     margin-bottom: 50px;
 }
