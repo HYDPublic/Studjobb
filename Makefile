@@ -4,7 +4,9 @@ REQUIREMENTS="requirements.txt"
 install:
 	pip install -r $(REQUIREMENTS) 
 
-test: 
+test: unit-test clean
+
+unit-test:
 	@python -B -m unittest discover -s tests -p $(TESTS)
 
 serve:
@@ -12,5 +14,8 @@ serve:
 
 run:
 	@python src/webserver/webserver.py
+
+clean:
+	@find . -name '*.pyc' -delete
 
 .PHONY: test install serve
