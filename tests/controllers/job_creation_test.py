@@ -1,4 +1,3 @@
-import mock
 from mock import MagicMock
 import unittest
 from src.webserver.controllers.job import JobController
