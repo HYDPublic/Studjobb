@@ -28,13 +28,13 @@ class TestJobCreation(unittest.TestCase):
         controller.view(id = 2)
         assert controller.abort.called == False
 
-    def test_job_with_a_non_active_status_can_be_previewed_if_correct_token_supplied(self):
+    def test_job_with_a_non_active_status_can_not_be_previewed_if_incorrect_token_supplied(self):
         controller = mock_job_controller(JobController(database = None))
         controller.job_repository.find.return_value = Job(id = 1, status = 'pending', edit_url = 'banana')
         controller.preview(id = 1, token = 'apple')
         assert controller.abort.called == True
 
-    def test_job_with_a_non_active_status_can_not_be_previewed_if_incorrect_token_supplied(self):
+    def test_job_with_a_non_active_status_can_be_previewed_if_correct_token_supplied(self):
         controller = mock_job_controller(JobController(database = None))
         controller.job_repository.find.return_value = Job(id = 1, status = 'pending', edit_url = 's3cR3t')
         controller.preview(id = 1, token = 's3cR3t')
