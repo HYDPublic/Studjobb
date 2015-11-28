@@ -7,6 +7,7 @@ class Status(object):
     codes = ['active', 'pending', 'dead']
 
     def __init__(self, code = None):
+        code = code or 'pending'
         code = code.lower()
         if self.isValid(code):
             self._code = code
