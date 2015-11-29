@@ -35,21 +35,21 @@ class TestJail(unittest.TestCase):
         prisoner = mock_prisoner(ip = '88.126.21.23', user_id = 3)
         prisoners = [mock_prisoner(ip = '88.126.21.23', user_id = 3)] * 10
         jail.add_prisoners(prisoners)
-        assert jail.get_number_of_similar_prisoners_as(prisoner) == 10
+        assert jail.get_number_of_prisoners_in_same_cell_as(prisoner) == 10
 
     def test_it_finds_zero_prisoners_if_no_prisoners_have_been_added(self):
         jail = Jail()
         prisoner = mock_prisoner(ip = '88.126.21.23', user_id = 3)
         jail.add_prisoners([])
-        assert jail.get_number_of_similar_prisoners_as(prisoner) == 0
+        assert jail.get_number_of_prisoners_in_same_cell_as(prisoner) == 0
 
     def test_it_can_release_similar_prisoners(self):
         jail = Jail()
         prisoner = mock_prisoner(ip = '88.126.21.23', user_id = 3)
         prisoners = [mock_prisoner(ip = '88.126.21.23', user_id = 3)] * 10
         jail.add_prisoners(prisoners)
-        jail.release_prisoners_similar_to(prisoner)
-        assert jail.get_number_of_similar_prisoners_as(prisoner) == 0
+        jail.release_prisoners_in_same_cell_as(prisoner)
+        assert jail.get_number_of_prisoners_in_same_cell_as(prisoner) == 0
 
     def test_it_does_not_release_different_prisoners(self):
         jail = Jail()
@@ -57,5 +57,5 @@ class TestJail(unittest.TestCase):
         different_prisoner = mock_prisoner(ip = '88.126.21.23', user_id = 4)
         similar_prisoner = mock_prisoner(ip = '88.126.21.23', user_id = 3)
         jail.add_prisoners([similar_prisoner, different_prisoner])
-        jail.release_prisoners_similar_to(prisoner)
+        jail.release_prisoners_in_same_cell_as(prisoner)
         assert jail.get_total_number_of_prisoners() == 1
