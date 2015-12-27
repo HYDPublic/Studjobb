@@ -4,7 +4,7 @@
 {% block container %}
 {% import 'macros/navigation.html' as navigation %}
 
-    {{ navigation.render_back_links(logged_in = True) }}
+    {{ navigation.render_back_links(logged_in = True, scraped_url = scraped_job.url) }}
 
         <form method="post" action="/admin/stilling/">
 
