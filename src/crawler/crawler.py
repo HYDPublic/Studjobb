@@ -2,7 +2,6 @@ import sys
 import os
 import requests
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-from src.crawler.proxy_finder import ProxyFinder
 from src.database.engine import database
 from src.database.scraped_job_repository import ScrapedJobRepository
 
@@ -10,7 +9,6 @@ class Crawler(object):
 
     def __init__(self, formulas = [], debug = False):
         self.debug = debug
-        self.proxy_ip = self.find_proxy()
         self.repository = ScrapedJobRepository(database)
         self.formulas = formulas
         self.headers  = {
@@ -20,12 +18,6 @@ class Crawler(object):
 #            'http': 'http://' + self.proxy_ip,
 #            'https': 'http://' + self.proxy_ip
         }
-
-    def find_proxy(self):
-        if self.debug: print 'Finding proxy. This may take a while.'
-        proxy_ip_address = ProxyFinder().find_proxy()
-        if self.debug: print 'Proxy found: {0}'.format(proxy_ip_address)
-        return proxy_ip_address
 
     def run(self):
 
