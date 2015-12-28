@@ -18,4 +18,4 @@ password = top-secret
 
 [google]
 cx = placeholder
-api-key = placeholder
+api = placeholder
