@@ -55,6 +55,20 @@ class TestGoogle(unittest.TestCase):
         results = google.convert_result_to_query_result(decoded_response)
         assert len(results) == 2
 
+    def test_google_limits_results_to_five(self):
+        google = Google()
+        item = {
+            u'link': 'http://logo.com/logo.png',
+            u'image': {
+                u'width': 250,
+                u'height': 250
+            }
+        }
+        items = [item] * 100
+        decoded_response = {u'items': items}
+        results = google.convert_result_to_query_result(decoded_response)
+        assert len(results) == 5
+
     def test_google_can_extract_a_query_result_object_with_url_from_a_result(self):
         google = Google()
         item = {u'link': 'http://logo.com/logo.png'}

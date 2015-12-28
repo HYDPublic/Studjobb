@@ -9,6 +9,7 @@ class GoogleError(Exception):
     pass
 
 class Google(SearchEngine):
+    max_results = 5
     host = 'https://www.googleapis.com'
     query_string = '/customsearch/v1'
 
@@ -30,7 +31,8 @@ class Google(SearchEngine):
 
     def convert_result_to_query_result(self, decoded_response):
         results = decoded_response['items']
-        return [self.extract_query_result(result) for result in results]
+        extracted_results = [self.extract_query_result(result) for result in results]
+        return extracted_results[:Google.max_results:]
 
     def generate_query_url(self, query):
         keys = self.get_keys()
