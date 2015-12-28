@@ -9,9 +9,8 @@ class GoogleError(Exception):
     pass
 
 class Google(SearchEngine):
-
-    host = 'https://googleapis.com'
-    query_string = 'customsearch/v1'
+    host = 'https://www.googleapis.com'
+    query_string = '/customsearch/v1'
 
     def get_keys(self):
         config = SafeConfigParser()
