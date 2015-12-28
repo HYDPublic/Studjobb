@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+from os.path import abspath, join
 from urllib import urlencode
+from ConfigParser import SafeConfigParser
 from src.company.logo.search_engine_result import SearchEngineResult
 from src.company.logo.search_engine import SearchEngine
 
@@ -8,24 +10,43 @@ class GoogleError(Exception):
 
 class Google(SearchEngine):
 
-    host = 'https://ajax.googleapis.com'
-    query_string = '/ajax/services/search/images'
+    host = 'https://googleapis.com'
+    query_string = 'customsearch/v1'
+
+    def get_keys(self):
+        config = SafeConfigParser()
+        config.read(abspath(join(__file__, '..', '..', '..', '..', 'config')))
+        return (config.get('google', 'cx'), config.get('google', 'api'))
 
     def extract_query_result(self, result):
         query_result = SearchEngineResult() 
-        query_result.url = result['url']
-        if result.has_key('height'):
-            query_result.height = int(result['height'])
-        if result.has_key('width'):
-            query_result.width = int(result['width'])
+        query_result.url = result['link']
+        if result.has_key('image'):
+            image = result['image']
+            if image.has_key('height'):
+                query_result.height = int(image['height'])
+            if image.has_key('width'):
+                query_result.width = int(image['width'])
         return query_result
 
     def convert_result_to_query_result(self, decoded_response):
-        results = decoded_response['responseData']['results']
+        results = decoded_response['items']
         return [self.extract_query_result(result) for result in results]
 
     def generate_query_url(self, query):
-        query_parameters = {'q': query, 'v': '1.0', 'imgc': 'trans'}
+        keys = self.get_keys()
+        query_parameters = {
+            'q': query,
+            'v': '1.0',
+            'imgc': 'trans',
+            'searchType': 'image',
+            'imgSize': 'large',
+            'alt': 'json',
+            'num': '10',
+            'start': '1',
+            'key': keys[1],
+            'cx': keys[0]
+        }
         encoded_query_parameters = urlencode(query_parameters)
         return '{0}{1}?{2}'.format(self.host, self.query_string, encoded_query_parameters)
 
@@ -35,4 +56,3 @@ class Google(SearchEngine):
         decoded_response = self.json_decode_response(response)
         query_results = self.convert_result_to_query_result(decoded_response)
         return query_results
-
