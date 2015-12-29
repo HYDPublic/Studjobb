@@ -98,3 +98,7 @@ input[type="text"]:focus {
 p.dimensions {
     text-align: center;
 }
+
+.transparent_background {
+    background-image: url('/assets/transparent.png')
+}

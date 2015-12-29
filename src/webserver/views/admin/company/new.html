@@ -18,8 +18,12 @@
                 </div>
                 <div class="four columns">
                 {% for search_result in search_results %}
-                    <img class="search-result u-max-full-width" src="{{ search_result.url }}">
-                    <p class="dimensions">{{ search_result.width }}px x {{ search_result.height }}px</p>
+                    <div class="result">
+                        <div class="transparent_background">
+                            <img class="search-result u-max-full-width" src="{{ search_result.url }}">
+                        </div>
+                        <p class="dimensions">{{ search_result.width }}px x {{ search_result.height }}px</p>
+                    </div>
                 {% endfor %}
                 </div>
             </div>
