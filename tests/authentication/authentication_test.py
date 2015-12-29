@@ -100,7 +100,7 @@ class TestAuthentication(unittest.TestCase):
         self.assertEqual(authentication_controller.look_up_user('user@example.com'), mock_user)
 
     @mock.patch('src.webserver.authentication.Authentication.look_up_user')
-    def test_authentication_controller_returns_user_from_lookup(self, mock_look_up_user):
+    def test_authentication_controller_can_verify_credentials_of_user(self, mock_look_up_user):
         authentication_controller = Authentication()
         mock_user = MagicMock()
         mock_user.checkCredentials.return_value = True
