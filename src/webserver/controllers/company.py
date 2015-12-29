@@ -15,10 +15,9 @@ class CompanyController(Controller):
 
     @Controller.authentication_required
     def new(self):
-        query = self.request.args.get('query', None)
+        query = self.request.args.get('query', '')
         results = self.google_image_search(query)
-
-        return self.render('admin/company/new.html', search_results = results) 
+        return self.render('admin/company/new.html', query=query, search_results=results) 
 
     @Controller.authentication_required
     def list(self):
@@ -39,11 +38,9 @@ class CompanyController(Controller):
     def edit(self, id):
         company = self.company_repository.find(id)
         if not company: return self.abort(404)
-
-        query = self.request.args.get('query', None)
+        query = self.request.args.get('query', '')
         results = self.google_image_search(query)
-
-        return self.render('admin/company/edit.html', company = company, search_results = results) 
+        return self.render('admin/company/edit.html', query=query,company=company, search_results=results) 
 
     @Controller.authentication_required
     def create(self):
