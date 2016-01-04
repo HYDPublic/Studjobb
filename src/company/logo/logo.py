@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import os
-
+from os.path import join, abspath
+from src.config.config import config
 from dimensions     import dimensions
 from logoexception  import LogoException
 from logodownloader import LogoDownloader
 from logorescaler   import LogoRescaler
-from logoconfig     import LogoConfig
 from logopalette    import LogoPalette
 
 class Logo(object):
@@ -25,7 +25,8 @@ class Logo(object):
 
     @property
     def url(self):
-        return LogoConfig.urlToLogosFromConfig() + self.filename 
+        url = config.get('company_logo', 'url')
+        return url + self.filename 
 
     @property
     def filename(self):
@@ -42,7 +43,7 @@ class Logo(object):
             url = path
             path = LogoDownloader.download(url)
 
-        path = os.path.abspath(os.path.join(LogoConfig.pathToStore(), path))
+        path = abspath(join(config.get('company_logo', 'location'), path))
 
         if Logo.isValid(path):
             self._path = path

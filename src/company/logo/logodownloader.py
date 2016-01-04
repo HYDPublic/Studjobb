@@ -1,11 +1,11 @@
 import requests
 import uuid
-import os
 import imghdr
-
+import os
+from src.config.config import config
+from os.path import abspath, join
 from urlparse       import urlparse
 from logoexception  import LogoException
-from logoconfig     import LogoConfig
 
 class LogoDownloader(object):
 
@@ -59,7 +59,7 @@ class LogoDownloader(object):
 
     @staticmethod
     def generatePathForImage(extension = None):
-        pathConfigSaysToStoreLogosIn = LogoConfig.pathToStore()
+        pathConfigSaysToStoreLogosIn = config.get('company_logo', 'location')
         uniqueFilenameForLogo        = LogoDownloader.generateUniqueFilename(extension)
-        pathToStoreLogoIn            = os.path.abspath(os.path.join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
+        pathToStoreLogoIn            = abspath(join(pathConfigSaysToStoreLogosIn, uniqueFilenameForLogo))
         return pathToStoreLogoIn

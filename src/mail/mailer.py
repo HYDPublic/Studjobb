@@ -1,22 +1,17 @@
 # -*- coding: utf-8 -*-
-import os
 import smtplib
 from smtplib import SMTPServerDisconnected 
-from ConfigParser import SafeConfigParser
-
 from email import message
 from email.header import Header
 from email.mime.text import MIMEText
+from src.config.config import config
 
 class Mailer(object):
 
     def __init__(self):
         self.server = None
-        self.config = os.path.abspath(os.path.join(__file__, '..', '..', '..', 'config'))
 
     def smtp_credentials(self):
-        config = SafeConfigParser()
-        config.read(self.config)
         return {
             'username': config.get('smtp', 'username'),
             'password': config.get('smtp', 'password')

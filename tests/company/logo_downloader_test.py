@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest 
 import mock
-
 from src.company.logo.logo import LogoException 
 from src.company.logo.logo import LogoDownloader
 
@@ -33,9 +32,9 @@ class TestLogoDownloader(unittest.TestCase):
         mock_request.get.return_value = failedResponse()
         self.assertRaisesRegexp(LogoException, 'download', LogoDownloader.download, "http://illegal-url.com")
 
-    @mock.patch('src.company.logo.logoconfig.SafeConfigParser')
-    def test_logo_generates_an_absolute_path_for_logo_based_on_config(self, mock_configParser):
-        mock_configParser().get.return_value = "/Users/user/store/logos/here/"
+    @mock.patch('src.company.logo.logodownloader.config')
+    def test_logo_generates_an_absolute_path_for_logo_based_on_config(self, mock_config):
+        mock_config.get.return_value = "/Users/user/store/logos/here/"
         self.assertEqual("/Users/user/store/logos/here/" in LogoDownloader.generatePathForImage(), True)
 
     def test_logo_generates_a_unique_filename(self):

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from os.path import abspath, join
+from src.config.config import config
 from urllib import urlencode
-from ConfigParser import SafeConfigParser
 from src.company.logo.search_engine_result import SearchEngineResult
 from src.company.logo.search_engine import SearchEngine
 
@@ -14,9 +13,10 @@ class Google(SearchEngine):
     query_string = '/customsearch/v1'
 
     def get_keys(self):
-        config = SafeConfigParser()
-        config.read(abspath(join(__file__, '..', '..', '..', '..', 'config')))
-        return (config.get('google', 'cx'), config.get('google', 'api'))
+        return (
+            config.get('google', 'cx'),
+            config.get('google', 'api')
+        )
 
     def extract_query_result(self, result):
         query_result = SearchEngineResult() 

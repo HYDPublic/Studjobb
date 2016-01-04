@@ -1,9 +1,5 @@
-import os
-from sqlalchemy   import create_engine
-from ConfigParser import SafeConfigParser
-
-config = SafeConfigParser()
-config.read(os.path.abspath(os.path.join(__file__, '..', '..', '..', 'config')))
+from sqlalchemy import create_engine
+from src.config.config import config
 
 host     = config.get("database", "host")
 user     = config.get("database", "user")
