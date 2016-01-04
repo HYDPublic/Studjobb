@@ -17,4 +17,5 @@ else:
     config_file_name = 'config'
 
 location = abspath(join(__file__, '..', '..', '..', config_file_name))
+print location
 config = Config(location)

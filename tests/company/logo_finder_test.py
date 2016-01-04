@@ -110,7 +110,9 @@ class TestGoogle(unittest.TestCase):
         query_result = google.extract_query_result(item)
         assert query_result.height == 500
 
-    def test_google_generates_a_url_with_query_as_get_parameter(self):
+    @patch('src.company.logo.google.config')
+    def test_google_generates_a_url_with_query_as_get_parameter(self, mock_config):
+        mock_config.get.return_value = 'bogus-key'
         google = Google()
         request_url = google.generate_query_url('sopra steria logo')
         assert 'sopra+steria+logo' in request_url
