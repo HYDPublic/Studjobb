@@ -4,9 +4,9 @@ REQUIREMENTS="requirements.txt"
 install:
 	pip install -r $(REQUIREMENTS) 
 
+test: export TEST=true
 test: unit-test clean
 
-unit-test: export TEST=true
 unit-test:
 	@python -B -m unittest discover -s tests -p $(TESTS)
 
