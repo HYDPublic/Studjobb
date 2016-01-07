@@ -45,14 +45,14 @@ class Mailer(object):
         message_to_be_sent            = MIMEText(mail.body, 'plain', 'utf-8')
         message_to_be_sent['Subject'] = Header(mail.subject, 'utf-8')
         if mail.sender_name:
-            message_to_be_sent['From'] = '%s <%s>' % (mail.sender_name, mail.sender)
+            message_to_be_sent.add_header('From', '%s <%s>' % (mail.sender_name, mail.sender))
         else:
-            message_to_be_sent['From'] = mail.sender
+            message_to_be_sent.add_header('From', mail.sender)
 
         if mail.recipient_name:
-            message_to_be_sent['To'] = '%s <%s>' % (mail.recipient_name, mail.recipient)
+            message_to_be_sent.add_header('To', '%s <%s>' % (mail.recipient_name, mail.recipient))
         else:
-            message_to_be_sent['To'] = mail.recipient
+            message_to_be_sent.add_header('To', mail.recipient)
             
         return message_to_be_sent.as_string()
 
