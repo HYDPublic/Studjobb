@@ -14,10 +14,6 @@ class Crawler(object):
         self.headers  = {
            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
         }
-        self.proxies  = {
-#            'http': 'http://' + self.proxy_ip,
-#            'https': 'http://' + self.proxy_ip
-        }
 
     def run(self):
 
@@ -40,10 +36,15 @@ class Crawler(object):
 
     def debug_print(self, scraped_job):
         if self.debug:
+            line = '-' * 50
             print u'URL: {0}'.format(scraped_job.url)
+            print line
             print u'Title: {0}'.format(scraped_job.title)
+            print line
             print u'Due date: {0}'.format(scraped_job.due_date)
+            print line
             print u'Description: {0}'.format(scraped_job.description)
+            print line
             print '\n'
 
     def get_all_job_urls(self, formula):
@@ -56,6 +57,5 @@ class Crawler(object):
     def request(self, session, url):
         r = session.get(url,
             headers=self.headers,
-            proxies=self.proxies
         )
         return r.text
