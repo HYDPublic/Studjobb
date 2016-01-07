@@ -41,6 +41,8 @@ class Crawler(object):
             print line
             print u'Title: {0}'.format(scraped_job.title)
             print line
+            print u'Company: {0}'.format(scraped_job.company)
+            print line
             print u'Due date: {0}'.format(scraped_job.due_date)
             print line
             print u'Description: {0}'.format(scraped_job.description)
