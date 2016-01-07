@@ -11,7 +11,6 @@
 
     {{ admin.render_board(jobs = active_jobs,                 name = 'Aktive jobber') }}
     {{ admin.render_board(jobs = pending_jobs,                name = 'Avventende jobber') }}
-    {{ admin.render_board(jobs = dead_jobs,                   name = 'Inaktive jobber') }}
     {{ admin.render_scraped_list(scraped_jobs = scraped_jobs, name = 'Skrapte jobber') }}
 
 {% endblock %}

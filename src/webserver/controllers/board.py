@@ -16,8 +16,7 @@ class BoardController(Controller):
         return self.render('admin/admin.html', 
             scraped_jobs = scraped_list.scraped_jobs,
             active_jobs  = board.jobs_by_status('active'),
-            pending_jobs = board.jobs_by_status('pending'),
-            dead_jobs    = board.jobs_by_status('dead')
+            pending_jobs = board.jobs_by_status('pending')
         )
     
     def view(self):
