@@ -3,5 +3,5 @@
 ### About
 Yet to come.
 
-### Architechture
+### Architecture
 ![](architechture.png)
